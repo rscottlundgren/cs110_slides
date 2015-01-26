@@ -1,0 +1,216 @@
+\documentclass[8pt,a4paper,compress]{beamer}
+%\documentclass[8pt,a4paper,compress,handout]{beamer}
+
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{enumerate}
+\usepackage{listings}
+\usepackage{tikz}
+\usepackage{wrapfig}
+
+\usecolortheme{dove}
+\useinnertheme{circles}
+\beamertemplatenavigationsymbolsempty
+\setbeamertemplate{headline}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=6ex]{secsubsec}%
+    \raggedright
+    \hspace*{1.5em}%
+    \normalsize
+    \ifx\insertsection\empty\else
+      \textbf{\insertsection\text{ }}%
+      \ifx\insertsubsection\empty\else
+        \textbf{$\bullet$\text{ }\insertsubsection}%
+      \fi
+    \fi
+    \hspace*{2em}%
+  \end{beamercolorbox}%
+  }%
+}
+\setbeamerfont{frametitle}{size=\normalsize}
+\setbeamertemplate{mini frames}{}
+\setbeamertemplate{footline}[page number]
+
+\definecolor{lightgray}{RGB}{240,240,240}
+\definecolor{darkgreen}{RGB}{51,102,0}
+
+\title{Brief Overview of Computer Science}
+\date{}
+
+\lstset{
+  backgroundcolor=\color{lightgray},
+  basicstyle=\footnotesize\ttfamily,
+  showstringspaces=false,
+  commentstyle=\color{darkgreen},
+  keywordstyle=\color{blue},
+  stringstyle=\color{orange},
+}
+
+\begin{document}
+\begin{frame}
+\vfill
+\titlepage
+\end{frame}
+
+\begin{frame}
+\frametitle{Outline}
+\tableofcontents
+\end{frame}
+
+\section{What is Computer Science?}
+\begin{frame}[fragile]
+\begin{flushright}
+\tiny \textsc{It is unworthy of excellent men to lose hours like slaves in the labor of calculation which could safely be relegated to anyone else if machines were used. - \href{http://en.wikipedia.org/wiki/Gottfried_Wilhelm_Leibniz}{Gottfried Wilhelm Leibniz}}
+
+\bigskip
+
+\tiny \textsc{Computers are useless. They can only give you answers. - \href{http://en.wikipedia.org/wiki/Pablo_Picasso}{Pablo Picasso}}
+
+\bigskip
+
+\textsc{The computer is incredibly fast, accurate, and stupid. Man is incredibly slow, inaccurate, and brilliant. The marriage of the two is a force beyond calculation. - \href{http://en.wikipedia.org/wiki/Leo_Cherne}{Leo Cherne}}
+\end{flushright}
+
+\pause
+\textbf{Computer} A general-purpose device that can be programmed to carry out a set of arithmetic or logical operations automatically.
+
+\pause
+\smallskip
+
+\textbf{Computer Science} Study of automating algorithmic processes that scale.
+
+\pause
+\smallskip
+
+\textbf{Computer Scientist} One who specializes in the theory of computation and the design of computational systems.
+\end{frame}
+
+\section{History of Computing}
+\begin{frame}[fragile]
+\pause
+
+\textbf{1642} Blaise Pascal designed and constructed the first working mechanical calculator, called Pascal's Calculator.
+
+\pause
+\smallskip
+
+\textbf{1673} Gottfried Wilhelm Leibniz demonstrated a digital mechanical calculator, called the Stepped Reckoner. He also documented the binary number system and thus is considered the first computer scientist and information theorist.
+
+\pause
+\smallskip
+
+\textbf{1820} Thomas de Colmar launched the mechanical calculator industry and released his simplified arithmometer, the first calculating machine strong and reliable enough for use in an office environment.
+
+\pause
+\smallskip
+
+\textbf{1822} Charles Babbage started the design of the first automatic mechanical calculator, his Difference Engine.
+
+\pause
+\smallskip
+
+\textbf{1834} Charles Babbage started developing the first programmable mechanical calculator, his Analytical Engine. A crucial step was the adoption of a punched-card system derived from the Jacquard loom making it infinitely programmable.
+
+\pause
+\smallskip
+
+\textbf{1843} Ada Lovelace wrote an algorithm to compute the Bernoulli numbers, which is considered to be the first computer program.
+
+\pause
+\smallskip
+
+\textbf{1885} Herman Hollerith invented the tabulator, which used punched cards to process statistical information.
+
+\pause
+\smallskip
+
+\textbf{1937} Howard Aiken convinced IBM to develop his giant programmable calculator, the ASCC/Harvard Mark I.
+
+\pause
+\smallskip
+
+\textbf{1962} The first computer science degree program was formed in the United States at Purdue University. 
+\end{frame}
+
+\begin{frame}[fragile]
+\pause
+
+Computer science, along with Electronics, is a founding science of the current epoch of human history called the Information Age. Some if its major achievements include:
+\begin{itemize}
+\pause
+\item Start of the ``digital revolution'', including the Information Age and the Internet.
+\pause
+\item Formal definition of computation and computability, and proof that there are computationally unsolvable and intractable problems.
+\pause
+\item Concept of a programming language as a tool for the precise expression of methodological information at various levels of abstraction.
+\pause
+\item Breaking of the Enigma code leading to the Allied victory in World War II.
+\pause
+\item Scientific computing enabled evaluation of processes of great complexity such as computational fluid dynamics, and experimentation entirely by software (aka in-silico experimentation). It also enabled advanced study of the mind, mapping of the human genome, and distributed computing projects such as Folding@Home.
+\pause
+\item Computer graphics and computer-generated imagery have become ubiquitous in modern entertainment.
+\pause
+\item Artificial intelligence (AI) is becoming increasingly important. There are many applications of the AI, some of which can be seen at home, such as robotic vacuum cleaners.
+\end{itemize}
+\end{frame}
+
+\section{Areas of Computer Science}
+\begin{frame}[fragile]
+\pause
+\textbf{Theoretical Computer Science} Encompasses topics that focus on the more abstract, logical, and mathematical aspects of computing.
+\begin{itemize}
+\item Theory of Computation (CS420). 
+\item Information and Coding Theory. 
+\item Algorithms and Data Structures (CS210, CS310).
+\item Programming Language Theory (CS450, CS451).
+\item Formal Methods.
+\end{itemize}
+
+\pause
+\textbf{Applied Computer Science} Identifies computer science concepts that can be used directly for solving real-world problems.
+\begin{itemize}
+\item Artificial Intelligence (CS470).
+\item Computer Architecture and Engineering (CS341, CS444).
+\item Computer Performance Analysis.
+\item Computer Graphics and Visualization (CS447, CS460).
+\item Computer Security and Cryptography (CS449).
+\item Computation Science.
+\item Computer Networks (CS446).
+\item Concurrent, Parallel, and Distributed Systems.
+\item Databases (CS430, CS436, CS437).
+\item Health Informatics.
+\item Information Science (CS438).
+\item Software Engineering (CS410).
+\end{itemize}
+\end{frame}
+
+\section{The Great Insights of Computer Science}
+\begin{frame}[fragile]
+\pause
+\textbf{First Great Insight} (Leibniz, Boole, Turing, Shannon, Morse) All the information about any computable problem can be represented using only 0 and 1 (or any other bistable pair).
+
+\pause
+\smallskip
+
+\textbf{Second Great Insight} (Turing) Every algorithm can be expressed in a computer language consisting of only five basic instructions:
+\begin{itemize}
+\item move left one location; 
+\item move right one location; 
+\item read symbol at current location; 
+\item print 0 at current location; and 
+\item print 1 at current location.
+\end{itemize}
+
+\pause
+\smallskip
+
+\textbf{Third Great Insight} (B\"{o}hm, Jacopini) Only three rules are needed to combine any set of basic instructions into more complex ones: 
+\begin{itemize}
+\item Sequence: first do this; then do that; 
+\item Selection: \texttt{IF} such and such is the case \texttt{THEN} do this \texttt{ELSE} do that; and 
+\item Repetition: \texttt{WHILE} such and such is the case \texttt{DO} this.
+\end{itemize}
+\end{frame}
+
+\end{document}
