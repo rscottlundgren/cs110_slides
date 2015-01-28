@@ -75,7 +75,7 @@
 \pause
 \smallskip
 
-\textbf{Creating a Program} Use an editor or an IDE (eg. BlueJ) to create a file with \texttt{.java} extension containing the instructions for a Java program. 
+\textbf{Creating a Program} Use an editor or an IDE (eg, BlueJ) to create a file with \lstinline$.java$ extension containing the instructions for a Java program. 
 
 \pause
 \smallskip
@@ -105,10 +105,10 @@ $ java P
   	   block1/.style={rectangle,draw,align=center},
 	   block2/.style={rectangle,align=center}]
 \node [block1] (1) {editor \\ (BlueJ)};
-\node [block2] (2) [right=of 1] {\texttt{P.java}};
-\node [block1] (3) [right=of 2] {compiler \\ (\texttt{javac})};
-\node [block2] (4) [right=of 3] {\texttt{P.class}};
-\node [block1] (5) [right=of 4] {JVM \\ (\texttt{java})};
+\node [block2] (2) [right=of 1] {\lstinline$P.java$};
+\node [block1] (3) [right=of 2] {compiler \\ (\lstinline$javac$)};
+\node [block2] (4) [right=of 3] {\lstinline$P.class$};
+\node [block1] (5) [right=of 4] {JVM \\ (\lstinline$java$)};
 \node [block2] (6) [right=of 5] {output};
 \path (1) edge node [above] {} (2);
 \path (2) edge node [above] {} (3);
@@ -150,11 +150,11 @@ Hello, World
 
 \textbf{Anatomy of a Program}
 \begin{itemize}
-\item Class definition (eg. \texttt{public class HelloWorld \{...\}}).
-\item Method definitions (eg. \texttt{public static void main(String[] args)  \{...\}}).
-\item Statements (eg. \texttt{System.out.println("Hello, World")}).
-\item Expressions (eg. \texttt{"Hello, World"}).
-\item Comments (multi-line \texttt{/* ... */} or single-line \texttt{// ...}).
+\item Class definition; eg, \lstinline$public class HelloWorld {...}$.
+\item Method definitions; eg, \lstinline$public static void main(String[] args)  {...}$.
+\item Statements; eg, \lstinline$System.out.println("Hello, World")$.
+\item Expressions; eg, \lstinline$"Hello, World"$.
+\item Comments (multi-line \lstinline$/* ... */$ or single-line \lstinline$// ...$).
 \end{itemize}
 
 \pause
@@ -177,7 +177,7 @@ Hello, World
 $ java P arg_1 arg_2 ... arg_n
 \end{lstlisting}
 
-The arguments can be accessed within the \texttt{main()} method of  \texttt{P} via the array \texttt{args}  as \texttt{args[0]}, \texttt{args[1]}, $\dots$, \texttt{args[n - 1]}.
+The arguments can be accessed within the \lstinline$main()$ method of  \lstinline$P$ via the array \lstinline$args$  as \lstinline$args[0]$, \lstinline$args[1]$, $\dots$, \lstinline$args[n - 1]$.
 
 \pause
 \smallskip
@@ -214,7 +214,7 @@ Hi, Bob. How are you?
   	   block1/.style={rectangle,draw,align=center},
 	   block2/.style={rectangle,align=center}]
 \node [block2] (1) {input};
-\node [block1] (2) [right=of 1] {\texttt{P.java}};
+\node [block1] (2) [right=of 1] {\lstinline$P.java$};
 \node [block2] (3) [right=of 2] {output};
 \path (1) edge node [above] {} (2);
 \path (2) edge node [above] {} (3);
