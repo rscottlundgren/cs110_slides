@@ -1,0 +1,532 @@
+\documentclass[8pt,a4paper,compress]{beamer}
+%\documentclass[8pt,a4paper,compress,handout]{beamer}
+
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{enumerate}
+\usepackage{framed}
+\usepackage{listings}
+\usepackage{tikz}
+
+\usecolortheme{dove}
+\useinnertheme{circles}
+\beamertemplatenavigationsymbolsempty
+\setbeamertemplate{headline}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=6ex]{secsubsec}%
+    \raggedright
+    \hspace*{1.5em}%
+    \normalsize
+    \ifx\insertsection\empty\else
+      \textbf{\insertsection\text{ }}%
+      \ifx\insertsubsection\empty\else
+        \textbf{$\bullet$\text{ }\insertsubsection}%
+      \fi
+    \fi
+    \hspace*{2em}%
+  \end{beamercolorbox}%
+  }%
+}
+\setbeamerfont{frametitle}{size=\normalsize}
+\setbeamertemplate{mini frames}{}
+\setbeamertemplate{footline}[page number]
+
+\definecolor{lightgray}{RGB}{240,240,240}
+\definecolor{darkgreen}{RGB}{51,102,0}
+
+\title{1.2 Built-in Types of Data}
+\date{}
+
+\lstset{
+  backgroundcolor=\color{lightgray},
+  basicstyle=\footnotesize\ttfamily,
+  showstringspaces=false,
+  commentstyle=\color{darkgreen},
+  keywordstyle=\color{blue},
+  stringstyle=\color{orange},
+}
+
+\begin{document}
+
+\begin{frame}
+\vfill
+\titlepage
+\end{frame}
+
+\begin{frame}
+\frametitle{Outline}
+\tableofcontents
+\end{frame}
+
+\section{Types}
+\begin{frame}[fragile]
+\pause
+
+\textbf{Data Type} A set of values and a set of operations defined on those values.
+
+\pause
+\smallskip
+
+\textbf{Primitive Types} \lstinline$boolean$, \lstinline$byte$, \lstinline$char$, \lstinline$short$, \lstinline$int$, \lstinline$long$, \lstinline$float$, and \lstinline$double$.
+
+\pause
+\smallskip
+
+\textbf{Reference Types} User-defined types and array types.
+
+\pause
+\smallskip
+\textbf{Built-in Types} Although \lstinline$String$ (sequence of characters) is a reference type, because of its usage in input and output, it shares some characteristics of the primitive types. We refer to the eight primitive types and \lstinline$String$ collectively as built-in types.
+\end{frame}
+
+\section{Definitions}
+\begin{frame}[fragile]
+\pause
+\textbf{Identifiers} Used to name variables and many other things in Java. An identifier is a sequence of letters, digits, \lstinline$_$, and \texttt{\small \$}, the first of which is not a digit. Reserved words such as \lstinline$public$, \lstinline$static$, \lstinline$int$, \lstinline$double$, and so forth cannot be used as identifiers.
+
+\pause
+\smallskip
+
+\textbf{Literals} Source-code representation of data-type values. Eg, \lstinline$42$, \lstinline$"Hello, World"$, \lstinline$3.14159$.  
+
+\pause
+\smallskip
+
+\textbf{Variables} Used to refer to data-type values.
+
+\pause
+\smallskip
+
+\textbf{Expression} A literal, variable, or a sequence of allowed operations on literals and/or variables that produces a value. Eg, \lstinline$4 * x - 12$.
+
+\pause
+\smallskip
+
+\textbf{Precedence} For arithmetic operations, multiplication and division are performed before addition and subtraction. When arithmetic operations have the same precedence, the operation is performed left to right. Parentheses can be used to override precedence; eg, \lstinline$(4 + 3) * 6$ yields \lstinline$42$. 
+
+\pause
+\smallskip
+
+\textbf{Declaration Statement} Associates a variable name with a type.
+\begin{lstlisting}[language=Java]
+<type> <name>;
+\end{lstlisting}
+Initial value for the variable: \lstinline$false$ for Boolean type, \lstinline$0$ for numeric types, and \lstinline$null$ for reference types.
+
+\pause
+\smallskip
+
+\textbf{Assignment Statement} Associates a data-type value with a variable.
+\begin{lstlisting}[language=Java]
+<name> = <expression>;
+\end{lstlisting}
+
+\pause
+\smallskip
+
+\textbf{Initialization} Declaration and assignment statements can be combined to provide an initial value for a variable.
+\begin{lstlisting}[language=Java]
+<type> <name> = <expression>;
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\pause
+
+\textbf{Strings to Primitive Type Values for Command-line Arguments} Use Java library methods such as \lstinline$Integer.parseInt()$, \lstinline$Double.parseDouble()$, and so on. Eg, \lstinline$Integer.parseInt("42")$ converts the string \lstinline$"42"$ to the integer \lstinline$42$.
+
+\pause
+\smallskip
+
+\textbf{Primitive Type Values to Strings for Output} Whenever we use the \lstinline$+$ operator with \lstinline$String$ as one of its operands, Java automatically converts the other to a \lstinline$String$, producing a string formed from the characters of the first operand followed by the characters of the second operand. Eg, The following code snippet 
+
+\begin{lstlisting}[language=Java]
+String a = "1234";
+int b = 99;
+String c = a + b;
+int d = 1333;
+System.out.println(c);
+System.out.println(a + " + " + b + " = " + d);
+\end{lstlisting}
+
+produces the output
+\begin{lstlisting}[language=bash]
+123499
+1234 + 99 = 1333 
+\end{lstlisting}
+\end{frame}
+
+\section{Characters and Strings}
+\begin{frame}[fragile]
+\pause
+
+\textbf{The \lstinline$char$ Data Type}
+
+\begin{center}
+\begin{tabular}{c|c}
+Values & $2^{16}$ (alphanumeric or symbol) characters encoded as 16-bit integers \\ 
+Typical Literals & \lstinline$`a'$, \lstinline$`0'$, \lstinline$`*'$ \\ 
+Operations & add (\lstinline$+$), subtract (\lstinline$-$), multiply (\lstinline$*$), divide (\lstinline$/$), remainder (\lstinline$%$) \\ 
+\end{tabular} 
+\end{center}
+
+For tab, newline, backslash, single quote, and double quote, we use the special escape sequences \lstinline$`\t'$ , \lstinline$`\n'$, \lstinline$`\\'$, \lstinline$`\''$, and \lstinline$`\"'$, respectively. 
+
+\pause
+\smallskip
+
+\textbf{The \lstinline$String$ Data Type}
+
+\begin{center}
+\begin{tabular}{c|c}
+Values & sequences of characters \\ 
+Typical Literals & \lstinline$"Hello"$, \lstinline$", "$, \lstinline$"World"$ \\ 
+Operations & concatenate (\lstinline$+$) \\ 
+\end{tabular} 
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\pause
+
+\textbf{Program 1.2.1} String concatenation example. 
+
+\begin{framed}
+\tiny The ruler function $R(n)$ is the exponent of the largest power of 2 which divides $2n$. The $i$th row in the output lists the values of $R(n)$ for $n=1,2,\dots,2^i-1$.
+\end{framed}
+
+\begin{lstlisting}[language=Java]
+public class Ruler { 
+    public static void main(String[] args) { 
+        String ruler1 = " 1 ";
+        String ruler2 = ruler1 + "2" + ruler1;
+        String ruler3 = ruler2 + "3" + ruler2;
+        String ruler4 = ruler3 + "4" + ruler3;
+        String ruler5 = ruler4 + "5" + ruler4;
+        System.out.println(ruler1);
+        System.out.println(ruler2);
+        System.out.println(ruler3);
+        System.out.println(ruler4);
+        System.out.println(ruler5);
+    }
+}
+\end{lstlisting}
+
+\pause
+
+\begin{lstlisting}[language=bash]
+$ java Ruler
+ 1 
+ 1 2 1 
+ 1 2 1 3 1 2 1 
+ 1 2 1 3 1 2 1 4 1 2 1 3 1 2 1 
+ 1 2 1 3 1 2 1 4 1 2 1 3 1 2 1 5 1 2 1 3 1 2 1 4 1 2 1 3 1 2 1 
+\end{lstlisting}
+\end{frame}
+
+\section{Integers}
+\begin{frame}[fragile]
+\pause
+
+\textbf{The \lstinline$int$ Data Type}
+
+\begin{center}
+\begin{tabular}{c|c}
+Values & integers between $-2^{31}$ and $2^{31}-1$ \\ 
+Typical Literals & \lstinline$1234$, \lstinline$99$, \lstinline$-99$, \lstinline$0$, \lstinline$1000000$ \\ 
+Operations & add (\lstinline$+$), subtract (\lstinline$-$), multiply (\lstinline$*$), divide (\lstinline$/$), remainder (\lstinline$%$) \\ 
+\end{tabular} 
+\end{center}
+
+\pause
+\smallskip
+
+\textbf{Program 1.2.2} Integer multiplication and division
+
+\begin{lstlisting}[language=Java]
+public class IntOps { 
+    public static void main(String[] args) {
+        int a = Integer.parseInt(args[0]);
+        int b = Integer.parseInt(args[1]);
+        int sum  = a + b;
+        int prod = a * b;
+        int quot = a / b;
+        int rem  = a % b;
+        System.out.println(a + " + " + b + " = " + sum);
+        System.out.println(a + " * " + b + " = " + prod);
+        System.out.println(a + " / " + b + " = " + quot);
+        System.out.println(a + " % " + b + " = " + rem);
+        System.out.println(a + " = " + quot + " * " + b + " + " + rem);
+    }
+}
+\end{lstlisting}
+
+\pause
+
+\begin{lstlisting}[language=bash]
+$ java IntOps 1234 99
+1234 + 99 = 1333
+1234 * 99 = 122166
+1234 / 99 = 12
+1234 % 99 = 46
+1234 = 12 * 99 + 46
+\end{lstlisting}
+\end{frame}
+
+\section{Floating-point Numbers}
+\begin{frame}[fragile]
+\pause
+
+\textbf{The \lstinline$double$ Data Type}
+\begin{center}
+\begin{tabular}{c|c}
+Values & real numbers (specified by the IEEE 754 standard) \\ 
+Typical Literals & \lstinline$3.14159$, \lstinline$6.022e23$, \lstinline$-3.0$, \lstinline$2.0$, \lstinline$1.4142135623730951$ \\ 
+Operations & add (\lstinline$+$), subtract (\lstinline$-$), multiply (\lstinline$*$), divide (\lstinline$/$) \\ 
+\end{tabular} 
+\end{center}
+
+Special values: \lstinline$NaN$ (undefined), \lstinline$Infinity$ (very large number).
+
+\pause
+\smallskip
+
+\textbf{Program 1.2.3} Quadratic formula. 
+
+\begin{framed}
+\tiny Solves the quadratic equation $x^2+bx+c=0$ using the formula $x=\frac{-b\pm \sqrt{b^2-4c}}{2}$.
+\end{framed}
+
+\begin{lstlisting}[language=Java]
+public class Quadratic { 
+    public static void main(String[] args) { 
+        double b = Double.parseDouble(args[0]);
+        double c = Double.parseDouble(args[1]);
+        double discriminant = b * b - 4.0 * c;
+        double sqroot =  Math.sqrt(discriminant);
+        double root1 = (-b + sqroot) / 2.0;
+        double root2 = (-b - sqroot) / 2.0;
+        System.out.println(root1);
+        System.out.println(root2);
+    }
+}
+\end{lstlisting}
+
+\pause
+
+\begin{lstlisting}[language=bash]
+$ java Quadratic -3.0 2.0
+2.0
+1.0
+$ java Quadratic 1.0 1.0
+NaN
+NaN
+\end{lstlisting}
+\end{frame}
+
+\section{Booleans}
+\begin{frame}[fragile]
+\pause
+
+\textbf{The \lstinline$boolean$ Data Type}
+\begin{center}
+\begin{tabular}{c|c}
+Values & true or false \\ 
+Typical Literals & \lstinline$true$, \lstinline$false$ \\ 
+Operations &  not (\lstinline$!$), and (\lstinline$&&$), or (\lstinline$||$) \\ 
+\end{tabular} 
+\end{center}
+
+\pause
+\smallskip
+
+\textbf{Truth Tables}
+\begin{center}
+\begin{tabular}{ccc}
+
+\begin{tabular}{c|c}
+\lstinline$a$ & \lstinline$!a$ \\
+\hline
+\lstinline$true$ & \lstinline$false$ \\ 
+\lstinline$false$ & \lstinline$true$ \\ 
+\end{tabular} 
+
+\begin{tabular}{c|c|c}
+\lstinline$a$ & \lstinline$b$ & \lstinline$a && b$\\
+\hline
+\lstinline$false$ & \lstinline$false$ & \lstinline$false$ \\ 
+\lstinline$false$ & \lstinline$true$ & \lstinline$false$ \\ 
+\lstinline$true$ & \lstinline$false$ & \lstinline$false$ \\ 
+\lstinline$true$ & \lstinline$true$ & \lstinline$true$ \\ 
+\end{tabular} 
+
+\begin{tabular}{c|c|c}
+\lstinline$a$ & \lstinline$b$ & \lstinline$a || b$\\
+\hline
+\lstinline$false$ & \lstinline$false$ & \lstinline$false$ \\ 
+\lstinline$false$ & \lstinline$true$ & \lstinline$true$ \\ 
+\lstinline$true$ & \lstinline$false$ & \lstinline$true$ \\ 
+\lstinline$true$ & \lstinline$true$ & \lstinline$true$ \\ 
+\end{tabular} 
+
+\end{tabular}
+\end{center}
+
+\pause
+\smallskip
+
+\textbf{Comparisons} Two operands of the same type can be compared using the relational operators \lstinline$==$, \lstinline$!=$, \lstinline$<$, \lstinline$<=$, \lstinline$>$, and \lstinline$>=$. The comparison produces a \lstinline$boolean$ result. The relational operators have higher precedence than Boolean operators but lower precedence than arithmetic operators.
+\end{frame}
+
+\begin{frame}[fragile]
+\pause
+
+\textbf{Program 1.2.4} Leap year
+\begin{framed}
+\tiny A year is a leap year if it is divisible by 4 (2004), unless it is divisible by 100 in which case it is not (1900), unless it is divisible by 400 in which case it is (2000).
+\end{framed}
+
+\begin{lstlisting}[language=Java]
+public class LeapYear { 
+    public static void main(String[] args) { 
+        int year = Integer.parseInt(args[0]);
+        boolean isLeapYear;
+        isLeapYear = (year % 4 == 0);
+        isLeapYear = isLeapYear && (year % 100 != 0);
+        isLeapYear = isLeapYear || (year % 400 == 0);
+        System.out.println(isLeapYear);
+    }
+}
+\end{lstlisting}
+
+\pause
+
+\begin{lstlisting}[language=bash]
+$ java LeapYear 2004
+true
+$ java LeapYear 1900
+false
+$ java LeapYear 2000
+true
+\end{lstlisting}
+\end{frame}
+
+\section{Library Methods and APIs}
+\begin{frame}[fragile]
+\pause
+\textbf{Application Programming Interface (API)} Provides the information you need to write programs that use library methods.
+
+\pause
+\smallskip
+
+Excerpts from Java API for standard output:
+\begin{lstlisting}[language=Java]
+public class System.out
+
+    void print(String s)    // print s
+    void println(String s)  // print s, followed by a newline
+    void println()          // print a newline
+\end{lstlisting}
+
+\pause
+\smallskip
+
+Excerpts from Java API for mathematics:
+\begin{lstlisting}[language=Java]
+public class Math
+
+    double abs(double a)           // absolute value of a
+    double max(double a, double b) // maximum of a and b
+    double min(double a, double b) // minimum of a and b
+    double sin(double theta)       // sine function
+    double cos(double theta)       // cosine function
+    double tan(double theta)       // tangent function
+    double random()                // random number in [0, 1)
+    double E                       // value of e (constant)
+    double PI                      // value of pi (constant)
+\end{lstlisting}
+
+\end{frame}
+
+\begin{frame}[fragile]
+\pause
+\textbf{Library Methods} They are (almost) like mathematical functions --- they use their arguments to compute a value of a specified type. 
+
+\pause
+\smallskip
+
+\textbf{Method Signature} Specifies the types of the arguments, the method name, and the type of the value that the method computes (the \textit{return value}). 
+
+\pause
+\smallskip
+
+When your code executes a method, we say it \textit{calls} the library code for the method, which \textit{returns} the value for use in your code.
+
+\pause
+\smallskip
+
+Some methods such as \lstinline$Math.random()$ do not implement  mathematical functions because they do not take any arguments. Methods such as \lstinline$System.out.print()$ and \lstinline$System.out.println()$ do not because they do not return values and therefore do not have a return type (specified in the signature by the keyword \lstinline$void$).
+
+\pause
+\smallskip
+
+\textbf{Using a Library Method}
+\begin{itemize}
+\item As an expression:
+\begin{lstlisting}[language=Java]
+double sqroot = Math.sqrt(discriminant);
+\end{lstlisting}
+
+\item As a statement:
+\begin{lstlisting}[language=Java]
+System.out.println(root1);
+\end{lstlisting}
+\end{itemize}
+\end{frame}
+
+\section{Type Conversion}
+\begin{frame}[fragile]
+\pause
+
+\textbf{Explicit Conversion} Use a method that takes an argument of one type (the value to be converted) and produces a result of another type. Eg, \lstinline$Integer.parseInt()$, \lstinline$Double.parseDouble()$, \lstinline$Math.round()$.
+
+\pause
+\smallskip
+
+\textbf{Explicit Cast} You cast an expression from one type to another by prepending the desired type name within parentheses. Eg, the expression \lstinline$(int) 2.71828$ is a cast from \lstinline$double$ to \lstinline$int$ that produces an \lstinline$int$ with value \lstinline$2$. 
+
+\pause
+\smallskip
+
+\textbf{Automatic Promotion of Numbers} Java automatically converts smaller types to larger types. Eg, if \lstinline$b$ and \lstinline$c$ are integers, then the expression \lstinline$b * b - 4.0 * c$ results in a \lstinline$double$ value via promotion.   
+
+\pause
+\smallskip
+
+\textbf{Program 1.2.5} Casting to get a random integer
+
+\begin{lstlisting}[language=Java]
+public class RandomInt { 
+    public static void main(String[] args) { 
+        int N = Integer.parseInt(args[0]);
+        double r = Math.random(); 
+        int n = (int) (r * N);
+        System.out.println("Your random integer is: " + n);
+    }
+}
+\end{lstlisting}
+
+\pause
+
+\begin{lstlisting}[language=bash]
+$ java RandomInt 1000
+Your random integer is: 544
+$ java RandomInt 1000
+Your random integer is: 894
+$ java RandomInt 1000000
+Your random integer is: 120343
+\end{lstlisting}
+\end{frame}
+
+\end{document}
