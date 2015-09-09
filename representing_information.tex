@@ -1,0 +1,149 @@
+\documentclass[8pt,a4paper,compress,handout]{beamer}
+
+\usepackage{/home/siyer/lib/slides}
+
+\title{Representing Information}
+\date{}
+
+\begin{document}
+\begin{frame}
+\vfill
+\titlepage
+\end{frame}
+
+\begin{frame}
+\frametitle{Outline}
+\tableofcontents
+\end{frame}
+
+\section{Numbers}
+\begin{frame}[fragile]
+At the most fundamental level, a computer doesn't have any notion of what it means to compute. Instead, it manipulates electricity according to specific rules.
+
+\bigskip
+
+To make those rules produce something useful, we need to associate the electrical signals inside the machine with the numbers and symbols that we, as humans, like to use.
+\end{frame}
+
+\begin{frame}[fragile]
+To represent integers, computers use combinations of numbers that are powers of 2, called the \emph{base 2} or \emph{binary representation}.
+
+\bigskip
+
+Imagine we had the following four consecutive powers of 2 available to us: $2^0, 2^1, 2^2, 2^3$. We can make all of the integers from 0 to 15 using 0 or 1 of each of these four powers of 2. 
+
+\bigskip
+
+For example, $13 = 1 \cdot 2^3 + 1 \cdot 2^2 + 0 \cdot 2^1 + 1 \cdot 2^0 = 1101$; in other words, 1101 in base 2 means $1101 = 1 \cdot 2^3 + 1 \cdot 2^2 + 0 \cdot 2^1 + 1 \cdot 2^0$.
+
+\bigskip
+
+This idea extends to other bases as well. For example, 603 in base 10 means $603 = 6 \cdot 10^2 + 0 \cdot 10^1 + 3 \cdot 10^0$ and 207 in base 8 means $207 = 2 \cdot 8^2 + 0 \cdot 8^1 + 7 \cdot 8^0$. 
+
+\bigskip
+
+In general, if we choose some base $b \geq 2$, every positive integer between 0 and $b^d-1$ can be uniquely represented using $d$ digits, with coefficients having values 0 through $b-1$.
+
+\bigskip
+
+A modern 64-bit computer can represent integers up to $2^{64} - 1$.
+\end{frame}
+
+\begin{frame}[fragile]
+Arithmetic in any base is analogous to arithmetic in base 10.
+
+\bigskip
+
+Examples of addition in base 10 and base 2:
+\begin{center}
+
+\begin{tabular}{ccc}
+  & 1 &   \\ 
+  & 1 & 7 \\
++ & 2 & 5 \\
+\hline
+  & 4 & 2 \\
+\end{tabular}\hspace{2cm} \begin{tabular}{ccccc}
+  & 1 & 1 &   \\ 
+  &   & 1 & 1 & 1 \\
++ &   & 1 & 1 & 0 \\
+\hline
+  & 1 & 1 & 0 & 1 \\
+\end{tabular}
+\end{center}
+
+\bigskip
+
+To represent a negative integer, a computer typically uses a system called \emph{two's complement}, which involves flipping the bits of the positive number and then adding 1. 
+
+\bigskip
+
+For example, on an 8-bit computer, $3 = 00000011$, so $-3 = 11111100 + 00000001$ $= 11111101$.
+\end{frame}
+
+\begin{frame}[fragile]
+Imagine that we are operating in base 10 and we have only eight digits to represent our numbers. We might use the first six digits to represent the fractional part of a number and the last two digits to represent a power of 10.  
+
+\bigskip
+
+For example, 12345678 would represent $0.123456 \times 10^{78}$. 
+
+\bigskip
+
+Computers use a similar idea to represent fractional numbers, except that base 2 is used instead of base 10.
+\end{frame}
+
+\section{Letters and Strings}
+\begin{frame}[fragile]
+In order to represent letters numerically, we need a convention on the encoding. 
+
+\bigskip
+
+The American National Standards Institute (ANSI) has established such a convention, called ASCII (pronounced ``as key'' and standing for the American Standard Code for Information Interchange). 
+
+\bigskip
+
+ASCII defines encodings for the upper- and lower-case letters, numbers, and a select set of special characters.
+
+\bigskip
+
+ASCII, being an 8-bit code, can only represent 256 different symbols, and doesn't provide for accented characters used in languages like French, let alone the Cyrillic or Sanskrit alphabets or the many thousands of symbols used in Chinese and Japanese.
+
+\bigskip
+
+The International Standards Organization (ISO) devised a 16-bit system called Unicode, which can represent every character in every known language, with room for more. 
+
+\bigskip
+
+Since Unicode is somewhat wasteful of space for English documents, ISO also defined several ``Unicode Transformation Formats'' (UTF), the most popular of which is UTF-8. 
+\end{frame}
+
+\begin{frame}[fragile]
+A string is represented as a sequence of numbers, with a ``length field'' at the very beginning that specifies the length of the string. 
+
+\bigskip
+
+For example, in ASCII the sequence 99, 104, 111, 99, 111, 108, 97, 116, 101 translates to the string ``chocolate''; the length field for the string has the value 9.
+\end{frame}
+
+\section{Structured Information}
+\begin{frame}[fragile]
+We can represent almost any information as a sequence of numbers.
+
+\bigskip
+
+Examples: 
+\begin{itemize}
+\item a picture can be represented as a sequence of colored dots (aka ``picture elements'' or pixels) arranged in rows, and each colored dot can be represented as three numbers giving the amount of red, green, and blue at that pixel;
+
+\item a sound can be represented as a temporal sequence of ``sound pressure levels'' in the air; and 
+
+\item a movie can be represented as a temporal sequence of individual pictures, usually 24 or 30 per second, along with a matching sound sequence.
+\end{itemize}
+
+\bigskip
+
+So, bits make up numbers, numbers make up pixels, pixels make up pictures, and pictures make up movies. That's abstraction! 
+\end{frame}
+
+\end{document}
