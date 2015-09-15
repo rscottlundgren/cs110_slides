@@ -135,7 +135,7 @@ Since the details of the switches aren't terribly important at this level of abs
 
 \smallskip
 
-\tiny Symbols used for \lstinline{AND}, \lstinline{OR}, and \lstinline{NOT} gates.
+\tiny Symbols used for \lstinline{AND}, \lstinline{OR}, and \lstinline{NOT} gates
 \end{center}
 
 \bigskip
@@ -195,11 +195,11 @@ $x$ & $y$ & $x$ \lstinline$NOR$ $y$ \\ \hline
 
 \bigskip
 
-A \emph{latch} is a device that allows us to ``lock'' a bit and retrieve it later.
+A \emph{latch} is a device that allows us to ``lock'' a bit and retrieve it later. By aggregating millions of them we have the \emph{Random Access Memory (RAM)} that forms the memory of a computer.
 
 \bigskip
 
-A latch and can be constructed from two \lstinline{NOR} gates as shown below
+A latch\footnote{A nice video on how an $S$-$R$ latch works: \href{https://www.youtube.com/watch?v=VtVIDgilwlA}{https://www.youtube.com/watch?v=VtVIDgilwlA}} can be constructed from two \lstinline{NOR} gates as shown below
 \begin{center}
 \includegraphics[scale=0.4]{figures/latch.png}
 
@@ -208,10 +208,6 @@ A latch and can be constructed from two \lstinline{NOR} gates as shown below
 \tiny An $S$-$R$ latch built from two \lstinline{NOR} gates
 \end{center}
 where the input $S$ is known as ``set'' while the input $R$ is known as ``reset''.
-
-\bigskip
-
-A latch is a one-bit memory. By aggregating millions of them we have the \emph{Random Access Memory (RAM)} that forms the memory of a computer.
 \end{frame}
 
 \section{von Neumann Architecture}
