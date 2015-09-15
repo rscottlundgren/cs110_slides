@@ -1,0 +1,63 @@
+\documentclass[8pt,a4paper,compress,handout]{beamer}
+
+\usepackage{/home/siyer/lib/slides}
+
+\title{Your First Program}
+\date{}
+
+\begin{document}
+\begin{frame}
+\vfill
+\titlepage
+\end{frame}
+
+\begin{frame}
+\frametitle{Outline}
+\tableofcontents
+\end{frame}
+
+\section{Programming in Python}
+\begin{frame}[fragile]
+\begin{framed}
+\tiny helloworld.py: Write 'Hello, World' to standard output.
+\end{framed}
+
+\begin{lstlisting}[language=Python]
+import stdio
+
+stdio.writeln('Hello, World')
+\end{lstlisting}
+
+
+\begin{lstlisting}[language={}]
+$ python helloworld.py 
+Hello, World
+\end{lstlisting}
+\end{frame}
+
+\section{Input and Output}
+\begin{frame}[fragile]
+\begin{framed}
+\tiny useargument.py: Accept a name as a command-line argument. Write a message containing that name to standard output.
+\end{framed}
+
+\begin{lstlisting}[language=Python]
+import stdio
+import sys
+
+stdio.write('Hi, ')
+stdio.write(sys.argv[1])
+stdio.writeln('. How are you?')
+\end{lstlisting}
+
+\begin{lstlisting}[language={}]
+$ python useargument.py Alice
+Hi, Alice. How are you?
+$ python useargument.py Bob
+Hi, Bob. How are you?
+$ python useargument.py Carol
+Hi, Carol. How are you?
+\end{lstlisting}
+\end{frame}
+
+\end{document}

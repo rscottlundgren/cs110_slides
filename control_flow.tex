@@ -1,0 +1,62 @@
+\documentclass[8pt,a4paper,compress,handout]{beamer}
+
+\usepackage{/home/siyer/lib/slides}
+
+\title{Control Flow}
+\date{}
+
+\begin{document}
+\begin{frame}
+\vfill
+\titlepage
+\end{frame}
+
+\begin{frame}
+\frametitle{Outline}
+\tableofcontents
+\end{frame}
+
+\section{.}
+\begin{frame}[fragile]
+\begin{framed}
+\tiny flip.py: Simulate a coin flip by writing 'Heads' or 'Tails' to standard output.
+\end{framed}
+
+\begin{lstlisting}[language=Python]
+import random
+import stdio
+
+if random.randrange(0, 2) == 0:
+    stdio.writeln('Heads')
+else:
+    stdio.writeln('Tails')
+\end{lstlisting}
+
+\begin{lstlisting}[language={}]
+$ python flip.py 
+Tails
+$ python flip.py 
+Heads
+$ python flip.py 
+Heads
+$ python flip.py 
+Tails
+$ python flip.py 
+Heads
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{framed}
+\tiny
+\end{framed}
+
+\begin{lstlisting}[language=Python]
+
+\end{lstlisting}
+
+\begin{lstlisting}[language={}]
+
+\end{lstlisting}
+\end{frame}
+\end{document}
