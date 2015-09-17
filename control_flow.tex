@@ -48,15 +48,254 @@ Heads
 
 \begin{frame}[fragile]
 \begin{framed}
-\tiny
+\tiny tenhellos.py: Write 10 Hellos to standard output.
 \end{framed}
 
 \begin{lstlisting}[language=Python]
+import stdio
 
+stdio.writeln('1st Hello')
+stdio.writeln('2nd Hello')
+stdio.writeln('3rd Hello')
+i = 4
+while i <= 10:
+    stdio.writeln(str(i) + 'th Hello')
+    i = i + 1
 \end{lstlisting}
 
 \begin{lstlisting}[language={}]
-
+$ python tenhellos.py 
+1st Hello
+2nd Hello
+3rd Hello
+4th Hello
+5th Hello
+6th Hello
+7th Hello
+8th Hello
+9th Hello
+10th Hello
 \end{lstlisting}
 \end{frame}
+
+\begin{frame}[fragile]
+\begin{framed}
+\tiny powersoftwo.py: Accept positive integer $n$ as a command-line argument. Write to standard output a table showing the first $n$ powers of two.
+\end{framed}
+
+\begin{lstlisting}[language=Python]
+import stdio
+import sys
+
+n = int(sys.argv[1])
+power = 1
+i = 0
+while i <= n:
+    stdio.writeln(str(i) + ' ' + str(power))    
+    power = 2 * power
+    i = i + 1
+\end{lstlisting}
+
+\begin{lstlisting}[language={}]
+$ python powersoftwo.py 8
+0 1
+1 2
+2 4
+3 8
+4 16
+5 32
+6 64
+7 128
+8 256
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{framed}
+\tiny divisorpattern.py: Accept integer command-line argument $n$. Write to standard output an $n$-by-$n$ table with an asterisk in row $i$ and column $j$ if either $i$ divides $j$ or $j$ divides $i$.
+\end{framed}
+
+\begin{lstlisting}[language=Python]
+import stdio
+import sys
+
+n = int(sys.argv[1])
+for i in range(1, n + 1):
+    for j in range(1, n + 1):
+        if (i % j == 0) or (j % i == 0):
+            stdio.write('* ')
+        else:
+            stdio.write('  ')
+    stdio.writeln(i)
+\end{lstlisting}
+
+\begin{lstlisting}[language={}]
+$ python divisorpattern.py 10
+* * * * * * * * * * 1
+* *   *   *   *   * 2
+*   *     *     *   3
+* *   *       *     4
+*       *         * 5
+* * *     *         6
+*           *       7
+* *   *       *     8
+*   *           *   9
+* *     *         * 10
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{framed}
+\tiny harmonic.py: Accept integer $n$ as a command-line argument. Write to standard output the $n$th harmonic number $H_n$, computed as $H_n=1+1/2+1/3+\cdots+1/n$. Note that $H_n \approx \ln(n) + 0.57721$ for large $n$.
+\end{framed}
+
+\begin{lstlisting}[language=Python]
+import stdio
+import sys
+
+n = int(sys.argv[1])
+sum = 0.0
+for i in range(1, n+1):
+    sum += 1.0 / i
+stdio.writeln(sum)
+\end{lstlisting}
+
+\begin{lstlisting}[language={}]
+$ python harmonic.py 2
+1.5
+$ python harmonic.py 10
+2.92896825397
+$ python harmonic.py 10000
+9.78760603604
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{framed}
+\tiny sqrt.py: Accept a float $c$ as a command-line argument. Write to standard output the square root of $c$ to 15 decimal places of accuracy, calculated using Newton's method.
+\end{framed}
+
+\begin{lstlisting}[language=Python]
+import stdio
+import sys
+
+EPSILON = 1e-15
+c = float(sys.argv[1])
+t = c
+while abs(t - c / t) > (EPSILON * t):
+    t = (c / t + t) / 2.0
+stdio.writeln(t)
+\end{lstlisting}
+
+\begin{lstlisting}[language={}]
+$ python sqrt.py 2.0
+1.41421356237
+$ python sqrt.py 2544545
+1595.16300108
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{framed}
+\tiny binary.py: Accept integer $n$ as a command-line argument. Write the binary representation of $n$ to standard output.
+\end{framed}
+
+\begin{lstlisting}[language=Python]
+import sys
+import stdio
+
+n = int(sys.argv[1])
+v = 1
+while v <= n / 2:
+    v *= 2
+while v > 0:
+    if n < v:
+        stdio.write(0)
+    else:
+        stdio.write(1)
+        n -= v
+    v /= 2
+stdio.writeln()
+\end{lstlisting}
+
+\begin{lstlisting}[language={}]
+$ python binary.py 19
+10011
+$ python binary.py 255
+11111111
+$ python binary.py 512
+1000000000
+$ python binary.py 1000000000
+111011100110101100101000000000
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{framed}
+\tiny gambler.py: Accept integer command-line arguments stake, goal, and trialCount. Run trialCount experiments that start with stake dollars and terminate on 0 dollars or goal. Write to standard output the percentage of wins and the average number of bets per experiment.
+\end{framed}
+
+\begin{lstlisting}[language=Python]
+import random
+import stdio
+import sys
+
+stake = int(sys.argv[1])
+goal = int(sys.argv[2])
+trials = int(sys.argv[3])
+bets = 0
+wins = 0
+for t in range(trials):
+    cash = stake
+    while cash > 0 and cash < goal:
+        bets += 1
+        if random.randrange(0, 2) == 0:
+            cash += 1
+        else:
+            cash -= 1
+    if cash == goal:
+        wins += 1
+stdio.writeln(str(100 * wins / trials) + '% wins')
+stdio.writeln('Avg # bets: ' + str(bets / trials))
+\end{lstlisting}
+
+\begin{lstlisting}[language={}]
+$ python gambler.py 50 250 100
+24% wins
+Avg # bets: 12548
+$ python gambler.py 500 2500 100
+27% wins
+Avg # bets: 1124855
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{framed}
+\tiny factors.py: Accept integer $n$ as a command-line argument. Write to standard output the prime factors of $n$.
+\end{framed}
+
+\begin{lstlisting}[language=Python]
+import stdio
+import sys
+
+n = int(sys.argv[1])
+factor = 2
+while factor * factor <= n:
+    while n % factor == 0:
+        n /= factor
+        stdio.write(str(factor) + ' ')
+    factor += 1
+if n > 1:
+    stdio.write(n)
+stdio.writeln()
+\end{lstlisting}
+
+\begin{lstlisting}[language={}]
+$ python factors.py 3757208
+2 2 2 7 13 13 397
+$ python factors.py 287994837222311
+17 1739347 9739789
+\end{lstlisting}
+\end{frame}
+
 \end{document}
