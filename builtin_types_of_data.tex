@@ -16,7 +16,88 @@
 \tableofcontents
 \end{frame}
 
-\section{.}
+\section{Types}
+\begin{frame}[fragile]
+A \emph{data type} is set of values and a set of operations defined on those values.
+
+\bigskip
+
+Python's built-in data types include \lstinline{int} (for integers), \lstinline{float} (for floating-point numbers), \lstinline{str} (for sequences of characters), and \lstinline{bool} (for true-false values).
+
+\bigskip
+
+Python also allows you to compose your own data types.
+\end{frame}
+
+\section{Definitions}
+\begin{frame}[fragile]
+A \emph{literal} is a Python-code representation of a data-type value. For example, \lstinline{1234} and \lstinline{99} are \lstinline{int} literals; \lstinline{3.14159} and \lstinline{2.71828} are \lstinline{float} literals; \lstinline{True} and \lstinline{False} are \lstinline{bool} literals; \lstinline{'Hello, World'} is a \lstinline{str} literal.
+
+\bigskip
+
+An \emph{operator} is a Python-code representation of a data-type operation. For example, \lstinline{+} and \lstinline{*} represent addition and multiplication for integers and floating-point numbers; \lstinline{and}, \lstinline{or}, and \lstinline{not} represent boolean operations.
+
+\bigskip
+
+An \emph{identifier} is a Python-code representation of a name. Each identifier is a sequence of letters, digits, and underscores, the first of which is not a digit. For example, \lstinline{abc}, \lstinline{Ab_}, \lstinline{abc123}, and \lstinline{a_b} are valid identifiers, but \lstinline{Ab*}, \lstinline{1abc}, and \lstinline{a+b} are not.
+
+\bigskip
+
+Certain \emph{keywords}, such as \lstinline{and}, \lstinline{import}, \lstinline{in}, \lstinline{def}, \lstinline{while}, \lstinline{from}, and \lstinline{lambda}, are reserved, and you cannot use them as identifiers. Other names, such as \lstinline{int}, \lstinline{sum}, \lstinline{min}, \lstinline{max}, \lstinline{len}, \lstinline{id}, \lstinline{file}, and \lstinline{input}, have special meaning, so it is best not to use them, either.
+\end{frame}
+
+\begin{frame}[fragile]
+A \emph{variable} is a name associated with a data-type value. For example, the variable \lstinline{total} might represent the running total of sequence of numbers.
+
+\bigskip
+
+A \emph{constant variable} describes a variable whose associated a data-type value does not change during the execution of a program. For example, the variables \lstinline{SPEED_OF_LIGHT} and \lstinline{DARK_RED} might represent the speed of light and a shade of red, respectively.
+
+\bigskip
+
+An \emph{expression} is a combination of literals, variables, and operators that Python evaluates to produce a value. For example, \lstinline{4 * (x - 3)} is an expression.
+
+\bigskip
+
+Python has a natural and well-defined set of \emph{precedence rules} that fully specify the order in which the operators are applied in an expression. 
+\begin{itemize}
+\item For arithmetic operations, multiplication and division are performed before addition and subtraction. 
+
+\item When arithmetic operations have the same precedence, they are \emph{left associative}, with the exception of the exponentiation operator \lstinline{**}, which is \emph{right associative}.
+
+\item You can use parentheses to override precedence rules. 
+\end{itemize} 
+\end{frame}
+
+\begin{frame}[fragile]
+We use an \emph{assignment statement} to define a variable and associate it with a data-type value.
+\begin{lstlisting}[language={}]
+<variable> = <value>
+\end{lstlisting}
+For exampe, the statement 
+\begin{lstlisting}[language={}]
+a = 1234
+\end{lstlisting}
+defines an identifier \lstinline{a} to be a new variable and associates it with the integer data-type value \lstinline{1234}.
+
+\bigskip
+
+All data values in Python are represented by \emph{objects}, each characterized by its \emph{identity} (or \emph{memory address}), \emph{type}, and \emph{value}.
+
+\bigskip
+
+An \emph{object reference} is a concrete representation of the object's identity.
+
+\bigskip
+
+
+\end{frame}
+
+\section{Strings}
+\begin{frame}[fragile]
+blah
+\end{frame}
+
 \begin{frame}[fragile]
 \begin{framed}
 \tiny ruler.py: The ruler function $R(n)$ is the exponent of the largest power of 2 which 
