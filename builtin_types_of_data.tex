@@ -7,7 +7,9 @@
 
 \begin{document}
 \begin{frame}
-\vfill
+\begin{flushright}
+\tiny \textsc{Programming is usually taught by examples. \\ - Niklaus Wirth}
+\end{flushright}
 \titlepage
 \end{frame}
 
@@ -51,7 +53,7 @@ A \emph{variable} is a name associated with a data-type value. For example, the 
 
 \bigskip
 
-A \emph{constant variable} describes a variable whose associated a data-type value does not change during the execution of a program. For example, the variables \lstinline{SPEED_OF_LIGHT} and \lstinline{DARK_RED} might represent the speed of light and a shade of red, respectively.
+A \emph{constant variable} describes a variable whose associated data-type value does not change during the execution of a program. For example, the variables \lstinline{SPEED_OF_LIGHT} and \lstinline{DARK_RED} might represent the speed of light and a dark shade of red, respectively.
 
 \bigskip
 
@@ -75,7 +77,7 @@ We use an \emph{assignment statement} to define a variable and associate it with
 <variable> = <value>
 \end{lstlisting}
 For exampe, the statement 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language=Python]
 a = 1234
 \end{lstlisting}
 defines an identifier \lstinline{a} to be a new variable and associates it with the integer data-type value \lstinline{1234}.
@@ -87,15 +89,60 @@ All data values in Python are represented by \emph{objects}, each characterized 
 \bigskip
 
 An \emph{object reference} is a concrete representation of the object's identity.
+\end{frame}
 
-\bigskip
+\begin{frame}[fragile]
+Consider the following code that \emph{exchanges} \lstinline{a} and \lstinline{b} (more precisely, the objects bound to \lstinline{a} and \lstinline{b}):
 
+\begin{lstlisting}[language=Python]
+t = a
+a = b
+b = t
+\end{lstlisting}
+
+The object-level trace for the above code is shown below:
+\begin{center}
+\includegraphics[scale=0.25]{figures/object_level_trace.png}
+
+\smallskip
+
+\tiny Exchanging two variables
+\end{center}
 
 \end{frame}
 
 \section{Strings}
 \begin{frame}[fragile]
-blah
+The \lstinline{str} data type represents strings (sequences of characters), for use in text processing.
+
+\bigskip
+
+A \lstinline{str} literal is specified by enclosing a sequence of characters in matching single quotes. For example, \lstinline{'ab'}.
+
+\bigskip
+
+You can specify tab, newline, backslash, and single quote characters using \emph{escape sequences} \lstinline{'\t'}, \lstinline{'\n'}, \lstinline{'\\'}, and \lstinline{'\''}, respectively.
+
+\bigskip
+
+You can concatenate two strings using the \lstinline{+} operator. For example, the expression \lstinline{'123' + '456'} evaluates to the \lstinline{str} object whose value is \lstinline{'123456'}.
+
+\bigskip
+
+You can multiply a \lstinline{str} object $s$ by a number $n$ to obtain a \lstinline{str} object whose value is the string $s$ repeated $n$ times. For example, the expressions \lstinline{3 * 'ab'} and \lstinline{'ab' * 3} evaluate to the \lstinline{str} object whose value is \lstinline{'ababab'}.
+
+\bigskip
+
+The \lstinline{str} data type:
+
+\begin{center}
+\begin{tabular}{c|c}
+values & sequences of characters \\ \hline
+typical literals & \lstinline$'Hello, World'$, \lstinline$'Python\'s'$ \\ 
+operations & concatenate, multiply \\
+operators & \lstinline$+$, \lstinline$*$
+\end{tabular} 
+\end{center}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -128,6 +175,41 @@ $ python ruler.py
 \end{frame}
 
 \begin{frame}[fragile]
+The built-in function \lstinline{str()} can be used to convert numbers into strings. For example, \lstinline{str(123)} evaluates to the \lstinline{str} object \lstinline{'123'}, and \lstinline{str(123.45)} evaluates to the \lstinline{str} object \lstinline{'123.45'}.
+
+\bigskip
+
+The built-in functions \lstinline{int()} and \lstinline{float()} can be used to convert strings to numbers. For example, \lstinline{int('123')} is equivalent to the \lstinline{int} literal \lstinline{123}, and \lstinline{float('123.45')} is equivalent to the \lstinline{float} literal \lstinline{123.45}.
+\end{frame}
+
+\section{Integers}
+\begin{frame}[fragile]
+The \lstinline{int} data type represents integers or natural numbers. 
+
+\bigskip
+
+We can specify an \lstinline{int} literal with a sequence of digits \lstinline{0} through \lstinline{9}.
+
+\bigskip
+
+Python includes operators for common arithmetic operations on integers, including \lstinline{+} for addition, \lstinline{-} for subtraction, \lstinline{*} for multiplication, \lstinline{//} for floored division, \lstinline{%} for remainder, and \lstinline{**} for exponentiation.
+
+\bigskip
+
+The \lstinline{int} data type:
+
+\begin{center}
+\begin{tabular}{c|c}
+values & integers \\
+typical literals & \lstinline$1234$, \lstinline$99$, \lstinline$0$, \lstinline$1000000$ \\ 
+operations & sign, add, subtract, multiply, floored divide, remainder, power \\
+operators & \lstinline$+$ \lstinline$-$, \lstinline$+$, \lstinline$-$, \lstinline$*$, \lstinline$//$, \lstinline$%$, \lstinline$**$
+\end{tabular} 
+\end{center}
+
+\end{frame}
+
+\begin{frame}[fragile]
 \begin{framed}
 \tiny intops.py: Accept two integers $a$ and $b$ as command-line arguments, perform integer operations on them, and write the results to standard output.
 \end{framed}
@@ -138,13 +220,13 @@ import sys
 
 a = int(sys.argv[1])
 b = int(sys.argv[2])
-sum  = a +  b
-diff = a -  b
-prod = a *  b
-quot = a // b
-rem  = a %  b
-exp  = a ** b
-stdio.writeln(str(a) + ' +  ' + str(b) + ' = ' + str(sum))
+total = a +  b
+diff  = a -  b
+prod  = a *  b
+quot  = a // b
+rem   = a %  b
+exp   = a ** b
+stdio.writeln(str(a) + ' +  ' + str(b) + ' = ' + str(total))
 stdio.writeln(str(a) + ' -  ' + str(b) + ' = ' + str(diff))
 stdio.writeln(str(a) + ' *  ' + str(b) + ' = ' + str(prod))
 stdio.writeln(str(a) + ' // ' + str(b) + ' = ' + str(quot))
@@ -163,6 +245,36 @@ $ python intops.py 1234 5
 \end{lstlisting}
 \end{frame}
 
+\section{Floating-point Numbers}
+\begin{frame}[fragile]
+The \lstinline{float} data type represents \emph{floating-point} numbers, for use in scientific and commercial applications.
+
+\bigskip
+
+We can specify a floating-point literal using a sequence of digits with a decimal point. For example, \lstinline{3.14159} represents an approximation to $\pi$.
+
+\bigskip
+
+Alternatively, we can use a notation similar to scientific notation: the literal \lstinline{6.022e23} represents the number $6.022 \times 10^{23}$.
+
+\bigskip
+
+Python includes operators for common arithmetic operations on floating-point numbers, including \lstinline{+} for addition, \lstinline{-} for subtraction, \lstinline{*} for multiplication, \lstinline{/} for division, and \lstinline{**} for exponentiation.
+
+\bigskip
+
+The \lstinline{float} data type:
+
+\begin{center}
+\begin{tabular}{c|c}
+values & real numbers \\
+typical literals & \lstinline$3.14159$, \lstinline$6.022e23$, \lstinline$2.0$, \lstinline$1.4142135623730951$ \\ 
+operations & sign, add, subtract, multiply, divide, power \\
+operators & \lstinline$+$ \lstinline$-$, \lstinline$+$, \lstinline$-$, \lstinline$*$, \lstinline$/$, \lstinline$**$
+\end{tabular} 
+\end{center}
+\end{frame}
+
 \begin{frame}[fragile]
 \begin{framed}
 \tiny floatops.py: Accept two floats $a$ and $b$ as command-line arguments, perform floating-point operations on them, and write the results to standard output.
@@ -174,12 +286,12 @@ import sys
 
 a = float(sys.argv[1])
 b = float(sys.argv[2])
-sum  = a + b
-diff = a - b
-prod = a * b
-quot = a / b
-exp  = a ** b
-stdio.writeln(str(a) + ' +  ' + str(b) + ' = ' + str(sum))
+total = a + b
+diff  = a - b
+prod  = a * b
+quot  = a / b
+exp   = a ** b
+stdio.writeln(str(a) + ' +  ' + str(b) + ' = ' + str(total))
 stdio.writeln(str(a) + ' -  ' + str(b) + ' = ' + str(diff))
 stdio.writeln(str(a) + ' *  ' + str(b) + ' = ' + str(prod))
 stdio.writeln(str(a) + ' /  ' + str(b) + ' = ' + str(quot))
@@ -229,6 +341,60 @@ ValueError: math domain error
 \end{lstlisting}
 \end{frame}
 
+\section{Booleans}
+\begin{frame}[fragile]
+The \lstinline{bool} data type represents \emph{truth values} (\emph{true} or \emph{false}) from logic. 
+
+\bigskip
+
+The two \lstinline{bool} literals can be represented as \lstinline{True} and \lstinline{False}.
+
+\bigskip
+
+The operators defined for \lstinline{bool} objects, namely \lstinline{and}, \lstinline{or}, and \lstinline{not}, are known as \emph{logical operators}, and having the following truth tables:
+
+\begin{center}
+\begin{tabular}{cc|c}
+\lstinline$x$ & \lstinline$y$ & \lstinline$x and y$ \\ \hline
+\lstinline$False$ & \lstinline$False$ & \lstinline$False$ \\
+\lstinline$False$ & \lstinline$True$ & \lstinline$False$ \\
+\lstinline$True$ & \lstinline$False$ & \lstinline$False$ \\
+\lstinline$True$ & \lstinline$True$ & \lstinline$True$
+\end{tabular}\hspace{1cm} \begin{tabular}{cc|c}
+\lstinline$x$ & \lstinline$y$ & \lstinline$x or y$ \\ \hline
+\lstinline$False$ & \lstinline$False$ & \lstinline$False$ \\
+\lstinline$False$ & \lstinline$True$ & \lstinline$True$ \\
+\lstinline$True$ & \lstinline$False$ & \lstinline$True$ \\
+\lstinline$True$ & \lstinline$True$ & \lstinline$True$
+\end{tabular}\hspace{1cm} \begin{tabular}{c|c}
+\lstinline$x$ & \lstinline$not x$ \\ \hline
+\lstinline$False$ & \lstinline$True$ \\
+\lstinline$True$ & \lstinline$False$
+\end{tabular}
+\end{center}
+
+\bigskip
+
+The \lstinline{bool} data type:
+
+\begin{center}
+\begin{tabular}{c|c}
+values & true, false \\ 
+typical literals & \lstinline$True$, \lstinline$False$ \\ 
+operations & and, or, not \\
+operators & \lstinline$and$, \lstinline$or$, \lstinline$not$
+\end{tabular} 
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+The \emph{comparison operators} \lstinline{==}, \lstinline{!=}, \lstinline{<}, \lstinline{<=}, \lstinline{>}, and \lstinline{>=} are defined for both integers and floats, and evaluate to a boolean result. For example, \lstinline{2 == 2} evaluates to \lstinline{True}, \lstinline{2 == 3} evaluates to \lstinline{False}, \lstinline{2 < 13} evaluates to \lstinline{True}. 
+
+\bigskip
+
+Comparison operators have lower precedence than arithmetic operators and higher precedence than boolean operators, so you do not need the parentheses in an expression like \lstinline{(b * b - 4.0 * a * c) >= 0.0}.
+\end{frame}
+
 \begin{frame}[fragile]
 \begin{framed}
 \tiny leapyear.py: Accept an integer $year$ as command-line argument, and write \lstinline{True} to standard output if $year$ is a leap year and \lstinline{False} otherwise. 
@@ -252,6 +418,167 @@ $ python leapyear.py 1900
 False
 $ python leapyear.py 2000
 True
+\end{lstlisting}
+\end{frame}
+
+\section{Functions and APIs}
+\begin{frame}[fragile]
+Many programming tasks involve using not only built-in operators, but also \emph{functions} that perform useful operations. We consider three kinds of functions: 
+\begin{enumerate}
+\item \emph{built-in functions} (such as \lstinline{int()}, \lstinline{float()}, and \lstinline{str()}) that you can use directly in any Python program; 
+
+\item \emph{standard functions} (such as \lstinline{math.sqrt()}) that are defined in a Python standard module and are available in any program that imports the module; and 
+
+\item \emph{user-defined functions} (such as \lstinline{stdio.write()} and \lstinline{stdio.writeln()}) that are defined in third-party modules.
+\end{enumerate}
+
+\bigskip
+
+You can call a function in your code by typing its name followed by \emph{arguments}, enclosed in parentheses and separated by commas. For example, \lstinline{math.sqrt(2.0)}.
+
+\bigskip
+
+When Python executes your program, we say that it \emph{calls} (or \emph{evaluates}) the function with the given arguments and that the function \emph{returns} a value.
+
+\bigskip
+
+A function call is an expression, so you can use a function call in the same way that you use variables and literals to build up more complicated expressions. For example, \lstinline{math.sin(x) * math.cos(y)}. 
+
+\bigskip 
+
+You can also represent function arguments as expressions. For example, \lstinline{math.sqrt(b * b - 4.0 * a * c)}.
+\end{frame}
+
+\begin{frame}[fragile]
+We summarize functions in a table called the \emph{application programming interface} (API), the first column of which specifies the information you need to use the function, including its name and argument list, and the second column describes its purpose.
+
+\bigskip
+
+Built-in functions:
+
+\begin{center}
+\begin{tabular}{cc}
+function call & description \\ \hline
+\lstinline$abs(x)$ & absolute value of $x$ \\
+\lstinline$max(a, b)$ & maximum value of $a$ and $b$ \\
+\lstinline$min(a, b)$ & minimum value of $a$ and $b$ \\
+$\dots$ & $\dots$
+\end{tabular} 
+\end{center}
+
+\bigskip
+
+Standard functions from Python's \lstinline{math} module:
+
+\begin{center}
+\begin{tabular}{cc}
+function call & description \\ \hline
+\lstinline$math.sin(x)$ & sine of $x$ (expressed in radians) \\
+\lstinline$math.cos(x)$ & cosine of $x$ (expressed in radians) \\
+\lstinline$math.tan(x)$ & tangent of $x$ (expressed in radians) \\
+$\dots$ & $\dots$
+\end{tabular} 
+\end{center}
+
+\bigskip
+
+User-defined functions from the \lstinline{stdio} module:
+
+\begin{center}
+\begin{tabular}{cc}
+function call & description \\ \hline
+\lstinline$stdio.write(x)$ & write $x$ to standard output \\
+\lstinline$stdio.writeln(x)$ & write $x$ to standard output, followed by a newline \\
+$\dots$ & $\dots$
+\end{tabular} 
+\end{center}
+\end{frame}
+
+\section{Type Conversion}
+\begin{frame}[fragile]
+We can use built-in functions \lstinline{int()}, \lstinline{float()}, \lstinline{str()}, and \lstinline{round()} to \emph{explicitly} convert from strings to integers or floats, and vice versa.
+
+\bigskip
+
+Python also supports \emph{implicit conversion} (aka \emph{automatic promotion} or \emph{coercion}). For example, you can use an integer where a float is expected, as in \lstinline{math.sqrt(4)}, which evaluates to \lstinline{2.0}.
+\end{frame}
+
+\section{Interactive Python}
+\begin{frame}[fragile]
+You can use Python as a calculator, directly. To do so, issue the command \lstinline{python} in your terminal window. 
+
+\begin{lstlisting}[language={}]
+$ python
+...
+>>> 1 + 2
+3
+>>> a = 1
+>>> b = 2
+>>> a + b
+3
+>>> import math
+>>> math.sqrt(2.0)
+1.4142135623730951
+>>> math.e
+2.718281828459045
+\end{lstlisting}
+
+\bigskip
+
+You can type \lstinline{dir()} without arguments to get a list of names in the current local scope. With an object argument, you get a list of valid attributes for that object.
+\begin{lstlisting}[language={}]
+>>> dir()
+['__builtins__', '__doc__', '__name__', '__package__', 'a', 'b', 'math']
+>>> dir(math)
+['__doc__', '__name__', '__package__', 'acos', 'acosh', 'asin', 'asinh', 'atan', 
+'atan2', 'atanh', 'ceil', 'copysign', 'cos', 'cosh', 'degrees', 'e', 'erf', 
+'erfc', 'exp', 'expm1', 'fabs', 'factorial', 'floor', 'fmod', 'frexp', 'fsum', 
+'gamma', 'hypot', 'isinf', 'isnan', 'ldexp', 'lgamma', 'log', 'log10', 'log1p', 
+'modf', 'pi', 'pow', 'radians', 'sin', 'sinh', 'sqrt', 'tan', 'tanh', 'trunc']
+>>> 
+\end{lstlisting}
+
+\end{frame}
+
+\begin{frame}[fragile]
+You can type \lstinline{help()} to get access to Python's extensive interactive documentation.
+\begin{lstlisting}[language={}]
+>>> help(math)
+
+Help on built-in module math:
+
+NAME
+    math
+
+FILE
+    (built-in)
+
+DESCRIPTION
+    This module is always available.  It provides access to the
+    mathematical functions defined by the C standard.
+
+FUNCTIONS
+    acos(...)
+        acos(x)
+        
+        Return the arc cosine (measured in radians) of x.
+...
+   sqrt(...)
+        sqrt(x)
+        
+        Return the square root of x. 
+...
+DATA
+    e = 2.718281828459045
+    pi = 3.141592653589793
+\end{lstlisting}
+
+\bigskip
+
+You can type \lstinline{exit()} to return to the terminal.
+\begin{lstlisting}[language={}]
+>>> exit()
+$
 \end{lstlisting}
 \end{frame}
 
