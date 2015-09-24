@@ -137,7 +137,7 @@ The \lstinline{str} data type:
 
 \begin{center}
 \begin{tabular}{c|c}
-values & sequences of characters \\ \hline
+values & sequences of characters \\ 
 typical literals & \lstinline$'Hello, World'$, \lstinline$'Python\'s'$ \\ 
 operations & concatenate, multiply \\
 operators & \lstinline$+$, \lstinline$*$
@@ -434,25 +434,25 @@ Many programming tasks involve using not only built-in operators, but also \emph
 
 \bigskip
 
-You can call a function in your code by typing its name followed by \emph{arguments}, enclosed in parentheses and separated by commas. For example, \lstinline{math.sqrt(2.0)}.
+You can call a function in your code by typing its name followed by \emph{arguments} (which are just expressions), enclosed in parentheses and separated by commas. For example, \lstinline{math.sqrt(2.0)}.
 
 \bigskip
 
-When Python executes your program, we say that it \emph{calls} (or \emph{evaluates}) the function with the given arguments and that the function \emph{returns} a value.
+When Python executes your program, we say that it \emph{calls} (or \emph{evaluates}) the function with the given arguments.
 
 \bigskip
 
-A function call is an expression, so you can use a function call in the same way that you use variables and literals to build up more complicated expressions. For example, \lstinline{math.sin(x) * math.cos(y)}. 
+A function call that \emph{returns a value} is an expression, so you can use it in the same way that you use variables and literals to build up more complicated expressions. For example, \lstinline{math.sin(x) * math.cos(y)}. 
 
-\bigskip 
+\bigskip
 
-You can also represent function arguments as expressions. For example, \lstinline{math.sqrt(b * b - 4.0 * a * c)}.
+A function call that does not return a value, but has a \emph{side effect}, can only be used as a \emph{statement}. For example, \lstinline{stdio.writeln('Hello, World')}.
 \end{frame}
 
 \begin{frame}[fragile]
 We summarize functions in a table called the \emph{application programming interface} (API), the first column of which specifies the information you need to use the function, including its name and argument list, and the second column describes its purpose.
 
-\bigskip
+\smallskip
 
 Built-in functions:
 
@@ -461,26 +461,31 @@ Built-in functions:
 function call & description \\ \hline
 \lstinline$abs(x)$ & absolute value of $x$ \\
 \lstinline$max(a, b)$ & maximum value of $a$ and $b$ \\
-\lstinline$min(a, b)$ & minimum value of $a$ and $b$ \\
 $\dots$ & $\dots$
 \end{tabular} 
 \end{center}
 
-\bigskip
+\smallskip
 
-Standard functions from Python's \lstinline{math} module:
+Standard functions from Python's \lstinline{math} and \lstinline{random} modules:
 
 \begin{center}
 \begin{tabular}{cc}
 function call & description \\ \hline
 \lstinline$math.sin(x)$ & sine of $x$ (expressed in radians) \\
 \lstinline$math.cos(x)$ & cosine of $x$ (expressed in radians) \\
-\lstinline$math.tan(x)$ & tangent of $x$ (expressed in radians) \\
+$\dots$ & $\dots$
+\end{tabular} 
+
+\begin{tabular}{cc}
+function call & description \\ \hline
+\lstinline$random.random()$ & a random float from the real interval $[0, 1)$ \\
+\lstinline$random.randrange(x, y)$ & a random integer from the integer interval $[x, y)$ \\
 $\dots$ & $\dots$
 \end{tabular} 
 \end{center}
 
-\bigskip
+\smallskip
 
 User-defined functions from the \lstinline{stdio} module:
 
