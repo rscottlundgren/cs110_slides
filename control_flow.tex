@@ -7,7 +7,9 @@
 
 \begin{document}
 \begin{frame}
-\vfill
+\begin{flushright}
+\tiny \textsc{Programming is usually taught by examples. \\ - Niklaus Wirth}
+\end{flushright}
 \titlepage
 \end{frame}
 
@@ -16,7 +18,33 @@
 \tableofcontents
 \end{frame}
 
-\section{.}
+\section{If Statement}
+\begin{frame}[fragile]
+Most computations require different actions for different inputs and one way to express these differences in Python is using the \lstinline{if} statement:
+
+\smallskip
+
+\begin{lstlisting}[language={}]
+if <boolean expression>:
+    <statement>
+    <statement>
+    ...
+elif <boolean expression>:
+    <statement>
+    <statement>
+    ...
+elif <boolean expression>:
+    <statement>
+    <statement>
+    ...
+...
+else: 
+    <statement>
+    <statement>
+    ...
+\end{lstlisting}
+\end{frame}
+
 \begin{frame}[fragile]
 \begin{framed}
 \tiny flip.py: Simulate a coin flip by writing 'Heads' or 'Tails' to standard output.
@@ -43,6 +71,20 @@ $ python flip.py
 Tails
 $ python flip.py 
 Heads
+\end{lstlisting}
+\end{frame}
+
+\section{While Statement}
+\begin{frame}[fragile]
+Many computations are inherently repetitive and the basic Python construct for handling such computations is the \lstinline{while} statement:
+
+\smallskip
+
+\begin{lstlisting}[language={}]
+while <boolean expression>:
+    <statement>
+    <statement>
+    ...
 \end{lstlisting}
 \end{frame}
 
@@ -111,6 +153,84 @@ $ python powersoftwo.py 8
 \end{frame}
 
 \begin{frame}[fragile]
+Modifying a variable is something that we do so often in programming that modern programming languages like Python provide shorthand notations for the purpose.
+
+\bigskip
+
+The most common practice is to abbreviate an assignment statement of the form 
+
+\begin{lstlisting}[language=Python]
+i = i + 1
+\end{lstlisting}
+
+with the shorthand notation
+
+\begin{lstlisting}[language=Python]
+i += 1
+\end{lstlisting}
+
+\bigskip
+
+The same notation works for other binary operators, including \lstinline{-}, \lstinline{*}, and \lstinline{/}.
+
+\bigskip
+
+The \emph{scope of a variable} is part of the program where it is defined; statements that follow the definition in the same block (marked by indentation level).
+\end{frame}
+
+\section{For Statement}
+\begin{frame}[fragile]
+An alternative Python construct --- the \lstinline{for} statement --- provides a more compact notation for carrying out repeated computations:
+
+\smallskip
+
+\begin{lstlisting}[language={}]
+for <variable> in <iterable object>:
+    <statement>
+    <statement>
+    ...
+\end{lstlisting}
+
+\bigskip
+
+The most commonly used iterable objects are the lists containing arithmetic progressions of integers, returned by the built-in function \lstinline{range()}:
+
+\begin{lstlisting}[language={}]
+range(start, stop[, step])
+range(stop)
+\end{lstlisting}
+
+The first form returns a list of integers, starting at \lstinline{start}, ending just before \lstinline{stop}, and in increments (or decrements) given by the optional \lstinline{step} argument, which defaults to 1. In the second form, \lstinline{start} and \lstinline{step} default to 0 and 1 respectively.
+
+\bigskip
+
+For example, the \lstinline{tenhellos.py} program can be written using \lstinline{for} statement as follows:
+
+\begin{lstlisting}[language=Python]
+import stdio
+
+stdio.writeln('1st Hello')
+stdio.writeln('2nd Hello')
+stdio.writeln('3rd Hello')
+for i in range(4, 11):
+    stdio.writeln(str(i) + 'th Hello')
+\end{lstlisting}
+\end{frame}
+
+\section{Nesting}
+\begin{frame}[fragile]
+The \lstinline{if}, \lstinline{while}, and \lstinline{for} statements, collectively called \emph{control-flow statements}, have the same status as assignment statements or any other statements in Python.
+
+\bigskip
+
+As a result, we can use a control-flow statement whenever a statement is called for. 
+
+\bigskip
+
+In particular, we can nest one or more of the control-flow statements in the body of another. 
+\end{frame}
+
+\begin{frame}[fragile]
 \begin{framed}
 \tiny divisorpattern.py: Accept integer command-line argument $n$. Write to standard output an $n$-by-$n$ table with an asterisk in row $i$ and column $j$ if either $i$ divides $j$ or $j$ divides $i$.
 \end{framed}
@@ -144,6 +264,21 @@ $ python divisorpattern.py 10
 \end{lstlisting}
 \end{frame}
 
+\section{Applications}
+\begin{frame}[fragile]
+\begin{enumerate}
+\item Finite sum (\lstinline{harmonic.py}).
+
+\item Computing the square root using Newton's method (\lstinline{sqrt.py}).
+
+\item Number conversion (\lstinline{binary.py}).
+
+\item Monte Carlo simulation (\lstinline{gambler.py}).
+
+\item Factoring (\lstinline{factors.py}).
+\end{enumerate}
+\end{frame}
+
 \begin{frame}[fragile]
 \begin{framed}
 \tiny harmonic.py: Accept integer $n$ as a command-line argument. Write to standard output the $n$th harmonic number $H_n$, computed as $H_n=1+1/2+1/3+\cdots+1/n$. Note that $H_n \approx \ln(n) + 0.57721$ for large $n$.
@@ -154,10 +289,10 @@ import stdio
 import sys
 
 n = int(sys.argv[1])
-sum = 0.0
-for i in range(1, n+1):
-    sum += 1.0 / i
-stdio.writeln(sum)
+total = 0.0
+for i in range(1, n + 1):
+    total += 1.0 / i
+stdio.writeln(total)
 \end{lstlisting}
 
 \begin{lstlisting}[language={}]
@@ -206,7 +341,7 @@ import stdio
 
 n = int(sys.argv[1])
 v = 1
-while v <= n / 2:
+while v <= n // 2:
     v *= 2
 while v > 0:
     if n < v:
@@ -214,7 +349,7 @@ while v > 0:
     else:
         stdio.write(1)
         n -= v
-    v /= 2
+    v //= 2
 stdio.writeln()
 \end{lstlisting}
 
@@ -232,7 +367,7 @@ $ python binary.py 1000000000
 
 \begin{frame}[fragile]
 \begin{framed}
-\tiny gambler.py: Accept integer command-line arguments stake, goal, and trialCount. Run trialCount experiments that start with stake dollars and terminate on 0 dollars or goal. Write to standard output the percentage of wins and the average number of bets per experiment.
+\tiny gambler.py: Accept integer command-line arguments $stake$, $goal$, and $trials$. Run $trials$ experiments that start with $stake$ dollars and terminate on 0 dollars or $goal$. Write to standard output the percentage of wins and the average number of bets per experiment, which can be calculated as $100 \times stake / goal$ and $stake \times (goal - stake)$, respectively.
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -255,8 +390,8 @@ for t in range(trials):
             cash -= 1
     if cash == goal:
         wins += 1
-stdio.writeln(str(100 * wins / trials) + '% wins')
-stdio.writeln('Avg # bets: ' + str(bets / trials))
+stdio.writeln(str(100 * wins // trials) + '% wins')
+stdio.writeln('Avg # bets: ' + str(bets // trials))
 \end{lstlisting}
 
 \begin{lstlisting}[language={}]
@@ -282,7 +417,7 @@ n = int(sys.argv[1])
 factor = 2
 while factor * factor <= n:
     while n % factor == 0:
-        n /= factor
+        n //= factor
         stdio.write(str(factor) + ' ')
     factor += 1
 if n > 1:
@@ -295,6 +430,79 @@ $ python factors.py 3757208
 2 2 2 7 13 13 397
 $ python factors.py 287994837222311
 17 1739347 9739789
+\end{lstlisting}
+\end{frame}
+
+\section{Other Conditional and Loop Constructs}
+\begin{frame}[fragile]
+The \emph{conditional expression} supports an alternate form of an \lstinline$if-else$ statement:
+ 
+\begin{lstlisting}[language={}]
+<expression> if <boolean expression> else <expression>
+\end{lstlisting}
+
+For example, the following code assigns \lstinline{'Heads'} or \lstinline{'Tails'} to the variable \lstinline{flip}, each with probability $1/2$:
+
+\begin{lstlisting}[language=Java]
+flip = 'Heads' if random.random() < 0.5 else 'Tails'
+\end{lstlisting}
+
+\bigskip
+
+The \lstinline{break} statement immediately exits a loop without letting it to run to completion. For example, the following code tests and prints if a number $N$ is prime or not:
+\begin{lstlisting}[language=Python]
+i = 2
+while i <= N / i:
+    if N % i == 0:
+        break
+    i += 1
+if i > N / i:
+    stdio.writeln(str(N) + ' is prime')
+else 
+    stdio.writeln(str(N) + ' is not prime')
+\end{lstlisting}
+
+\bigskip
+
+The \lstinline{continue} statement skips to next iteration of a loop.
+\end{frame}
+
+\section{Infinite Loops}
+\begin{frame}[fragile]
+What if the loop continuation condition is always true? 
+
+\bigskip 
+ 
+\begin{framed}
+\tiny badhellos.py: Loops forever, since the loop continuation condition is always true.
+\end{framed}
+
+\begin{lstlisting}[language=Python]
+import stdio
+
+stdio.writeln('1st Hello')
+stdio.writeln('2nd Hello')
+stdio.writeln('3rd Hello')
+i = 4
+while i > 3:
+    stdio.writeln(str(i) + 'th Hello')
+    i = i + 1
+\end{lstlisting}
+
+\begin{lstlisting}[language={}]
+$ python badhellos.py 
+1st Hello
+2nd Hello
+3rd Hello
+4th Hello
+5th Hello
+6th Hello
+7th Hello
+8th Hello
+9th Hello
+10th Hello
+11th Hello
+...
 \end{lstlisting}
 \end{frame}
 
