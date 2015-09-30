@@ -28,7 +28,7 @@ A \emph{list} (aka \emph{one-dimensional array} or \emph{array}) is a collection
 
 \bigskip
 
-The simplest way to create a list in Python is to place comma-separated expressions between matching square brackets. 
+The simplest way to create a list (an object of the built-in sequence type \lstinline{list}) in Python is to place comma-separated values between matching square brackets. 
 
 \bigskip
 
@@ -64,16 +64,12 @@ We can access the length of a list \lstinline{a} using the built-in function \ls
 
 \bigskip
 
-We can use the \lstinline{+=} operator to append elements to a list. 
-
-\bigskip
-
-For example, the following code creates a list \lstinline{a} with $n$ floats, with each element initialized to \lstinline{0.0}:
+We can use the \lstinline{+=} operator to append elements to a list. For example, the following code creates a list \lstinline{a} with $n$ floats, with each element initialized to \lstinline{0.0}:
 
 \begin{lstlisting}[language=Python]
 a = []
 for i in range(n):
-    a+= [0.0]
+    a += [0.0]
 \end{lstlisting} 
 
 \bigskip
@@ -91,11 +87,7 @@ Lists are fundamental data structures in that they have a direct correspondence 
 \end{frame}
 
 \begin{frame}[fragile]
-Lists are \emph{mutable} objects because we can change their values.
-
-\bigskip
-
-For example, the following code reverses the order of elements in a list \lstinline{a}:
+Lists are \emph{mutable} objects because we can change their values. For example, the following code reverses the order of elements in a list \lstinline{a}:
 
 \begin{lstlisting}[language=Python]
 n = len(a)
@@ -107,11 +99,7 @@ for i in range(n / 2):
 
 \bigskip
 
-One of the most basic operations on a list is to \emph{iterate} over all its elements.
-
-\bigskip
-
-For example, the following code computes the average of a list of floats:
+One of the most basic operations on a list is to \emph{iterate} over all its elements. For example, the following code computes the average of a list of floats:
 
 \begin{lstlisting}[language=Python]
 total = 0.0
@@ -127,6 +115,92 @@ total = 0.0
 for v in a:
     total += v
 average = total / len(a)
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+Python has several built-in functions that take lists as arguments. For example, given a list \lstinline{a}, \lstinline{len(a)} returns the number of elements in the list, \lstinline{sum(a)} returns the sum of the elements in the list, \lstinline{min(a)} and \lstinline{max(a)} return the minimum and maximum element in the list respectively.
+
+\bigskip
+
+You can write a list by passing it as an argument to \lstinline{stdio.write()} or \lstinline{stdio.writeln()}, or you can use a \lstinline{for} statement to write each element individually.
+
+\bigskip
+
+\emph{Aliasing} refers to the situation where two variables refer to the same object. For example, after the assignment statements
+\begin{lstlisting}[language=Python]
+x = [.30, .60, .10]
+y = x
+x[1] = .99
+\end{lstlisting}
+the value of \lstinline{y[1]} is also \lstinline{.99}.
+\end{frame}
+
+\begin{frame}[fragile]
+One way to make a copy \lstinline{y} of a given list \lstinline{x} is to iterate though \lstinline{x} to build \lstinline{y}:
+\begin{lstlisting}[language=Python]
+y = []
+for v in x:
+    y += [v]
+\end{lstlisting}
+
+\bigskip
+
+Alternatively, \emph{slicing} allows us to copy any contiguous sequence of elements within a list to another list. The expression \lstinline{a[i:j]} evaluates to a new list whose elements are \lstinline{a[i], ..., a[j - 1]}. The default value for \lstinline{i} is \lstinline{0} and the default value for \lstinline{j} is \lstinline{len(a)}, so \lstinline{y = x[:]} is equivalent to the code above.
+
+\bigskip
+
+The \lstinline{stdarray} module from the authors of the IPP text defines functions for processing lists:
+
+\begin{center}
+\begin{tabular}{cc}
+function call & description \\ \hline
+\lstinline$stdarray.create1D(n, val)$ & list of length $n$, each element initialized to $val$ \\
+\lstinline$stdarray.create2D(m, n, val)$ & $m$-by-$n$ list, each element initialized to $val$ \\
+$\dots$ & $\dots$
+\end{tabular} 
+\end{center}
+
+\bigskip
+
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{framed}
+\tiny Example: Code for representing and processing playing cards.
+\end{framed}
+
+Represent suits and ranks:
+\begin{lstlisting}[language=Python]
+SUITS = ['Clubs', 'Diamonds', 'Hearts', 'Spades']
+RANKS = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 
+         'Jack', 'Queen', 'King', 'Ace']
+\end{lstlisting}
+
+Write a random card name:
+\begin{lstlisting}[language=Python]
+rank = random.randrange(0, len(RANKS))
+suit = random.randrange(0, len(SUITS))
+stdio.writeln(RANKS[rank] + ' of ' + SUITS[suit])
+\end{lstlisting}
+
+Create a deck:
+\begin{lstlisting}[language=Python]
+deck = []
+for rank in RANKS:
+    for suit in SUITS:
+        card = rank + ' of ' + suit
+        deck += [card]
+\end{lstlisting}
+
+Shuffle the deck:
+\begin{lstlisting}[language=Python]
+n = len(deck)
+for i in range(n):
+    r = random.randrange(i, n)
+    temp = deck[r]
+    deck[r] = deck[i]
+    deck[i] = temp
 \end{lstlisting}
 \end{frame}
 
@@ -215,7 +289,7 @@ isPrime = stdarray.create1D(n + 1, True)
 for i in range(2, n):
     if (isPrime[i]):
         for j in range(2, n / i + 1):
-            isPrime[i * j] = False;
+            isPrime[i * j] = False
 count = 0
 for i in range(2, n + 1):
     if isPrime[i]:
@@ -234,6 +308,57 @@ $ python primesieve.py 1000000
 78498
 $ python primesieve.py 100000000
 5761455
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+In many applications, a convenient way to store information is to use a table of numbers organized in a rectangular table and refer to \emph{rows} and \emph{columns} in the table.
+
+\bigskip
+
+The simplest way to create a two-dimensional list in Python is to place comma-separated one-dimensional lists between matching square brackets. 
+
+\bigskip
+
+For example, this matrix of integers having two rows and three columns 
+\[
+\begin{bmatrix}
+18 & 19 & 20 \\ 
+21 & 22 & 23
+\end{bmatrix}
+\]
+can be represented in Python using this list of lists:
+\begin{lstlisting}[language=Python]
+a = [[18, 19, 20], [21, 22, 23]]
+\end{lstlisting}
+
+\bigskip
+
+Python represents an $m$-by-$n$ list as a list that contains $m$ objects, each of which is a list that contains $n$ objects. 
+
+\bigskip
+
+For example, the following code creates an $m$-by-$n$ list \lstinline{a} of floats, with all elements initialized to \lstinline{0.0}:
+\begin{lstlisting}[language=Python]
+a = []
+for i in range(m):
+    row = [0.0] * n
+    a += [row]
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+When \lstinline{a} is a two-dimensional list, the syntax \lstinline{a[i]} refers to its \lstinline{i}th row, which is a one-dimensional list. The syntax \lstinline{a[i][j]} refers to the object at row \lstinline{i} and column \lstinline{j}. 
+
+\bigskip
+
+For example, the following code adds two $n$-by-$n$ matrices \lstinline{a} and \lstinline{b}:
+
+\begin{lstlisting}[language=Python]
+c = stdarray.create2D(n, n, 0.0)
+for i in range(n):
+    for j in range(n):
+        c[i][j] = a[i][j] + b[i][j]
 \end{lstlisting}
 \end{frame}
 
@@ -294,24 +419,237 @@ $ python selfavoid.py 80 1000
 \end{lstlisting}
 \end{frame}
 
-\section{Tuples and Sequences}
 \begin{frame}[fragile]
-blah
+There is no requirement that all rows in a two-dimensional list have the same length. A list with rows of nonuniform length is known as a \emph{ragged list}. 
+
+\bigskip
+
+For example, the following code writes the contents of a ragged list:
+
+\begin{lstlisting}[language=Python]
+for i in range(len(a)):
+    for j in range(len(a[i])):
+        stdio.write(a[i][j])
+        stdio.write(' ')
+    stdio.writeln()
+\end{lstlisting}
+
+\bigskip
+
+The same notation extends to allow us to compose code using lists that have any number of dimensions. For example, using lists of lists of lists, we can create a three-dimensional list \lstinline{a}, and then refer to an individual element of \lstinline{a} as \lstinline{a[i][j][k]}.
+\end{frame}
+
+\section{Tuples}
+\begin{frame}[fragile]
+A \emph{tuple} (an object of the built-in sequence type \lstinline{tuple}) consists of a number of values separated by commas:
+\begin{lstlisting}[language={}]
+>>> t = 12345, 54321, 'hello!'
+>>> t[0]
+12345
+>>> t
+(12345, 54321, 'hello!')
+\end{lstlisting}
+
+\bigskip
+
+Tuples may be nested:
+\begin{lstlisting}[language={}]
+>>> u = t, (1, 2, 3, 4, 5)
+>>> u
+((12345, 54321, 'hello!'), (1, 2, 3, 4, 5))
+\end{lstlisting}
+
+\bigskip
+
+Tuples are immutable, but they can contain mutable objects:
+\begin{lstlisting}[language={}]
+>>> v = ([1, 2, 3], [3, 2, 1])
+>>> v
+([1, 2, 3], [3, 2, 1])
+\end{lstlisting}
+
+\bigskip
+
+Empty and singleton sequences:
+\begin{lstlisting}[language={}]
+>>> empty = ()
+>>> singleton = 'hello', 
+>>> len(empty)
+0
+>>> len(singleton)
+1
+\end{lstlisting}
+
+\bigskip
+
+Sequence unpacking:
+\begin{lstlisting}[language={}]
+>>> x, y, z = t
+\end{lstlisting}
 \end{frame}
 
 \section{Sets}
 \begin{frame}[fragile]
-blah
+A \emph{set} (an object of the built-in sequence type \lstinline{set}) is an unordered collection with no duplicate elements: 
+\begin{lstlisting}[language={}]
+>>> basket = ['apple', 'orange', 'apple', 'pear', 'orange', 'banana']
+>>> fruit = set(basket)
+>>> fruit
+set(['orange', 'pear', 'apple', 'banana'])
+\end{lstlisting}
+
+\bigskip
+
+Fast membership testing:
+\begin{lstlisting}[language={}]
+>>> 'orange' in fruit
+True
+>>> 'crabgrass' in fruit
+False
+\end{lstlisting}
+
+\bigskip
+
+Set operations:
+\begin{lstlisting}[language={}]
+>>> a = set('abracadabra')
+>>> b = set('alacazam')
+>>> a                                  # unique letters in a
+set(['a', 'r', 'b', 'c', 'd'])
+>>> a - b                              # letters in a but not in b
+set(['r', 'd', 'b'])
+>>> a | b                              # letters in either a or b
+set(['a', 'c', 'r', 'd', 'b', 'm', 'z', 'l'])
+>>> a & b                              # letters in both a and b
+set(['a', 'c'])
+>>> a ^ b                              # letters in a or b but not both
+set(['r', 'd', 'b', 'm', 'z', 'l'])
+\end{lstlisting}
+
 \end{frame}
 
 \section{Dictionaries}
 \begin{frame}[fragile]
-blah
+A \emph{dictionary} (an object of the built-in mapping type \lstinline{dict}) is an unordered set of \emph{key}-\emph{value} pairs, with the requirement that the keys are unique:
+\begin{lstlisting}[language={}]
+>>> tel = {'jack': 4098, 'sape': 4139}
+>>> tel['guido'] = 4127
+>>> tel
+{'sape': 4139, 'guido': 4127, 'jack': 4098}
+>>> tel['jack']
+4098
+>>> tel['irv'] = 4127
+>>> tel
+{'guido': 4127, 'irv': 4127, 'jack': 4098, 'sape': 4139}
+>>> 'guido' in tel
+True
+\end{lstlisting}
+
+\bigskip
+
+Dictionaries can be built directly from sequences of key-value pairs:
+\begin{lstlisting}[language={}]
+>>> dict([('sape', 4139), ('guido', 4127), ('jack', 4098)])
+{'sape': 4139, 'jack': 4098, 'guido': 4127}
+\end{lstlisting}
+
+\end{frame}
+
+\section{Comprehensions}
+\begin{frame}[fragile]
+\emph{List comprehensions} provide a concise way to create lists:
+\begin{lstlisting}[language={}]
+>>> squares = [x ** 2 for x in range(10)]
+>>> squares
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+>>> [(x, y) for x in [1, 2, 3] for y in [3, 1, 4] if x != y]
+[(1, 3), (1, 4), (2, 3), (2, 1), (2, 4), (3, 1), (3, 4)]
+\end{lstlisting}
+
+\bigskip
+
+Nested list comprehensions:
+\begin{lstlisting}[language={}]
+>>> matrix = [
+...     [1, 2, 3, 4],
+...     [5, 6, 7, 8],
+...     [9, 10, 11, 12],
+... ]
+>>> [[row[i] for row in matrix] for i in range(4)]
+[[1, 5, 9], [2, 6, 10], [3, 7, 11], [4, 8, 12]]
+\end{lstlisting}
+
+\bigskip
+
+Set comprehensions:
+\begin{lstlisting}[language={}]
+>>> a = {x for x in 'abracadabra' if x not in 'abc'}
+>>> a
+set(['r', 'd'])
+\end{lstlisting}
+
+\bigskip
+
+Dictionary comprehensions:
+\begin{lstlisting}[language={}]
+>>> {x: x ** 2 for x in (2, 4, 6)}
+{2: 4, 4: 16, 6: 36}
+\end{lstlisting}
 \end{frame}
 
 \section{Looping Techniques}
 \begin{frame}[fragile]
-blah
+When looping through a sequence, the position index and corresponding value can be retrieved at the same time using the \lstinline{enumerate()} function:
+\begin{lstlisting}[language={}]
+>>> for i, v in enumerate(['tic', 'tac', 'toe']):
+...     stdio.writeln(str(i) + ' ' + v)
+...
+0 tic
+1 tac
+2 toe
+\end{lstlisting}
+
+\bigskip
+
+To loop over two or more sequences at the same time, the entries can be paired with the \lstinline{zip()} function:
+\begin{lstlisting}[language={}]
+>>> questions = ['name', 'quest', 'favorite color']
+>>> answers = ['lancelot', 'the holy grail', 'blue']
+>>> for q, a in zip(questions, answers):
+...     stdio.writeln('What is your ' + q + '? It is ' + a)
+...
+What is your name? It is lancelot.
+What is your quest? It is the holy grail.
+What is your favorite color? It is blue.
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+To loop over a sequence in reverse, first specify the sequence in a forward direction and then call the \lstinline{reversed()} function:
+\begin{lstlisting}[language={}]
+>>> for i in reversed(range(1, 10, 2)):
+...     stdio.writeln(i)
+...
+9
+7
+5
+3
+1
+\end{lstlisting}
+
+\bigskip
+
+To loop over a sequence in sorted order, use the \lstinline{sorted()} function which returns a new sorted list while leaving the source unaltered:
+\begin{lstlisting}[language={}]
+>>> basket = ['apple', 'orange', 'apple', 'pear', 'orange', 'banana']
+>>> for f in sorted(set(basket)):
+...     stdio.writeln(f)
+...
+apple
+banana
+orange
+pear
+\end{lstlisting}
 \end{frame}
 
 \end{document}
