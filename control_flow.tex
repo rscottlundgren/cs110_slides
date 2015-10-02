@@ -201,10 +201,10 @@ range(stop)
 \end{lstlisting}
 
 The first form returns a list of integers, starting at \lstinline{start}, ending just before \lstinline{stop}, and in increments (or decrements) given by the optional \lstinline{step} argument, which defaults to 1. In the second form, \lstinline{start} and \lstinline{step} default to 0 and 1 respectively.
+\end{frame}
 
-\bigskip
-
-For example, the \lstinline{tenhellos.py} program can be written using \lstinline{for} statement as follows:
+\begin{frame}[fragile]
+The \lstinline{tenhellos.py} program can be written using \lstinline{for} statement as follows:
 
 \begin{lstlisting}[language=Python]
 import stdio
@@ -214,6 +214,16 @@ stdio.writeln('2nd Hello')
 stdio.writeln('3rd Hello')
 for i in range(4, 11):
     stdio.writeln(str(i) + 'th Hello')
+\end{lstlisting}
+
+\bigskip
+
+Strings are iterable objects. For example, the following code iterates over the characters of string the \lstinline{'AGCT'}:
+\begin{lstlisting}[language=Python]
+import stdio
+
+for c in 'AGCT':
+    stdio.writeln(c)
 \end{lstlisting}
 \end{frame}
 
