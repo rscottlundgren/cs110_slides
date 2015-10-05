@@ -421,7 +421,7 @@ API for the \lstinline{stdaudio} module:
 \begin{center}
 \begin{tabular}{cc}
 function call & description \\ \hline
-\lstinline$stdaudio.playArray(a)$ & play all sound samples in the array $a$ \\
+\lstinline$stdaudio.playSamples(a)$ & play all sound samples in the array $a$ \\
 \lstinline$stdaudio.playFile(f)$ & play all sound samples in the \lstinline$.wav$ file $f$ \\
 \lstinline$stdaudio.playSample(s)$ & play the sound sample $s$ \\
 \lstinline$stdaudio.save(f, a)$ & save the sound samples in array $a$ to the (\lstinline$.wav$) file $f$ \\
@@ -452,7 +452,7 @@ while not stdio.isEmpty():
     note = stdarray.create1D(n + 1, 0.0)
     for i in range(n + 1):
         note[i] = math.sin(2.0 * math.pi * i * hz / SPS)
-    stdaudio.playArray(note)
+    stdaudio.playSamples(note)
 stdaudio.wait()
 \end{lstlisting}
 
