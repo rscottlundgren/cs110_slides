@@ -7,7 +7,16 @@
 
 \begin{document}
 \begin{frame}
-\vfill
+\hfill
+\begin{minipage}{150pt}
+\begin{flushright}
+\tiny \emph{Any fool can write code that a computer can understand. Good programmers write code that humans can understand.} 
+
+\smallskip
+
+- MARTIN FOWLER
+\end{flushright}
+\end{minipage}
 \titlepage
 \end{frame}
 
@@ -16,7 +25,40 @@
 \tableofcontents
 \end{frame}
 
-\section{.}
+\section{Using Functions in Other Programs}
+\begin{frame}[fragile]
+Using \emph{modular programming} we can not only divide a program into functions, but also keep them in different files.
+
+\bigskip
+
+We distinguish between two types of Python programs:
+\begin{itemize}
+\item A \emph{module} contains functions that are available for use by other programs.
+
+\item A \emph{client} is a program that makes use of a function in a module.
+\end{itemize}
+
+\bigskip
+
+Five steps involved in creating and using modules:
+\begin{enumerate}
+\item In the client, import the module.
+
+\item In the client, qualify function calls to the module.
+
+\item In the module, compose a test client.
+
+\item In the module, eliminate arbitrary global code.
+
+\item Make the module accessible to the client.
+\end{enumerate}
+
+\bigskip
+
+Modular programming enables us to independently develop and debug functions for an application and then utilize them at any later time.
+
+\end{frame}
+
 \begin{frame}[fragile]
 \begin{framed}
 \tiny gaussian.py: Accept floats $z$, $mu$, and $sigma$ as command-line arguments. Use them to test the \lstinline{phi()} and \lstinline{Phi()} functions. Write the results to standard output.
@@ -82,8 +124,8 @@ def main():
     mu = float(sys.argv[1])
     sigma = float(sys.argv[2])
     for score in range(400, 1600 + 1, 100):
-        percent = 100 * gaussian.cdf(score, mu, sigma)
-        stdio.writef('%4d  %.2f\n', score, percent)
+        percent = gaussian.cdf(score, mu, sigma)
+        stdio.writef('%4d  %.4f\n', score, percent)
  
 if __name__ == '__main__':
     main()
@@ -91,20 +133,222 @@ if __name__ == '__main__':
 
 \begin{lstlisting}[language={}]
 $ python gaussiantable.py 1019 209
- 400  0.15
- 500  0.65
- 600  2.25
- 700  6.35
- 800  14.74
- 900  28.45
-1000  46.38
-1100  65.08
-1200  80.68
-1300  91.06
-1400  96.58
-1500  98.93
-1600  99.73
+ 400  0.0015
+ 500  0.0065
+ 600  0.0225
+ 700  0.0635
+ 800  0.1474
+ 900  0.2845
+1000  0.4638
+1100  0.6508
+1200  0.8068
+1300  0.9106
+1400  0.9658
+1500  0.9893
+1600  0.9973
 \end{lstlisting}
+\end{frame}
+
+\section{Modular Programming Abstractions}
+\begin{frame}[fragile]
+\emph{User-defined modules} are files that each contain a set of related functions for use by other programs.
+
+\bigskip
+
+We use three abstractions to manage the process of developing user-defined modules:
+\begin{enumerate}
+\item Application programming interfaces (APIs)
+\begin{center}
+\begin{tabular}{cc}
+function call & description \\ \hline
+\lstinline$pdf(x, mu, sigma)$ & Gaussian pdf \\
+\lstinline$cdf(z, mu, sigma)$ & Gaussian cdf \\
+\end{tabular} 
+\end{center}
+
+\item Clients
+\begin{lstlisting}[language=Python]
+percent = gaussian.cdf(score, mu, sigma)
+\end{lstlisting}
+
+\item Implementations
+\begin{lstlisting}[language=Python]
+def pdf(x, mu = 0.0, sigma = 1.0):
+    ...
+    
+def cdf(z, mu = 0.0, sigma = 1.0):
+    ...
+\end{lstlisting}
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+A \emph{library} is a collection of related modules. For example, \emph{NumPy} is a library for scientific computing.
+
+\bigskip
+
+A \emph{private function}, having its name start with an underscore by convention, is a helper function that is not intended to be called directly by clients. 
+\begin{lstlisting}[language=Python]
+def _phi(x):
+    return math.exp(- x * x / 2.0) / math.sqrt(2 * math.pi)
+    
+def phi(x, mu = 0.0, sigma = 1.0):
+    return _phi(float((x - mu) / sigma)) / sigma
+\end{lstlisting}
+
+\bigskip
+
+Documentation for modules and their functions is provided by embedding the documentaion string in triple quotes.
+\begin{lstlisting}[language=Python]
+"""
+stdrandom.py
+
+The stdrandom module defines functions related to pseudo-random numbers.
+"""
+...
+def uniformInt(lo, hi):
+    """
+    Return an integer chosen uniformly from the range [lo, hi).
+    """
+    return random.randrange(lo, hi)
+...
+\end{lstlisting}
+\end{frame}
+
+\section{Random Numbers}
+\begin{frame}[fragile]
+API for \lstinline{stdrandom} module:
+\begin{center}
+\begin{tabular}{cc}
+function call & description \\ \hline
+\lstinline$seed(i)$ & seed the random number generator with integer $i$ \\
+\lstinline$uniformInt(lo, hi)$ & uniform random integer in the range $[lo, hi)$ \\
+\lstinline$uniformFloat(lo, hi)$ & uniform random float in the range $[lo, hi)$ \\
+\lstinline$bernoulli(p)$ & \lstinline$True$ with probability $p$ (defaults to 0.5) \\
+\lstinline$binomial(n, p)$ & \makecell{number of heads in $n$ coin flips, each of which is \\ heads with probability $p$ (defaults to 0.5)} \\
+\lstinline$gaussian(mu, sigma)$ &  \makecell{normal, mean $mu$ (defaults to 0), \\ standard deviation $sigma$ (defaults to 1)} \\
+\lstinline$discrete(a)$ & $i$ with probability proportional to $a[i]$ \\
+\lstinline$shuffle(a)$ & randomly shuffle the list $a$ \\
+\lstinline$exp(lambd)$ & a float from an exponential distribution with rate $lambd$ 
+\end{tabular} 
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{framed}
+\tiny stdrandom\_client.py: Accept integer $trials$ as a command-line argument. Plot $trials$ number of $(x, y)$ points to standard draw, where $x$ and $y$ are drawn from a Gaussian distribution.
+\end{framed}
+
+\begin{lstlisting}[language=Python]
+import stddraw
+import stdrandom
+import sys
+
+trials = int(sys.argv[1])
+stddraw.setPenRadius(0.0)
+for i in range(trials):
+    x = stdrandom.gaussian(0.5, 0.2)
+    y = stdrandom.gaussian(0.5, 0.2)
+    stddraw.point(x, y)
+stddraw.show()
+\end{lstlisting}
+
+\begin{minipage}{160pt}
+\begin{lstlisting}[language={}]
+$ python stdrandom_client.py 100000
+\end{lstlisting}
+\end{minipage}%
+\begin{minipage}{140pt}
+\hfill \includegraphics[scale=0.17]{figures/stdrandom_client.png}
+\end{minipage}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{framed}
+\tiny stdrandom.py: Random number module that defines functions related to pseudo-random numbers.
+\end{framed}
+
+\begin{lstlisting}[language=Python]
+import random
+import math
+
+def seed(i = None):
+    random.seed(i)
+
+def uniformInt(lo, hi):
+    return random.randrange(lo, hi)
+    
+def uniformFloat(lo, hi):
+    return random.uniform(lo, hi)
+
+def bernoulli(p = 0.5):
+    return random.random() < p
+
+def binomial(n, p = 0.5):
+    heads = 0
+    for i in range(n):
+        if bernoulli(p):
+            heads += 1
+    return heads
+    
+def gaussian(mean = 0.0, stddev = 1.0):
+    return random.gauss(mu, sigma)
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{lstlisting}[language=Python]
+def discrete(a):
+    r = uniformFloat(0.0, sum(a))
+    subtotal = 0.0
+    for i in range(len(a)):
+        subtotal += a[i]
+        if subtotal > r:
+            return i
+
+def shuffle(a):
+    random.shuffle(a)
+
+def exp(lambd):
+    return -math.log(1 - random.random()) / lambd
+    
+def _main():
+    import sys
+    import stdio
+    seed(1)
+    n = int(sys.argv[1])
+    for i in range(n):
+        stdio.writef(' %2d '   , uniformInt(10, 100))
+        stdio.writef('%8.5f '  , uniformFloat(10.0, 99.0))
+        stdio.writef('%5s '    , bernoulli())
+        stdio.writef('%5s '    , binomial(100, .5))
+        stdio.writef('%7.5f '  , gaussian(9.0, .2))
+        stdio.writef('%2d '    , discrete([.5, .3, .1, .1]))
+        stdio.writeln()
+
+if __name__ == '__main__':
+    _main()
+\end{lstlisting}
+\end{frame}
+
+\section{List Processing}
+\begin{frame}[fragile]
+API for \lstinline{stdarray} module:
+\begin{center}
+\begin{tabular}{cc}
+function call & description \\ \hline
+\lstinline$create1D(n, val)$ & list of length $n$, each element initialized to $val$ \\
+\lstinline$create2D(m, n, val)$ & $m$-by-$n$ list, each element initialized to $val$ \\
+\lstinline$write1D(a)$ & write list $a$ to standard output \\
+\lstinline$write2D(a)$ & write two-dimensional list $a$ to standard output \\
+\lstinline$readInt1D()$ & list of integers, read from standard input \\
+\lstinline$readInt2D()$ & two-dimensional list of integers, read from standard input \\
+\lstinline$readFloat1D()$ & list of floats, read from standard input \\
+\lstinline$readFloat2D()$ & two-dimensional list of floats, read from standard input \\
+\lstinline$readBool1D()$ & list of booleans, read from standard input \\
+\lstinline$readBool2D()$ & two-dimensional list of booleans, read from standard input
+\end{tabular} 
+\end{center}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -233,57 +477,142 @@ $ python ifs.py 20000 < barnsley.txt
 \end{frame}
 
 \begin{frame}[fragile]
-Tree:
+\begin{framed}
+\tiny stdarray.py: List module that defines functions related to creating, reading,
+and writing one- and two-dimensional lists.
+\end{framed}
 
-\begin{minipage}{160pt}
-\begin{lstlisting}[language={}]
-$ more tree.txt
-6
-   0.1  0.1  0.2  0.2  0.2  0.2 
-6 3
-   0.00  0.00  0.550
-  -0.05  0.00  0.525
-   0.46 -0.15  0.270
-   0.47 -0.15  0.265
-   0.43  0.28  0.285
-   0.42  0.26  0.290
-6 3
-   0.00  0.60  0.000
-  -0.50  0.00  0.750
-   0.39  0.38  0.105
-   0.17  0.42  0.465
-  -0.25  0.45  0.625
-  -0.35  0.31  0.525
-$ python ifs.py 20000 < tree.txt
+\begin{lstlisting}[language=Python]
+import stdio
+
+def create1D(length, value=None):
+    return [value] * length
+
+def create2D(rowCount, colCount, value=None):
+    a = [None] * rowCount
+    for row in range(rowCount):
+        a[row] = [value] * colCount
+    return a
+
+def write1D(a):
+    length = len(a)
+    stdio.writeln(length)
+    for i in range(length):
+        element = a[i]
+        if isinstance(element, bool):
+            if element == True:
+                stdio.write(1)
+            else:
+                stdio.write(0) 
+        else:
+            stdio.write(element)
+        stdio.write(' ')
+    stdio.writeln()
 \end{lstlisting}
-\end{minipage}%
-\begin{minipage}{140pt}
-\hfill \includegraphics[scale=0.17]{figures/tree.png}
-\end{minipage}
+\end{frame}
 
-\bigskip
 
-Coral:
+\begin{frame}[fragile]
+\begin{lstlisting}[language=Python]
+def write2D(a):
+    rowCount = len(a)
+    colCount = len(a[0])
+    stdio.writeln(str(rowCount) + ' ' + str(colCount))
+    for row in range(rowCount):
+        for col in range(colCount):
+            element = a[row][col]
+            if isinstance(element, bool):
+                if element == True:
+                    stdio.write(1)
+                else:
+                    stdio.write(0)
+            else:
+                stdio.write(element)
+            stdio.write(' ')
+        stdio.writeln()
 
-\begin{minipage}{160pt}
-\begin{lstlisting}[language={}]
-$ more coral.txt
-3
-   0.40  0.15  0.45 
-3 3
-   0.307692 -0.531469  0.8863493
-   0.307692 -0.076923  0.2166292
-   0.000000  0.545455  0.0106363
-3 3
-  -0.461538 -0.293706  1.0962865
-   0.153846 -0.447552  0.3383760
-   0.692308 -0.195804  0.3808254
-$ python ifs.py 20000 < coral.txt
+def readInt1D():
+    count = stdio.readInt()
+    a = create1D(count, None)
+    for i in range(count):
+        a[i] = stdio.readInt()
+    return a
+
+def readInt2D():
+    rowCount = stdio.readInt()
+    colCount = stdio.readInt()
+    a = create2D(rowCount, colCount, 0)
+    for row in range(rowCount):
+        for col in range(colCount):
+            a[row][col] = stdio.readInt()
+    return a
 \end{lstlisting}
-\end{minipage}%
-\begin{minipage}{140pt}
-\hfill \includegraphics[scale=0.17]{figures/coral.png}
-\end{minipage}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\begin{lstlisting}[language=Python]
+def readFloat1D():
+    count = stdio.readInt()
+    a = create1D(count, None)
+    for i in range(count):
+        a[i] = stdio.readFloat()
+    return a
+
+def readFloat2D():
+    rowCount = stdio.readInt()
+    colCount = stdio.readInt()
+    a = create2D(rowCount, colCount, 0.0)
+    for row in range(rowCount):
+        for col in range(colCount):
+            a[row][col] = stdio.readFloat()
+    return a
+
+def readBool1D():
+    count = stdio.readInt()
+    a = create1D(count, None)
+    for i in range(count):
+        a[i] = stdio.readBool()
+    return a
+\end{lstlisting}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\begin{lstlisting}[language=Python]
+def readBool2D():
+    rowCount = stdio.readInt()
+    colCount = stdio.readInt()
+    a = create2D(rowCount, colCount, False)
+    for row in range(rowCount):
+        for col in range(colCount):
+            a[row][col] = stdio.readBool()
+    return a
+
+def _main():
+    write2D(readFloat2D())
+    write2D(readBool2D())
+
+if __name__ == '__main__':
+    _main()
+\end{lstlisting}
+\end{frame}
+
+\section{Standard Statistics}
+\begin{frame}[fragile]
+API for \lstinline{stdstats} module:
+\begin{center}
+\begin{tabular}{cc}
+function call & description \\ \hline
+\lstinline$mean(a)$ & average of the values in the numeric list $a$ \\
+\lstinline$var(a)$ & sample variance of the values in the numeric list $a$ \\
+\lstinline$stddev(a)$ & sample standard deviation of the values in the numeric list $a$ \\
+\lstinline$median(a)$ & median of the values in the numeric list $a$ \\
+\lstinline$plotPoints(a)$ & point plot of the values in the numeric list $a$ \\
+\lstinline$plotLines(a)$ & line plot of the values in the numeric list $a$ \\
+\lstinline$plotBars(a)$ & bar plot of the values in the numeric list $a$
+\end{tabular} 
+\end{center}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -336,5 +665,72 @@ $ python bernoulli.py 20 100000
 \end{minipage}
 \end{frame}
 
+\begin{frame}[fragile]
+\begin{framed}
+\tiny stdstats.py: Statistics module that defines functions related to statistical analysis and graphical data display.
+\end{framed}
+
+\begin{lstlisting}[language=Python]
+import math
+import stddraw
+
+def mean(a):
+    return sum(a) / float(len(a))
+
+def var(a):
+    mu = mean(a)
+    total = 0.0
+    for x in a:
+        total += (x - mu) * (x - mu)
+    return total / (float(len(a)) - 1.0)
+
+def stddev(a):
+    return math.sqrt(var(a))
+
+def median(a):
+    b = list(a)
+    b.sort()
+    length = len(b)
+    if length % 2 == 1:
+        return b[length / /2]
+    else:
+        return float(b[length // 2 - 1] + b[length // 2]) / 2.0
+
+def plotPoints(a):
+    n = len(a)
+    stddraw.setXscale(-1, n)
+    stddraw.setPenRadius(1.0 / (3.0 * n))
+    for i in range(n):
+        stddraw.point(i, a[i])
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{lstlisting}[language=Python]
+def plotLines(a):
+    n = len(a)
+    stddraw.setXscale(-1, n)
+    stddraw.setPenRadius(0.0)
+    for i in range(1, n):
+        stddraw.line(i - 1, a[i - 1], i, a[i])
+
+def plotBars(a):
+    n = len(a)
+    stddraw.setXscale(-1, n)
+    for i in range(n):
+        stddraw.filledRectangle(i - 0.25, 0.0, 0.5, a[i])
+
+def _main():
+    import stdarray
+    import stdio
+    a = stdarray.readFloat1D()
+    stdio.writef('      mean %7.3f\n', mean(a))
+    stdio.writef('   std dev %7.3f\n', stddev(a))
+    stdio.writef('    median %7.3f\n', median(a))
+
+if __name__ == '__main__':
+    _main()
+\end{lstlisting}
+\end{frame}
 
 \end{document}
