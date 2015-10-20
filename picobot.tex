@@ -7,9 +7,16 @@
 
 \begin{document}
 \begin{frame}
+\hfill
+\begin{minipage}{150pt}
 \begin{flushright}
-\tiny \textsc{I ache, therefore I am. \\ - Marvin, the Paranoid Android from The Hitchhiker's Guide to the Galaxy}
+\tiny \emph{I ache, therefore I am.} 
+
+\smallskip
+
+- MARVIN
 \end{flushright}
+\end{minipage}
 \titlepage
 \end{frame}
 
@@ -50,7 +57,7 @@ Simulation environments for exploring PicoBot's capabilities:
 \section{The Environment}
 \begin{frame}[fragile]
 \begin{minipage}{200pt}
-We will model the environment, i.e., the room a PicoBot is supposed to clean, as a two-dimensional plane discretized into cells.
+We will model the environment, ie, the room a PicoBot is supposed to clean, as a two-dimensional plane discretized into cells.
 
 \bigskip
 
@@ -66,11 +73,7 @@ The immediate surroundings of a PicoBot are reported as a string of four letters
 
 \bigskip
 
-If the cell in a particular direction is not occupied (i.e., not an obstacle), then the letter in the corresponding position is an \lstinline{x} (or \lstinline{X}). 
-
-\bigskip
-
-For example, at its position in the lower-left-hand corner of the environment shown, the PicoBot's sensors would report its surroundings as \lstinline{xxWS}.
+If the cell in a particular direction is not occupied (ie, not an obstacle), then the letter in the corresponding position is an \lstinline{x} (or \lstinline{X}). 
 \end{minipage}\hfill%
 \begin{minipage}{100pt}
 \begin{center}
@@ -97,7 +100,7 @@ The \emph{state} of a computer is the internal information that describes what t
 
 \bigskip
 
-PicoBot's state is simply a number (0-99) representing a task that you would like PicoBot to undertake.
+PicoBot's state is simply a number (0-99) representing a task that we would like PicoBot to undertake.
 
 \bigskip
 
