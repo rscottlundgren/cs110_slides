@@ -7,9 +7,16 @@
 
 \begin{document}
 \begin{frame}
+\hfill
+\begin{minipage}{150pt}
 \begin{flushright}
-\tiny \textsc{Whoever said that pleasure wasn't functional? \\ - Charles Eames}
+\tiny \emph{It's OK to figure out murder mysteries, but you shouldn't need to figure out code. You should be able to read it.}
+
+\smallskip
+
+- Steve McConnell
 \end{flushright}
+\end{minipage}
 \titlepage
 \end{frame}
 
@@ -47,7 +54,7 @@ def <name>(<parameter name>, <parameter name>, ...):
 \end{frame}
 
 \begin{frame}[fragile]
-For example, the following function tests if the argument $N$ is prime and returns \lstinline{True} if it is and \lstinline{False} otherwise:
+For example, the following function tests if the argument $N$ is prime:
 
 \begin{lstlisting}[language=Python]
 def is_prime(N):
@@ -71,7 +78,7 @@ When the function call is part of an expression, as in \lstinline{x = math.sqrt(
 
 \bigskip
 
-Otherwise, the function call is a statement that generally causes side effects, as in \lstinline{stdio.writeln('Hello, World')}
+Otherwise, the function call is a statement that generally causes side effects, as in \lstinline{stdio.writeln('Hello, World')}.
 
 \bigskip
 
@@ -120,7 +127,7 @@ def hypot(a, b):
 
 \bigskip
 
-You can define as many functions as you want in a \lstinline{.py} file. 
+We can define as many functions as we want in a \lstinline{.py} file. 
 \begin{lstlisting}[language=Python]
 def square(x):
     return x * x
@@ -131,7 +138,7 @@ def hypot(a, b):
 
 \bigskip
 
-You can put \lstinline{return} statements in a function wherever you need them, as in the \lstinline{is_prime()} function.
+We can put \lstinline{return} statements in a function wherever we need them, as in the \lstinline{is_prime()} function.
 
 \bigskip
 
@@ -263,7 +270,7 @@ $ python gauss.py 1500 1025 231
 
 \begin{frame}[fragile]
 \begin{framed}
-\tiny coupon.py: Accept integer $n$ as a command-line argument. Write to standard output the number of coupons you collect before obtaining one of each of $n$ types.
+\tiny coupon.py: Accept integer $n$ as a command-line argument. Write to standard output the number of coupons collected before obtaining one of each of $n$ types.
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -310,7 +317,7 @@ $ python coupon.py 1000000
 
 \section{Passing Arguments and Returning Values}
 \begin{frame}[fragile]
-You can use parameter variables anywhere in the body of the function in the same way as you use local variables. 
+We can use parameter variables anywhere in the body of the function in the same way as we use local variables. 
 
 \bigskip
 
@@ -318,7 +325,7 @@ Python initializes the parameter variable with the corresponding argument provid
 
 \bigskip
 
-As a consequence, if a parameter variable refers to a mutable object and you change that object's value within a function, then this also changes the object's value in the calling code.
+As a consequence, if a parameter variable refers to a mutable object and we change that object's value within a function, then this also changes the object's value in the calling code.
 
 \bigskip
 
@@ -470,13 +477,13 @@ The built-in function \lstinline{reduce(f, seq)} applies a function \lstinline{f
 \tiny cryptography.py: A module that implements RSA cryptography.
 \begin{itemize}
 
-\item A message $x$ is encrypted using the function $f(x) = x^e \bmod n$, where $n=pq$ for two different large primes $p$ and $q$ chosen at random, and $e$ is a random prime number less than $m=(p-1)(q-1)$. 
+\item A message $x$ is encrypted using the function $f(x) = x^e \bmod n$, where $n=pq$ for two different large primes $p$ and $q$ chosen at random, and $e$ is a random prime number less than $m=(p-1)(q-1)$ such that $e$ does not divide $m$. 
 
 \item The maximum number that can be encrypted is $n-1$.
 
 \item Together, the values $e$ and $n$ are called the \emph{public key}.
 
-\item A message $y$ is decrypted using the function $g(y) = y^d \bmod n$, where $1 < d < m$ is the multiplicative inverse of $e \bmod n$, ie, $ed \bmod n = 1$.
+\item A message $y$ is decrypted using the function $g(y) = y^d \bmod n$, where $d \leq m-1$ is the multiplicative inverse of $e \bmod m$, ie, $ed \bmod m = 1$.
 
 \item The value $d$ is called the \emph{private key}.
 \end{itemize}
