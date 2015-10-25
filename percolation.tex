@@ -7,7 +7,16 @@
 
 \begin{document}
 \begin{frame}
-\vfill
+\hfill
+\begin{minipage}{150pt}
+\begin{flushright}
+\tiny \emph{Where is everybody?}
+
+\smallskip
+
+- ENRICO FERMI
+\end{flushright}
+\end{minipage}
 \titlepage
 \end{frame}
 
@@ -16,7 +25,54 @@
 \tableofcontents
 \end{frame}
 
-\section{.}
+\section{Percolation}
+\begin{frame}[fragile]
+Pour liquid on top of some porous material. Will the liquid reach the bottom? 
+
+\bigskip
+
+\emph{Percolation} refers to the abstract process that models such situations.
+
+\bigskip
+
+Some Applications:
+\begin{itemize}
+\item Spread of forest fires.
+\item Flow of electricity through a network of resistors.
+\item Permeation of gas in a coal mine through a gas mask filter.
+\item Studying \emph{Fermi's paradox}, the apparent contradiction between the high estimates of the probability of the existence of extraterrestrial civilizations and the lack of evidence for them.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+Abstract model:
+\begin{itemize}
+\item $n$-by-$n$ grid of sites.
+\item Each site is either \emph{blocked} or \emph{open}.
+\item An open site is \emph{full} if it is connected to the top via open sites.
+\end{itemize}
+
+\begin{center}
+\includegraphics[scale=0.4]{figures/percolation1.png}
+
+\smallskip
+
+\tiny Percolation model
+\end{center}
+
+\bigskip
+
+If sites are independently set to be open with vacancy probability $p$, what is the probability that the system percolates?
+
+\bigskip
+
+There is no known mathematical solution, so we take a computational (Monte Carlo simulation) approach.
+
+\bigskip
+
+We use one $n$-by-$n$ boolean matrix to store which sites are open, and another to compute which sites are full. 
+\end{frame}
+
 \begin{frame}[fragile]
 \begin{framed}
 \tiny percolationio.py: Implements percolation support functions.
@@ -63,7 +119,7 @@ $ python percolationio.py 10 .8
 \end{lstlisting}
 \end{minipage}%
 \begin{minipage}{140pt}
-\hfill \includegraphics[scale=0.15]{figures/percolation1.png}
+\hfill \includegraphics[scale=0.15]{figures/percolation2.png}
 \end{minipage}
 
 \smallskip
@@ -74,7 +130,7 @@ $ python percolationio.py 10 .2
 \end{lstlisting}
 \end{minipage}%
 \begin{minipage}{140pt}
-\hfill \includegraphics[scale=0.15]{figures/percolation2.png}
+\hfill \includegraphics[scale=0.15]{figures/percolation3.png}
 \end{minipage}
 
 \smallskip
@@ -85,8 +141,37 @@ $ python percolationio.py 100 .6
 \end{lstlisting}
 \end{minipage}%
 \begin{minipage}{140pt}
-\hfill \includegraphics[scale=0.15]{figures/percolation3.png}
+\hfill \includegraphics[scale=0.15]{figures/percolation4.png}
 \end{minipage}
+\end{frame}
+
+\section{Vertical Percolation}
+\begin{frame}[fragile]
+We start by solving an easier version of the problem, namely \emph{vertical percolation}: Is there a path of open sites from the top to the bottom that goes \emph{straight down}?
+
+\begin{center}
+\includegraphics[scale=0.4]{figures/percolation5.png}
+
+\smallskip
+
+\tiny Vertical percolation
+\end{center}
+
+\bigskip
+
+A site $(i, j)$ is full if it is open \emph{and} site $(i-1, j)$ is full.
+
+\bigskip
+
+To determine if a system vertically percolates, scan rows from top to bottom.
+
+\begin{center}
+\includegraphics[scale=0.4]{figures/percolation6.png}
+
+\smallskip
+
+\tiny Vertical percolation testing
+\end{center}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -129,21 +214,6 @@ if __name__ == '__main__':
 
 \begin{frame}[fragile]
 \begin{lstlisting}[language={}]
-$ more test5.txt 
-5 5
-0 1 1 0 1
-0 0 1 1 1
-1 1 0 1 1
-1 0 0 0 1
-0 1 1 1 1
-$ python percolationv.py < test5.txt 
-5 5
-0 1 1 0 1 
-0 0 1 0 1 
-0 0 0 0 1 
-0 0 0 0 1 
-0 0 0 0 1 
-True
 $ more test8.txt 
 8 8
 0 0 1 1 1 0 0 0
@@ -206,7 +276,7 @@ $ python visualizev.py 20 .65 1
 \end{lstlisting}
 \end{minipage}%
 \begin{minipage}{140pt}
-\hfill \includegraphics[scale=0.15]{figures/percolation4.png}
+\hfill \includegraphics[scale=0.15]{figures/percolation7.png}
 \end{minipage}
 
 \smallskip
@@ -217,7 +287,7 @@ $ python visualizev.py 20 .60 1
 \end{lstlisting}
 \end{minipage}%
 \begin{minipage}{140pt}
-\hfill \includegraphics[scale=0.15]{figures/percolation5.png}
+\hfill \includegraphics[scale=0.15]{figures/percolation8.png}
 \end{minipage}
 
 \smallskip
@@ -228,7 +298,7 @@ $ python visualizev.py 20 .55 1
 \end{lstlisting}
 \end{minipage}%
 \begin{minipage}{140pt}
-\hfill \includegraphics[scale=0.15]{figures/percolation6.png}
+\hfill \includegraphics[scale=0.15]{figures/percolation9.png}
 \end{minipage}
 \end{frame}
 
@@ -271,6 +341,29 @@ $ python estimatev.py 20 .60 1000
 $ python estimatev.py 20 .55 1000
 0.0
 \end{lstlisting}
+\end{frame}
+
+\section{General Percolation}
+\begin{frame}[fragile]
+Given an $n$-by-$n$ system, is there \emph{any} path of open sites from the top to the bottom?
+
+\bigskip
+
+To visit all sites reachable from site $(i, j)$, do \emph{depth first search (DFS)}:
+\begin{itemize}
+\item If $(i, j)$ already marked as reachable, return.
+\item If $(i, j)$ not open, return.
+\item Mark $(i, j)$ as reachable.
+\item Visit the four neighbors of $(i, j)$ recursively.
+\end{itemize}
+
+\bigskip
+
+Percolation solution:
+\begin{itemize}
+\item Run DFS from each site of top row.
+\item Check if any site in bottom row is marked as reachable.
+\end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -331,21 +424,6 @@ if __name__ == '__main__':
 
 \begin{frame}[fragile]
 \begin{lstlisting}[language={}]
-$ more test5.txt 
-5 5
-0 1 1 0 1
-0 0 1 1 1
-1 1 0 1 1
-1 0 0 0 1
-0 1 1 1 1
-$ python percolation.py < test5.txt 
-5 5
-0 1 1 0 1 
-0 0 1 1 1 
-0 0 0 1 1 
-0 0 0 0 1 
-0 1 1 1 1 
-True
 $ more test8.txt 
 8 8
 0 0 1 1 1 0 0 0
@@ -408,7 +486,7 @@ $ python visualize.py 20 .65 1
 \end{lstlisting}
 \end{minipage}%
 \begin{minipage}{140pt}
-\hfill \includegraphics[scale=0.15]{figures/percolation7.png}
+\hfill \includegraphics[scale=0.15]{figures/percolation10.png}
 \end{minipage}
 
 \smallskip
@@ -419,7 +497,7 @@ $ python visualize.py 20 .60 1
 \end{lstlisting}
 \end{minipage}%
 \begin{minipage}{140pt}
-\hfill \includegraphics[scale=0.15]{figures/percolation8.png}
+\hfill \includegraphics[scale=0.15]{figures/percolation11.png}
 \end{minipage}
 
 \smallskip
@@ -430,7 +508,7 @@ $ python visualize.py 20 .55 1
 \end{lstlisting}
 \end{minipage}%
 \begin{minipage}{140pt}
-\hfill \includegraphics[scale=0.15]{figures/percolation9.png}
+\hfill \includegraphics[scale=0.15]{figures/percolation12.png}
 \end{minipage}
 \end{frame}
 
