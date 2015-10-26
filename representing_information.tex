@@ -7,9 +7,16 @@
 
 \begin{document}
 \begin{frame}
+\hfill
+\begin{minipage}{150pt}
 \begin{flushright}
-\tiny \textsc{Information is the resolution of uncertainty. \\ - Claude Shannon}
+\tiny \emph{Information is the resolution of uncertainty.} 
+
+\smallskip
+
+- CLAUDE SHANNON
 \end{flushright}
+\end{minipage}
 \titlepage
 \end{frame}
 
@@ -20,11 +27,15 @@
 
 \section{Numbers}
 \begin{frame}[fragile]
-At the most fundamental level, a computer doesn't have any notion of what it means to compute. Instead, it manipulates electricity according to specific rules.
+At the most fundamental level, a computer doesn't have any notion of what it means to compute. 
 
 \bigskip
 
-To make those rules produce something useful, we need to associate the electrical signals inside the machine with the numbers and symbols that we, as humans, like to use.
+Instead, it manipulates electricity according to specific rules.
+
+\bigskip
+
+To make those rules produce something useful, we need to associate the electrical signals with the numbers and symbols that we, as humans, like to use.
 \end{frame}
 
 \begin{frame}[fragile]
@@ -32,7 +43,7 @@ To represent integers, computers use combinations of numbers that are powers of 
 
 \bigskip
 
-Imagine we had the following four consecutive powers of 2 available to us: $2^0, 2^1, 2^2, 2^3$. We can make all of the integers from 0 to 15 using 0 or 1 of each of these four powers of 2. 
+With four consecutive powers $2^0, 2^1, 2^2, 2^3$, we can make all of the integers from 0 to 15 using 0 or 1 of each of the four powers. 
 
 \bigskip
 
@@ -84,7 +95,7 @@ For example, on an 8-bit computer, $3 = 00000011$, so $-3 = 11111101$.
 \end{frame}
 
 \begin{frame}[fragile]
-Imagine that we are operating in base 10 and we have only eight digits to represent our numbers. We might use the first six digits to represent the fractional part of a number and the last two digits to represent a power of 10.  
+If we are operating in base 10 and only have eight digits to represent our numbers, we might use the first six digits to represent the fractional part of a number and the last two digits to represent a power of 10.  
 
 \bigskip
 
@@ -136,11 +147,11 @@ We can represent any information as a sequence of numbers.
 
 Examples: 
 \begin{itemize}
-\item a picture can be represented as a sequence of colored dots (aka ``picture elements'' or pixels) arranged in rows, and each colored dot can be represented as three numbers giving the amount of red, green, and blue at that pixel;
+\item A picture can be represented as a sequence of colored dots (aka ``picture elements'' or pixels) arranged in rows, and each colored dot can be represented as three numbers giving the amount of red, green, and blue at that pixel.
 
-\item a sound can be represented as a temporal sequence of ``sound pressure levels'' in the air; and 
+\item A sound can be represented as a temporal sequence of ``sound pressure levels'' in the air.
 
-\item a movie can be represented as a temporal sequence of individual pictures, usually 24 or 30 per second, along with a matching sound sequence.
+\item A movie can be represented as a temporal sequence of individual pictures, usually 24 or 30 per second, along with a matching sound sequence.
 \end{itemize}
 
 \bigskip
