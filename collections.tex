@@ -7,9 +7,17 @@
 
 \begin{document}
 \begin{frame}
+\hfill
+\begin{minipage}{150pt}
 \begin{flushright}
-\tiny \textsc{Bad programmers worry about the code. Good programmers worry about data structures and their relationships. \\ - Linus Torvalds}
+\tiny \emph{Bad programmers worry about the code. Good programmers worry about data structures and their relationships.} 
+
+\smallskip
+
+- LINUS TORVALDS
 \end{flushright}
+\end{minipage}
+\vfill
 \titlepage
 \end{frame}
 
@@ -42,7 +50,7 @@ y = [0.40, 0.10, 0.50]
 
 \bigskip
 
-After creating a list, you can refer to any individual object anywhere you would use a variable name in a program by specifying the list name followed by an integer index within square brackets.
+After creating a list, you can refer to any individual object by specifying the list name followed by an integer index within square brackets.
 
 \bigskip
 
@@ -60,7 +68,7 @@ We refer to the first element of an $n$-element list \lstinline{a} as \lstinline
 
 \bigskip
 
-We can access the length of a list \lstinline{a} using the built-in function \lstinline{len()}. Thus, \lstinline{len(a)} is the number of elements in \lstinline{a}. 
+We can access the length of a list \lstinline{a} using the built-in function \lstinline{len()}. 
 
 \bigskip
 
@@ -442,7 +450,7 @@ The same notation extends to allow us to compose code using lists that have any 
 
 \section{Tuples}
 \begin{frame}[fragile]
-A \emph{tuple} (an object of the built-in sequence type \lstinline{tuple}) consists of a number of values separated by commas:
+A \emph{tuple} (an object of the built-in sequence type \lstinline{tuple}) consists of a number of values separated by commas.
 \begin{lstlisting}[language={}]
 >>> t = 12345, 54321, 'hello!'
 >>> t[0]
@@ -453,7 +461,7 @@ A \emph{tuple} (an object of the built-in sequence type \lstinline{tuple}) consi
 
 \bigskip
 
-Tuples may be nested:
+Tuples may be nested.
 \begin{lstlisting}[language={}]
 >>> u = t, (1, 2, 3, 4, 5)
 >>> u
@@ -462,7 +470,7 @@ Tuples may be nested:
 
 \bigskip
 
-Tuples are immutable, but they can contain mutable objects:
+Tuples are immutable, but they can contain mutable objects.
 \begin{lstlisting}[language={}]
 >>> v = ([1, 2, 3], [3, 2, 1])
 >>> v
@@ -471,7 +479,7 @@ Tuples are immutable, but they can contain mutable objects:
 
 \bigskip
 
-Empty and singleton sequences:
+Empty and singleton sequences.
 \begin{lstlisting}[language={}]
 >>> empty = ()
 >>> singleton = 'hello', 
@@ -483,7 +491,7 @@ Empty and singleton sequences:
 
 \bigskip
 
-Sequence unpacking:
+Sequence unpacking.
 \begin{lstlisting}[language={}]
 >>> x, y, z = t
 \end{lstlisting}
@@ -491,7 +499,7 @@ Sequence unpacking:
 
 \section{Sets}
 \begin{frame}[fragile]
-A \emph{set} (an object of the built-in sequence type \lstinline{set}) is an unordered collection with no duplicate elements: 
+A \emph{set} (an object of the built-in sequence type \lstinline{set}) is an unordered collection with no duplicate elements.
 \begin{lstlisting}[language={}]
 >>> basket = ['apple', 'orange', 'apple', 'pear', 'orange', 'banana']
 >>> fruit = set(basket)
@@ -501,7 +509,7 @@ set(['orange', 'pear', 'apple', 'banana'])
 
 \bigskip
 
-Fast membership testing:
+Fast membership testing.
 \begin{lstlisting}[language={}]
 >>> 'orange' in fruit
 True
@@ -511,7 +519,7 @@ False
 
 \bigskip
 
-Set operations:
+Set operations.
 \begin{lstlisting}[language={}]
 >>> a = set('abracadabra')
 >>> b = set('alacazam')
@@ -526,12 +534,11 @@ set(['a', 'c'])
 >>> a ^ b                              # letters in a or b but not both
 set(['r', 'd', 'b', 'm', 'z', 'l'])
 \end{lstlisting}
-
 \end{frame}
 
 \section{Dictionaries}
 \begin{frame}[fragile]
-A \emph{dictionary} (an object of the built-in mapping type \lstinline{dict}) is an unordered set of \emph{key}-\emph{value} pairs, with the requirement that the keys are unique:
+A \emph{dictionary} (an object of the built-in mapping type \lstinline{dict}) is an unordered set of \emph{key}-\emph{value} pairs, with the requirement that the keys are unique.
 \begin{lstlisting}[language={}]
 >>> tel = {'jack': 4098, 'sape': 4139}
 >>> tel['guido'] = 4127
@@ -548,7 +555,7 @@ True
 
 \bigskip
 
-Dictionaries can be built directly from sequences of key-value pairs:
+Dictionaries can be built directly from sequences of key-value pairs.
 \begin{lstlisting}[language={}]
 >>> dict([('sape', 4139), ('guido', 4127), ('jack', 4098)])
 {'sape': 4139, 'jack': 4098, 'guido': 4127}
@@ -558,7 +565,11 @@ Dictionaries can be built directly from sequences of key-value pairs:
 
 \section{Comprehensions}
 \begin{frame}[fragile]
-\emph{List comprehensions} provide a concise way to create lists:
+\emph{Comprehensions} provide a concise way to create collections.
+
+\bigskip
+
+List comprehensions.
 \begin{lstlisting}[language={}]
 >>> squares = [x ** 2 for x in range(10)]
 >>> squares
@@ -569,7 +580,7 @@ Dictionaries can be built directly from sequences of key-value pairs:
 
 \bigskip
 
-Nested list comprehensions:
+Nested list comprehensions.
 \begin{lstlisting}[language={}]
 >>> matrix = [
 ...     [1, 2, 3, 4],
@@ -582,7 +593,7 @@ Nested list comprehensions:
 
 \bigskip
 
-Set comprehensions:
+Set comprehensions.
 \begin{lstlisting}[language={}]
 >>> a = {x for x in 'abracadabra' if x not in 'abc'}
 >>> a
@@ -591,7 +602,7 @@ set(['r', 'd'])
 
 \bigskip
 
-Dictionary comprehensions:
+Dictionary comprehensions.
 \begin{lstlisting}[language={}]
 >>> {x: x ** 2 for x in (2, 4, 6)}
 {2: 4, 4: 16, 6: 36}
@@ -600,7 +611,7 @@ Dictionary comprehensions:
 
 \section{Looping Techniques}
 \begin{frame}[fragile]
-When looping through a sequence, the position index and corresponding value can be retrieved at the same time using the \lstinline{enumerate()} function:
+When looping through a sequence, the position index and corresponding value can be retrieved at the same time using the \lstinline{enumerate()} function.
 \begin{lstlisting}[language={}]
 >>> for i, v in enumerate(['tic', 'tac', 'toe']):
 ...     stdio.writeln(str(i) + ' ' + v)
@@ -612,7 +623,7 @@ When looping through a sequence, the position index and corresponding value can 
 
 \bigskip
 
-To loop over two or more sequences at the same time, the entries can be paired with the \lstinline{zip()} function:
+To loop over two or more sequences at the same time, the entries can be paired with the \lstinline{zip()} function.
 \begin{lstlisting}[language={}]
 >>> questions = ['name', 'quest', 'favorite color']
 >>> answers = ['lancelot', 'the holy grail', 'blue']
@@ -626,7 +637,7 @@ What is your favorite color? It is blue.
 \end{frame}
 
 \begin{frame}[fragile]
-To loop over a sequence in reverse, first specify the sequence in a forward direction and then call the \lstinline{reversed()} function:
+To loop over a sequence in reverse, first specify the sequence in a forward direction and then call the \lstinline{reversed()} function.
 \begin{lstlisting}[language={}]
 >>> for i in reversed(range(1, 10, 2)):
 ...     stdio.writeln(i)
@@ -640,7 +651,7 @@ To loop over a sequence in reverse, first specify the sequence in a forward dire
 
 \bigskip
 
-To loop over a sequence in sorted order, use the \lstinline{sorted()} function which returns a new sorted list while leaving the source unaltered:
+To loop over a sequence in sorted order, use the \lstinline{sorted()} function which returns a new sorted list while leaving the source unaltered.
 \begin{lstlisting}[language={}]
 >>> basket = ['apple', 'orange', 'apple', 'pear', 'orange', 'banana']
 >>> for f in sorted(set(basket)):
