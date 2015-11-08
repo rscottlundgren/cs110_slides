@@ -161,7 +161,7 @@ We use three abstractions to manage the process of developing user-defined modul
 \item Application programming interfaces (APIs)
 \begin{center}
 \begin{tabular}{cc}
-function call & description \\ \hline
+function & description \\ \hline
 \lstinline$pdf(x, mu, sigma)$ & Gaussian pdf \\
 \lstinline$cdf(z, mu, sigma)$ & Gaussian cdf \\
 \end{tabular} 
@@ -221,7 +221,7 @@ def uniformInt(lo, hi):
 API for \lstinline{stdrandom} module:
 \begin{center}
 \begin{tabular}{cc}
-function call & description \\ \hline
+function & description \\ \hline
 \lstinline$seed(i)$ & seed the random number generator with integer $i$ \\
 \lstinline$uniformInt(lo, hi)$ & uniform random integer in the range $[lo, hi)$ \\
 \lstinline$uniformFloat(lo, hi)$ & uniform random float in the range $[lo, hi)$ \\
@@ -337,7 +337,7 @@ if __name__ == '__main__':
 API for \lstinline{stdarray} module:
 \begin{center}
 \begin{tabular}{cc}
-function call & description \\ \hline
+function & description \\ \hline
 \lstinline$create1D(n, val)$ & list of length $n$, each element initialized to $val$ \\
 \lstinline$create2D(m, n, val)$ & $m$-by-$n$ list, each element initialized to $val$ \\
 \lstinline$write1D(a)$ & write list $a$ to standard output \\
@@ -604,7 +604,7 @@ if __name__ == '__main__':
 API for \lstinline{stdstats} module:
 \begin{center}
 \begin{tabular}{cc}
-function call & description \\ \hline
+function & description \\ \hline
 \lstinline$mean(a)$ & average of the values in the numeric list $a$ \\
 \lstinline$var(a)$ & sample variance of the values in the numeric list $a$ \\
 \lstinline$stddev(a)$ & sample standard deviation of the values in the numeric list $a$ \\
