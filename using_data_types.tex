@@ -7,16 +7,6 @@
 
 \begin{document}
 \begin{frame}
-\hfill
-\begin{minipage}{150pt}
-\begin{flushright}
-\tiny \emph{The object-oriented model makes it easy to build up programs by accretion. What this often means, in practice, is that it provides a structured way to write spaghetti code.}
-
-\smallskip
-
-- PAUL GRAHAM
-\end{flushright}
-\end{minipage}
 \vfill
 \titlepage
 \end{frame}
@@ -124,7 +114,7 @@ Methods in the built-in \lstinline{str} data type:
 
 \begin{frame}[fragile]
 \begin{framed}
-\tiny potentialgene.py: Accept a DNA sequence as a comand-line argument. Write to \lstinline{True} to standard output if the DNA sequence corresponds to a potential gene, and \lstinline{False} otherwise.
+\tiny \lstinline{potentialgene.py}: Accepts a DNA sequence as a command-line argument, and writes \lstinline{True} to standard output if the sequence corresponds to a potential gene, and \lstinline{False} otherwise.
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -243,12 +233,19 @@ We use a variable name to identify the object to be associated with the method w
 
 \bigskip
 
-In any data-type implementation, it is worthwhile to include an operation that converts an object's value to a string. Python has a built-in function \lstinline{str()} for this purpose.
+In any data-type implementation, it is worthwhile to include an operation that converts an object's value to a string.
+
+\bigskip
+
+We will use the following form of the \lstinline{import} statement to import a data type \lstinline{XYZ} defined in a file \lstinline{xyz.py}:
+\begin{lstlisting}[language={}]
+from xyz import XYZ
+\end{lstlisting}
 \end{frame}
 
 \begin{frame}[fragile]
 \begin{framed}
-\tiny chargeclient.py: Accept floats $x$ and $y$ as command-line arguments. Create two \lstinline{Charge} objects with fixed position and electrical charge, and write to standard output the potential at $(x, y)$ due to the two charges.
+\tiny \lstinline{chargeclient.py}: Accepts floats \carg{x} and \carg{y} as command-line arguments, creates two \lstinline{Charge} objects with fixed position and electrical charge, and writes to standard output the potential at $(\carg{x}, \carg{y})$ due to the two charges.
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -302,23 +299,23 @@ method & description \\ \hline
 
 \begin{frame}[fragile]
 \begin{framed}
-\tiny alberssquares.py: Accept integers $r1$, $g1$, $b1$, $r2$, $g2$, and $b2$ as command-line arguments. Draw to standard draw Albers squares using colors $(r1, g1, b1)$ and $(r2, g2, b2)$.
+\tiny \lstinline{alberssquares.py}: Accepts integers \carg{r1}, \carg{g1}, \carg{b1}, \carg{r2}, \carg{g2}, and \carg{b2} as command-line arguments, and draws to standard draw Albers squares using colors $(\carg{r1}, \carg{g1}, \carg{b1})$ and $(\carg{r2}, \carg{g2}, \carg{b2})$.
 \end{framed}
 
 \begin{lstlisting}[language=Python]
-import color
 import stddraw
 import sys
+from color import Color
 
 def main():
     r1 = int(sys.argv[1])
     g1 = int(sys.argv[2])
     b1 = int(sys.argv[3])
-    c1 = color.Color(r1, g1, b1)
+    c1 = Color(r1, g1, b1)
     r2 = int(sys.argv[4])
     g2 = int(sys.argv[5])
     b2 = int(sys.argv[6])
-    c2 = color.Color(r2, g2, b2)
+    c2 = Color(r2, g2, b2)
     stddraw.setCanvasSize(512, 256)
     stddraw.setYscale(.25, .75)
     stddraw.setPenColor(c1)
@@ -342,9 +339,14 @@ if __name__ == '__main__':
 $ python alberssquares.py 9 90 166 100 100 100
 \end{lstlisting}
 \end{minipage}%
+\hfill
 \begin{minipage}{120pt}
 \begin{center}
-\hfill \includegraphics[scale=0.17]{figures/albers1.png}
+\includegraphics[scale=0.17]{figures/albers1.png}
+
+\smallskip
+
+\tiny Albers squares using colors $(9, 90, 166)$ and $(100, 100, 100)$
 \end{center}
 \end{minipage}
 
@@ -355,16 +357,21 @@ $ python alberssquares.py 9 90 166 100 100 100
 $ python alberssquares.py 0 174 239 147 149 252
 \end{lstlisting}
 \end{minipage}%
+\hfill
 \begin{minipage}{120pt}
 \begin{center}
-\hfill \includegraphics[scale=0.17]{figures/albers2.png}
+\includegraphics[scale=0.17]{figures/albers2.png}
+
+\smallskip
+
+\tiny Albers squares using colors $(0, 174, 239)$ and $(147, 149, 252)$
 \end{center}
 \end{minipage}
 \end{frame}
 
 \begin{frame}[fragile]
 \begin{framed}
-\tiny luminance.py: Accept six RGB values defining two colors as command-line arguments. Write \lstinline{True} to the standard output stream if the two colors are compatible, and \lstinline{False} otherwise.
+\tiny \lstinline{luminance.py}: Accepts six RGB values defining two colors as command-line arguments, and writes \lstinline{True} to standard output if the two colors are compatible, and \lstinline{False} otherwise.
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -430,7 +437,7 @@ method & description \\ \hline
 
 \begin{frame}[fragile]
 \begin{framed}
-\tiny grayscale.py: Accept the name of a JPG or PNG file as a command-line argument. Read an image from the file with that name. Create and show a gray scale version of that image.
+\tiny \lstinline{grayscale.py}: Accepts the name of a JPG or PNG file as a command-line argument, reads an image from the file, and draws a gray scale version of that image to standard draw.
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -454,25 +461,31 @@ if __name__ == '__main__':
     main()
 \end{lstlisting}
 
-\begin{minipage}{150pt}
+\begin{minipage}{200pt}
 \begin{lstlisting}[language={}]
 $ python grayscale.py mandrill.jpg
 \end{lstlisting}
 \end{minipage}%
-\begin{minipage}{150pt}
-\hfill \includegraphics[scale=0.2]{figures/grayscale.png}
-\end{minipage}%
+\hfill
+\begin{minipage}{100pt}
+\begin{center}
+\includegraphics[scale=0.2]{figures/grayscale.png}
+
+\smallskip
+
+\tiny Mandrill image in gray scale
+\end{center}
+\end{minipage}
 \end{frame}
 
 \begin{frame}[fragile]
 \begin{framed}
-\tiny scale.py: Accept the name of a JPG or PNG image file, an integer $w$, and an integer $h$ as command line arguments. Read an image from the
-file, and display the image scaled to width $w$ and height $h$.
+\tiny \lstinline{scale.py}: Accepts the name \carg{fileName} of a JPG or PNG image file, an integer \carg{w}, and an integer \carg{h} as command line arguments, reads an image from the file, and draws to standard draw the image scaled to width \carg{w} and height \carg{h}.
 \end{framed}
 
 \begin{lstlisting}[language=Python]
-import sys
 import stddraw
+import sys
 from picture import Picture
 
 def main():
@@ -496,41 +509,62 @@ if __name__ == '__main__':
 \end{frame}
 
 \begin{frame}[fragile]
-\begin{minipage}{150pt}
+\begin{minipage}{200pt}
 \begin{lstlisting}[language={}]
 $ python scale.py mandrill.jpg 200 200
 \end{lstlisting}
 \end{minipage}%
-\begin{minipage}{150pt}
-\hfill \includegraphics[width=3cm,height=3cm]{figures/scale1.png}
+\hfill
+\begin{minipage}{100pt}
+\begin{center}
+\includegraphics[width=2.5cm,height=2.5cm]{figures/scale2.png}
+
+\smallskip
+
+\tiny Mandrill image (200-by-200)
+\end{center}
 \end{minipage}%
 
 \bigskip
 
-\begin{minipage}{150pt}
+\begin{minipage}{200pt}
 \begin{lstlisting}[language={}]
 $ python scale.py mandrill.jpg 200 100
 \end{lstlisting}
 \end{minipage}%
-\begin{minipage}{150pt}
-\hfill \includegraphics[width=3cm,height=1.5cm]{figures/scale1.png}
+\hfill
+\begin{minipage}{100pt}
+\begin{center}
+\includegraphics[width=2.5cm,height=1.25cm]{figures/scale3.png}
+
+\smallskip
+
+\tiny Mandrill image (200-by-100)
+\end{center}
 \end{minipage}%
 
 \bigskip
 
-\begin{minipage}{150pt}
+\begin{minipage}{200pt}
 \begin{lstlisting}[language={}]
 $ python scale.py mandrill.jpg 100 200
 \end{lstlisting}
 \end{minipage}%
-\begin{minipage}{150pt}
-\hfill \includegraphics[width=1.5cm,height=3cm]{figures/scale1.png}
+\hfill
+\begin{minipage}{100pt}
+\begin{center}
+\includegraphics[width=1.25cm,height=2.5cm]{figures/scale1.png}
+
+\smallskip
+
+\tiny Mandrill image (100-by-200)
+\end{center}
 \end{minipage}%
 \end{frame}
 
 \begin{frame}[fragile]
 \begin{framed}
-\tiny fade.py: Accept strings $sourceFile$ and $targetFile$ and integer $n$ as command-line arguments. Then, over the course of $n$ frames, gradually replace the image from $sourceFile$ with the image with the image from $targetFile$. Display to standard draw each intermediate image. 
+\tiny \lstinline{fade.py}: Accepts strings \carg{sourceFile} and \carg{targetFile} and integer \carg{n} as command-line arguments, and then, over the course of \carg{n} frames, gradually replaces the image from \carg{sourceFile} with the image from \carg{targetFile}, and displays to standard draw each intermediate image. 
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -580,18 +614,24 @@ if __name__ == '__main__':
 $ python fade.py mandrill.jpg darwin.jpg 5
 \end{lstlisting}
 \begin{minipage}{300pt}
+\begin{center}
 \includegraphics[scale=0.15]{figures/fade1.png}\hfill
 \includegraphics[scale=0.15]{figures/fade2.png}\hfill
 \includegraphics[scale=0.15]{figures/fade3.png}\hfill
 \includegraphics[scale=0.15]{figures/fade4.png}\hfill
 \includegraphics[scale=0.15]{figures/fade5.png}\hfill
 \includegraphics[scale=0.15]{figures/fade6.png}
+
+\smallskip
+
+\tiny Mandrill image faded into Darwin image over 5 frames
+\end{center}
 \end{minipage}%
 \end{frame}
 
 \begin{frame}[fragile]
 \begin{framed}
-\tiny potential.py: Read values from standard input to create an array of charged particles. Set each pixel color in an image to a grayscale value proportional to the total of the potentials due to the particles at corresponding points. Draw the resulting image to standard draw.
+\tiny \lstinline{potential.py}: Reads values from standard input to create a list of charged particles, sets each pixel color in an image to a grayscale value proportional to the potential due to the particles at corresponding points, and draws the resulting image to standard draw.
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -656,9 +696,14 @@ $ more charges.txt
 $ python potential.py < charges.txt
 \end{lstlisting}
 \end{minipage}%
+\hfill
 \begin{minipage}{150pt}
 \begin{center}
-\hfill \includegraphics[scale=0.2]{figures/potential.png}
+\includegraphics[scale=0.2]{figures/potential.png}
+
+\smallskip
+
+\tiny Electric potential visualized
 \end{center}
 \end{minipage}
 \end{frame}
@@ -687,14 +732,14 @@ method & description \\ \hline
 \lstinline$OutStream(filename)$ & \makecell{a new output stream $out$ that will write \\ to $filename$ (defaults to standard output)} \\
 \lstinline$out.write(x)$ & write $x$ to $out$ \\
 \lstinline$out.writeln(x)$ & write $x$ to $out$, followed by a newline \\
-\lstinline$out.writef(fmt, arg1, ...)$ & \makecell{write the arguments $arg1$, $\dots$ to $out$ as \\ specified by the format string $fmt$}
+\lstinline$out.writef(fmt, arg1, ...)$ & \makecell{write the arguments $arg_1$, $\dots$ to $out$ as \\ specified by the format string $fmt$}
 \end{tabular} 
 \end{center}
 \end{frame}
 
 \begin{frame}[fragile]
 \begin{framed}
-\tiny cat.py: Copy files or web pages whose names are given by \lstinline{sys.argv[1:n - 2]} to the file whose name is given by \lstinline{sys.argv[n - 1]}.
+\tiny \lstinline{cat.py}: Copies files or web pages whose names are given by \lstinline{sys.argv[1:n - 2]} to the file whose name is given by \lstinline{sys.argv[n - 1]}.
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -731,7 +776,7 @@ test.
 
 \begin{frame}[fragile]
 \begin{framed}
-\tiny stockquote.py: Accept string $stockSymbol$ as a command-line argument. Write to standard output the current stock price for $stockSymbol$, as reported by the website \href{http://finance.yahoo.com/}{http://finance.yahoo.com/}.
+\tiny \lstinline{stockquote.py}: Accepts string \carg{stockSymbol} as a command-line argument, and writes to standard output the current stock price for \carg{stockSymbol}, as reported by the website \href{http://finance.yahoo.com/}{http://finance.yahoo.com/}.
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -771,7 +816,7 @@ $ python stockquote.py goog
 
 \begin{frame}[fragile]
 \begin{framed}
-\tiny split.py: Accept string $fileName$ and integer $fieldCount$ as command-line arguments. Split the file whose name is $fileName.csv$, by field, into $fieldCount$ files named $fileName0.txt$, $fileName1.txt$, etc.
+\tiny \lstinline{split.py}: Accepts string \carg{fileName} and integer \carg{fieldCount} as command-line arguments, splits the file whose name is \carg{fileName}.csv, by field, into \carg{fieldCount} files named \carg{fileName}0.txt, \carg{fileName}1.txt, etc.
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -831,7 +876,7 @@ An \emph{orphaned object} is an object that cannot be referenced by a program.
 
 \bigskip
 
-Python implements \emph{garbage collection}: managing memory by keeping track of orphaned objects and returning the memory they use to a pool of free memory.
+Python implements \emph{garbage collection} --- managing memory by keeping track of orphaned objects and returning the memory they use to a pool of free memory.
 \end{minipage}%
 \begin{minipage}{100pt}
 \begin{center}
