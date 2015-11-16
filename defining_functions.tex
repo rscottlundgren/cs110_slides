@@ -10,11 +10,11 @@
 \hfill
 \begin{minipage}{150pt}
 \begin{flushright}
-\tiny \emph{It's OK to figure out murder mysteries, but you shouldn't need to figure out code. You should be able to read it.}
+\tiny \emph{It's OK to figure out murder mysteries, but you shouldn't need to figure out code. You should be able to read it.} 
 
 \smallskip
 
-- Steve McConnell
+- STEVE MCCONNELL
 \end{flushright}
 \end{minipage}
 \vfill
@@ -484,7 +484,7 @@ The built-in function \lstinline{reduce(f, seq)} applies a function \lstinline{f
 
 \item Together, the values $e$ and $n$ are called the \emph{public key}.
 
-\item A message $y$ is decrypted using the function $g(y) = y^d \bmod n$, where $d \leq m-1$ is the multiplicative inverse of $e \bmod m$, ie, $ed \bmod m = 1$.
+\item A message $y$ is decrypted using the function $g(y) = y^d \bmod n$, where $1 \leq d < m$ is the multiplicative inverse of $e \bmod m$, ie, $ed \bmod m = 1$.
 
 \item The value $d$ is called the \emph{private key}.
 \end{itemize}
