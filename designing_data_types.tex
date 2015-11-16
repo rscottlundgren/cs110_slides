@@ -1,0 +1,488 @@
+\documentclass[8pt,a4paper,compress,handout]{beamer}
+
+\usepackage{/home/siyer/lib/slides}
+
+\title{Designing Data Types}
+\date{}
+
+\begin{document}
+\begin{frame}
+\vfill
+\titlepage
+\end{frame}
+
+\begin{frame}
+\frametitle{Outline}
+\tableofcontents
+\end{frame}
+
+\section{APIs}
+\begin{frame}[fragile]
+Precisely specifying a data type using an API improves design because it leads to client code that can clearly express its computation. 
+
+\bigskip
+
+By using APIs to separate clients from implementations, we reap the benefits of standard interfaces for every program that we compose.
+
+\bigskip
+
+We should avoid APIs that are too hard to implement, too narrow, too wide, too general, or too specific.
+\end{frame}
+
+\section{Encapsulation}
+\begin{frame}[fragile]
+The process of separating clients from implementations by hiding information is known as \emph{encapsulation}.
+
+\bigskip
+
+Encapsulation allows one implementation of an API to be substituted for another.
+
+\bigskip
+
+Encapsulation also helps programmers ensure that their code operates as intended.
+
+\bigskip
+
+Python does not enforce encapsulation; instead, through a naming convention, clients are informed that they should not directly access the instance variable, method, or function thus named.
+
+\bigskip
+
+\emph{Modular programming} is insisting on the API being the only point of dependence between client and implementation.
+\end{frame}
+
+\begin{frame}[fragile]
+A data type \lstinline{Complex} for complex numbers:
+\begin{center}
+\begin{tabular}{cc}
+method & description \\ \hline
+\lstinline$Complex(x, y)$ & a new complex object $c$ with value $x + yi$ \\
+\lstinline$c.re()$ & real part of $c$ \\
+\lstinline$c.im()$ & imaginary part of $c$ \\
+\lstinline$c.conjugate()$ & conjugate of $c$ \\
+\lstinline$c + d$ & sum of $c$ and $d$ \\
+\lstinline$c * d$ & product of $c$ and $d$ \\
+\lstinline$abs(c)$ & magnitute of $c$ \\
+\lstinline$str(c)$ & \lstinline$x + yi$ (string representation of $c$)
+\end{tabular} 
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{framed}
+\tiny \lstinline{complexpolar.py}: \lstinline{Complex} data type redux. 
+\end{framed}
+
+\begin{lstlisting}[language=Python]
+import math
+import stdio
+
+class Complex:
+    def __init__(self, re = 0.0, im = 0.0):
+        self._r = math.sqrt(re * re + im * im)
+        self._theta = math.atan2(im, re)
+
+    def re(self):
+        return self._r * math.cos(self._theta)
+
+    def im(self):
+        return self._r * math.sin(self._theta)
+
+    def conjugate(self):
+        return Complex(self.re(), -self.im())
+
+    def __add__(self, other):
+        re = self.re() + other.re()
+        im = self.im() + other.im()
+        return Complex(re, im)
+
+    def __mul__(self, other):
+        c = Complex(0, 0)
+        c._r = self._r * other._r
+        c._theta = self._theta + other._theta
+        return c
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{lstlisting}[language=Python]
+    def __abs__(self):
+        return self._r
+
+    def __str__(self):
+        return str(self.re()) + ' + ' + str(self.im()) + 'i'
+
+def main():
+    z0 = Complex(1.0, 1.0)
+    z = z0
+    z = z * z + z0
+    z = z * z + z0
+    stdio.writeln(z)
+
+if __name__ == '__main__':
+    main()
+\end{lstlisting}
+
+\begin{lstlisting}[language={}]
+$ python complexpolar.py 
+-7.0 + 7.0i
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{framed}
+\tiny \lstinline{counter.py}: Defines a data type \lstinline{Counter}.
+\end{framed}
+
+\begin{lstlisting}[language=Python]
+import stdio
+import stdrandom
+import sys
+
+class Counter:
+    def __init__(self, id, maxCount):
+        self._name = id
+        self._maxCount = maxCount
+        self._count = 0
+
+    def increment(self):
+        if self._count < self._maxCount:
+            self._count += 1
+
+    def value(self):
+        return self._count
+
+    def __str__(self):
+        return self._name + ': ' + str(self._count)
+
+    def __eq__(self, other):
+        return self._count == other._count
+
+    def __ne__(self, other):
+        return self._count != other._count
+
+    def __lt__(self, other):
+        return self._count < other._count
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{lstlisting}[language=Python]
+    def __gt__(self, other):
+        return self._count > other._count
+
+    def __le__(self, other):
+        return self._count <= other._count
+
+    def __ge__(self, other):
+        return self._count >= other._count
+
+def main():
+    n = int(sys.argv[1])
+    p = float(sys.argv[2])
+    heads = Counter('Heads', n)
+    tails = Counter('Tails', n)
+    for i in range(n):
+        if stdrandom.bernoulli(p):
+            heads.increment()
+        else:
+            tails.increment()
+    stdio.writeln(heads)
+    stdio.writeln(tails)
+
+if __name__ == '__main__':
+    main()
+\end{lstlisting}
+
+\begin{lstlisting}[language={}]
+$ python counter.py 1000 .5
+Heads: 483
+Tails: 517
+$ python counter.py 1000 .5
+Heads: 503
+Tails: 497
+$ python counter.py 1000 .3
+Heads: 280
+Tails: 720
+\end{lstlisting}
+\end{frame}
+
+\section{Immutability}
+\begin{frame}[fragile]
+blah
+\end{frame}
+
+\section{Polymorphism}
+\begin{frame}[fragile]
+blah
+\end{frame}
+
+\section{Overloading}
+\begin{frame}[fragile]
+blah
+\end{frame}
+
+\section{Functions are Objects}
+\begin{frame}[fragile]
+blah
+\end{frame}
+
+\section{Inheritance}
+\begin{frame}[fragile]
+blah
+\end{frame}
+
+\section{Application: Data Mining}
+\begin{frame}[fragile]
+\begin{framed}
+\tiny \lstinline{vector.py}: Defines a data type \lstinline{Vector}.
+\end{framed}
+
+\begin{lstlisting}[language=Python]
+import math
+import stdarray
+import stdio
+
+class Vector:
+    def __init__(self, a):
+        self._coords = a[:]
+        self._n = len(a)
+
+    def __getitem__(self, i):
+        return self._coords[i]
+
+    def __add__(self, other):
+        result = stdarray.create1D(self._n, 0)
+        for i in range(self._n):
+            result[i] = self._coords[i] + other._coords[i]
+        return Vector(result)
+
+    def __sub__(self, other):
+        result = stdarray.create1D(self._n, 0)
+        for i in range(self._n):
+            result[i] = self._coords[i] - other._coords[i]
+        return Vector(result)
+
+    def scale(self, alpha):
+        result = stdarray.create1D(self._n, 0)
+        for i in range(self._n):
+            result[i] = alpha * self._coords[i]
+        return Vector(result)
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{lstlisting}[language=Python]
+    def dot(self, other):
+        result = 0
+        for i in range(self._n):
+            result += self._coords[i] * other._coords[i]
+        return result
+
+    def __abs__(self):
+        return math.sqrt(self.dot(self))
+
+    def direction(self):
+        return self.scale(1.0 / abs(self))
+
+    def __str__(self):
+        return str(self._coords)
+        
+    def __len__(self):
+        return self._n
+        
+def main():
+    xCoords = [1.0, 2.0, 3.0, 4.0]
+    yCoords = [5.0, 2.0, 4.0, 1.0]
+    x = Vector(xCoords)
+    y = Vector(yCoords)
+    stdio.writeln('x        = ' + str(x))
+    stdio.writeln('y        = ' + str(y))
+    stdio.writeln('x + y    = ' + str(x + y))
+    stdio.writeln('10x      = ' + str(x.scale(10.0)))
+    stdio.writeln('|x|      = ' + str(abs(x)))
+    stdio.writeln('<x, y>   = ' + str(x.dot(y)))
+    stdio.writeln('|x - y|  = ' + str(abs(x - y)))
+
+if __name__ == '__main__':
+    main()
+\end{lstlisting}
+
+\begin{lstlisting}[language={}]
+
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{framed}
+\tiny \lstinline{sketch.py}: Defines a data type \lstinline{Sketch}. 
+\end{framed}
+
+\begin{lstlisting}[language=Python]
+import stdarray
+import stdio
+import sys
+from vector import Vector
+
+class Sketch:
+    def __init__(self, text, k, d):
+        freq = stdarray.create1D(d, 0)
+        for i in range(len(text) - k):
+            kgram = text[i:i + k]
+            h = hash(kgram)
+            freq[h % d] += 1
+        vector = Vector(freq)
+        self._sketch = vector.direction()
+
+    def similarTo(self, other):
+        return self._sketch.dot(other._sketch)
+
+    def __str__(self):
+        return str(self._sketch)
+
+def main():
+    text = stdio.readAll()
+    k = int(sys.argv[1])
+    d = int(sys.argv[2])
+    sketch = Sketch(text, k, d)
+    stdio.writeln(sketch)
+
+if __name__ == '__main__':
+    main()
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{lstlisting}[language={}]
+$ more genome20.txt
+ATAGATGCATAGCGCATAGC
+$ python sketch.py 2 16 < genome20.txt 
+[0.37210420376762543, 0.37210420376762543, 0.49613893835683387, 0.0, 
+0.12403473458920847, 0.0, 0.0, 0.0, 0.0, 0.0, 0.24806946917841693, 0.0, 
+0.12403473458920847, 0.6201736729460423, 0.0, 0.0]
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{framed}
+\tiny \lstinline{comparedocuments.py}: Accepts integers \carg{k} and \carg{d} as command-line arguments, reads a document list from standard input, computes \carg{d}-dimensional profiles based on \carg{k}-gram frequencies for all the documents, and writes a matrix of similarity measures between all pairs of documents.
+\end{framed}
+
+\begin{lstlisting}[language=Python]
+import stdarray
+import stdio
+import sys
+from instream import InStream
+from sketch import Sketch
+
+def main():
+    k = int(sys.argv[1])
+    d = int(sys.argv[2])
+    filenames = stdio.readAllStrings()
+    sketches = stdarray.create1D(len(filenames))
+    for i in range(len(filenames)):
+        text = InStream(filenames[i]).readAll()
+        sketches[i] = Sketch(text, k, d)
+    stdio.write('    ')
+    for i in range(len(filenames)):
+        stdio.writef('%8.4s', filenames[i])
+    stdio.writeln()
+    for i in range(len(filenames)):
+        stdio.writef('%.4s', filenames[i])
+        for j in range(len(filenames)):
+            stdio.writef('%8.2f', sketches[i].similarTo(sketches[j]))
+        stdio.writeln()
+    
+if __name__ == '__main__':
+    main()
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{lstlisting}[language={}]
+$ more documents.txt
+constitution.txt
+tomsawyer.txt
+huckfinn.txt
+prejudice.txt
+vector.py
+djia.csv
+amazon.html
+actg.txt
+$ python comparedocuments.py 5 10000 < documents.txt
+        cons    toms    huck    prej    vect    djia    amaz    actg
+cons    1.00    0.67    0.61    0.64    0.10    0.18    0.19    0.12
+toms    0.67    1.00    0.93    0.87    0.08    0.23    0.19    0.15
+huck    0.61    0.93    1.00    0.81    0.06    0.21    0.15    0.14
+prej    0.64    0.87    0.81    1.00    0.07    0.25    0.19    0.16
+vect    0.10    0.08    0.06    0.07    1.00    0.03    0.17    0.01
+djia    0.18    0.23    0.21    0.25    0.03    1.00    0.13    0.12
+amaz    0.19    0.19    0.15    0.19    0.17    0.13    1.00    0.09
+actg    0.12    0.15    0.14    0.16    0.01    0.12    0.09    1.00
+\end{lstlisting}
+\end{frame}
+
+\section{Design by Contract}
+\begin{frame}[fragile]
+When using the design-by-contract model, the designer of a data type expresses:
+\begin{itemize}
+\item a \emph{precondition} - the condition that the client promises to satisfy when calling a method;
+\item a \emph{postcondition} - the condition that the implementation promises to achieve when returning from a method;
+\item \emph{invariants} - any condition that the implementation promises to satisfy while the method is executing; and 
+\item \emph{side effects} - any other change in state that the method could cause.
+\end{itemize}
+
+\bigskip
+
+\emph{Exceptions} and \emph{assertions} are Python language mechanisms that enable us to test these conditions.
+\end{frame}
+
+\begin{frame}[fragile]
+An \emph{exception} is a disruptive event that occurs while a program is running, often to signal an error. 
+
+\bigskip
+
+The action taken is known as \emph{raising an exception} (or \emph{error}).
+
+\bigskip
+
+We can raise our own exceptions as follows:
+\begin{lstlisting}[language=Python]
+raise Exception('Error message here.')
+\end{lstlisting} 
+
+\bigskip
+
+For example, in \lstinline{vector.py}, we can raise an exception in \lstinline{__add__()} if the two \lstinline{Vectors} to be added have different dimensions. 
+\begin{lstlisting}[language=Python]
+if len(self) != len(other):
+    raise Exception('vectors have different dimensions')
+\end{lstlisting} 
+
+\bigskip
+
+We handle exceptions using a try-except block. For example
+\begin{lstlisting}[language=Python]
+(x, y) = (5, 0)
+try:
+    z = x / y
+except ZeroDivisionError as e:
+    z = e
+stdio.writeln(z)
+\end{lstlisting} 
+\end{frame}
+
+\begin{frame}[fragile]
+An \emph{assertion} is a boolean expression that we affirm is \lstinline{True}, and if it is \lstinline{False}, the program will raise an \lstinline{AssertionError} at run time.
+
+\bigskip
+For example, in \lstinline{counter.py}, we might check that the counter is never negative by adding the following assertion as the last statement in \lstinline{increment()}:
+\begin{lstlisting}[language=Python]
+assert self.__count >= 0
+\end{lstlisting} 
+
+We can also put an optional message, such as
+\begin{lstlisting}[language=Python]
+assert self.__count >= 0, 'Negative count detected'
+\end{lstlisting} 
+\end{frame}
+\end{document}
