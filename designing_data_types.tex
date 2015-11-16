@@ -50,6 +50,198 @@ Python does not enforce encapsulation; instead, through a naming convention, cli
 \emph{Modular programming} is insisting on the API being the only point of dependence between client and implementation.
 \end{frame}
 
+\section{Immutability}
+\begin{frame}[fragile]
+An object from a data type is \emph{immutable} if its data-type value cannot change once created. 
+
+\bigskip
+
+The purpose of many data types (eg, \lstinline{Vector}) is to encapsulate values that do not change, while for many other data types (eg, \lstinline{Counter}), the very purpose of the abstraction is to encapsulate values as they change. 
+
+\bigskip
+
+Generally, immutable data types are easier to use and harder to misuse because the scope of code that can change object values is far smaller than for mutable types.
+
+\bigskip
+
+In Python, lists are mutable, whereas and strings and tuples are immutable.
+
+\bigskip
+
+The downside of immutability is that we must create a new object for every value, which is called \emph{defensive copy}.
+\end{frame}
+
+\section{Polymorphism}
+\begin{frame}[fragile]
+A method (or function) that can take arguments with different types is said to be \emph{polymorphic}.
+
+\bigskip
+
+\emph{Duck typing} is a programming style in which the language does not formally specify the requirements for a function's arguments. 
+
+\bigskip
+
+If an object walks like a duck, swims like a duck, and quacks like a duck, we can treat that object as a duck; we don't need to explicitly declare it to be a duck. 
+
+\bigskip
+
+Python uses duck typing for all operations (function calls, method calls, and operators), and raises a \lstinline{TypeError} at run time if an operation cannot be applied to an object because it is of an inappropriate type. 
+
+\bigskip
+
+Duck typing leads to simpler and more flexible client code and puts the focus on operations rather than the type.
+
+\bigskip
+
+The primary disadvantage of duck typing is that it is difficult to know precisely what the contract is between the client and the implementation --- the API simply does not carry this information.
+\end{frame}
+
+\section{Overloading}
+\begin{frame}[fragile]
+The ability to define a data type that provides its own definitions of operators is a form of polymorphism known as \emph{operator overloading}. 
+
+\bigskip
+
+In Python, we can overload almost every operator, including operators for arithmetic, comparisons, indexing, and slicing.
+
+\bigskip
+
+We can also overload built-in functions, including absolute value, length, hashing, and type conversion. 
+
+\bigskip
+
+Overloading operators and built-in functions makes user-defined types behave more like built-in types.
+
+\bigskip
+
+To perform an operation, Python internally converts the expression into a call on the corresponding special method.
+
+\bigskip
+
+To call a built-in function, Python internally calls the corresponding special method instead. 
+
+\bigskip
+
+To overload an operator or built-in function, we include an implementation of the corresponding special method with our own code.
+\end{frame}
+
+\begin{frame}[fragile]
+Special methods for arithmetic operators:
+\begin{center}
+\begin{tabular}{ccc}
+client operation & special method & description \\ \hline
+\lstinline$x + y$ & \lstinline$__add__(self, y)$ & sum of $x$ and $y$ \\
+\lstinline$x - y$ & \lstinline$__sub__(self, y)$ & difference of $x$ and $y$ \\
+\lstinline$x * y$ & \lstinline$__mul__(self, y)$ & product of $x$ and $y$ \\
+\lstinline$x ** y$ & \lstinline$__pow__(self, y)$ & $x$ to the power $y$ \\
+\lstinline$x / y$ & \lstinline$__div__(self, y)$ & quotient of $x$ and $y$ \\
+\lstinline$x // y$ & \lstinline$__floordiv__(self, y)$ & floored quotient of $x$ and $y$ \\
+\lstinline$x % y$ & \lstinline$__mod__(self, y)$ & remainder when dividing $x$ by $y$ \\
+\lstinline$+x$ & \lstinline$__pos__(self)$ & $x$ \\
+\lstinline$-x$ & \lstinline$__neg__(self)$ & arithmetic negation of $x$
+\end{tabular} 
+\end{center}
+
+\bigskip
+
+Special methods for comparison operators:
+\begin{center}
+\begin{tabular}{ccc}
+client operation & special method & description \\ \hline
+\lstinline$x == y$ & \lstinline$__eq__(self, y)$ & are $x$ and $y$ equal? \\
+\lstinline$x != y$ & \lstinline$__ne__(self, y)$ & are $x$ and $y$ not equal? \\
+\lstinline$x < y$ & \lstinline$__lt__(self, y)$ & is $x$ less than $y$? \\
+\lstinline$x <= y$ & \lstinline$__le__(self, y)$ & is $x$ less than or equal to $y$? \\
+\lstinline$x > y$ & \lstinline$__gt__(self, y)$ & is $x$ greater than $y$? \\
+\lstinline$x >= y$ & \lstinline$__ge__(self, y)$ & is $x$ greater than or equal to $y$?
+\end{tabular} 
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+Special methods for built-in functions:
+\begin{center}
+\begin{tabular}{ccc}
+client operation & special method & description \\ \hline
+\lstinline$len(x)$ & \lstinline$__len__(self)$ & length of $x$ \\
+\lstinline$float(x)$ & \lstinline$__float__(self)$ & float equivalent of $x$ \\
+\lstinline$int(x)$ & \lstinline$__int__(self)$ & integer equivalent of $x$ \\
+\lstinline$str(x)$ & \lstinline$__str__(self)$ & string representation of $x$ \\
+\lstinline$abs(x)$ & \lstinline$__abs__(self)$ & absolute value of $x$ \\
+\lstinline$hash(x)$ & \lstinline$__hash__(self)$ & integer hash code for $x$ \\
+\lstinline$iter(x)$ & \lstinline$__iter__(self)$ & iterator for $x$
+\end{tabular} 
+\end{center}
+\end{frame}
+
+\section{Functions are Objects}
+\begin{frame}[fragile]
+In Python, \emph{everything} is an object, including functions, which means we can use them as arguments to functions and return them as results.
+
+\bigskip
+
+Defining \emph{higher-order functions} that manipulate other functions is common both in mathematics and scientific computing.
+
+\bigskip
+
+For example, the following function evaluates the \emph{Riemann integral} (ie, the area under the curve) of a real-valued function $f()$ in the interval $(a, b)$, using the rectangle rule with $n$ rectangles:
+
+\begin{lstlisting}[language=Python]
+def integrate(f, a, b, n = 1000):
+    total = 0.0
+    dt = 1.0 * (b - a) / n
+    for i in range(n):
+        total += dt * f(a + (i + 0.5) * dt)
+    return total
+\end{lstlisting}
+
+and the following statement uses the function above to compute the area under the curve $f(x)=x^2$ in the interval $(0, 1)$:
+
+\begin{lstlisting}[language=Python]
+area = integrate(lambda x : x * x, 0, 1)
+\end{lstlisting}
+\end{frame}
+
+\section{Inheritance}
+\begin{frame}[fragile]
+Python provides language support for defining relationships among classes, known as \emph{inheritance}.
+
+\bigskip
+
+Inheritance enables \emph{subclassing}, where the idea is to define a new class (\emph{subclass}, or \emph{derived class}) that inherits instance variables and methods from another class (\emph{superclass}, or \emph{base class}). 
+
+\begin{lstlisting}[language={}]
+class DerivedClassName(BaseClassName):
+    <statement>
+    <statement>
+    ...
+\end{lstlisting}
+
+\bigskip
+
+Every class in Python implicitly inherits from \lstinline{object}.
+
+\bigskip
+
+Python supports two built-in functions that work with inheritance:
+\begin{itemize}
+\item \lstinline{isinstance(o, T)} checks if instance \lstinline{o} is of type \lstinline{T}.
+\item \lstinline{issubclass(T1, T2)} checks if \lstinline{T1} is a subclass of \lstinline{T2}.
+\end{itemize}
+
+\bigskip
+
+Python supports a limited form of multiple inheritance as well. 
+
+\begin{lstlisting}[language={}]
+class DerivedClassName(Base1, Base2, Base3):
+    <statement>
+    <statement>
+    ...
+\end{lstlisting}
+\end{frame}
+
+\section{Examples}
 \begin{frame}[fragile]
 A data type \lstinline{Complex} for complex numbers:
 \begin{center}
@@ -61,7 +253,7 @@ method & description \\ \hline
 \lstinline$c.conjugate()$ & conjugate of $c$ \\
 \lstinline$c + d$ & sum of $c$ and $d$ \\
 \lstinline$c * d$ & product of $c$ and $d$ \\
-\lstinline$abs(c)$ & magnitute of $c$ \\
+\lstinline$abs(c)$ & magnitude of $c$ \\
 \lstinline$str(c)$ & \lstinline$x + yi$ (string representation of $c$)
 \end{tabular} 
 \end{center}
@@ -126,6 +318,25 @@ if __name__ == '__main__':
 $ python complexpolar.py 
 -7.0 + 7.0i
 \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+A data type \lstinline{Counter} for counting:
+\begin{center}
+\begin{tabular}{cc}
+method & description \\ \hline
+\lstinline$Counter(id, maxCount)$ & a new counter $c$ named $id$, with maximum value $maxCount$ \\
+\lstinline$c.increment()$ & increment $c$, unless its value is $maxCount$ \\
+\lstinline$c.value()$ & value of $c$ \\
+\lstinline$str(c)$ & string representation of $c$ \\
+\lstinline$c == d$ & are $c$ and $d$ equal? \\
+\lstinline$c != d$ & are $c$ and $d$ not equal? \\
+\lstinline$c < d$ & is $c$ less than $d$? \\
+\lstinline$c > d$ & is $c$ greater than $d$? \\
+\lstinline$c <= d$ & is $c$ less than or equal to $d$? \\
+\lstinline$c >= d$ & is $c$ greater than or equal to $d$? \\
+\end{tabular} 
+\end{center}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -206,32 +417,41 @@ Tails: 720
 \end{lstlisting}
 \end{frame}
 
-\section{Immutability}
 \begin{frame}[fragile]
-blah
+A \emph{spatial vector} is an abstract entity that has a magnitude and a direction.
+
+\bigskip
+
+Vector operations, assuming $\mathbf{x}=(x_0,x_1,\dots,x_{n-1})$, $\mathbf{y}=(y_0,y_1,\dots,y_{n-1})$, and $\alpha \in \mathbb{R}$:
+\begin{itemize}
+\item Addition: $\mathbf{x}+\mathbf{y}=(x_0+y_0,x_1+y_1,\dots,x_{n-1}+y_{n-1})$.
+\item Subtraction: $\mathbf{x}-\mathbf{y}=(x_0-y_0,x_1-y_1,\dots,x_{n-1}-y_{n-1})$.
+\item Scalar product: $\alpha\mathbf{x}=(\alpha x_0,\alpha x_1,\dots,\alpha x_{n-1})$.
+\item Dot product: $\mathbf{x}\cdot\mathbf{y}=x_0y_0+x_1y_1+\dots+x_{n-1}y_{n-1}$.
+\item Magnitude: $|\mathbf{x}|=(x_0^2+x_1^2+\dots+x_{n-1}^2)^{1/2}$.
+\item Direction: $\mathbf{x}/|\mathbf{x}|=(x_0/|\mathbf{x}|,x_1/|\mathbf{x}|,\dots,x_{n-1}/|\mathbf{x}|)$.
+\end{itemize}
 \end{frame}
 
-\section{Polymorphism}
 \begin{frame}[fragile]
-blah
+A data type \lstinline{Vector} for spatial vectors:
+\begin{center}
+\begin{tabular}{cc}
+method & description \\ \hline
+\lstinline$Vector(a)$ & a new vector $v$ with Cartesian coordinates taken from the list $a$ \\
+\lstinline$v[i]$ & $i$th Cartesian coordinates of $v$ \\
+\lstinline$v + w$ & sum of $v$ and $w$ \\
+\lstinline$v - w$ & difference of $v$ and $w$ \\
+\lstinline$v.dot(w)$ & dot product of $v$ and $w$ \\
+\lstinline$v.scale(alpha)$ & scalar product of float $\alpha$ and $v$ \\
+\lstinline$v.direction()$ & unit vector in the same direction as $v$ \\
+\lstinline$abs(v)$ & magnitude of $v$ \\
+\lstinline$len(v)$ & length of $v$ \\
+\lstinline$str(v)$ & string representation of $v$
+\end{tabular} 
+\end{center}
 \end{frame}
 
-\section{Overloading}
-\begin{frame}[fragile]
-blah
-\end{frame}
-
-\section{Functions are Objects}
-\begin{frame}[fragile]
-blah
-\end{frame}
-
-\section{Inheritance}
-\begin{frame}[fragile]
-blah
-\end{frame}
-
-\section{Application: Data Mining}
 \begin{frame}[fragile]
 \begin{framed}
 \tiny \lstinline{vector.py}: Defines a data type \lstinline{Vector}.
@@ -278,17 +498,17 @@ class Vector:
             result += self._coords[i] * other._coords[i]
         return result
 
+    def direction(self):
+        return self.scale(1.0 / abs(self))
+     
     def __abs__(self):
         return math.sqrt(self.dot(self))
 
-    def direction(self):
-        return self.scale(1.0 / abs(self))
+    def __len__(self):
+        return self._n
 
     def __str__(self):
         return str(self._coords)
-        
-    def __len__(self):
-        return self._n
         
 def main():
     xCoords = [1.0, 2.0, 3.0, 4.0]
@@ -306,10 +526,31 @@ def main():
 if __name__ == '__main__':
     main()
 \end{lstlisting}
+\end{frame}
 
+\begin{frame}[fragile]
 \begin{lstlisting}[language={}]
-
+$ python vector.py
+x        = [1.0, 2.0, 3.0, 4.0]
+y        = [5.0, 2.0, 4.0, 1.0]
+x + y    = [6.0, 4.0, 7.0, 5.0]
+10x      = [10.0, 20.0, 30.0, 40.0]
+|x|      = 5.47722557505
+<x, y>   = 25.0
+|x - y|  = 5.09901951359
 \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+A data type \lstinline{Sketch} for compactly representing the content of a document:
+\begin{center}
+\begin{tabular}{cc}
+method & description \\ \hline
+\lstinline$Sketch(text, k, d)$ & \makecell{a new sketch $s$ built from the string $text$ \\ using $k$-grams and dimension $d$} \\
+\lstinline$s.similarTo(t)$ & \makecell{similarity measure between sketches $s$ and $t$ (a float \\ between 0.0 and 1.0)} \\
+\lstinline$str(s)$ & string representation of sketch $s$
+\end{tabular} 
+\end{center}
 \end{frame}
 
 \begin{frame}[fragile]
