@@ -709,6 +709,7 @@ A complex number is a number of the form $x+yi$, where $x$ (the real part) and $
 
 Complex arithmetic:
 \begin{itemize}
+\item Conjugate: $(x+yi)^\star=x-yi$.
 \item Addition: $(x+yi)+(v+wi) = (x+y) + (y+w)i$.
 
 \item Multiplication: $(x+yi)\times(v+wi) = (xv-yw) + (yv+xw)i$.
@@ -725,6 +726,7 @@ method & description \\ \hline
 \lstinline$Complex(x, y)$ & a new complex object $c$ with value $x + yi$ \\
 \lstinline$c.re()$ & real part of $c$ \\
 \lstinline$c.im()$ & imaginary part of $c$ \\
+\lstinline$c.conjugate()$ & conjugate of $c$ \\
 \lstinline$c + d$ & sum of $c$ and $d$ \\
 \lstinline$c * d$ & product of $c$ and $d$ \\
 \lstinline$abs(c)$ & magnitute of $c$ \\
