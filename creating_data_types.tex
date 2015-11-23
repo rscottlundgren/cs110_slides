@@ -710,7 +710,7 @@ A complex number is a number of the form $x+yi$, where $x$ (the real part) and $
 Complex arithmetic:
 \begin{itemize}
 \item Conjugate: $(x+yi)^\star=x-yi$.
-\item Addition: $(x+yi)+(v+wi) = (x+y) + (y+w)i$.
+\item Addition: $(x+yi)+(v+wi) = (x+v) + (y+w)i$.
 
 \item Multiplication: $(x+yi)\times(v+wi) = (xv-yw) + (yv+xw)i$.
 
@@ -772,12 +772,6 @@ class Complex:
 
 \begin{frame}[fragile]
 \begin{lstlisting}[language=Python]
-    def __eq__(self, other):
-        return (self._re == other._re) and (self._im == other._im)
-
-    def __ne__(self, other):
-        return not self.__eq__(other)
-
     def __abs__(self):
         return math.sqrt(self._re * self._re + self._im * self._im)
 
@@ -917,7 +911,8 @@ from instream import InStream
 from outstream import OutStream
 
 class StockAccount:
-    def __init__(self, inStream):
+    def __init__(self, filename):
+        inStream = InStream(filename)
         self._name = inStream.readLine()
         self._cash = inStream.readFloat()
         self._stockCount = inStream.readInt()
@@ -939,7 +934,8 @@ class StockAccount:
 
 \begin{frame}[fragile]
 \begin{lstlisting}[language=Python]
-    def write(self, outStream):
+    def write(self, filename):
+        outStream = OutStream(filename)
         outStream.writeln(self._name)
         outStream.writeln(self._cash)
         outStream.writeln(self._stockCount)
@@ -961,8 +957,7 @@ class StockAccount:
         stdio.writef('%21s %10.2f\n', 'Total:', total)
 
 def main():
-    inStream = InStream(sys.argv[1])
-    acct = StockAccount(inStream)
+    acct = StockAccount(sys.argv[1])
     acct.writeReport()
 
 if __name__ == '__main__':

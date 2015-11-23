@@ -65,11 +65,11 @@ r = r + v.scale(dt)
 \end{frame}
 
 \begin{frame}[fragile]
-We use Newton's law of universal gravitation ($\mathbf{F}=G\frac{m_1m_2}{r^2}\hat{\mathbf{r}}$) for computing the force imposed on one body by another.
+We use Newton's law of universal gravitation ($\mathbf{F}=-G\frac{m_1m_2}{r^2}\hat{\mathbf{r}}$) for computing the force imposed on one body by another.
 
 \begin{lstlisting}[language=Python]
 G = 6.67e-11
-delta = a._r - b._r
+delta = b._r - a._r
 dist = abs(delta)
 magnitude = G * a._mass * b._mass / (dist * dist)
 f = delta.direction().scale(magnitude)
