@@ -32,21 +32,17 @@ The performance characteristics of a program is determined by:
 
 \item its \emph{space complexity}, ie, how much memory it needs.
 \end{itemize}
-
-\bigskip
-
-The total running time of a program is determined by two primary factors:
-\begin{itemize}
-\item the cost of executing each statement; and 
-\item the frequency of execution of each statement.
-\end{itemize}
-
-\bigskip
-
-Running time is expressed using an \emph{order-of-growth} function of the input size $N$, without any lower-order terms or constant coefficients.
 \end{frame}
 
 \begin{frame}[fragile]
+The running time of a program is determined by the cost of executing each statement, and the frequency of execution of each statement.
+
+\bigskip
+
+Running time is expressed using an \emph{order-of-growth} function of the problem size $N$, without any lower-order terms or constant coefficients.
+
+\bigskip
+
 Order-of-growth classifications:
 \begin{center}
 \begin{tabular}{cccc}
@@ -61,7 +57,31 @@ exponential & $2^N$ & exhaustive search & check all subsets
 \end{tabular} 
 \end{center}
 \begin{center}
-\includegraphics[scale=0.3]{{./figures/order_of_growth}.pdf}
+\includegraphics[scale=0.25]{{./figures/order_of_growth}.pdf}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+The sizes of objects of built-in types differ from system to system, so the sizes of data types that we create also differ accordingly.
+
+\bigskip
+
+The function call \lstinline{sys.getsizeof(x)} returns the number of bytes that a built-in object \lstinline{x} consumes on a particular system.
+
+\bigskip
+
+Sizes of built-in objects on a typical system:
+\begin{center}
+\begin{tabular}{cc}
+object & size in bytes \\ \hline
+integer & 24 \\ 
+float & 24 \\ 
+boolean & 24 \\ 
+string of $n$ characters & $40 + n$ \\
+list of $n$ integers & $72 + 8n + 24n = 72 + 32n$ \\
+$m$-by-$n$ list of integers & $72 + 8m + m(72 + 32n) = 72 + 80m + 32mn$ \\
+user-defined & hundreds of bytes, at least
+\end{tabular} 
 \end{center}
 \end{frame}
 
@@ -173,7 +193,6 @@ eve@airport
 \end{frame}
 
 \section{Sorting}
-\subsection*{Insertion Sort}
 \begin{frame}[fragile]
 The \emph{sort problem} involves rearranging a sequence of objects so as to put them in some logical order.
 
@@ -231,7 +250,6 @@ and but for had him his the tom was you
 \end{lstlisting}
 \end{frame}
 
-\subsection*{Merge Sort}
 \begin{frame}[fragile]
 \emph{Merge sort} is based on a simple operation known as \emph{merging}: combining two ordered lists to make one larger ordered list.
 
@@ -317,7 +335,6 @@ and but for had him his the tom was you
 \end{lstlisting}
 \end{frame}
 
-\subsection*{Application}
 \begin{frame}[fragile]
 \begin{framed}
 \tiny \lstinline{frequencycount.py}: Reads words from standard input, and writes the frequency counts of the words to standard output.
@@ -380,7 +397,7 @@ method & description \\ \hline
 
 \begin{frame}[fragile]
 \begin{framed}
-\tiny \lstinline{arraystack.py}: Defines a data type \lstinline{Stack}.
+\tiny \lstinline{stack.py}: Defines a data type \lstinline{Stack}.
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -429,12 +446,11 @@ to be or not to - be - - that - - - is
 \end{lstlisting}
 
 \begin{lstlisting}[language={}]
-$ python arraystack.py < tobe.txt 
+$ python stack.py < tobe.txt 
 to be not that or be
 \end{lstlisting}
 \end{frame}
 
-\subsection*{Application}
 \begin{frame}[fragile]
 \begin{framed}
 \tiny \lstinline{evaluate.py}: Reads a fully parenthesized numeric expression from standard input, evaluates it, and writes the resulting number to standard output.
@@ -443,11 +459,10 @@ to be not that or be
 \begin{lstlisting}[language=Python]
 import math
 import stdio
-from arraystack import Stack
+from stack import Stack
 
 def main():
-    ops = Stack()
-    values = Stack()
+    ops, values = Stack(), Stack()
     while not stdio.isEmpty():
         token = stdio.readString()
         if   token == '+':    ops.push(token)
@@ -455,8 +470,7 @@ def main():
         elif token == '*':    ops.push(token)
         elif token == 'sqrt': ops.push(token)
         elif token == ')':
-            op = ops.pop()
-            value = values.pop()
+            op, value = ops.pop(), ops.pop()
             if   op == '+':    value = values.pop() + value
             elif op == '-':    value = values.pop() - value
             elif op == '*':    value = values.pop() * value
@@ -471,18 +485,162 @@ if __name__ == '__main__':
 \end{lstlisting}
 
 \begin{lstlisting}[language={}]
-$ echo ( ( 1 + sqrt ( 5.0 ) ) * 0.5 ) | python evaluate.py 
+$ python evaluate.py
+( ( 1 + sqrt ( 5.0 ) ) * 0.5 )
+<ctrl-d>
 1.61803398875
 \end{lstlisting}
 \end{frame}
 
 \section{Queues}
 \begin{frame}[fragile]
-blah
+A \emph{queue} is an iterable collection that is based on the first-in-first-out (FIFO) policy.
+
+\bigskip
+
+A data type \lstinline{Queue} that represents a queue:
+\begin{center}
+\begin{tabular}{cc}
+method & description \\ \hline
+\lstinline$Queue()$ & constructs an empty queue $q$ \\
+\lstinline$q.isEmpty()$ & tests if $q$ empty \\
+\lstinline$q.enqueue(item)$ & adds $item$ to the end of $q$ \\
+\lstinline$q.dequeue()$ &  removes and returns the first item of $q$ \\
+\lstinline$str(q)$ & returns a string representation of $q$
+\end{tabular} 
+\end{center}
 \end{frame}
 
-\section{Symbol Tables}
 \begin{frame}[fragile]
-blah
+\begin{framed}
+\tiny \lstinline{queue.py}: Defines a data type \lstinline{Queue}.
+\end{framed}
+
+\begin{lstlisting}[language=Python]
+import stdio
+
+class Queue:
+    def __init__(self):
+        self._a = []
+
+    def isEmpty(self):
+        return len(self._a) == 0
+
+    def enqueue(self, item):
+        self._a.insert(0, item)
+
+    def dequeue(self):
+        return self._a.pop()
+
+    def __str__(self):
+        s = ''
+        for item in reversed(self._a):
+            s = s + ' ' + str(item)
+        return s
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{lstlisting}[language=Python]
+def main():
+    queue = Queue()
+    while not stdio.isEmpty():
+        item = stdio.readString()
+        if item != '-':
+            queue.enqueue(item)
+        else:
+            stdio.write(queue.dequeue())
+            stdio.write(' ')
+    stdio.writeln()
+
+if __name__ == '__main__':
+    main()
+\end{lstlisting}
+
+\begin{lstlisting}[language={}]
+$ more tobe.txt
+to be or not to - be - - that - - - is
+\end{lstlisting}
+
+\begin{lstlisting}[language={}]
+$ python queue.py < tobe.txt
+to be or not to be
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{framed}
+\tiny \lstinline{mm1queue.py}: Accepts float command-line arguments \carg{lamb} and \carg{mu}, simulates an M/M/1 queue with arrival rate \carg{lamb} and service rate \carg{mu}.
+\end{framed}
+
+\begin{lstlisting}[language=Python]
+import stddraw
+import stdrandom
+import sys
+from histogram import Histogram
+from queue import Queue
+
+def main():
+    lamb, mu = float(sys.argv[1]), float(sys.argv[2])
+    histogram = Histogram(60 + 1)
+    queue = Queue()
+    stddraw.setCanvasSize(700, 500)
+    nextArrival = stdrandom.exp(lamb)
+    nextService = nextArrival + stdrandom.exp(mu) 
+    while True:
+        while nextArrival < nextService:
+            queue.enqueue(nextArrival)
+            nextArrival += stdrandom.exp(lamb)
+        arrival = queue.dequeue()
+        wait = nextService - arrival
+        stddraw.clear()
+        histogram.addDataPoint(min(60, int(round(wait))))
+        histogram.draw()
+        stddraw.show(20.0)
+        if queue.isEmpty():
+            nextService = nextArrival + stdrandom.exp(mu)
+        else:
+            nextService = nextService + stdrandom.exp(mu)
+
+if __name__ == '__main__':
+    main()
+
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{minipage}{200pt}
+\begin{lstlisting}[language={}]
+$ python mm1queue.py .167 .25
+\end{lstlisting}
+\end{minipage}%
+\hfill
+\begin{minipage}{100pt}
+\begin{center}
+\includegraphics[scale=0.15]{figures/mm1queue1.png}
+
+\smallskip
+
+\tiny M/M/1 queue ($\lambda=0.167, \mu=0.25$)
+\end{center}
+\end{minipage}%
+
+\bigskip
+
+\begin{minipage}{200pt}
+\begin{lstlisting}[language={}]
+$ python mm1queue.py .167 .2
+\end{lstlisting}
+\end{minipage}%
+\hfill
+\begin{minipage}{100pt}
+\begin{center}
+\includegraphics[scale=0.15]{figures/mm1queue2.png}
+
+\smallskip
+
+\tiny M/M/1 queue ($\lambda=0.167, \mu=0.2$)
+\end{center}
+\end{minipage}
 \end{frame}
 \end{document}
