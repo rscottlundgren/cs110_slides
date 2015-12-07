@@ -16,7 +16,50 @@
 \tableofcontents
 \end{frame}
 
-\section{.}
+\section{Graph Data Type}
+\begin{frame}[fragile]
+\emph{Graph} is a mathematical model we use for studying the nature of pairwise connections among entities.
+
+\bigskip
+
+Some graphs exhibit a property known as the \emph{small-world phenomenon} (aka \emph{six degrees of separation}): there is a relatively short chain of acquaintances separating us from one another.
+
+\bigskip
+
+Formally, a \emph{graph} is composed of a set of vertices and a set of edges, each representing a connection between two vertices. 
+
+\bigskip
+
+Two vertices are \emph{neighbors} if they are connected by an edge, and the \emph{degree} of a vertex is its number of neighbors.
+
+\begin{center}
+\includegraphics[scale=0.5]{figures/graph.png}
+
+\smallskip
+
+\tiny Graph terminology
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+A data type \lstinline{Graph} that represents a graph:
+\begin{center}
+\begin{tabular}{cc}
+method & description \\ \hline
+\lstinline$Graph(filename, delimiter)$ & \makecell{a new graph $g$ from $filename$ (defaults to \lstinline$None$ representing \\ an empty graph)  using $delimiter$ (defaults to whitespace)} \\
+\lstinline$g.addEdge(v, w)$ & add edge $v$-$w$ to $g$ \\
+\lstinline$g.adjacentTo(v)$ & an iterable for neighbors of vertex $v$ in $g$ \\
+\lstinline$g.vertices()$ & an iterable for vertices in $g$ \\
+\lstinline$g.hasVertex(v)$ & is $v$ a vertex in $g$? \\
+\lstinline$g.hasEdge(v, w)$ & is $v$-$w$ an edge in $g$? \\
+\lstinline$g.countV()$ & number of vertices in $g$ \\
+\lstinline$g.countE()$ & number of edges in $g$ \\
+\lstinline$g.degree(v)$ & number of neighbors of $v$ in $g$ \\
+\lstinline$str(g)$ & string representation of $g$
+\end{tabular} 
+\end{center}
+\end{frame}
+
 \begin{frame}[fragile]
 \begin{framed}
 \tiny \lstinline{graph.py}: Defines a data type \lstinline{Graph}.
@@ -28,7 +71,7 @@ import sys
 from instream import InStream
 
 class Graph:
-    def __init__(self, filename=None, delimiter=None):
+    def __init__(self, filename = None, delimiter = None):
         self._e = 0
         self._adj = dict()
         if filename is not None:
@@ -184,6 +227,24 @@ Bacon, Kevin
 \end{lstlisting}
 \end{frame}
 
+\section{Shortest Paths in Graphs}
+\begin{frame}[fragile]
+Given two vertices in a graph, a \emph{path} is a sequence of vertices connected by edges, and a \emph{shortest path} is one with the minimal number of edges over all such paths. 
+
+\bigskip
+
+A data type \lstinline{PathFinder} for finding paths in a graph:
+\begin{center}
+\begin{tabular}{cc}
+method & description \\ \hline
+\lstinline$PathFinder(graph, s)$ & a path finder $pf$ to find all shortest paths from $s$ in $graph$ \\
+\lstinline$pf.distanceTo(v)$ & distance between $s$ and $v$ \\
+\lstinline$pf.hasPathTo(v)$ & is there a path between $s$ and $v$? \\
+\lstinline$pf.pathTo(v)$ & an iterable for the path from $s$ to $v$
+\end{tabular} 
+\end{center}
+\end{frame}
+
 \begin{frame}[fragile]
 \begin{framed}
 \tiny \lstinline{pathfinder.py}: Defines a data type \lstinline{PathFinder}.
@@ -290,6 +351,19 @@ Hanks, Tom
 distance: 2
 <ctrl-d>
 \end{lstlisting}
+\end{frame}
+
+\section{Small-World Graphs}
+\begin{frame}[fragile]
+Small-world graphs are characterized by the following three properties:
+
+\begin{itemize}
+\item They are \emph{sparse}: the number of vertices is much smaller than the number of edges.
+
+\item They have \emph{short average path lengths}: if you pick two random vertices, the length of the shortest path between them is short.
+
+\item They exhibit \emph{local clustering}: if two vertices are neighbors of a third vertex, then the two vertices are likely to be neighbors of each other.
+\end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]
