@@ -1,4 +1,4 @@
-\documentclass[8pt,a4paper,compress,handout]{beamer}
+\documentclass[8pt,a4paper,compress]{beamer}
 
 \usepackage{/home/siyer/lib/slides}
 
@@ -7,16 +7,6 @@
 
 \begin{document}
 \begin{frame}
-\hfill
-\begin{minipage}{150pt}
-\begin{flushright}
-\tiny \emph{I do not fear computers. I fear the lack of of them.} 
-
-\smallskip
-
-- ISAAC ASIMOV
-\end{flushright}
-\end{minipage}
 \vfill
 \titlepage
 \end{frame}
@@ -30,32 +20,28 @@
 \begin{frame}[fragile]
 A real computer must be able to:
 \begin{itemize}
-\item move information between registers and memory;  
-\item get data from the outside world;  
-\item print results; and 
-\item make decisions.
+\item Move information between registers and memory
+\item Get data from the outside world
+\item Print results
+\item Make decisions
 \end{itemize}
 
 \bigskip
 
 The Harvey Mudd Miniature Machine (HMMM) is organized as follows:
 \begin{itemize}
-\item both instructions and data are 16 bit wide; 
-\item in addition to the program counter and instruction register, there are 16 registers named \lstinline{r0} through \lstinline{r15}; and 
-\item there are 256 memory locations.
+\item Both instructions and data are 16 bit wide
+\item In addition to the program counter and instruction register, there are 16 registers named \lstinline{r0} through \lstinline{r15}
+\item There are 256 memory locations
 \end{itemize}
 
 \bigskip
 
-Instead of writing down bits corresponding to the instructions, we will use \emph{assembly language}, a programming language where each instruction has a symbolic representation. For example, to compute \lstinline{r3 = r1 + r2}, we would write:
-
-\begin{lstlisting}[language={}]
-add r3 r1 r2
-\end{lstlisting}
+Instead of programming in binary (0's and 1's), we'll use \emph{assembly language}, a programming language where each instruction has a symbolic representation; For example, to compute \lstinline{r3 = r1 + r2}, we'll write \lstinline{add r3 r1 r2}
 
 \bigskip
 
-We will use a program\footnote{\href{http://www.swamiiyer.net/teaching/hmmm.zip}{http://www.swamiiyer.net/teaching/hmmm.zip} (command-line) or \href{http://shickey.github.io/HMMM.js}{http://shickey.github.io/HMMM.js} (online)} to convert the assembly language into 0's and 1's -- the \emph{machine language} -- that the computer can execute.
+We'll use a program\footnote{\href{http://www.swamiiyer.net/teaching/hmmm.zip}{http://www.swamiiyer.net/teaching/hmmm.zip} (command-line) or \href{http://shickey.github.io/HMMM.js}{http://shickey.github.io/HMMM.js} (online)} to convert the assembly language into 0's and 1's -- the \emph{machine language} -- that the computer can execute
 \end{frame}
 
 \section{A Simple HMMM Program}
@@ -101,8 +87,7 @@ $ python hmmmSimulator.py -f triangle1.b -n
 
 \section{Looping}
 \begin{frame}[fragile]
-
-Unconditional jump (\lstinline{jumpn N}): set program counter to address \lstinline{N}.
+Unconditional jump (\lstinline{jumpn N}): set program counter to address \lstinline{N}
 
 \bigskip
 
@@ -135,7 +120,7 @@ End of input, halting program execution...
 \end{frame}
 
 \begin{frame}[fragile]
-Conditional jump (\lstinline{jeqzn rX N}): if \lstinline{rX == 0}, then jump to line \lstinline{N}.
+Conditional jump (\lstinline{jeqzn rX N}): if \lstinline{rX == 0}, then jump to line \lstinline{N}
 
 \bigskip
 
@@ -171,40 +156,10 @@ $ python hmmmSimulator.py -f triangle3.b -n
 \section{Functions}
 
 \begin{frame}[fragile]
-
-Call a function (\lstinline{calln rX N}): copy the next address into \lstinline$rX$ and then jump to address \lstinline{N}.
-
-\bigskip
-
-Return from a function (\lstinline{jumpr rX}): set program counter to address in \lstinline{rX}.
-
-\bigskip
+Call a function (\lstinline{calln rX N}): copy the next address into \lstinline$rX$ and then jump to address \lstinline{N}; Return from a function (\lstinline{jumpr rX}): set program counter to address in \lstinline{rX}
 
 \begin{framed}
-\tiny factorial.hmmm: Calculate $N!$ (aka $N$ factorial) defined as $N!=1 \times 2 \times 3 \times \cdots \times (N-1) \times N$, with $0!=1$.
-\end{framed}
-
-\begin{lstlisting}[language={},mathescape]
-0    read    r1       # Get N
-1    setn    r2 1
-2    jeqzn   r1 6     # Quit if N has reached zero
-3    mul     r2 r1 r2 # Update product
-4    addn    r1 -1    # Decrement N
-5    jumpn   2        # Back for more
-6    write   r2
-7    halt
-\end{lstlisting}
-
-\begin{lstlisting}[language={}]
-$ python hmmmSimulator.py -f factorial.b -n
-5
-120
-\end{lstlisting}
-\end{frame}
-
-\begin{frame}[fragile]
-\begin{framed}
-\tiny combinations.hmmm: Calculate $C(N, K)$ (aka $N$ choose $K$) defined as $C(N, K)=\frac{N!}{K!(N-K)!}$.
+\tiny combinations.hmmm: Calculate $C(N, K)$ (aka $N$ choose $K$) defined as $C(N, K)=N!/(K!(N-K)!)$.
 \end{framed}
 
 \begin{lstlisting}[language={}]
@@ -248,17 +203,17 @@ A \emph{recursive function} is a function that calls itself on smaller inputs, a
 \[
 N! = \begin{dcases*}
 N(N-1)! & if $N > 0$, and \\
-1       & if $N=0$.
+1       & if $N=0$
 \end{dcases*}
 \]
 
 \bigskip
 
-A \emph{stack} is a storage mechanism (aka data structure) that remembers things and gives them back in reverse order.
+A \emph{stack} is a storage mechanism (aka data structure) that remembers things and gives them back in reverse order
 
 \bigskip
 
-To implement a stack on a computer, we need a \emph{stack pointer}, a register (\lstinline{r15} on HMMM) that holds the memory address of the top item on the stack.
+To implement a stack on a computer, we need a \emph{stack pointer}, a register (\lstinline{r15} on HMMM) that holds the memory address of the top item on the stack
 
 \bigskip
 

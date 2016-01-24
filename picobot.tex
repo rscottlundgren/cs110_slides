@@ -1,4 +1,4 @@
-\documentclass[8pt,a4paper,compress,handout]{beamer}
+\documentclass[8pt,a4paper,compress]{beamer}
 
 \usepackage{/home/siyer/lib/slides}
 
@@ -7,16 +7,6 @@
 
 \begin{document}
 \begin{frame}
-\hfill
-\begin{minipage}{150pt}
-\begin{flushright}
-\tiny \emph{I ache, therefore I am.} 
-
-\smallskip
-
-- MARVIN
-\end{flushright}
-\end{minipage}
 \vfill
 \titlepage
 \end{frame}
@@ -28,23 +18,28 @@
 
 \section{The Roomba Problem}
 \begin{frame}[fragile]
-PicoBot is a simple programming language that controls a robot (also referred to as PicoBot) loosely based on the Roomba vacuum cleaner robot.
+\pause
 
+PicoBot is a simple programming language that controls a robot (also referred to as PicoBot) loosely based on the Roomba vacuum cleaner robot
+
+\pause
 \bigskip
 
-PicoBot's goal is to suck up the debris from the free space around it, ideally without missing any nooks or crannies; the robotics community refers to this as the \emph{coverage problem}.
+PicoBot's goal is to suck up the debris from the free space around it, ideally without missing any nooks or crannies --- the robotics community refers to this as the \emph{coverage problem}
 
+\pause
 \bigskip
 
 PicoBot's limitations:
 \begin{itemize}
-\item it can only sense what's directly around it; 
+\item It can only sense what's directly around it
 
-\item it is totally unfamiliar with the environment it is supposed to clean; and 
+\item It is totally unfamiliar with the environment it is supposed to clean
 
-\item it can't remember which part of the room it has seen and which part it has not.
+\item It can't remember which part of the room it has seen and which part it has not
 \end{itemize}
 
+\pause
 \bigskip
 
 Simulation environments for exploring PicoBot's capabilities:
@@ -58,23 +53,18 @@ Simulation environments for exploring PicoBot's capabilities:
 \section{The Environment}
 \begin{frame}[fragile]
 \begin{minipage}{200pt}
-We will model the environment, ie, the room a PicoBot is supposed to clean, as a two-dimensional plane discretized into cells.
+\pause
+We'll model the environment, ie, the room a PicoBot is supposed to clean, as a two-dimensional plane discretized into cells
 
+\pause
 \bigskip
 
-The cells are either green (PicoBot itself), blue (obstacle or wall), dark gray (visited), or light gray (unvisited). 
+The cells are either green (PicoBot itself), blue (obstacle or wall), dark gray (visited), or light gray (unvisited)
 
+\pause
 \bigskip
 
-PicoBot can't sense whether an empty cell has been visited or not, but it can sense whether each of its four immediate neighbors is free space or an obstacle.
-
-\bigskip
-
-The immediate surroundings of a PicoBot are reported as a string of four letters in \lstinline{NEWS} order.
-
-\bigskip
-
-If the cell in a particular direction is not occupied (ie, not an obstacle), then the letter in the corresponding position is an \lstinline{x} (or \lstinline{X}). 
+PicoBot can't sense whether an empty cell has been visited or not, but it can sense whether each of its four immediate neighbors is free space or an obstacle
 \end{minipage}\hfill%
 \begin{minipage}{100pt}
 \begin{center}
@@ -83,9 +73,22 @@ If the cell in a particular direction is not occupied (ie, not an obstacle), the
 \smallskip
 
 \tiny PicoBot environment
+\end{center}
+\end{minipage}
 
 \smallskip
 
+\begin{minipage}{200pt}
+\pause
+The immediate surroundings of a PicoBot are reported as a string of four letters in \lstinline{NEWS} order
+
+\pause
+\bigskip
+
+If the cell in a particular direction is not occupied (ie, not an obstacle), then the letter in the corresponding position is an \lstinline{x} (or \lstinline{X}). 
+\end{minipage}\hfill%
+\begin{minipage}{100pt}
+\begin{center}
 \includegraphics[scale=0.25]{figures/picobot_surroundings.png}
 
 \smallskip
@@ -97,57 +100,67 @@ If the cell in a particular direction is not occupied (ie, not an obstacle), the
 
 \section{State}
 \begin{frame}[fragile]
-The \emph{state} of a computer is the internal information that describes what the computer is doing.
+\pause
+The \emph{state} of a computer is the internal information that describes what the computer is doing
 
+\pause
 \bigskip
 
-PicoBot's state is simply a number (0-99) representing a task that we would like PicoBot to undertake.
+PicoBot's state is simply a number (0-99) representing a task that we would like PicoBot to undertake
 
+\pause
 \bigskip
 
-PicoBot always starts in state 0.
+PicoBot always starts in state 0
 \end{frame}
 
 \section{Rule}
 \begin{frame}[fragile]
-PicoBot moves by following a set of rules that specify actions and possibly state changes. 
+\pause
+PicoBot moves by following a set of rules that specify actions and possibly state changes
 
+\pause
 \bigskip
 
-Which rule PicoBot chooses to follow depends on its current state and its current surroundings.
+Which rule PicoBot chooses to follow depends on its current state and its current surroundings
 
+\pause
 \bigskip
 Each PicoBot rule has a five-part syntax:
 \begin{lstlisting}[language={}]
 <current state> <surrounding string> -> <action> <new state>
 \end{lstlisting}
-where \lstinline{<action>} is \lstinline{N} (move north), \lstinline{E} (move east), \lstinline{W} (move west), \lstinline{S} (move south), or \lstinline{x}/\lstinline{X} (stay put).
+where \lstinline{<action>} is \lstinline{N} (move north), \lstinline{E} (move east), \lstinline{W} (move west), \lstinline{S} (move south), or \lstinline{x}/\lstinline{X} (stay put)
 
+\pause
 \bigskip
 
-The \lstinline{<surrounding string>} in a PicoBot rule may include wildcards (\lstinline{*}), meaning the PicoBot doesn't care about the surroundings in the corresponding positions.
+The \lstinline{<surrounding string>} in a PicoBot rule may include wildcards (\lstinline{*}), meaning the PicoBot doesn't care about the surroundings in the corresponding positions
 
+\pause
 \bigskip
 
 Examples:
 \begin{itemize}
-\item \lstinline{0 xxWx -> E 1} $\implies$ ``If I'm in state 0 and only my western neighbor contains an obstacle, take one step east and change into state 1.''
+\item \lstinline{0 xxWx -> E 1} $\implies$ ``If I'm in state 0 and only my western neighbor contains an obstacle, take one step east and change into state 1''
 
-\item \lstinline{0 xxxx -> W 0} $\implies$ ``If I'm in state 0 with no obstacles around me, move one step west and stay in state 0.''
+\item \lstinline{0 xxxx -> W 0} $\implies$ ``If I'm in state 0 with no obstacles around me, move one step west and stay in state 0''
 \end{itemize}
 \end{frame}
 
 \section{Algorithm}
 \begin{frame}[fragile]
+\pause
 An algorithm (in English) instructing a PicoBot to move back and forth in an empty room:
 \begin{enumerate}
-\item Move west until PicoBot hits a wall to the west.
+\item Move west until PicoBot hits a wall to the west
 
-\item Then move east until PicoBot hits a wall to the east.
+\item Then move east until PicoBot hits a wall to the east
 
-\item Then go back to step 1.
+\item Then go back to step 1
 \end{enumerate}
 
+\pause
 \bigskip
 
 The above algorithm in PicoBot:
@@ -164,14 +177,17 @@ The above algorithm in PicoBot:
 
 \section{Uncomputable Environments}
 \begin{frame}[fragile]
-It can be shown mathematically that PicoBot's computational capabilities aren't enough to guarantee coverage of all environments.
+\pause
+It can be shown mathematically that PicoBot's computational capabilities aren't enough to guarantee coverage of all environments
 
+\pause
 \bigskip
 
-By adding one simple feature to PicoBot --- the ability to drop, sense, and pick up ``markers'' along the way --- it can be programmed to fully explore any environment. 
+By adding one simple feature to PicoBot --- the ability to drop, sense, and pick up ``markers'' along the way --- it can be programmed to fully explore any environment
 
+\pause
 \bigskip
 
-It is true in general that certain problems are beyond the limits of what computers can solve.
+It is true in general that certain problems are beyond the limits of what computers can solve
 \end{frame}
 \end{document}
