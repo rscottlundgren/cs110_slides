@@ -10,12 +10,6 @@ To compile each TeX file to a PDF, run the following command:
 
 The TeX files need [`slides.sty`](https://github.com/swamiiyer/misc.git) to compile.
 
-The script `nupslides` converts a PDF to a form suitable for printing (four slides per page). To convert a PDF, run the following command:
-
-```bash
-> nupslides <PDF filename>
-```
-
 ## Contact
 
 If you have any questions about the slides, please email swami.iyer@gmail.com. 
