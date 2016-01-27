@@ -54,7 +54,7 @@ Arithmetic in any base is analogous to arithmetic in base 10
 
 \bigskip
 
-Examples of addition in base 10 and base 2:
+Examples of addition in base 10 and base 2
 \begin{center}
 
 \begin{tabular}{ccc}
@@ -132,7 +132,7 @@ We can represent any information as a sequence of numbers
 
 \bigskip
 
-Examples: 
+Examples
 \begin{itemize}
 \item A picture can be represented as a sequence of pixels, each represented as three numbers giving the amount of red, green, and blue at that pixel
 
@@ -156,7 +156,7 @@ A \emph{truth table} for a boolean function is a listing of all possible combina
 
 \bigskip
 
-Truth tables for \lstinline{AND}, \lstinline{OR}, and \lstinline{NOT} functions:
+Truth tables for \lstinline{AND}, \lstinline{OR}, and \lstinline{NOT} functions
 
 \begin{center}
 \begin{tabular}{cc|c}
@@ -202,14 +202,14 @@ An example of the implication function is ``if you score over 90\% in this cours
 \end{frame}
 
 \begin{frame}[fragile]
-The \emph{minterm expansion principle}, due to Claude Shannon, provides a systematic approach for building boolean functions from truth tables:
+The \emph{minterm expansion principle}, due to Claude Shannon, provides a systematic approach for building boolean functions from truth tables
 
 \begin{enumerate}
 \item Write down the truth table for the boolean function under consideration
 
 \item Delete all rows from the truth table where the value of the function is 0
 
-\item For each remaining row, create something called a ``minterm'' as follows:
+\item For each remaining row, create something called a ``minterm'' as follows
 \begin{enumerate}[a.]
 \item For each variable that has a 1 in that row, write the name of the variable. If the input variable is 0 in that row, write the variable with a negation symbol to \lstinline{NOT} it
 
@@ -230,7 +230,7 @@ Finding the simplest form of a boolean function is provably as hard as some of t
 
 \section{Logic Using Electrical Circuits}
 \begin{frame}[fragile]
-An electromechanical switch in which when the input power is off, the output is ``low'' (0), and when the input power is on, the output is ``high'' (1):
+An electromechanical switch in which when the input power is off, the output is ``low'' (0), and when the input power is on, the output is ``high'' (1)
 \begin{center}
 \includegraphics[scale=0.22]{figures/em_switch.png}
 
@@ -241,7 +241,7 @@ An electromechanical switch in which when the input power is off, the output is 
 
 \bigskip
 
-Devices (\lstinline{AND} and \lstinline{OR} gates) for computing $x$ \lstinline{AND} $y$ and $x$ \lstinline{OR} $y$, constructed using electromechanical switches:
+Devices (\lstinline{AND} and \lstinline{OR} gates) for computing $x$ \lstinline{AND} $y$ and $x$ \lstinline{OR} $y$, constructed using electromechanical switches
 \begin{center}
 \includegraphics[scale=0.22]{figures/and_gate.png}\hspace{1cm} \includegraphics[scale=0.22]{figures/or_gate.png}
 
@@ -260,7 +260,7 @@ Computers today are built with much smaller, much faster, more reliable, and mor
 
 \bigskip
 
-Since the details of the switches aren't terribly important at this level of abstraction, we represent, or ``abstract'', the gates using the following symbols:
+Since the details of the switches aren't terribly important at this level of abstraction, we represent, or ``abstract'', the gates using the following symbols
 \begin{center}
 \includegraphics[scale=0.3]{figures/gate_symbols.png}
 
@@ -271,7 +271,7 @@ Since the details of the switches aren't terribly important at this level of abs
 
 \bigskip
 
-A logical circuit for the implication function $\bar{x}\bar{y}+\bar{x}y+xy$:
+A logical circuit for the implication function $\bar{x}\bar{y}+\bar{x}y+xy$
 \begin{center}
 \includegraphics[scale=0.22]{figures/implication_circuit.png}
 
@@ -283,7 +283,7 @@ A logical circuit for the implication function $\bar{x}\bar{y}+\bar{x}y+xy$:
 
 \section{Computing With Logic}
 \begin{frame}[fragile]
-A truth table describing the addition of two two-bit numbers to get a three-bit result:
+A truth table describing the addition of two two-bit numbers to get a three-bit result
 \begin{center}
 \begin{tabular}{cc|c}
 $x$ & $y$ & $x +y$ \\ \hline
@@ -323,7 +323,7 @@ We can ``chain'' $n$ full adders together to add two $n$-bit numbers;  The resul
 
 \section{Memory}
 \begin{frame}[fragile]
-Truth table for a \lstinline{NOR} gate (\lstinline{OR} followed by \lstinline{NOT}):
+Truth table for a \lstinline{NOR} gate (\lstinline{OR} followed by \lstinline{NOT})
 \begin{center}
 \begin{tabular}{cc|c}
 $x$ & $y$ & $x$ \lstinline$NOR$ $y$ \\ \hline
@@ -389,7 +389,7 @@ For example, let's assume an 8-bit computer with only four instructions: add, su
 
 \bigskip
 
-Each of the instructions will need a number, called an \emph{operation code} (or \emph{opcode}), to represent it:
+Each of the instructions will need a number, called an \emph{operation code} (or \emph{opcode}), to represent it
 \begin{center}
 \begin{tabular}{cc}
 Opcode & Meaning \\ \hline
@@ -414,7 +414,7 @@ For example, the instruction \lstinline{add 3 0 2} (meaning add the contents of 
 \end{frame}
 
 \begin{frame}[fragile]
-Our computer operates by repeatedly performing the following procedure:
+Our computer operates by repeatedly performing the following procedure
 \begin{enumerate}
 \item Send the address in the program counter (commonly called the \emph{PC}) to the memory, asking it to read that location
 
