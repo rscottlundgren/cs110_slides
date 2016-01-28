@@ -52,7 +52,7 @@ We'll model the environment, ie, the room a PicoBot is supposed to clean, as a t
 
 \bigskip
 
-The cells are either green (PicoBot itself), blue (obstacle or wall), dark gray (visited), or light gray (unvisited)
+The cells are either green (PicoBot itself), blue (obstacle or wall), gray (visited), or white (unvisited)
 
 \bigskip
 
@@ -113,7 +113,7 @@ PicoBot moves by following a set of rules that specify actions and possibly stat
 Which rule PicoBot chooses to follow depends on its current state and its current surroundings
 
 \bigskip
-Each PicoBot rule has a five-part syntax:
+Each PicoBot rule has a five-part syntax
 \begin{lstlisting}[language={}]
 <current state> <surrounding string> -> <action> <new state>
 \end{lstlisting}
