@@ -1,4 +1,4 @@
-\documentclass[8pt,a4paper,compress,handout]{beamer}
+\documentclass[8pt,a4paper,compress]{beamer}
 
 \usepackage{/home/siyer/lib/slides}
 
@@ -7,16 +7,6 @@
 
 \begin{document}
 \begin{frame}
-\hfill
-\begin{minipage}{150pt}
-\begin{flushright}
-\tiny \emph{The most disastrous thing that you can ever learn is your first programming language.} 
-
-\smallskip
-
-- ALAN KAY
-\end{flushright}
-\end{minipage}
 \vfill
 \titlepage
 \end{frame}
@@ -29,12 +19,12 @@
 \section{Programming in Python}
 \begin{frame}[fragile]
 \begin{minipage}{200pt}
-Our programming environment:
+Our programming environment
 \begin{itemize}
-\item Python programming language;  
-\item IDLE, a simple integrated development environment (IDE);
-\item Terminal; and
-\item Input and output libraries from the authors of the IPP text. \end{itemize}
+\item Python programming language  
+\item IDLE, a simple integrated development environment (IDE)
+\item Terminal
+\item Input and output libraries from the authors of the IPP text \end{itemize}
 \end{minipage}%
 \begin{minipage}{100pt}
 \begin{center}
@@ -56,10 +46,10 @@ Our programming environment:
 \end{frame}
 
 \begin{frame}[fragile]
-To program in Python, you need to:
+To program in Python
 \begin{itemize}
-\item \emph{Compose} a program by typing it into a file named, say, \lstinline{helloworld.py}.
-\item \emph{Run} (or \emph{execute}) the program by typing \lstinline{python helloworld.py} in the terminal window.
+\item \emph{Compose} a program by typing it into a file named, say, \lstinline{helloworld.py}
+\item \emph{Run} (or \emph{execute}) the program by typing \lstinline{python helloworld.py} in the terminal window
 \end{itemize}
 
 \begin{center}
@@ -100,33 +90,33 @@ Hello, World
 
 \bigskip
 
-Anatomy of \lstinline{helloworld.py}:
+Anatomy of \lstinline{helloworld.py}
 \begin{itemize}
-\item The first line is a statement that tells Python that you intend to use features defined in the \lstinline{stdio} \emph{module}.
+\item The first line is a statement that tells Python that you intend to use features defined in the \lstinline{stdio} \emph{module}
  
-\item The second line is a blank line. Python ignores blank lines; programmers use them to separate logical blocks of code.
+\item The second line is a blank line; Python ignores blank lines; programmers use them to separate logical blocks of code
 
-\item The third line is a comment. Python ignores comments; they are only for human readers of the program.
+\item The third line is a comment; Python ignores comments; they are only for human readers of the program
 
-\item The fourth line is a statement that calls the \lstinline{stdio.writeln()} function to write the given text to the terminal. This is called \emph{writing to standard output}.
+\item The fourth line is a statement that calls the \lstinline{stdio.writeln()} function to write the given text to the terminal; This is called \emph{writing to standard output}
 \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]
-Errors (aka \emph{bugs}) are the bane of a programmer's existence. 
+Errors (aka \emph{bugs}) are the bane of a programmer's existence
 
 \bigskip
 
-\emph{Compile-time errors} are raised when Python compiles a program. For example, if you don't include the right parenthesis in line four of \lstinline{helloworld.py}.
+\emph{Compile-time errors} are raised when Python compiles a program; For example, if you don't include the right parenthesis in line four of \lstinline{helloworld.py}
 
 \bigskip
 
-\emph{Run-time errors} are raised when Python interprets a program. For example, if you forget to import the \lstinline{stdio} module in \lstinline{helloworld.py}.
+\emph{Run-time errors} are raised when Python interprets a program; For example, if you forget to import the \lstinline{stdio} module in \lstinline{helloworld.py}
 \end{frame}
 
 \section{Input and Output}
 \begin{frame}[fragile]
-Bird's-eye view of a Python program:
+Bird's-eye view of a Python program
 \begin{center}
 \begin{tikzpicture}
 \begin{scope}[->,xshift=-7.5cm,yshift=-5cm,thin,
@@ -142,13 +132,13 @@ Bird's-eye view of a Python program:
 \end{tikzpicture}
 \end{center}
 \begin{itemize}
-\item Input types: command-line arguments, standard input, file input.
-\item Output types: standard output, file output, graphical output, audio output.
+\item Input types: command-line arguments, standard input, file input
+\item Output types: standard output, file output, graphical output, audio output
 \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]
-\emph{Command-line arguments} are the inputs you list after a program name when you run the program.
+\emph{Command-line arguments} are the inputs you list after a program name when you run the program
 
 \begin{lstlisting}[language={}]
 $ python my_program.py arg_1 arg_2 ... arg_n
@@ -156,7 +146,11 @@ $ python my_program.py arg_1 arg_2 ... arg_n
 
 \bigskip
 
-The command-line arguments can be accessed within a program, such as \lstinline{my_program.py} above, via the array (aka list) \lstinline{sys.argv}\footnote{The \lstinline{sys} module provides access to variables and functions that interact with the Python interpreter.}  as \lstinline{sys.argv[1]}, \lstinline{sys.argv[2]}, $\dots$, \lstinline{sys.argv[n]}.
+The command-line arguments can be accessed within a program, such as \lstinline{my_program.py} above, via the array (aka list) \lstinline{sys.argv}\footnote{The \lstinline{sys} module provides access to variables and functions that interact with the Python interpreter}  as \lstinline{sys.argv[1]}, \lstinline{sys.argv[2]}, $\dots$, \lstinline{sys.argv[n]}
+
+\bigskip
+
+\lstinline{sys.argv[0]} stores the name of the program, \lstinline{my_program.py}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -182,5 +176,4 @@ $ python useargument.py Carol
 Hi, Carol. How are you?
 \end{lstlisting}
 \end{frame}
-
 \end{document}
