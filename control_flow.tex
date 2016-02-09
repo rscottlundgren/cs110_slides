@@ -1,4 +1,4 @@
-\documentclass[8pt,a4paper,compress,handout]{beamer}
+\documentclass[8pt,a4paper,compress]{beamer}
 
 \usepackage{/home/siyer/lib/slides}
 
@@ -7,16 +7,6 @@
 
 \begin{document}
 \begin{frame}
-\hfill
-\begin{minipage}{150pt}
-\begin{flushright}
-\tiny \emph{Programming is usually taught by examples.} 
-
-\smallskip
-
-- NIKLAUS WIRTH
-\end{flushright}
-\end{minipage}
 \vfill
 \titlepage
 \end{frame}
@@ -28,7 +18,7 @@
 
 \section{If Statement}
 \begin{frame}[fragile]
-Most computations require different actions for different inputs and one way to express these differences in Python is using the \lstinline{if} statement.
+Most computations require different actions for different inputs and one way to express these differences in Python is using the \lstinline{if} statement
 
 \smallskip
 
@@ -84,7 +74,7 @@ Heads
 
 \section{While Statement}
 \begin{frame}[fragile]
-Many computations are inherently repetitive and the basic Python construct for handling such computations is the \lstinline{while} statement.
+Many computations are inherently repetitive and the basic Python construct for handling such computations is the \lstinline{while} statement
 
 \smallskip
 
@@ -161,7 +151,7 @@ $ python powersoftwo.py 8
 \end{frame}
 
 \begin{frame}[fragile]
-Modifying a variable is something that we do so often in programming that modern programming languages like Python provide shorthand notations for the purpose.
+Modifying a variable is something that we do so often that Python provides shorthand notations for the purpose
 
 \bigskip
 
@@ -179,16 +169,16 @@ i += 1
 
 \bigskip
 
-The same notation works for other binary operators, including \lstinline{-}, \lstinline{*}, and \lstinline{/}.
+The same notation works for other binary operators, including \lstinline{-}, \lstinline{*}, and \lstinline{/}
 
 \bigskip
 
-The \emph{scope of a variable} is part of the program where it is defined; statements that follow the definition in the same block (marked by indentation level).
+The \emph{scope of a variable} is part of the program where it is defined, ie, statements that follow the definition in the same block (marked by indentation level)
 \end{frame}
 
 \section{For Statement}
 \begin{frame}[fragile]
-An alternative Python construct --- the \lstinline{for} statement --- provides a more compact notation for carrying out repeated computations.
+The \lstinline{for} statement provides a more compact notation for carrying out repeated computations
 
 \smallskip
 
@@ -201,18 +191,19 @@ for <variable> in <iterable object>:
 
 \bigskip
 
-The most commonly used iterable objects are the lists containing arithmetic progressions of integers, returned by the built-in function \lstinline{range()}:
+The most commonly used iterable objects are the lists containing arithmetic progressions of integers, returned by the built-in function \lstinline{range()}
 
-\begin{lstlisting}[language={}]
-range(start, stop[, step])
-range(stop)
-\end{lstlisting}
+\bigskip
 
-The first form returns a list of integers, starting at \lstinline{start}, ending just before \lstinline{stop}, and in increments (or decrements) given by the optional \lstinline{step} argument, which defaults to 1. In the second form, \lstinline{start} and \lstinline{step} default to 0 and 1 respectively.
+The call \lstinline{range(start, stop[, step])} returns a list starting at \lstinline{start}, ending just before \lstinline{stop}, and in increments (or decrements) given by the optional \lstinline{step} argument, which defaults to 1
+
+\bigskip
+
+The call \lstinline{range(stop)} is shorthand for \lstinline{range(0, stop)}
 \end{frame}
 
 \begin{frame}[fragile]
-The \lstinline{tenhellos.py} program can be written using \lstinline{for} statement as follows:
+The \lstinline{tenhellos.py} program can be written using \lstinline{for} statement as follows
 
 \begin{lstlisting}[language=Python]
 import stdio
@@ -226,7 +217,7 @@ for i in range(4, 11):
 
 \bigskip
 
-Strings are iterable objects. For example, the following code iterates over the characters of string the \lstinline{'AGCT'}:
+Strings are iterable objects; For example, the following code iterates over the characters of the string \lstinline{'AGCT'} and writes them out
 \begin{lstlisting}[language=Python]
 import stdio
 
@@ -237,15 +228,15 @@ for c in 'AGCT':
 
 \section{Nesting}
 \begin{frame}[fragile]
-The \lstinline{if}, \lstinline{while}, and \lstinline{for} statements, collectively called \emph{control-flow statements}, have the same status as assignment statements or any other statements in Python.
+The \lstinline{if}, \lstinline{while}, and \lstinline{for} statements, collectively called \emph{control-flow statements}, have the same status as assignment statements or any other statements in Python
 
 \bigskip
 
-As a result, we can use a control-flow statement whenever a statement is called for. 
+As a result, we can use a control-flow statement whenever a statement is called for
 
 \bigskip
 
-In particular, we can nest one or more of the control-flow statements in the body of another. 
+In particular, we can nest one or more of the control-flow statements in the body of another
 \end{frame}
 
 \begin{frame}[fragile]
@@ -283,20 +274,6 @@ $ python divisorpattern.py 10
 \end{frame}
 
 \section{Applications}
-\begin{frame}[fragile]
-\begin{enumerate}
-\item Finite sum (\lstinline{harmonic.py}).
-
-\item Computing the square root using Newton's method (\lstinline{sqrt.py}).
-
-\item Number conversion (\lstinline{binary.py}).
-
-\item Monte Carlo simulation (\lstinline{gambler.py}).
-
-\item Factoring (\lstinline{factors.py}).
-\end{enumerate}
-\end{frame}
-
 \begin{frame}[fragile]
 \begin{framed}
 \tiny harmonic.py: Accept integer $n$ as a command-line argument. Write to standard output the $n$th harmonic number $H_n$, computed as $H_n=1+1/2+1/3+\cdots+1/n$. Note that $H_n \approx \ln(n) + 0.57721$ for large $n$.
@@ -453,13 +430,13 @@ $ python factors.py 287994837222311
 
 \section{Other Conditional and Loop Constructs}
 \begin{frame}[fragile]
-The \emph{conditional expression} supports an alternate form of an \lstinline$if-else$ statement.
+The \emph{conditional expression} supports an alternate form of an \lstinline$if-else$ statement
  
 \begin{lstlisting}[language={}]
 <expression> if <boolean expression> else <expression>
 \end{lstlisting}
 
-For example, the following code assigns \lstinline{'Heads'} or \lstinline{'Tails'} to the variable \lstinline{flip}, each with probability $1/2$:
+For example, the following code assigns \lstinline{'Heads'} or \lstinline{'Tails'} to the variable \lstinline{flip}, each with probability $1/2$
 
 \begin{lstlisting}[language=Java]
 flip = 'Heads' if random.random() < 0.5 else 'Tails'
@@ -467,7 +444,7 @@ flip = 'Heads' if random.random() < 0.5 else 'Tails'
 
 \bigskip
 
-The \lstinline{break} statement immediately exits a loop without letting it to run to completion. For example, the following code tests and prints if a number $N$ is prime or not:
+The \lstinline{break} statement immediately exits a loop without letting it to run to completion; For example, the following code tests and prints if a number $N$ is prime or not
 \begin{lstlisting}[language=Python]
 i = 2
 while i <= N / i:
@@ -482,46 +459,6 @@ else
 
 \bigskip
 
-The \lstinline{continue} statement skips to next iteration of a loop.
+The \lstinline{continue} statement skips to next iteration of a loop
 \end{frame}
-
-\section{Infinite Loops}
-\begin{frame}[fragile]
-What if the loop continuation condition is always true? 
-
-\bigskip 
- 
-\begin{framed}
-\tiny badhellos.py: Loops forever, since the loop continuation condition is always true.
-\end{framed}
-
-\begin{lstlisting}[language=Python]
-import stdio
-
-stdio.writeln('1st Hello')
-stdio.writeln('2nd Hello')
-stdio.writeln('3rd Hello')
-i = 4
-while i > 3:
-    stdio.writeln(str(i) + 'th Hello')
-    i = i + 1
-\end{lstlisting}
-
-\begin{lstlisting}[language={}]
-$ python badhellos.py 
-1st Hello
-2nd Hello
-3rd Hello
-4th Hello
-5th Hello
-6th Hello
-7th Hello
-8th Hello
-9th Hello
-10th Hello
-11th Hello
-...
-\end{lstlisting}
-\end{frame}
-
 \end{document}
