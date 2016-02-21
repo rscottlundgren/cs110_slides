@@ -1,4 +1,4 @@
-\documentclass[8pt,a4paper,compress,handout]{beamer}
+\documentclass[8pt,a4paper,compress]{beamer}
 
 \usepackage{/home/siyer/lib/slides}
 
@@ -7,16 +7,6 @@
 
 \begin{document}
 \begin{frame}
-\hfill
-\begin{minipage}{150pt}
-\begin{flushright}
-\tiny \emph{An algorithm must be seen to be believed.}
-
-\smallskip
-
-- DON KNUTH
-\end{flushright}
-\end{minipage}
 \vfill
 \titlepage
 \end{frame}
@@ -28,22 +18,20 @@
 
 \section{Random Surfer Model}
 \begin{frame}[fragile]
-\pause
-
-The random surfer model is a simple model of the world-wide web (www) that has proven to be a particularly useful approach to understand some of its properties.
+The random surfer model is a simple model of the world-wide web (www) that has proven to be a particularly useful approach to understand some of its properties
 
 \bigskip
 
-The www is modeled as a fixed set of pages, with each page containing a fixed set of links (called hyperlinks), and each link is a reference to some other page; such an abstraction is called a \textit{graph} in mathematics.
+The www is modeled as a fixed set of pages, with each page containing a fixed set of links (called hyperlinks), and each link is a reference to some other page; such an abstraction is called a \textit{graph} in mathematics
 
 \bigskip
 
-We are interested in what happens to a person (a random surfer) who randomly moves from page to page according to the \emph{90-10 rule}: 90\% of the time the random surfer clicks a random link on the current page (each chosen with equal probability) and 10\% of the time the random surfer goes directly to a random page by typing a page name into the address bar (all pages on the www are chosen with equal probability).
+We are interested in what happens to a person (a random surfer) who randomly moves from page to page according to the \emph{90-10 rule}: 90\% of the time the random surfer clicks a random link on the current page (each chosen with equal probability) and 10\% of the time the random surfer goes directly to a random page by typing a page name into the address bar (all pages on the www are chosen with equal probability)
 \end{frame}
 
 \section{Input Format}
 \begin{frame}[fragile]
-An example of a tiny web of five pages and the file \lstinline{tiny.txt} that encodes it:
+An example of a tiny web of five pages and the file \lstinline{tiny.txt} that encodes it
 
 \begin{center}
 \includegraphics[scale=0.6]{figures/tiny_www.pdf}
@@ -68,11 +56,11 @@ $ more tiny.txt
 
 \section{Transition Matrix}
 \begin{frame}[fragile]
-The transition matrix $P$ for a www with $N$ pages is an $N$-by-$N$ matrix such that the entry $P_{ij}$, i.e., the entry in row $i$ and column $j$, is the probability that the random surfer moves to page $j$ when on page $i$.
+The transition matrix $P$ for a www with $N$ pages is an $N$-by-$N$ matrix such that the entry $P_{ij}$, ie, the entry in row $i$ and column $j$, is the probability that the random surfer moves to page $j$ when on page $i$
 
 \bigskip
 
-For example, a transition matrix for our tiny five-page web is:
+For example, a transition matrix for our tiny five-page web is
 \[
 P = \begin{bmatrix}
 0.02 & 0.92 & 0.02 & 0.02 & 0.02 \\
@@ -122,7 +110,7 @@ $ python transition.py < tiny.txt
 \section{Simulating a Random Surfer}
 \begin{frame}[fragile]
 \begin{framed}
-\tiny randomsurfer.py: Accept an integer $moves$ as a command-line argument. Read a transition matrix from standard input. Perform $moves$ moves as prescribed by the transition matrix, and write to standard output the relative frequency of hitting each page, i.e., its page rank.
+\tiny randomsurfer.py: Accept an integer $moves$ as a command-line argument. Read a transition matrix from standard input. Perform $moves$ moves as prescribed by the transition matrix, and write to standard output the relative frequency of hitting each page, ie, its page rank.
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -168,31 +156,31 @@ $ python transition.py < tiny.txt | python randomsurfer.py 10000000
 
 \section{Markov Chain}
 \begin{frame}[fragile]
-A \emph{Markov chain} is a random process that describes behavior similar to the random surfer. 
+A \emph{Markov chain} is a random process that describes behavior similar to the random surfer
 
 \bigskip
 
-A remarkable and useful property of Markov chains is that of \emph{mixing}, which states that the random surfer could start anywhere, since the probability that the surfer eventually winds up on any particular page is the same for all starting pages.
+A remarkable and useful property of Markov chains is that of \emph{mixing}, which states that the random surfer could start anywhere, since the probability that the surfer eventually winds up on any particular page is the same for all starting pages
 
 \bigskip
 
-\emph{Page rank} is the probability that the random surfer lands on a page. 
-
-\bigskip
-
-Because of the mixing phenomenon, increasing the number of iterations in the simulation of the random surfer gives increasingly accurate estimates of page ranks.
+\emph{Page rank} is the probability that the random surfer lands on a page
 \end{frame}
 
 \begin{frame}[fragile]
-Using the \emph{power method} we can obtain the probability that the random surfer will move from page $i$ to page $j$ in two moves by multiplying the transition matrix $P$ by itself. 
+Using the \emph{power method} we can obtain the probability that the random surfer will move from page $i$ to page $j$ in two moves by multiplying the transition matrix $P$ by itself
 
 \bigskip
 
-In general, the probability that the random surfer will move from page $i$ to page $j$ in $t$ moves is obtained by computing $P^t$. 
+In general, the probability that the random surfer will move from page $i$ to page $j$ in $t$ moves is obtained by computing $P^t$ 
 
 \bigskip 
 
-But matrix-matrix multiplication is expensive. Fortunately, because of the mixing property, we can make do with relatively inexpensive vector-matrix multiplications. 
+Unfortunately, matrix-matrix multiplication is expensive
+
+\bigskip
+
+Fortunately, because of the mixing property, we can make do with relatively inexpensive vector-matrix multiplications
 \end{frame}
 
 \begin{frame}[fragile]
@@ -208,7 +196,7 @@ specifying that the random surfer starts on page 0, multiplying the vector by th
 0.02 & 0.92 & 0.02 & 0.02 & 0.02
 \end{bmatrix}
 \]
-specifying the probabilities that the surfer winds up on each of the pages after one step. 
+specifying the probabilities that the surfer winds up on each of the pages after one step
 
 \bigskip
 
@@ -218,11 +206,11 @@ Now, multiplying the above vector by the transition matrix $P$ gives the vector
 0.05 & 0.04 & 0.36 & 0.37 & 0.19
 \end{bmatrix}
 \]
-which contains the probabilities that the surfer winds up on each of the pages after two steps. 
+which contains the probabilities that the surfer winds up on each of the pages after two steps
 
 \bigskip
 
-The vector giving the probabilities that the random surfer is at each page after $t$ steps is the product of the corresponding vector for $t-1$ steps and the transition matrix $P$. 
+The vector giving the probabilities that the random surfer is at each page after $t$ steps is the product of the corresponding vector for $t-1$ steps and the transition matrix $P$
 \end{frame}
 
 \begin{frame}[fragile]
