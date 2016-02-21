@@ -1,23 +1,12 @@
-\documentclass[8pt,a4paper,compress,handout]{beamer}
+\documentclass[8pt,a4paper,compress]{beamer}
 
 \usepackage{/home/siyer/lib/slides}
 
 \title{Input and Output}
 \date{}
-\RequirePackage{makecell}
 
 \begin{document}
 \begin{frame}
-\hfill
-\begin{minipage}{150pt}
-\begin{flushright}
-\tiny \emph{The most important property of a program is whether it accomplishes the intention of its user.}
-
-\smallskip
-
-- C. A. R. HOARE
-\end{flushright}
-\end{minipage}
 \vfill
 \titlepage
 \end{frame}
@@ -46,23 +35,23 @@
 
 \bigskip
 
-\textbf{Input}
+Input
 \begin{itemize}
 \item Command-line input: The mechanism we have been using to provide
-input values to our programs. We list them after the program name and access them using the \lstinline{sys.argv} list within the program. 
+input values to our programs. We list them after the program name and access them using the \lstinline{sys.argv} list within the program
 \item Standard input: Makes it possible to write programs that
-process arbitrary amounts of input and to interact with the programs.
-\item File input: Makes it possible to write programs that process multiple input streams.
+process arbitrary amounts of input and to interact with the programs
+\item File input: Makes it possible to write programs that process multiple input streams
 \end{itemize}
 
 \bigskip
 
-\textbf{Output}
+Output
 \begin{itemize}
-\item Standard output: The mechanism we have been using to print output from our programs to the terminal window. We use methods such as \lstinline{stdio.write()} and \lstinline{stdio.writeln()}.
-\item Standard drawing: Makes it possible to work with graphical representations of images.
-\item Standard audio: Makes it possible to write programs that create sound.
-\item File output: Makes it possible to write programs that process multiple output streams.
+\item Standard output: The mechanism we have been using to print output from our programs to the terminal window. We use methods such as \lstinline{stdio.write()} and \lstinline{stdio.writeln()}
+\item Standard drawing: Makes it possible to work with graphical representations of images
+\item Standard audio: Makes it possible to write programs that create sound
+\item File output: Makes it possible to write programs that process multiple output streams
 \end{itemize}
 \end{frame}
 
@@ -98,10 +87,10 @@ $ python randomseq.py 10
 
 \section{Standard Output}
 \begin{frame}[fragile]
-API for the \lstinline{stdio} module relevant to standard output:
+API for the \lstinline{stdio} module relevant to standard output
 \begin{center}
 \begin{tabular}{cc}
-function call & description \\ \hline
+function & description \\ \hline
 \lstinline$stdio.write(x)$ & write $x$ to standard output \\
 \lstinline$stdio.writeln(x)$ & write $x$ to standard output, followed by a newline \\
 \lstinline$stdio.writef(fmt, arg1, ...)$ & \makecell{write the arguments $arg_1, \dots$ to standard output \\ as specified by the format string $fmt$} \\
@@ -110,7 +99,7 @@ function call & description \\ \hline
 
 \bigskip
 
-Formatted writing: In its simplest form, \lstinline{stdio.writef()} takes two arguments. The first argument is a format string that describes how to convert the second argument into a string for output.  For example, 
+Formatted writing: In its simplest form, \lstinline{stdio.writef()} takes two arguments; The first argument is a format string that describes how to convert the second argument into a string for output;  For example
 \begin{lstlisting}[language=Python]
 stdio.writef('pi is approximately %.2f.\n', math.pi)
 \end{lstlisting}
@@ -121,8 +110,7 @@ pi is approximately 3.14.
 
 \bigskip
 
-The \lstinline{stdio.writef()} function can take more than two arguments.
-In this case, the format string will have a format specifier for each additional argument, perhaps separated by other characters to pass through to the output. For example, 
+The \lstinline{stdio.writef()} function can take more than two arguments, in which case, the format string will have a format specifier for each additional argument, perhaps separated by other characters to pass through to the output; For example
 \begin{lstlisting}[language=Python]
 stdio.writef('The %dth decimal digit of %.10f is %d.\n', 5, math.pi, 9)
 \end{lstlisting}
@@ -134,26 +122,26 @@ The 5th decimal digit of 3.1415926536 is 9.
 
 \section{Standard Input}
 \begin{frame}[fragile]
-The \emph{standard input stream} is an abstract data stream that may be empty or may contain a sequence of values separated by whitespace. 
+The \emph{standard input stream} is an abstract data stream that may be empty or may contain a sequence of values separated by whitespace 
 
 \bigskip
 
-The end of the input stream is marked by the end-of-file (EOF) character, specified using \lstinline$<ctrl-d>$ or \lstinline$<ctrl-z>$. 
+The end of the input stream is marked by the end-of-file (EOF) character, specified using \lstinline$<ctrl-d>$ or \lstinline$<ctrl-z>$ 
 
 \bigskip
 
-The \lstinline{stdio} module also supports reading from standard input stream.
+The \lstinline{stdio} module also supports reading from standard input stream
 
 \bigskip
 
-A program that reads from standard input stream consumes the values, i.e., it cannot back up and read them again.
+A program that reads from standard input stream consumes the values, ie, it cannot back up and read them again
 \end{frame}
 
 \begin{frame}[fragile]
-API for the \lstinline$stdio$ module relevant to standard input:
+API for the \lstinline$stdio$ module relevant to standard input
 \begin{center}
 \begin{tabular}{cc}
-function call & description \\ \hline
+function & description \\ \hline
 \lstinline$stdio.isEmpty()$ & is the standard input empty (or only whitespace)? \\
 \lstinline$stdio.readInt()$ & read a token, convert it to an integer, and return it \\
 \lstinline$stdio.readFloat()$ & read a token, convert it to a float, and return it \\
@@ -242,7 +230,7 @@ Average is 10.5
 
 \section{Redirection and Piping}
 \begin{frame}[fragile]
-By adding the directive \lstinline{>} to the command that invokes a program, we can redirect its standard output to a file, either for permanent storage or for input to another program at a later time. For example: 
+By adding the directive \lstinline{>} to the command that invokes a program, we can redirect its standard output to a file, either for permanent storage or for input to another program at a later time; For example
 \begin{lstlisting}[language={}]
 $ python randomseq.py 1000 > data.txt
 $ head -5 data.txt 
@@ -255,7 +243,7 @@ $ head -5 data.txt
 
 \bigskip
 
-Similarly, by adding the directive \lstinline{<} to the command that invokes a program, we can redirect standard input so that \lstinline{stdio} reads data from a file instead of the terminal. For example:  
+Similarly, by adding the directive \lstinline{<} to the command that invokes a program, we can redirect standard input so that \lstinline{stdio} reads data from a file instead of the terminal; For example
 \begin{lstlisting}[language={}]
 $ python average.py < data.txt
 Average is 0.499379975213
@@ -263,7 +251,7 @@ Average is 0.499379975213
 
 \bigskip
 
-The standard output of one program can be mapped to the standard input stream of another program using the (pipe) directive \lstinline{|}. For example:  
+The standard output of one program can be mapped to the standard input stream of another program using the (pipe) directive \lstinline{|}; For example
 \begin{lstlisting}[language={}]
 $ python randomseq.py 1000 | python average.py 
 Average is 0.501346917807
@@ -305,11 +293,11 @@ $ seq 1 1000 | shuf | python rangefilter.py 250 750 | wc -w
 
 \section{Standard Drawing}
 \begin{frame}[fragile]
-The \lstinline{stddraw} module provides an abstraction for producing drawings as output.
+The \lstinline{stddraw} module provides an abstraction for producing drawings as output
 
 \bigskip
 
-API for the \lstinline{stddraw} module (drawing functions):
+API for the \lstinline{stddraw} module (drawing functions)
 \begin{center}
 \begin{tabular}{cc}
 function call & description \\ \hline
@@ -329,7 +317,7 @@ function call & description \\ \hline
 \end{frame}
 
 \begin{frame}[fragile]
-API for the \lstinline{stddraw} module (control functions):
+API for the \lstinline{stddraw} module (control functions)
 \begin{center}
 \begin{tabular}{cc}
 function call & description \\ \hline
@@ -427,11 +415,11 @@ $ python bouncingball.py
 
 \section{Standard Audio}
 \begin{frame}[fragile]
-The \lstinline{stdaudio} module is an abstraction for playing, manipulating, and synthesizing sounds.
+The \lstinline{stdaudio} module is an abstraction for playing, manipulating, and synthesizing sounds
 
 \bigskip
 
-API for the \lstinline{stdaudio} module:
+API for the \lstinline{stdaudio} module
 \begin{center}
 \begin{tabular}{cc}
 function call & description \\ \hline
