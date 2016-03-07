@@ -1,4 +1,4 @@
-\documentclass[8pt,a4paper,compress,handout]{beamer}
+\documentclass[8pt,a4paper,compress]{beamer}
 
 \usepackage{/home/siyer/lib/slides}
 
@@ -7,16 +7,6 @@
 
 \begin{document}
 \begin{frame}
-\hfill
-\begin{minipage}{150pt}
-\begin{flushright}
-\tiny \emph{To iterate is human, to recurse divine.}
-
-\smallskip
-
-- L. PETER DEUTSCH
-\end{flushright}
-\end{minipage}
 \vfill
 \titlepage
 \end{frame}
@@ -28,25 +18,25 @@
 
 \section{What is Recursion?}
 \begin{frame}[fragile]
-A \emph{recursive function} is a function that calls itself and meets the following conditions:
+A \emph{recursive function} is a function that calls itself and meets the following conditions
 \begin{itemize}
-\item Has a \emph{base case}; 
-\item Addresses subproblems that are \emph{smaller} in some sense; and
-\item Does not address subproblems that \emph{overlap}.
+\item Has a \emph{base case}
+\item Addresses subproblems that are \emph{smaller} in some sense
+\item Does not address subproblems that \emph{overlap}
 \end{itemize}
 
 \bigskip
 
-Recursive programming is directly related to \emph{mathematical induction}, a technique for proving facts about discrete functions.
+Recursive programming is directly related to \emph{mathematical induction}, a technique for proving facts about discrete functions
 \end{frame}
 
 \section{Examples}
 \begin{frame}[fragile]
-Recursive definition of the factorial function $N!$ and its implementation in Python: 
+Recursive definition of the factorial function $N!$ and its implementation in Python
 \[
 N! = \begin{dcases*}
 N(N-1)! & if $N > 0$, and \\
-1       & if $N=0$.
+1       & if $N=0$
 \end{dcases*}
 \]
 
@@ -59,7 +49,7 @@ def factorial(N):
 
 \bigskip
 
-Call trace for \lstinline{factorial(5)}:
+Call trace for \lstinline{factorial(5)}
 \begin{lstlisting}[language={}]
 factorial(5)
   factorial(4)
@@ -77,11 +67,11 @@ factorial(5)
 \end{frame}
 
 \begin{frame}[fragile]
-Recursive definition of the $n$th harmonic number $H_n$ and its implementation in Python: 
+Recursive definition of the $n$th harmonic number $H_n$ and its implementation in Python
 \[
 H_n = \begin{dcases*}
 \frac{1}{n} + H_{n-1} & if $n > 1$, and \\
-1       & if $n=1$.
+1       & if $n=1$
 \end{dcases*}
 \]
 
@@ -94,7 +84,7 @@ def harmonic(n):
 
 \bigskip
 
-Call trace for \lstinline{harmonic(5)}:
+Call trace for \lstinline{harmonic(5)}
 \begin{lstlisting}[language={}]
 harmonic(5)
   harmonic(4)
@@ -142,7 +132,7 @@ $ python euclid.py 314159 271828
 \end{frame}
 
 \begin{frame}[fragile]
-Call trace for \lstinline{gcd(1440, 408)}:
+Call trace for \lstinline{gcd(1440, 408)}
 
 \begin{lstlisting}[language={}]
 gcd(1440, 408)
@@ -219,7 +209,7 @@ $ python towersofhanoi.py 4
 \end{frame}
 
 \begin{frame}[fragile]
-Call trace for \lstinline{moves(4, True)}:
+Call trace for \lstinline{moves(4, True)}
 
 \begin{lstlisting}[language={}]
 moves(4, True)
@@ -252,45 +242,6 @@ moves(4, True)
       2 left
       moves(1, False)
         1 right
-\end{lstlisting}
-\end{frame}
-
-\begin{frame}[fragile]
-\begin{framed}
-\tiny beckett.py: Accept integer $n$ as a command-line argument. Write to standard output Beckett's stage instructions for $n$ actors.
-\end{framed}
-
-\begin{lstlisting}[language=Python]
-import stdio
-import sys
-
-def moves(n, enter):
-    if n == 0:
-        return
-    moves(n - 1, True)
-    if enter:
-        stdio.writeln('enter ' + str(n))
-    else:
-        stdio.writeln('exit  ' + str(n))
-    moves(n - 1, False)
-
-def main():
-    n = int(sys.argv[1])
-    moves(n, True)
-
-if __name__ == '__main__':
-    main()
-\end{lstlisting}
-
-\begin{lstlisting}[language={}]
-$ python beckett.py 3
-enter 1
-enter 2
-exit  1
-enter 3
-enter 1
-exit  2
-exit  1
 \end{lstlisting}
 \end{frame}
 
@@ -430,7 +381,7 @@ $ python brownian.py .05
 
 \section{Pitfalls}
 \begin{frame}[fragile]
-Missing base case. 
+Missing base case
 \begin{lstlisting}[language=Python]
 def harmonic(n):
     return 1.0 / n + harmonic(n - 1)
@@ -438,7 +389,7 @@ def harmonic(n):
 
 \bigskip
 
-Recursion does not address \emph{smaller} subproblems.
+Recursion does not address \emph{smaller} subproblems
 \begin{lstlisting}[language=Python]
 def harmonic(n):
     if n == 1: 
@@ -448,7 +399,7 @@ def harmonic(n):
 
 \bigskip
 
-Recursion addresses \emph{overlapping} subproblems.
+Recursion addresses \emph{overlapping} subproblems
 \begin{lstlisting}[language=Python]
 def fibonacci(n):
     if n == 0 or n == 1:
@@ -458,6 +409,6 @@ def fibonacci(n):
 
 \bigskip
 
-If a function calls itself recursively an excessive number of times before returning, the memory required by Python to keep track of the recursive calls may be prohibitive, resulting in a runtime error. 
+If a function calls itself recursively an excessive number of times before returning, the memory required by Python to keep track of the recursive calls may be prohibitive, resulting in a runtime error
 \end{frame}
 \end{document}
