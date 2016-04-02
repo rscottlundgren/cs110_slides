@@ -79,7 +79,7 @@ H_n = \begin{dcases*}
 def harmonic(n):
     if n == 1:
         return 1.0
-    return 1.0 / n * harmonic(n - 1)
+    return 1.0 / n + harmonic(n - 1)
 \end{lstlisting}
 
 \bigskip
