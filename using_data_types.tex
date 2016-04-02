@@ -18,15 +18,15 @@
 
 \section{Methods}
 \begin{frame}[fragile]
-A \emph{method} is a function associated with a specific object (and, by extension, with the type of that object).
+A \emph{method} is a function associated with a specific object (and, by extension, with the type of that object)
 
 \bigskip
 
-A method corresponds to a data-type operation.
+A method corresponds to a data-type operation
 
 \bigskip
 
-We \emph{call} (or \emph{invoke}) a method using a variable name, followed by the dot operator (\lstinline{.}), followed by the method name, followed by its arguments separated by commas and enclosed in parentheses.
+We \emph{call} (or \emph{invoke}) a method using a variable name, followed by the dot operator (\lstinline{.}), followed by the method name, followed by its arguments separated by commas and enclosed in parentheses
 
 \begin{lstlisting}[language={}]
 x = 3 ** 100
@@ -37,84 +37,46 @@ stdio.writeln(bits)
 
 \section{Integers, Floats, Booleans, and Strings}
 \begin{frame}[fragile]
-Methods in the built-in \lstinline{int} data type:
+Methods in the built-in \lstinline{int} data type
 \begin{lstlisting}[language={}]
 >>> dir(int) 
-['__abs__', '__add__', '__and__', '__class__', '__cmp__', '__coerce__', 
-'__delattr__', '__div__', '__divmod__', '__doc__', '__float__', 
-'__floordiv__', '__format__', '__getattribute__', '__getnewargs__', 
-'__hash__', '__hex__', '__index__', '__init__', '__int__', '__invert__', 
-'__long__', '__lshift__', '__mod__', '__mul__', '__neg__', '__new__', 
-'__nonzero__', '__oct__', '__or__', '__pos__', '__pow__', '__radd__', 
-'__rand__', '__rdiv__', '__rdivmod__', '__reduce__', '__reduce_ex__', 
-'__repr__', '__rfloordiv__', '__rlshift__', '__rmod__', '__rmul__', 
-'__ror__', '__rpow__', '__rrshift__', '__rshift__', '__rsub__', 
-'__rtruediv__', '__rxor__', '__setattr__', '__sizeof__', '__str__', 
-'__sub__', '__subclasshook__', '__truediv__', '__trunc__', '__xor__', 
-'bit_length', 'conjugate', 'denominator', 'imag', 'numerator', 'real']
+['bit_length', 'conjugate', 'denominator', 'imag', 'numerator', 'real']
 \end{lstlisting}
 
 \bigskip
 
-Methods in the built-in \lstinline{float} data type:
+Methods in the built-in \lstinline{float} data type
 \begin{lstlisting}[language={}]
 >>> dir(float) 
-['__abs__', '__add__', '__class__', '__coerce__', '__delattr__', '__div__', 
-'__divmod__', '__doc__', '__eq__', '__float__', '__floordiv__', 
-'__format__', '__ge__', '__getattribute__', '__getformat__', 
-'__getnewargs__', '__gt__', '__hash__', '__init__', '__int__', '__le__', 
-'__long__', '__lt__', '__mod__', '__mul__', '__ne__', '__neg__', '__new__', 
-'__nonzero__', '__pos__', '__pow__', '__radd__', '__rdiv__', '__rdivmod__', 
-'__reduce__', '__reduce_ex__', '__repr__', '__rfloordiv__', '__rmod__', 
-'__rmul__', '__rpow__', '__rsub__', '__rtruediv__', '__setattr__', 
-'__setformat__', '__sizeof__', '__str__', '__sub__', '__subclasshook__', 
-'__truediv__', '__trunc__', 'as_integer_ratio', 'conjugate', 'fromhex', 
-'hex', 'imag', 'is_integer', 'real']
-\end{lstlisting}
-\end{frame}
-
-\begin{frame}[fragile]
-Methods in the built-in \lstinline{bool} data type:
-\begin{lstlisting}[language={}]
->>> dir(bool) 
-['__abs__', '__add__', '__and__', '__class__', '__cmp__', '__coerce__', 
-'__delattr__', '__div__', '__divmod__', '__doc__', '__float__', 
-'__floordiv__', '__format__', '__getattribute__', '__getnewargs__', 
-'__hash__', '__hex__', '__index__', '__init__', '__int__', '__invert__', 
-'__long__', '__lshift__', '__mod__', '__mul__', '__neg__', '__new__', 
-'__nonzero__', '__oct__', '__or__', '__pos__', '__pow__', '__radd__', 
-'__rand__', '__rdiv__', '__rdivmod__', '__reduce__', '__reduce_ex__', 
-'__repr__', '__rfloordiv__', '__rlshift__', '__rmod__', '__rmul__', 
-'__ror__', '__rpow__', '__rrshift__', '__rshift__', '__rsub__', 
-'__rtruediv__', '__rxor__', '__setattr__', '__sizeof__', '__str__', 
-'__sub__', '__subclasshook__', '__truediv__', '__trunc__', '__xor__', 
-'bit_length', 'conjugate', 'denominator', 'imag', 'numerator', 'real']
+['as_integer_ratio', 'conjugate', 'fromhex', 'hex', 'imag', 'is_integer', 
+ 'real']
 \end{lstlisting}
 
 \bigskip
 
-Methods in the built-in \lstinline{str} data type:
+Methods in the built-in \lstinline{bool} data type
+\begin{lstlisting}[language={}]
+>>> dir(bool) 
+['bit_length', 'conjugate', 'denominator', 'imag', 'numerator', 'real']
+\end{lstlisting}
+
+\bigskip
+
+Methods in the built-in \lstinline{str} data type
 \begin{lstlisting}[language={}]
 >>> dir(str)
-['__add__', '__class__', '__contains__', '__delattr__', '__doc__', 
-'__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', 
-'__getnewargs__', '__getslice__', '__gt__', '__hash__', '__init__', 
-'__le__', '__len__', '__lt__', '__mod__', '__mul__', '__ne__', '__new__', 
-'__reduce__', '__reduce_ex__', '__repr__', '__rmod__', '__rmul__', 
-'__setattr__', '__sizeof__', '__str__', '__subclasshook__', 
-'_formatter_field_name_split', '_formatter_parser', 'capitalize', 'center', 
-'count', 'decode', 'encode', 'endswith', 'expandtabs', 'find', 'format', 
-'index', 'isalnum', 'isalpha', 'isdigit', 'islower', 'isspace', 'istitle', 
-'isupper', 'join', 'ljust', 'lower', 'lstrip', 'partition', 'replace', 
-'rfind', 'rindex', 'rjust', 'rpartition', 'rsplit', 'rstrip', 'split', 
-'splitlines', 'startswith', 'strip', 'swapcase', 'title', 'translate', 
-'upper', 'zfill']
+['capitalize', 'center', 'count', 'decode', 'encode', 'endswith', 'expandtabs', 
+ 'find', 'format', 'index', 'isalnum', 'isalpha', 'isdigit', 'islower', 
+ 'isspace', 'istitle', 'isupper', 'join', 'ljust', 'lower', 'lstrip', 
+ 'partition', 'replace', 'rfind', 'rindex', 'rjust', 'rpartition', 
+ 'rsplit', 'rstrip', 'split', 'splitlines', 'startswith', 'strip', 
+ 'swapcase', 'title', 'translate', 'upper', 'zfill']
 \end{lstlisting}
 \end{frame}
 
 \begin{frame}[fragile]
 \begin{framed}
-\tiny \lstinline{potentialgene.py}: Accepts a DNA sequence as a command-line argument, and writes \lstinline{True} to standard output if the sequence corresponds to a potential gene, and \lstinline{False} otherwise.
+\tiny potentialgene.py: Accepts a DNA sequence as a command-line argument, and writes \lstinline{True} to standard output if the sequence corresponds to a potential gene, and \lstinline{False} otherwise.
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -152,68 +114,46 @@ False
 
 \section{Collections}
 \begin{frame}[fragile]
-Methods in the built-in \lstinline{list} data type:
+Methods in the built-in \lstinline{list} data type
 \begin{lstlisting}[language={}]
 >>> dir(list)
-['__add__', '__class__', '__contains__', '__delattr__', '__delitem__', 
-'__delslice__', '__doc__', '__eq__', '__format__', '__ge__', 
-'__getattribute__', '__getitem__', '__getslice__', '__gt__', '__hash__', 
-'__iadd__', '__imul__', '__init__', '__iter__', '__le__', '__len__', 
-'__lt__', '__mul__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', 
-'__repr__', '__reversed__', '__rmul__', '__setattr__', '__setitem__', 
-'__setslice__', '__sizeof__', '__str__', '__subclasshook__', 'append', 
-'count', 'extend', 'index', 'insert', 'pop', 'remove', 'reverse', 'sort']
+['append', 'count', 'extend', 'index', 'insert', 'pop', 'remove', 'reverse', 
+ 'sort']
 \end{lstlisting}
 
 \bigskip
 
-Methods in the built-in \lstinline{tuple} data type:
+Methods in the built-in \lstinline{tuple} data type
 \begin{lstlisting}[language={}]
 >>> dir(tuple)
-['__add__', '__class__', '__contains__', '__delattr__', '__doc__', 
-'__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', 
-'__getnewargs__', '__getslice__', '__gt__', '__hash__', '__init__', 
-'__iter__', '__le__', '__len__', '__lt__', '__mul__', '__ne__', '__new__', 
-'__reduce__', '__reduce_ex__', '__repr__', '__rmul__', '__setattr__', 
-'__sizeof__', '__str__', '__subclasshook__', 'count', 'index']
-\end{lstlisting}
-\end{frame}
-
-\begin{frame}[fragile]
-Methods in the built-in \lstinline{set} data type:
-\begin{lstlisting}[language={}]
->>> dir(set)
-['__and__', '__class__', '__cmp__', '__contains__', '__delattr__', 
-'__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', 
-'__hash__', '__iand__', '__init__', '__ior__', '__isub__', '__iter__', 
-'__ixor__', '__le__', '__len__', '__lt__', '__ne__', '__new__', '__or__', 
-'__rand__', '__reduce__', '__reduce_ex__', '__repr__', '__ror__', 
-'__rsub__', '__rxor__', '__setattr__', '__sizeof__', '__str__', '__sub__', 
-'__subclasshook__', '__xor__', 'add', 'clear', 'copy', 'difference', 
-'difference_update', 'discard', 'intersection', 'intersection_update', 
-'isdisjoint', 'issubset', 'issuperset', 'pop', 'remove', 
-'symmetric_difference', 'symmetric_difference_update', 'union', 'update']
+['count', 'index']
 \end{lstlisting}
 
 \bigskip
 
-Methods in the built-in \lstinline{dict} data type:
+Methods in the built-in \lstinline{set} data type
+\begin{lstlisting}[language={}]
+>>> dir(set)
+['add', 'clear', 'copy', 'difference', 'difference_update', 'discard', 
+ 'intersection', 'intersection_update', 'isdisjoint', 'issubset', 
+ 'issuperset', 'pop', 'remove', 'symmetric_difference',  
+ 'symmetric_difference_update', 'union', 'update']
+\end{lstlisting}
+
+\bigskip
+
+Methods in the built-in \lstinline{dict} data type
 \begin{lstlisting}[language={}]
 >>> dir(dict)
-['__class__', '__cmp__', '__contains__', '__delattr__', '__delitem__', 
-'__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', 
-'__getitem__', '__gt__', '__hash__', '__init__', '__iter__', '__le__', 
-'__len__', '__lt__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', 
-'__repr__', '__setattr__', '__setitem__', '__sizeof__', '__str__', 
-'__subclasshook__', 'clear', 'copy', 'fromkeys', 'get', 'has_key', 'items', 
-'iteritems', 'iterkeys', 'itervalues', 'keys', 'pop', 'popitem', 
-'setdefault', 'update', 'values', 'viewitems', 'viewkeys', 'viewvalues']
+['clear', 'copy', 'fromkeys', 'get', 'has_key', 'items', 'iteritems', 
+ 'iterkeys', 'itervalues', 'keys', 'pop', 'popitem', 'setdefault', 'update', 
+ 'values', 'viewitems', 'viewkeys', 'viewvalues']
 \end{lstlisting}
 \end{frame}
 
 \section{User-Defined Data Types}
 \begin{frame}[fragile]
-A data type \lstinline{Charge} for charged particles:
+A data type \lstinline{Charge} for charged particles
 \begin{center}
 \begin{tabular}{cc}
 method & description \\ \hline
@@ -225,19 +165,19 @@ method & description \\ \hline
 
 \bigskip
 
-To create an object of a user-defined data type, we call its \emph{constructor}, using the name of the data type, followed by the constructor's arguments.
+To create an object of a user-defined data type, we call its \emph{constructor}, using the name of the data type, followed by the constructor's arguments
 
 \bigskip
 
-We use a variable name to identify the object to be associated with the method we intend to call.
+We use a variable name to identify the object to be associated with the method we intend to call
 
 \bigskip
 
-In any data-type implementation, it is worthwhile to include an operation that converts an object's value to a string.
+In any data-type implementation, it is worthwhile to include an operation that converts an object's value to a string
 
 \bigskip
 
-We will use the following form of the \lstinline{import} statement to import a data type \lstinline{XYZ} defined in a file \lstinline{xyz.py}:
+We will use the following form of the \lstinline{import} statement to import a data type \lstinline{XYZ} defined in a file \lstinline{xyz.py}
 \begin{lstlisting}[language={}]
 from xyz import XYZ
 \end{lstlisting}
@@ -245,7 +185,7 @@ from xyz import XYZ
 
 \begin{frame}[fragile]
 \begin{framed}
-\tiny \lstinline{chargeclient.py}: Accepts floats \carg{x} and \carg{y} as command-line arguments, creates two \lstinline{Charge} objects with fixed position and electrical charge, and writes to standard output the potential at $(\carg{x}, \carg{y})$ due to the two charges.
+\tiny chargeclient.py: Accepts floats $x$ and $y$ as command-line arguments, creates two \lstinline{Charge} objects with fixed position and electrical charge, and writes to standard output the potential at $(x, y)$ due to the two charges.
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -284,7 +224,7 @@ is 2.56e+12
 \end{frame}
 
 \begin{frame}[fragile]
-A data type \lstinline{Color} for representing color values:
+A data type \lstinline{Color} for representing color values
 \begin{center}
 \begin{tabular}{cc}
 method & description \\ \hline
@@ -299,7 +239,7 @@ method & description \\ \hline
 
 \begin{frame}[fragile]
 \begin{framed}
-\tiny \lstinline{alberssquares.py}: Accepts integers \carg{r1}, \carg{g1}, \carg{b1}, \carg{r2}, \carg{g2}, and \carg{b2} as command-line arguments, and draws to standard draw Albers squares using colors $(\carg{r1}, \carg{g1}, \carg{b1})$ and $(\carg{r2}, \carg{g2}, \carg{b2})$.
+\tiny alberssquares.py: Accepts integers $r1$, $g1$, $b1$, $r2$, $g2$, and $b2$ as command-line arguments, and draws to standard draw Albers squares using colors $(r1, g1, b1)$ and $(r2, g2, b2)$.
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -371,7 +311,7 @@ $ python alberssquares.py 0 174 239 147 149 252
 
 \begin{frame}[fragile]
 \begin{framed}
-\tiny \lstinline{luminance.py}: Accepts six RGB values defining two colors as command-line arguments, and writes \lstinline{True} to standard output if the two colors are compatible, and \lstinline{False} otherwise.
+\tiny luminance.py: Accepts six RGB values defining two colors as command-line arguments, and writes \lstinline{True} to standard output if the two colors are compatible, and \lstinline{False} otherwise.
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -420,7 +360,7 @@ False
 \end{frame}
 
 \begin{frame}[fragile]
-A data type \lstinline{Picture} for representing digital images:
+A data type \lstinline{Picture} for representing digital images
 \begin{center}
 \begin{tabular}{cc}
 method & description \\ \hline
@@ -437,7 +377,7 @@ method & description \\ \hline
 
 \begin{frame}[fragile]
 \begin{framed}
-\tiny \lstinline{grayscale.py}: Accepts the name of a JPG or PNG file as a command-line argument, reads an image from the file, and draws a gray scale version of that image to standard draw.
+\tiny grayscale.py: Accepts the name of a JPG or PNG file as a command-line argument, reads an image from the file, and draws a gray scale version of that image to standard draw.
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -480,7 +420,7 @@ $ python grayscale.py mandrill.jpg
 
 \begin{frame}[fragile]
 \begin{framed}
-\tiny \lstinline{scale.py}: Accepts the name \carg{fileName} of a JPG or PNG image file, an integer \carg{w}, and an integer \carg{h} as command line arguments, reads an image from the file, and draws to standard draw the image scaled to width \carg{w} and height \carg{h}.
+\tiny scale.py: Accepts the name $fileName$ of a JPG or PNG image file, an integer $w$, and an integer $h$ as command line arguments, reads an image from the file, and draws to standard draw the image scaled to width $w$ and height $h$.
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -564,7 +504,7 @@ $ python scale.py mandrill.jpg 100 200
 
 \begin{frame}[fragile]
 \begin{framed}
-\tiny \lstinline{fade.py}: Accepts strings \carg{sourceFile} and \carg{targetFile} and integer \carg{n} as command-line arguments, and then, over the course of \carg{n} frames, gradually replaces the image from \carg{sourceFile} with the image from \carg{targetFile}, and displays to standard draw each intermediate image. 
+\tiny fade.py: Accepts strings $sourceFile$ and $targetFile$ and integer $n$ as command-line arguments, and then, over the course of $n$ frames, gradually replaces the image from $sourceFile$ with the image from $targetFile$, and displays to standard draw each intermediate image. 
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -631,7 +571,7 @@ $ python fade.py mandrill.jpg darwin.jpg 5
 
 \begin{frame}[fragile]
 \begin{framed}
-\tiny \lstinline{potential.py}: Reads values from standard input to create a list of charged particles, sets each pixel color in an image to a grayscale value proportional to the potential due to the particles at corresponding points, and draws the resulting image to standard draw.
+\tiny potential.py: Reads values from standard input to create a list of charged particles, sets each pixel color in an image to a grayscale value proportional to the potential due to the particles at corresponding points, and draws the resulting image to standard draw.
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -644,6 +584,8 @@ from picture import Picture
 
 def main():
     MAX_GRAY_SCALE = 255
+    WIDTH  = 512
+    HEIGHT = 512
     n = stdio.readInt()
     charges = stdarray.create1D(n)
     for i in range(n):
@@ -651,7 +593,7 @@ def main():
         y0 = stdio.readFloat()
         q0 = stdio.readFloat()
         charges[i] = Charge(x0, y0, q0)
-    pic = Picture()
+    pic = Picture(WIDTH, HEIGHT)
     for col in range(pic.width()):
         for row in range(pic.height()):
             x = 1.0 * col / pic.width()
@@ -709,7 +651,7 @@ $ python potential.py < charges.txt
 \end{frame}
 
 \begin{frame}[fragile]
-A data type \lstinline{InStream} that supports reading numbers and text from files and websites as well as the standard input:
+A data type \lstinline{InStream} that supports reading numbers and text from files and websites as well as the standard input
 \begin{center}
 \begin{tabular}{cc}
 method & description \\ \hline
@@ -725,7 +667,7 @@ $\dots$ & $\dots$
 
 \bigskip
 
-A data type \lstinline{OutStream} that supports writing strings to a variety of output streams, including standard output and files:
+A data type \lstinline{OutStream} that supports writing strings to a variety of output streams, including standard output and files
 \begin{center}
 \begin{tabular}{cc}
 method & description \\ \hline
@@ -739,7 +681,7 @@ method & description \\ \hline
 
 \begin{frame}[fragile]
 \begin{framed}
-\tiny \lstinline{cat.py}: Copies files or web pages whose names are given by \lstinline{sys.argv[1:n - 2]} to the file whose name is given by \lstinline{sys.argv[n - 1]}.
+\tiny cat.py: Copies files or web pages whose names are given by \lstinline{sys.argv[1:n - 2]} to the file whose name is given by \lstinline{sys.argv[n - 1]}.
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -776,7 +718,7 @@ test.
 
 \begin{frame}[fragile]
 \begin{framed}
-\tiny \lstinline{stockquote.py}: Accepts string \carg{stockSymbol} as a command-line argument, and writes to standard output the current stock price for \carg{stockSymbol}, as reported by the website \href{http://finance.yahoo.com/}{http://finance.yahoo.com/}.
+\tiny stockquote.py: Accepts string $stockSymbol$ as a command-line argument, and writes to standard output the current stock price for $stockSymbol$, as reported by the website \href{http://finance.yahoo.com/}{http://finance.yahoo.com/}.
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -816,7 +758,7 @@ $ python stockquote.py goog
 
 \begin{frame}[fragile]
 \begin{framed}
-\tiny \lstinline{split.py}: Accepts string \carg{fileName} and integer \carg{fieldCount} as command-line arguments, splits the file whose name is \carg{fileName}.csv, by field, into \carg{fieldCount} files named \carg{fileName}0.txt, \carg{fileName}1.txt, etc.
+\tiny split.py: Accepts string $fileName$ and integer $fieldCount$ as command-line arguments, splits the file whose name is \lstinline{fileName.csv}, by field, into $fieldCount$ files named \lstinline{fileName0.txt}, \lstinline{fileName1.txt}, etc.
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -852,12 +794,12 @@ www.cs.princeton.edu,128.112.136.35
 www.math.princeton.edu,128.112.18.11
 ...
 $ python split.py ip 2
-$ more ip0.csv
+$ more ip0.txt
 www.princeton.edu
 www.cs.princeton.edu
 www.math.princeton.edu
 ...
-$ more ip1.csv
+$ more ip1.txt
 128.112.128.15
 128.112.136.35
 128.112.18.11
@@ -868,15 +810,15 @@ $ more ip1.csv
 \section{Memory Management}
 \begin{frame}[fragile]
 \begin{minipage}{200pt}
-Each time we create an object, Python reserves computer memory for it.
+Each time we create an object, Python reserves computer memory for it
 
 \bigskip
 
-An \emph{orphaned object} is an object that cannot be referenced by a program.
+An \emph{orphaned object} is an object that cannot be referenced by a program
 
 \bigskip
 
-Python implements \emph{garbage collection} --- managing memory by keeping track of orphaned objects and returning the memory they use to a pool of free memory.
+Python implements \emph{garbage collection} --- managing memory by keeping track of orphaned objects and returning the memory they use to a pool of free memory
 \end{minipage}%
 \begin{minipage}{100pt}
 \begin{center}

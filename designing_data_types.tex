@@ -18,115 +18,115 @@
 
 \section{APIs}
 \begin{frame}[fragile]
-Precisely specifying a data type using an API improves design because it leads to client code that can clearly express its computation. 
+Precisely specifying a data type using an API improves design because it leads to client code that can clearly express its computation 
 
 \bigskip
 
-By using APIs to separate clients from implementations, we reap the benefits of standard interfaces for every program that we compose.
+By using APIs to separate clients from implementations, we reap the benefits of standard interfaces for every program that we compose
 
 \bigskip
 
-We should avoid APIs that are too hard to implement, too narrow, too wide, too general, or too specific.
+We should avoid APIs that are too hard to implement, too narrow, too wide, too general, or too specific
 \end{frame}
 
 \section{Encapsulation}
 \begin{frame}[fragile]
-The process of separating clients from implementations by hiding information is known as \emph{encapsulation}.
+The process of separating clients from implementations by hiding information is known as \emph{encapsulation}
 
 \bigskip
 
-Encapsulation allows one implementation of an API to be substituted for another.
+Encapsulation allows one implementation of an API to be substituted for another
 
 \bigskip
 
-Encapsulation also helps programmers ensure that their code operates as intended.
+Encapsulation also helps programmers ensure that their code operates as intended
 
 \bigskip
 
-Python does not enforce encapsulation; instead, through a naming convention, clients are informed that they should not directly access the instance variable, method, or function thus named.
+Python does not enforce encapsulation; instead, through a naming convention, clients are informed that they should not directly access the instance variable, method, or function thus named
 
 \bigskip
 
-\emph{Modular programming} is insisting on the API being the only point of dependence between client and implementation.
+\emph{Modular programming} is insisting on the API being the only point of dependence between client and implementation
 \end{frame}
 
 \section{Immutability}
 \begin{frame}[fragile]
-An object from a data type is \emph{immutable} if its data-type value cannot change once created. 
+An object from a data type is \emph{immutable} if its data-type value cannot change once created
 
 \bigskip
 
-The purpose of many data types (eg, \lstinline{Vector}) is to encapsulate values that do not change, while for many other data types (eg, \lstinline{Counter}), the very purpose of the abstraction is to encapsulate values as they change. 
+The purpose of many data types (eg, \lstinline{Vector}) is to encapsulate values that do not change, while for many other data types (eg, \lstinline{Counter}), the very purpose of the abstraction is to encapsulate values as they change 
 
 \bigskip
 
-Generally, immutable data types are easier to use and harder to misuse because the scope of code that can change object values is far smaller than for mutable types.
+Generally, immutable data types are easier to use and harder to misuse because the scope of code that can change object values is far smaller than for mutable types
 
 \bigskip
 
-In Python, lists are mutable, whereas and strings and tuples are immutable.
+In Python, lists are mutable, whereas and strings and tuples are immutable
 
 \bigskip
 
-The downside of immutability is that we must create a new object for every value, which is called \emph{defensive copy}.
+The downside of immutability is that we must create a new object for every value, which is called \emph{defensive copy}
 \end{frame}
 
 \section{Polymorphism}
 \begin{frame}[fragile]
-A method (or function) that can take arguments with different types is said to be \emph{polymorphic}.
+A method (or function) that can take arguments with different types is said to be \emph{polymorphic}
 
 \bigskip
 
-\emph{Duck typing} is a programming style in which the language does not formally specify the requirements for a function's arguments. 
+\emph{Duck typing} is a programming style in which the language does not formally specify the requirements for a function's arguments
 
 \bigskip
 
-If an object walks like a duck, swims like a duck, and quacks like a duck, we can treat that object as a duck; we don't need to explicitly declare it to be a duck. 
+If an object walks like a duck, swims like a duck, and quacks like a duck, we can treat that object as a duck; we don't need to explicitly declare it to be a duck
 
 \bigskip
 
-Python uses duck typing for all operations (function calls, method calls, and operators), and raises a \lstinline{TypeError} at run time if an operation cannot be applied to an object because it is of an inappropriate type. 
+Python uses duck typing for all operations (function calls, method calls, and operators), and raises a \lstinline{TypeError} at run time if an operation cannot be applied to an object because it is of an inappropriate type
 
 \bigskip
 
-Duck typing leads to simpler and more flexible client code and puts the focus on operations rather than the type.
+Duck typing leads to simpler and more flexible client code and puts the focus on operations rather than the type
 
 \bigskip
 
-The primary disadvantage of duck typing is that it is difficult to know precisely what the contract is between the client and the implementation --- the API simply does not carry this information.
+The primary disadvantage of duck typing is that it is difficult to know precisely what the contract is between the client and the implementation --- the API simply does not carry this information
 \end{frame}
 
 \section{Overloading}
 \begin{frame}[fragile]
-The ability to define a data type that provides its own definitions of operators is a form of polymorphism known as \emph{operator overloading}. 
+The ability to define a data type that provides its own definitions of operators is a form of polymorphism known as \emph{operator overloading}
 
 \bigskip
 
-In Python, we can overload almost every operator, including operators for arithmetic, comparisons, indexing, and slicing.
+In Python, we can overload almost every operator, including operators for arithmetic, comparisons, indexing, and slicing
 
 \bigskip
 
-We can also overload built-in functions, including absolute value, length, hashing, and type conversion. 
+We can also overload built-in functions, including absolute value, length, hashing, and type conversion
 
 \bigskip
 
-Overloading operators and built-in functions makes user-defined types behave more like built-in types.
+Overloading operators and built-in functions makes user-defined types behave more like built-in types
 
 \bigskip
 
-To perform an operation, Python internally converts the expression into a call on the corresponding special method.
+To perform an operation, Python internally converts the expression into a call on the corresponding special method
 
 \bigskip
 
-To call a built-in function, Python internally calls the corresponding special method instead. 
+To call a built-in function, Python internally calls the corresponding special method instead
 
 \bigskip
 
-To overload an operator or built-in function, we include an implementation of the corresponding special method with our own code.
+To overload an operator or built-in function, we include an implementation of the corresponding special method with our own code
 \end{frame}
 
 \begin{frame}[fragile]
-Special methods for arithmetic operators:
+Special methods for arithmetic operators
 \begin{center}
 \begin{tabular}{ccc}
 client operation & special method & description \\ \hline
@@ -144,7 +144,7 @@ client operation & special method & description \\ \hline
 
 \bigskip
 
-Special methods for comparison operators:
+Special methods for comparison operators
 \begin{center}
 \begin{tabular}{ccc}
 client operation & special method & description \\ \hline
@@ -159,7 +159,7 @@ client operation & special method & description \\ \hline
 \end{frame}
 
 \begin{frame}[fragile]
-Special methods for built-in functions:
+Special methods for built-in functions
 \begin{center}
 \begin{tabular}{ccc}
 client operation & special method & description \\ \hline
@@ -176,15 +176,15 @@ client operation & special method & description \\ \hline
 
 \section{Functions are Objects}
 \begin{frame}[fragile]
-In Python, \emph{everything} is an object, including functions, which means we can use them as arguments to functions and return them as results.
+In Python, \emph{everything} is an object, including functions, which means we can use them as arguments to functions and return them as results
 
 \bigskip
 
-Defining \emph{higher-order functions} that manipulate other functions is common both in mathematics and scientific computing.
+Defining \emph{higher-order functions} that manipulate other functions is common both in mathematics and scientific computing
 
 \bigskip
 
-For example, the following function evaluates the \emph{Riemann integral} (ie, the area under the curve) of a real-valued function $f()$ in the interval $(a, b)$, using the rectangle rule with $n$ rectangles:
+For example, the following function evaluates the \emph{Riemann integral} (ie, the area under the curve) of a real-valued function $f()$ in the interval $(a, b)$, using the rectangle rule with $n$ rectangles
 
 \begin{lstlisting}[language=Python]
 def integrate(f, a, b, n = 1000):
@@ -195,7 +195,7 @@ def integrate(f, a, b, n = 1000):
     return total
 \end{lstlisting}
 
-and the following statement uses the function above to compute the area under the curve $f(x)=x^2$ in the interval $(0, 1)$:
+and the following statement uses the function above to compute the area under the curve $f(x)=x^2$ in the interval $(0, 1)$
 
 \begin{lstlisting}[language=Python]
 area = integrate(lambda x : x * x, 0, 1)
@@ -204,11 +204,11 @@ area = integrate(lambda x : x * x, 0, 1)
 
 \section{Inheritance}
 \begin{frame}[fragile]
-Python provides language support for defining relationships among classes, known as \emph{inheritance}.
+Python provides language support for defining relationships among classes, known as \emph{inheritance}
 
 \bigskip
 
-Inheritance enables \emph{subclassing}, where the idea is to define a new class (\emph{subclass}, or \emph{derived class}) that inherits instance variables and methods from another class (\emph{superclass}, or \emph{base class}). 
+Inheritance enables \emph{subclassing}, where the idea is to define a new class (\emph{subclass}, or \emph{derived class}) that inherits instance variables and methods from another class (\emph{superclass}, or \emph{base class})
 
 \begin{lstlisting}[language={}]
 class DerivedClassName(BaseClassName):
@@ -219,19 +219,19 @@ class DerivedClassName(BaseClassName):
 
 \bigskip
 
-Every class in Python implicitly inherits from \lstinline{object}.
+Every class in Python implicitly inherits from \lstinline{object}
 
 \bigskip
 
-Python supports two built-in functions that work with inheritance:
+Python supports two built-in functions that work with inheritance
 \begin{itemize}
-\item \lstinline{isinstance(o, T)} checks if instance \lstinline{o} is of type \lstinline{T}.
-\item \lstinline{issubclass(T1, T2)} checks if \lstinline{T1} is a subclass of \lstinline{T2}.
+\item \lstinline{isinstance(o, T)} checks if instance \lstinline{o} is of type \lstinline{T}
+\item \lstinline{issubclass(T1, T2)} checks if \lstinline{T1} is a subclass of \lstinline{T2}
 \end{itemize}
 
 \bigskip
 
-Python supports a limited form of multiple inheritance as well. 
+Python supports a limited form of multiple inheritance as well
 
 \begin{lstlisting}[language={}]
 class DerivedClassName(Base1, Base2, Base3):
@@ -243,7 +243,7 @@ class DerivedClassName(Base1, Base2, Base3):
 
 \section{Examples}
 \begin{frame}[fragile]
-A data type \lstinline{Complex} for complex numbers:
+A data type \lstinline{Complex} for complex numbers
 \begin{center}
 \begin{tabular}{cc}
 method & description \\ \hline
@@ -321,7 +321,7 @@ $ python complexpolar.py
 \end{frame}
 
 \begin{frame}[fragile]
-A data type \lstinline{Counter} for counting:
+A data type \lstinline{Counter} for counting
 \begin{center}
 \begin{tabular}{cc}
 method & description \\ \hline
@@ -341,7 +341,7 @@ method & description \\ \hline
 
 \begin{frame}[fragile]
 \begin{framed}
-\tiny \lstinline{counter.py}: Defines a data type \lstinline{Counter}.
+\tiny counter.py: Defines a data type \lstinline{Counter}.
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -418,23 +418,23 @@ Tails: 720
 \end{frame}
 
 \begin{frame}[fragile]
-A \emph{spatial vector} is an abstract entity that has a magnitude and a direction.
+A \emph{spatial vector} is an abstract entity that has a magnitude and a direction
 
 \bigskip
 
-Vector operations, assuming $\mathbf{x}=(x_0,x_1,\dots,x_{n-1})$, $\mathbf{y}=(y_0,y_1,\dots,y_{n-1})$, and $\alpha \in \mathbb{R}$:
+Vector operations, assuming $\mathbf{x}=(x_0,x_1,\dots,x_{n-1})$, $\mathbf{y}=(y_0,y_1,\dots,y_{n-1})$, and $\alpha \in \mathbb{R}$
 \begin{itemize}
-\item Addition: $\mathbf{x}+\mathbf{y}=(x_0+y_0,x_1+y_1,\dots,x_{n-1}+y_{n-1})$.
-\item Subtraction: $\mathbf{x}-\mathbf{y}=(x_0-y_0,x_1-y_1,\dots,x_{n-1}-y_{n-1})$.
-\item Scalar product: $\alpha\mathbf{x}=(\alpha x_0,\alpha x_1,\dots,\alpha x_{n-1})$.
-\item Dot product: $\mathbf{x}\cdot\mathbf{y}=x_0y_0+x_1y_1+\dots+x_{n-1}y_{n-1}$.
-\item Magnitude: $|\mathbf{x}|=(x_0^2+x_1^2+\dots+x_{n-1}^2)^{1/2}$.
-\item Direction: $\mathbf{x}/|\mathbf{x}|=(x_0/|\mathbf{x}|,x_1/|\mathbf{x}|,\dots,x_{n-1}/|\mathbf{x}|)$.
+\item Addition: $\mathbf{x}+\mathbf{y}=(x_0+y_0,x_1+y_1,\dots,x_{n-1}+y_{n-1})$
+\item Subtraction: $\mathbf{x}-\mathbf{y}=(x_0-y_0,x_1-y_1,\dots,x_{n-1}-y_{n-1})$
+\item Scalar product: $\alpha\mathbf{x}=(\alpha x_0,\alpha x_1,\dots,\alpha x_{n-1})$
+\item Dot product: $\mathbf{x}\cdot\mathbf{y}=x_0y_0+x_1y_1+\dots+x_{n-1}y_{n-1}$
+\item Magnitude: $|\mathbf{x}|=(x_0^2+x_1^2+\dots+x_{n-1}^2)^{1/2}$
+\item Direction: $\mathbf{x}/|\mathbf{x}|=(x_0/|\mathbf{x}|,x_1/|\mathbf{x}|,\dots,x_{n-1}/|\mathbf{x}|)$
 \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]
-A data type \lstinline{Vector} for spatial vectors:
+A data type \lstinline{Vector} for spatial vectors
 \begin{center}
 \begin{tabular}{cc}
 method & description \\ \hline
@@ -454,7 +454,7 @@ method & description \\ \hline
 
 \begin{frame}[fragile]
 \begin{framed}
-\tiny \lstinline{vector.py}: Defines a data type \lstinline{Vector}.
+\tiny vector.py: Defines a data type \lstinline{Vector}.
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -542,7 +542,7 @@ x + y    = [6.0, 4.0, 7.0, 5.0]
 \end{frame}
 
 \begin{frame}[fragile]
-A data type \lstinline{Sketch} for compactly representing the content of a document:
+A data type \lstinline{Sketch} for compactly representing the content of a document
 \begin{center}
 \begin{tabular}{cc}
 method & description \\ \hline
@@ -555,7 +555,7 @@ method & description \\ \hline
 
 \begin{frame}[fragile]
 \begin{framed}
-\tiny \lstinline{sketch.py}: Defines a data type \lstinline{Sketch}. 
+\tiny sketch.py: Defines a data type \lstinline{Sketch}. 
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -605,7 +605,7 @@ $ python sketch.py 2 16 < genome20.txt
 
 \begin{frame}[fragile]
 \begin{framed}
-\tiny \lstinline{comparedocuments.py}: Accepts integers \carg{k} and \carg{d} as command-line arguments, reads a document list from standard input, computes \carg{d}-dimensional profiles based on \carg{k}-gram frequencies for all the documents, and writes a matrix of similarity measures between all pairs of documents.
+\tiny comparedocuments.py: Accepts integers $k$ and $d$ as command-line arguments, reads a document list from standard input, computes $d$-dimensional profiles based on $k$-gram frequencies for all the documents, and writes a matrix of similarity measures between all pairs of documents.
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -664,36 +664,36 @@ actg    0.12    0.15    0.14    0.16    0.01    0.12    0.09    1.00
 
 \section{Design by Contract}
 \begin{frame}[fragile]
-When using the design-by-contract model, the designer of a data type expresses:
+When using the design-by-contract model, the designer of a data type expresses
 \begin{itemize}
-\item a \emph{precondition} - the condition that the client promises to satisfy when calling a method;
-\item a \emph{postcondition} - the condition that the implementation promises to achieve when returning from a method;
-\item \emph{invariants} - any condition that the implementation promises to satisfy while the method is executing; and 
-\item \emph{side effects} - any other change in state that the method could cause.
+\item A \emph{precondition} - the condition that the client promises to satisfy when calling a method
+\item A \emph{postcondition} - the condition that the implementation promises to achieve when returning from a method
+\item \emph{Invariants} - any condition that the implementation promises to satisfy while the method is executing 
+\item \emph{Side effects} - any other change in state that the method could cause
 \end{itemize}
 
 \bigskip
 
-\emph{Exceptions} and \emph{assertions} are Python language mechanisms that enable us to test these conditions.
+\emph{Exceptions} and \emph{assertions} are Python language mechanisms that enable us to test these conditions
 \end{frame}
 
 \begin{frame}[fragile]
-An \emph{exception} is a disruptive event that occurs while a program is running, often to signal an error. 
+An \emph{exception} is a disruptive event that occurs while a program is running, often to signal an error
 
 \bigskip
 
-The action taken is known as \emph{raising an exception} (or \emph{error}).
+The action taken is known as \emph{raising an exception} (or \emph{error})
 
 \bigskip
 
-We can raise our own exceptions as follows:
+We can raise our own exceptions as follows
 \begin{lstlisting}[language=Python]
 raise Exception('Error message here.')
 \end{lstlisting} 
 
 \bigskip
 
-For example, in \lstinline{vector.py}, we can raise an exception in \lstinline{__add__()} if the two \lstinline{Vectors} to be added have different dimensions. 
+For example, in \lstinline{vector.py}, we can raise an exception in \lstinline{__add__()} if the two \lstinline{Vectors} to be added have different dimensions
 \begin{lstlisting}[language=Python]
 if len(self) != len(other):
     raise Exception('vectors have different dimensions')
@@ -701,7 +701,7 @@ if len(self) != len(other):
 
 \bigskip
 
-We handle exceptions using a try-except block. For example
+We handle exceptions using a try-except block; For example
 \begin{lstlisting}[language=Python]
 (x, y) = (5, 0)
 try:
@@ -713,10 +713,10 @@ stdio.writeln(z)
 \end{frame}
 
 \begin{frame}[fragile]
-An \emph{assertion} is a boolean expression that we affirm is \lstinline{True}, and if it is \lstinline{False}, the program will raise an \lstinline{AssertionError} at run time.
+An \emph{assertion} is a boolean expression that we affirm is \lstinline{True}, and if it is \lstinline{False}, the program will raise an \lstinline{AssertionError} at run time
 
 \bigskip
-For example, in \lstinline{counter.py}, we might check that the counter is never negative by adding the following assertion as the last statement in \lstinline{increment()}:
+For example, in \lstinline{counter.py}, we might check that the counter is never negative by adding the following assertion as the last statement in \lstinline{increment()}
 \begin{lstlisting}[language=Python]
 assert self.__count >= 0
 \end{lstlisting} 

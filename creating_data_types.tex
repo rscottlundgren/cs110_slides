@@ -18,73 +18,72 @@
 
 \section{Basic Elements of a Data Type}
 \begin{frame}[fragile]
-We implement a data type as a \emph{class} --- the keyword \lstinline{class}, followed by the class name, followed by a colon, and then a list of method definitions.
+We implement a data type as a \emph{class} --- the keyword \lstinline{class}, followed by the class name, followed by a colon, and then a list of method definitions
 
 \bigskip
 
-A class typically defines a constructor, instance variables (aka attributes of the class), and methods.
+A class typically defines a constructor, instance variables (aka attributes of the class), and methods
 
 \bigskip
 
-A constructor creates an object of the specified type and returns a reference to that object.
+A constructor creates an object of the specified type and returns a reference to that object
 
 \bigskip
 
-When a client calls a constructor, Python calls the \lstinline{__init__()} method of the data type to define and initialize the instance variables, and returns a reference to the new object. 
+When a client calls a constructor, Python calls the \lstinline{__init__()} method of the data type to define and initialize the instance variables, and returns a reference to the new object
 
 \bigskip
 
-A \emph{method} definition consists of its signature --- the \lstinline{def} keyword followed by its name, a list of parameter variables, and a colon --- and its body.
+A \emph{method} definition consists of its signature --- the \lstinline{def} keyword followed by its name, a list of parameter variables, and a colon --- and its body
 
 \bigskip
 
-By convention, the first parameter of a method is named \emph{self}.
+By convention, the first parameter of a method is named \emph{self}
 
 \bigskip
 
-When a client calls a method, the \emph{self} parameter variable references the object to be manipulated, ie, the object that was used to invoke the method; in the case of \lstinline{__init__()}, it is a reference to the newly created object.
+When a client calls a method, the \emph{self} parameter variable references the object to be manipulated, ie, the object that was used to invoke the method; in the case of \lstinline{__init__()}, it is a reference to the newly created object
 \end{frame}
 
-
 \begin{frame}[fragile]
-\emph{Instance variables} implement the values of a data type. 
+\emph{Instance variables} implement the values of a data type 
 
 \bigskip
 
-An instance variable belongs to a particular instance of a class, ie, to a particular object.  
+An instance variable belongs to a particular instance of a class, ie, to a particular object 
 
 \bigskip
 
-By convention, instance variable names begin with an underscore.
+By convention, instance variable names begin with an underscore
 
 \bigskip
 
-A method typically uses three kinds of variables:
+A method typically uses three kinds of variables
 \begin{itemize}
-\item The \lstinline{self} object's instance variables.
+\item The \lstinline{self} object's instance variables
 
-\item The method's parameter variables.
+\item The method's parameter variables
 
-\item Local variables.
+\item Local variables
 \end{itemize}
 
 \bigskip
 
-The key difference between functions and methods is that a method is associated with a specified object, with direct access to its instance variables.
+The key difference between functions and methods is that a method is associated with a specified object, with direct access to its instance variables
 
 \bigskip
 
-To support the operation \lstinline{str(o)}, where \lstinline{o} is an object of data type \lstinline{T}, we must implement the method \lstinline{__str()__} in \lstinline{T}.
+To support the operation \lstinline{str(o)}, where \lstinline{o} is an object of data type \lstinline{T}, we must implement the method \lstinline{__str()__} in \lstinline{T}
 
 \bigskip
 
-A client should access a data type only through the methods in its API.
+A client should access a data type only through the methods in its API
 \end{frame}
 
 \section{Examples of Data Types}
 
 \begin{frame}[fragile]
-A data type \lstinline{Charge} for charged particles:
+A data type \lstinline{Charge} for charged particles
 \begin{center}
 \begin{tabular}{cc}
 method & description \\ \hline
@@ -97,7 +96,7 @@ method & description \\ \hline
 
 \begin{frame}[fragile]
 \begin{framed}
-\tiny \lstinline{charge.py}: Defines a data type \lstinline{Charge}. 
+\tiny charge.py: Defines a data type \lstinline{Charge}. 
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -148,7 +147,7 @@ $ python charge.py .5 .5
 \end{frame}
 
 \begin{frame}[fragile]
-A data type \lstinline{Stopwatch} representing a stopwatch:
+A data type \lstinline{Stopwatch} representing a stopwatch
 \begin{center}
 \begin{tabular}{cc}
 method & description \\ \hline
@@ -160,7 +159,7 @@ method & description \\ \hline
 
 \begin{frame}[fragile]
 \begin{framed}
-\tiny \lstinline{stopwatch.py}: Defines a data type \lstinline{Stopwatch}. 
+\tiny stopwatch.py: Defines a data type \lstinline{Stopwatch}. 
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -201,7 +200,7 @@ $ python stopwatch.py 1000000
 \end{frame}
 
 \begin{frame}[fragile]
-A data type \lstinline{Histogram} for graphically representing distributions of data:
+A data type \lstinline{Histogram} for graphically representing distributions of data
 \begin{center}
 \begin{tabular}{cc}
 method & description \\ \hline
@@ -214,7 +213,7 @@ method & description \\ \hline
 
 \begin{frame}[fragile]
 \begin{framed}
-\tiny \lstinline{histogram.py}: Defines a data type \lstinline{Histogram}.
+\tiny histogram.py: Defines a data type \lstinline{Histogram}.
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -307,7 +306,7 @@ $ python histogram.py 50 .8 1000000
 \end{frame}
 
 \begin{frame}[fragile]
-A data type \lstinline{Turtle} for producing turtle graphics:
+A data type \lstinline{Turtle} for producing turtle graphics
 \begin{center}
 \begin{tabular}{cc}
 method & description \\ \hline
@@ -414,7 +413,7 @@ $ python turtle.py 30
 
 \begin{frame}[fragile]
 \begin{framed}
-\tiny \lstinline{koch.py}: Accepts integer \carg{n} as a command-line argument and plots a Koch curve of order \carg{n}.
+\tiny koch.py: Accepts integer $n$ as a command-line argument and plots a Koch curve of order $n$.
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -541,7 +540,7 @@ $ python koch.py 4
 
 \begin{frame}[fragile]
 \begin{framed}
-\tiny \lstinline{spiral.py}: Accepts command-line arguments \carg{n} (an integer specifying a number  of sides), \carg{wraps} (an integer specifying a wrap count), and \carg{decay} (a float specifying a decay factor), and draws a spiral with those characteristics.
+\tiny spiral.py: Accepts command-line arguments $n$ (an integer specifying a number  of sides), $wraps$ (an integer specifying a wrap count), and $decay$ (a float specifying a decay factor), and draws a spiral with those characteristics.
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -607,7 +606,7 @@ $ python spiral.py 1440 10 1.0004
 
 \begin{frame}[fragile]
 \begin{framed}
-\tiny \lstinline{drunk.py}: Accepts as command-line arguments an integer \carg{stepCount} specifying the number of iterations, and a float \carg{stepSize} specifying a step size, creates a \lstinline{Turtle} object, and has it make \carg{stepCount} random steps of size \carg{stepSize}.
+\tiny drunk.py: Accepts as command-line arguments an integer $stepCount$ specifying the number of iterations, and a float $stepSize$ specifying a step size, creates a \lstinline{Turtle} object, and has it make $stepCount$ random steps of size $stepSize$.
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -652,7 +651,7 @@ $ python drunk.py 10000 .01
 
 \begin{frame}[fragile]
 \begin{framed}
-\tiny \lstinline{drunks.py}: Accepts as command-line arguments an integer \carg{turtleCount}, an integer \carg{stepCount}, and a float \carg{stepSize}, creates \carg{turtleCount} \lstinline{Turtle} objects, and has them make \carg{stepCount} random steps of size \carg{stepSize}.
+\tiny drunks.py: Accepts as command-line arguments an integer $turtleCount$, an integer $stepCount$, and a float $stepSize$, creates $turtleCount$ \lstinline{Turtle} objects, and has them make $stepCount$ random steps of size $stepSize$.
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -703,23 +702,24 @@ $ python drunk.py 20 5000 .005
 \end{frame}
 
 \begin{frame}[fragile]
-A complex number is a number of the form $x+yi$, where $x$ (the real part) and $y$ (the imaginary part) are real numbers and $i=\sqrt{-1}$.
+A complex number is a number of the form $x+yi$, where $x$ (the real part) and $y$ (the imaginary part) are real numbers and $i=\sqrt{-1}$
 
 \bigskip
 
-Complex arithmetic:
+Complex arithmetic
 \begin{itemize}
-\item Conjugate: $(x+yi)^\star=x-yi$.
-\item Addition: $(x+yi)+(v+wi) = (x+v) + (y+w)i$.
+\item Conjugate: $(x+yi)^\star=x-yi$
 
-\item Multiplication: $(x+yi)\times(v+wi) = (xv-yw) + (yv+xw)i$.
+\item Addition: $(x+yi)+(v+wi) = (x+v) + (y+w)i$
 
-\item Magnitude: $|x+yi|=\sqrt{x^2+y^2}$.
+\item Multiplication: $(x+yi)\times(v+wi) = (xv-yw) + (yv+xw)i$
+
+\item Magnitude: $|x+yi|=\sqrt{x^2+y^2}$
 \end{itemize}
 
 \bigskip
 
-A data type \lstinline{Complex} for representing complex numbers:
+A data type \lstinline{Complex} for representing complex numbers
 \begin{center}
 \begin{tabular}{cc}
 method & description \\ \hline
@@ -737,7 +737,7 @@ method & description \\ \hline
 
 \begin{frame}[fragile]
 \begin{framed}
-\tiny \lstinline{complex.py}: Defines a data type \lstinline{Complex}.
+\tiny complex.py: Defines a data type \lstinline{Complex}.
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -797,10 +797,10 @@ $ python complex.py
 
 \begin{frame}[fragile]
 \begin{framed}
-\tiny \lstinline{mandelbrot.py}: Accepts float command-line arguments \carg{xc}, \carg{yc}, and \carg{size} that specify the center and size of a square region of interest, and makes a digital image showing the result of sampling the Mandelbrot set in that region. The algorithm is as follows:
+\tiny mandelbrot.py: Accepts float command-line arguments $xc$, $yc$, and $size$ that specify the center and size of a square region of interest, and makes a digital image showing the result of sampling the Mandelbrot set in that region. The algorithm is as follows:
 \begin{itemize}
-\item Consider $z_0, z_1, \dots, z_t$, where $z_{t+1}=z_t^2+z_0$. 
-\item If the sequence $|z_t|$ diverges to infinity, then $z_0$ is not in the Mandelbrot set; if the sequence is bounded, then $z_0$ is in the set.
+\item Consider $z_0, z_1, \dots, z_t$, where $z_{t+1}=z_t^2+z_0$
+\item If the sequence $|z_t|$ diverges to infinity, then $z_0$ is not in the Mandelbrot set; if the sequence is bounded, then $z_0$ is in the set
 \end{itemize}
 \end{framed}
 
@@ -885,7 +885,7 @@ $ python mandelbrot.py 512 .1015 -.633 .01
 \end{frame}
 
 \begin{frame}[fragile]
-A data type \lstinline{StockAccount} for maitaining customer accounts containing shares of various stocks:
+A data type \lstinline{StockAccount} for maitaining customer accounts containing shares of various stocks
 \begin{center}
 \begin{tabular}{cc}
 method & description \\ \hline
@@ -899,7 +899,7 @@ method & description \\ \hline
 
 \begin{frame}[fragile]
 \begin{framed}
-\tiny \lstinline{stockaccount.py}: Accepts as a command-line argument the name of a file, reads from the file to create a \lstinline{StockAccount} object, and writes a report to standard output.
+\tiny stockaccount.py: Accepts as a command-line argument the name of a file, reads from the file to create a \lstinline{StockAccount} object, and writes a report to standard output.
 \end{framed}
 
 \begin{lstlisting}[language=Python]

@@ -18,20 +18,20 @@
 
 \section{$N$-Body Simulation}
 \begin{frame}[fragile]
-Newton's first law of motion states that a body in motion remains in motion at the same velocity unless acted on by an outside force. 
+Newton's first law of motion states that a body in motion remains in motion at the same velocity unless acted on by an outside force
 
 \bigskip
 
-Newton's second law of motion explains how outside forces on a body affect its velocity.
+Newton's second law of motion explains how outside forces on a body affect its velocity
 
 \bigskip
 
-The $N$-body simulation problem, originally formulated by Isaac Newton over 350 years ago, describes the motion of the $N$ bodies, mutually affected by gravitational forces.
+The $N$-body simulation problem, originally formulated by Isaac Newton over 350 years ago, describes the motion of the $N$ bodies, mutually affected by gravitational forces
 \end{frame}
 
 \section{Body Data Type}
 \begin{frame}[fragile]
-A data type \lstinline{Body} for moving bodies:
+A data type \lstinline{Body} for moving bodies
 \begin{center}
 \begin{tabular}{cc}
 method & description \\ \hline
@@ -44,11 +44,11 @@ method & description \\ \hline
 
 \bigskip
 
-Note that \lstinline{Body} is a \lstinline{Vector} client --- the values of the data type are \lstinline{Vector} objects that carry the body's position and velocity, as well as a float that carries the mass.
+Note that \lstinline{Body} is a \lstinline{Vector} client --- the values of the data type are \lstinline{Vector} objects that carry the body's position and velocity, as well as a float that carries the mass
 
 \bigskip
 
-We use Newton's second law ($\mathbf{F}=m\mathbf{a}$) for updating the position and velocity of a body due to a given force vector \lstinline{f} and amount of time \lstinline{dt}.
+We use Newton's second law ($\mathbf{F}=m\mathbf{a}$) for updating the position and velocity of a body due to a given force vector \lstinline{f} and amount of time \lstinline{dt}
 \begin{lstlisting}[language=Python]
 a = f.scale(1.0 / mass)
 v = v + a.scale(dt)
@@ -65,7 +65,7 @@ r = r + v.scale(dt)
 \end{frame}
 
 \begin{frame}[fragile]
-We use Newton's law of universal gravitation ($\mathbf{F}=-G\frac{m_1m_2}{r^2}\hat{\mathbf{r}}$) for computing the force imposed on one body by another.
+We use Newton's law of universal gravitation ($\mathbf{F}=-G\frac{m_1m_2}{r^2}\hat{\mathbf{r}}$) for computing the force imposed on one body by another
 
 \begin{lstlisting}[language=Python]
 G = 6.67e-11
@@ -86,7 +86,7 @@ f = delta.direction().scale(magnitude)
 
 \begin{frame}[fragile]
 \begin{framed}
-\tiny \lstinline{body.py}: Defines a data type \lstinline{Body} representing a gravitating body.
+\tiny body.py: Defines a data type \lstinline{Body} representing a gravitating body.
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -118,7 +118,7 @@ class Body:
 
 \section{Universe Data Type}
 \begin{frame}[fragile]
-The data type \lstinline{Universe} models the universe:
+The data type \lstinline{Universe} models the universe
 \begin{center}
 \begin{tabular}{cc}
 method & description \\ \hline
@@ -130,11 +130,11 @@ method & description \\ \hline
 
 \bigskip
 
-The constructor reads the universe parameters and body descriptions from a file that contains the following information:
+The constructor reads the universe parameters and body descriptions from a file that contains the following information
 \begin{itemize}
-\item The number of bodies.
-\item The radius of the universe.
-\item The position, velocity, and mass of each body.
+\item The number of bodies
+\item The radius of the universe
+\item The position, velocity, and mass of each body
 \end{itemize}
 \begin{lstlisting}[language={}]
 $ more 2body.txt
@@ -147,7 +147,7 @@ $ more 2body.txt
 
 \begin{frame}[fragile]
 \begin{framed}
-\tiny \lstinline{universe.py}: Accepts a string \carg{filename} and a float \carg{dt} as command-line arguments, and simulates the motion in the universe defined by the contents of \carg{filename}, increasing time at the rate specified by \carg{dt}.
+\tiny universe.py: Accepts a string $filename$ and a float $dt$ as command-line arguments, and simulates the motion in the universe defined by the contents of $filename$, increasing time at the rate specified by $dt$.
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -213,7 +213,7 @@ if __name__ == '__main__':
 
 \begin{frame}[fragile]
 \begin{minipage}{200pt}
-2-body system:
+2-body system
 \begin{lstlisting}[language={}]
 $ more 2body.txt
 2 
@@ -225,7 +225,7 @@ $ python universe.py 2body.txt 20000
 
 \bigskip
 
-3-body system:
+3-body system
 \begin{lstlisting}[language={}]
 $ more 3body.txt
 3 
@@ -238,7 +238,7 @@ $ python universe.py 3body.txt 20000
 
 \bigskip
 
-4-body system:
+4-body system
 \begin{lstlisting}[language={}]
 $ more 4body.txt
 4 
@@ -277,5 +277,4 @@ $ python universe.py 4body.txt 20000
 \end{center}
 \end{minipage}
 \end{frame}
-
 \end{document}
