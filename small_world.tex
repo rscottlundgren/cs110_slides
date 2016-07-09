@@ -18,19 +18,19 @@
 
 \section{Graph Data Type}
 \begin{frame}[fragile]
-\emph{Graph} is a mathematical model we use for studying the nature of pairwise connections among entities.
+\emph{Graph} is a mathematical model we use for studying the nature of pairwise connections among entities
 
 \bigskip
 
-Some graphs exhibit a property known as the \emph{small-world phenomenon} (aka \emph{six degrees of separation}): there is a relatively short chain of acquaintances separating us from one another.
+Some graphs exhibit a property known as the \emph{small-world phenomenon} (aka \emph{six degrees of separation}): there is a relatively short chain of acquaintances separating us from one another
 
 \bigskip
 
-Formally, a \emph{graph} is composed of a set of vertices and a set of edges, each representing a connection between two vertices. 
+Formally, a \emph{graph} is composed of a set of vertices and a set of edges, each representing a connection between two vertices
 
 \bigskip
 
-Two vertices are \emph{neighbors} if they are connected by an edge, and the \emph{degree} of a vertex is its number of neighbors.
+Two vertices are \emph{neighbors} if they are connected by an edge, and the \emph{degree} of a vertex is its number of neighbors
 
 \begin{center}
 \includegraphics[scale=0.5]{figures/graph.png}
@@ -42,7 +42,7 @@ Two vertices are \emph{neighbors} if they are connected by an edge, and the \emp
 \end{frame}
 
 \begin{frame}[fragile]
-A data type \lstinline{Graph} that represents a graph:
+A data type \lstinline{Graph} that represents a graph
 \begin{center}
 \begin{tabular}{cc}
 method & description \\ \hline
@@ -159,7 +159,7 @@ G  A C
 
 \begin{frame}[fragile]
 \begin{framed}
-\tiny \lstinline{invert.py}: Accepts strings \carg{filename} and \carg{delimiter} as command-line arguments, builds a graph from \carg{filename}, repeatedly reads a vertex name from standard input and writes the neighbors of that vertex to standard output.
+\tiny invert.py: Accepts strings $filename$ and $delimiter$ as command-line arguments, builds a graph from $filename$, repeatedly reads a vertex name from standard input and writes the neighbors of that vertex to standard output.
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -229,11 +229,11 @@ Bacon, Kevin
 
 \section{Shortest Paths in Graphs}
 \begin{frame}[fragile]
-Given two vertices in a graph, a \emph{path} is a sequence of vertices connected by edges, and a \emph{shortest path} is one with the minimal number of edges over all such paths. 
+Given two vertices in a graph, a \emph{path} is a sequence of vertices connected by edges, and a \emph{shortest path} is one with the minimal number of edges over all such paths
 
 \bigskip
 
-A data type \lstinline{PathFinder} for finding paths in a graph:
+A data type \lstinline{PathFinder} for finding paths in a graph
 \begin{center}
 \begin{tabular}{cc}
 method & description \\ \hline
@@ -247,7 +247,7 @@ method & description \\ \hline
 
 \begin{frame}[fragile]
 \begin{framed}
-\tiny \lstinline{pathfinder.py}: Defines a data type \lstinline{PathFinder}.
+\tiny pathfinder.py: Defines a data type \lstinline{PathFinder}.
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -287,10 +287,7 @@ class PathFinder:
 
 \begin{frame}[fragile]
 \begin{framed}
-\tiny \lstinline{separation.py}: Accepts \carg{filename}, \carg{delimiter}, and a source vertex \carg{s} as command-line
-arguments, build a graph from the file, assuming that each line of the file specified a vertex and a list of vertices connected to that vertex, separated by the delimiter, and then repeatedly reads a
-destination vertex from standard input, and writes the shortest path
-from the source to the destination.
+\tiny separation.py: Accepts $filename$, $delimiter$, and a source vertex $s$ as command-line arguments, build a graph from the file, assuming that each line of the file specified a vertex and a list of vertices connected to that vertex, separated by the delimiter, and then repeatedly reads a destination vertex from standard input, and writes the shortest path from the source to the destination.
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -355,20 +352,20 @@ distance: 2
 
 \section{Small-World Graphs}
 \begin{frame}[fragile]
-Small-world graphs are characterized by the following three properties:
+Small-world graphs are characterized by the following three properties
 
 \begin{itemize}
-\item They are \emph{sparse}: the number of vertices is much smaller than the number of edges.
+\item They are \emph{sparse}: the number of vertices is much smaller than the number of edges
 
-\item They have \emph{short average path lengths}: if you pick two random vertices, the length of the shortest path between them is short.
+\item They have \emph{short average path lengths}: if you pick two random vertices, the length of the shortest path between them is short
 
-\item They exhibit \emph{local clustering}: if two vertices are neighbors of a third vertex, then the two vertices are likely to be neighbors of each other.
+\item They exhibit \emph{local clustering}: if two vertices are neighbors of a third vertex, then the two vertices are likely to be neighbors of each other
 \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]
 \begin{framed}
-\tiny \lstinline{smallworld.py}: A module for computing the small-world properties of a graph.
+\tiny smallworld.py: A module for computing the small-world properties of a graph.
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -435,9 +432,7 @@ clustering coefficient =   0.767
 
 \begin{frame}[fragile]
 \begin{framed}
-\tiny \lstinline{performer.py}: Accepts \carg{filename}, the name of a movie-cast file and a \carg{delimiter} as command-line arguments and creates the associated performer-performer graph. Then writes
-to standard output the number of vertices, the average degree, 
-the average path length, and the clustering coefficient of the graph.
+\tiny performer.py: Accepts $filename$, the name of a movie-cast file and a $delimiter$ as command-line arguments and creates the associated performer-performer graph. Then writes to standard output the number of vertices, the average degree, the average path length, and the clustering coefficient of the graph.
 \end{framed}
 
 \begin{lstlisting}[language=Python]

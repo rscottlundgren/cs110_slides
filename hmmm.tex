@@ -18,6 +18,8 @@
 
 \section{HMMM}
 \begin{frame}[fragile]
+\pause
+
 A real computer must be able to
 \begin{itemize}
 \item Move information between registers and memory
@@ -26,6 +28,7 @@ A real computer must be able to
 \item Make decisions
 \end{itemize}
 
+\pause
 \bigskip
 
 The Harvey Mudd Miniature Machine (HMMM) is organized as follows
@@ -35,10 +38,12 @@ The Harvey Mudd Miniature Machine (HMMM) is organized as follows
 \item There are 256 memory locations
 \end{itemize}
 
+\pause
 \bigskip
 
 Instead of programming in binary (0's and 1's), we'll use \emph{assembly language}, a programming language where each instruction has a symbolic representation; For example, to compute \lstinline{r3 = r1 + r2}, we'll write \lstinline{add r3 r1 r2}
 
+\pause
 \bigskip
 
 We'll use a program\footnote{\href{http://www.swamiiyer.net/teaching/hmmm.zip}{http://www.swamiiyer.net/teaching/hmmm.zip} (command-line) or \href{http://shickey.github.io/HMMM.js}{http://shickey.github.io/HMMM.js} (online)} to convert the assembly language into 0's and 1's -- the \emph{machine language} -- that the computer can execute
@@ -47,6 +52,8 @@ We'll use a program\footnote{\href{http://www.swamiiyer.net/teaching/hmmm.zip}{h
 \section{A Simple HMMM Program}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{framed}
 \tiny triangle1.hmmm: Calculate the approximate area of a triangle.
 \end{framed}
@@ -60,6 +67,8 @@ We'll use a program\footnote{\href{http://www.swamiiyer.net/teaching/hmmm.zip}{h
 5    write   r1
 6    halt
 \end{lstlisting}
+
+\pause
 
 \begin{lstlisting}[language={}]
 $ python hmmmAssembler.py -f triangle1.hmmm -o triangle1.b
@@ -77,6 +86,8 @@ $ python hmmmAssembler.py -f triangle1.hmmm -o triangle1.b
 6 : 0000 0000 0000 0000        6    halt
 \end{lstlisting}
 
+\pause
+
 \begin{lstlisting}[language={}]
 $ python hmmmSimulator.py -f triangle1.b -n
 4
@@ -87,8 +98,11 @@ $ python hmmmSimulator.py -f triangle1.b -n
 
 \section{Looping}
 \begin{frame}[fragile]
+\pause
+
 Unconditional jump (\lstinline{jumpn N}): set program counter to address \lstinline{N}
 
+\pause
 \bigskip
 
 \begin{framed}
@@ -105,6 +119,8 @@ Unconditional jump (\lstinline{jumpn N}): set program counter to address \lstinl
 6    jumpn   0
 \end{lstlisting}
 
+\pause
+
 \begin{lstlisting}[language={}]
 $ python hmmmSimulator.py -f triangle2.b -n
 4
@@ -120,8 +136,11 @@ End of input, halting program execution...
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 Conditional jump (\lstinline{jeqzn rX N}): if \lstinline{rX == 0}, then jump to line \lstinline{N}
 
+\pause
 \bigskip
 
 \begin{framed}
@@ -141,6 +160,8 @@ Conditional jump (\lstinline{jeqzn rX N}): if \lstinline{rX == 0}, then jump to 
 9    halt
 \end{lstlisting}
 
+\pause
+
 \begin{lstlisting}[language={}]
 $ python hmmmSimulator.py -f triangle3.b -n
 4
@@ -156,7 +177,11 @@ $ python hmmmSimulator.py -f triangle3.b -n
 \section{Functions}
 
 \begin{frame}[fragile]
+\pause
+
 Call a function (\lstinline{calln rX N}): copy the next address into \lstinline$rX$ and then jump to address \lstinline{N}; Return from a function (\lstinline{jumpr rX}): set program counter to address in \lstinline{rX}
+
+\pause
 
 \begin{framed}
 \tiny combinations.hmmm: Calculate $C(N, K)$ (aka $N$ choose $K$) defined as $C(N, K)=N!/(K!(N-K)!)$.
@@ -188,6 +213,8 @@ Call a function (\lstinline{calln rX N}): copy the next address into \lstinline$
 20    jumpr   r14      # Done; return to caller
 \end{lstlisting}
 
+\pause
+
 \begin{lstlisting}[language={}]
 $ python hmmmSimulator.py -f combinations.b -n
 5
@@ -199,6 +226,8 @@ $ python hmmmSimulator.py -f combinations.b -n
 \section{Recursion}
 
 \begin{frame}[fragile]
+\pause
+
 A \emph{recursive function} is a function that calls itself on smaller inputs, and has a base case. For example, the factorial function $N!$ can be expressed recursively as 
 \[
 N! = \begin{dcases*}
@@ -207,14 +236,17 @@ N(N-1)! & if $N > 0$, and \\
 \end{dcases*}
 \]
 
+\pause
 \bigskip
 
 A \emph{stack} is a storage mechanism (aka data structure) that remembers things and gives them back in reverse order
 
+\pause
 \bigskip
 
 To implement a stack on a computer, we need a \emph{stack pointer}, a register (\lstinline{r15} on HMMM) that holds the memory address of the top item on the stack
 
+\pause
 \bigskip
 
 The code to push something, say the contents of \lstinline{r4}, atop the stack looks like this:
@@ -223,6 +255,7 @@ addn   r15 1      # Point to a new location
 storer r4 r15     # Store r4 on the stack
 \end{lstlisting}
 
+\pause
 \bigskip
 
 The code to recover the value atop the stack, say into \lstinline{r3}, looks like this:
@@ -233,6 +266,8 @@ addn  r15 -1     # Point to new top of stack
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{framed}
 \tiny factorial\_rec.hmmm: Calculate $N!$ recursively.
 \end{framed}
@@ -264,6 +299,8 @@ addn  r15 -1     # Point to new top of stack
 19   jumpr   r14       # Return to caller
 \end{lstlisting}
 
+\pause
+
 \begin{lstlisting}[language={}]
 $ python hmmmSimulator.py -f factorial_rec.b -n
 5
@@ -274,6 +311,8 @@ $ python hmmmSimulator.py -f factorial_rec.b -n
 \section{HMMM Instruction Set}
 
 \begin{frame}[fragile]
+\pause
+
 System instructions
 
 \bigskip
@@ -285,6 +324,7 @@ System instructions
 \lstinline$nop$ & do nothing
 \end{tabular} 
 
+\pause
 \bigskip
 
 Setting register data
@@ -297,6 +337,7 @@ Setting register data
 \lstinline$copy rX rY$ & set \lstinline$rX = rY$
 \end{tabular} 
 
+\pause
 \bigskip
 
 Arithmetic
@@ -314,6 +355,8 @@ Arithmetic
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 Jumps
 
 \bigskip
@@ -328,6 +371,7 @@ Jumps
 \lstinline$calln rX N$ & copy the next address into \lstinline$rX$ and then jump to address \lstinline$N$
 \end{tabular} 
 
+\pause
 \bigskip
 
 Interacting with memory

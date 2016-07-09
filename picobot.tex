@@ -18,12 +18,16 @@
 
 \section{The Roomba Problem}
 \begin{frame}[fragile]
+\pause
+
 PicoBot is a simple programming language that controls a robot (also referred to as PicoBot) loosely based on the Roomba vacuum cleaner robot
 
+\pause
 \bigskip
 
-PicoBot's goal is to suck up the debris from the free space around it, ideally without missing any nooks or crannies --- the robotics community refers to this as the \emph{coverage problem}
+PicoBot's goal is to clean up the debris from the free space around it, ideally without missing any region --- the robotics community refers to this as the coverage problem
 
+\pause
 \bigskip
 
 PicoBot's limitations
@@ -35,6 +39,7 @@ PicoBot's limitations
 \item It can't remember which part of the room it has seen and which part it has not
 \end{itemize}
 
+\pause
 \bigskip
 
 Simulation environments for exploring PicoBot's capabilities
@@ -47,82 +52,84 @@ Simulation environments for exploring PicoBot's capabilities
 
 \section{The Environment}
 \begin{frame}[fragile]
-\begin{minipage}{200pt}
+\pause
+
 We'll model the environment, ie, the room a PicoBot is supposed to clean, as a two-dimensional plane discretized into cells
 
-\bigskip
+\begin{center}
+\visible<2->{\includegraphics[scale=0.25]{figures/picobot_env.png}}
+\end{center}
+
+\pause
 
 The cells are either green (PicoBot itself), blue (obstacle or wall), gray (visited), or white (unvisited)
 
+\pause
 \bigskip
 
 PicoBot can't sense whether an empty cell has been visited or not, but it can sense whether each of its four immediate neighbors is free space or an obstacle
-\end{minipage}\hfill%
-\begin{minipage}{100pt}
-\begin{center}
-\includegraphics[scale=0.25]{figures/picobot_env.png}
+\end{frame}
 
-\smallskip
+\begin{frame}[fragile]
+The immediate surroundings of a PicoBot are reported as a string of four letters in \textbf{N}orth, \textbf{E}ast, \textbf{W}est, \textbf{S}outh order
 
-\tiny PicoBot environment
-\end{center}
-\end{minipage}
-
-\smallskip
-
-\begin{minipage}{200pt}
-
-The immediate surroundings of a PicoBot are reported as a string of four letters in \lstinline{NEWS} order
-
-
+\pause
 \bigskip
 
 If the cell in a particular direction is not occupied (ie, not an obstacle), then the letter in the corresponding position is an \lstinline{x} (or \lstinline{X})
-\end{minipage}\hfill%
-\begin{minipage}{100pt}
+
+\pause
+\bigskip
+
+Possible surrounding strings for PicoBot
 \begin{center}
-\includegraphics[scale=0.25]{figures/picobot_surroundings.png}
-
-\smallskip
-
-\tiny Possible surrounding strings for PicoBot
+\visible<3>{\includegraphics[scale=0.25]{figures/picobot_surroundings.png}}
 \end{center}
-\end{minipage}
 \end{frame}
 
 \section{State}
 \begin{frame}[fragile]
-The \emph{state} of a computer is the internal information that describes what the computer is doing
+\pause
 
+The state of a computer is the internal information that describes what the computer is doing
+
+\pause
 \bigskip
 
 PicoBot's state is simply a number (0-99) representing a task that we would like PicoBot to undertake
 
 \bigskip
 
+\pause
 PicoBot always starts in state 0
 \end{frame}
 
 \section{Rule}
 \begin{frame}[fragile]
+\pause
 
 PicoBot moves by following a set of rules that specify actions and possibly state changes
 
+\pause
 \bigskip
 
 Which rule PicoBot chooses to follow depends on its current state and its current surroundings
 
+\pause
 \bigskip
+
 Each PicoBot rule has a five-part syntax
 \begin{lstlisting}[language={}]
 <current state> <surrounding string> -> <action> <new state>
 \end{lstlisting}
 where \lstinline{<action>} is \lstinline{N} (move north), \lstinline{E} (move east), \lstinline{W} (move west), \lstinline{S} (move south), or \lstinline{x}/\lstinline{X} (stay put)
 
+\pause
 \bigskip
 
 The \lstinline{<surrounding string>} in a PicoBot rule may include wildcards (\lstinline{*}), meaning the PicoBot doesn't care about the surroundings in the corresponding positions
 
+\pause
 \bigskip
 
 Examples
@@ -135,6 +142,7 @@ Examples
 
 \section{Algorithm}
 \begin{frame}[fragile]
+\pause
 
 An algorithm (in English) instructing a PicoBot to move back and forth in an empty room
 \begin{enumerate}
@@ -145,7 +153,7 @@ An algorithm (in English) instructing a PicoBot to move back and forth in an emp
 \item Then go back to step 1
 \end{enumerate}
 
-
+\pause
 \bigskip
 
 The above algorithm in PicoBot
@@ -162,15 +170,16 @@ The above algorithm in PicoBot
 
 \section{Uncomputable Environments}
 \begin{frame}[fragile]
+\pause
 
 It can be shown mathematically that PicoBot's computational capabilities aren't enough to guarantee coverage of all environments
 
-
+\pause
 \bigskip
 
 By adding one simple feature to PicoBot --- the ability to drop, sense, and pick up ``markers'' along the way --- it can be programmed to fully explore any environment
 
-
+\pause
 \bigskip
 
 It is true in general that certain problems are beyond the limits of what computers can solve

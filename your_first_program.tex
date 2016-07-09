@@ -18,6 +18,8 @@
 
 \section{Programming in Python}
 \begin{frame}[fragile]
+\pause
+
 \begin{minipage}{200pt}
 Our programming environment
 \begin{itemize}
@@ -28,7 +30,7 @@ Our programming environment
 \end{minipage}%
 \begin{minipage}{100pt}
 \begin{center}
-\includegraphics[scale=0.16]{figures/idle.png}
+\visible<2->{\includegraphics[scale=0.16]{figures/idle.png}}
 
 \smallskip
 
@@ -36,7 +38,7 @@ Our programming environment
 
 \smallskip
 
-\includegraphics[scale=0.16]{figures/terminal.png}
+\visible<2->{\includegraphics[scale=0.16]{figures/terminal.png}}
 
 \smallskip
 
@@ -46,10 +48,12 @@ Our programming environment
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 To program in Python
 \begin{itemize}
-\item \emph{Compose} a program by typing it into a file named, say, \lstinline{helloworld.py}
-\item \emph{Run} (or \emph{execute}) the program by typing \lstinline{python helloworld.py} in the terminal window
+\item Compose a program by typing it into a file named, say, \lstinline{helloworld.py}
+\item Run (or execute) the program by typing \lstinline{python helloworld.py} in the terminal window
 \end{itemize}
 
 \begin{center}
@@ -68,10 +72,11 @@ To program in Python
 \end{scope}
 \end{tikzpicture}
 \end{center}
-
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{framed}
 \tiny helloworld.py: Write 'Hello, World' to standard output.
 \end{framed}
@@ -83,39 +88,48 @@ import stdio
 stdio.writeln('Hello, World')
 \end{lstlisting}
 
+\pause
+
 \begin{lstlisting}[language={}]
 $ python helloworld.py 
 Hello, World
 \end{lstlisting}
 
+\pause
 \bigskip
 
 Anatomy of \lstinline{helloworld.py}
 \begin{itemize}
-\item The first line is a statement that tells Python that you intend to use features defined in the \lstinline{stdio} \emph{module}
+\item The first line is a statement that tells Python that you intend to use features defined in the \lstinline{stdio} module
  
 \item The second line is a blank line; Python ignores blank lines; programmers use them to separate logical blocks of code
 
 \item The third line is a comment; Python ignores comments; they are only for human readers of the program
 
-\item The fourth line is a statement that calls the \lstinline{stdio.writeln()} function to write the given text to the terminal; This is called \emph{writing to standard output}
+\item The fourth line is a statement that calls the \lstinline{stdio.writeln()} function to write the given text to the terminal; This is called ``writing to standard output''
 \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]
-Errors (aka \emph{bugs}) are the bane of a programmer's existence
+\pause
 
+Errors (aka bugs) are the bane of a programmer's existence
+
+\pause
 \bigskip
 
-\emph{Compile-time errors} are raised when Python compiles a program; For example, if you don't include the right parenthesis in line four of \lstinline{helloworld.py}
+Compile-time errors are raised when Python compiles a program; For example, if we don't include the right parenthesis in line four of \lstinline{helloworld.py}
 
+\pause
 \bigskip
 
-\emph{Run-time errors} are raised when Python interprets a program; For example, if you forget to import the \lstinline{stdio} module in \lstinline{helloworld.py}
+Run-time errors are raised when Python interprets a program; For example, if we forget to import the \lstinline{stdio} module in \lstinline{helloworld.py}
 \end{frame}
 
 \section{Input and Output}
 \begin{frame}[fragile]
+\pause
+
 Bird's-eye view of a Python program
 \begin{center}
 \begin{tikzpicture}
@@ -138,22 +152,28 @@ Bird's-eye view of a Python program
 \end{frame}
 
 \begin{frame}[fragile]
-\emph{Command-line arguments} are the inputs you list after a program name when you run the program
+\pause
+
+Command-line arguments are the inputs we list after a program name when we run the program
 
 \begin{lstlisting}[language={}]
 $ python my_program.py arg_1 arg_2 ... arg_n
 \end{lstlisting}
 
+\pause
 \bigskip
 
 The command-line arguments can be accessed within a program, such as \lstinline{my_program.py} above, via the array (aka list) \lstinline{sys.argv}\footnote{The \lstinline{sys} module provides access to variables and functions that interact with the Python interpreter}  as \lstinline{sys.argv[1]}, \lstinline{sys.argv[2]}, $\dots$, \lstinline{sys.argv[n]}
 
+\pause
 \bigskip
 
-\lstinline{sys.argv[0]} stores the name of the program, \lstinline{my_program.py}
+The name of the program (\lstinline{my_program.py}) is stored in \lstinline{sys.argv[0]} 
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{framed}
 \tiny useargument.py: Accept a name as a command-line argument. Write a message containing that name to standard output.
 \end{framed}
@@ -167,6 +187,7 @@ stdio.write(sys.argv[1])
 stdio.writeln('. How are you?')
 \end{lstlisting}
 
+\pause
 \begin{lstlisting}[language={}]
 $ python useargument.py Alice
 Hi, Alice. How are you?
