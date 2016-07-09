@@ -1,0 +1,468 @@
+\documentclass[8pt,a4paper,compress]{beamer}
+
+\usepackage{/home/siyer/lib/slides}
+
+\title{Problem ``Hardness''}
+\date{}
+
+\begin{document}
+\begin{frame}
+\vfill
+\titlepage
+\end{frame}
+
+\begin{frame}
+\frametitle{Outline}
+\tableofcontents
+\end{frame}
+
+\section{Never-ending Programs}
+\begin{frame}[fragile]
+\pause
+
+We all have written programs that either take a long time to produce the desired result, or run forever, ie, do not halt
+
+\pause
+\bigskip
+
+For example, the following program (\lstinline{loopy.py}) runs forever
+
+\begin{lstlisting}[language=python]
+import stdio
+
+def main():
+    i = 1
+    while i > 0:
+        stdio.writeln(i)
+        i += 1
+
+if __name__ == '__main__':
+    main()
+\end{lstlisting}
+
+\pause
+\bigskip
+
+It would be nice if we could write a Python function (call it \lstinline{halt_checker()}) that takes the name a Python program as argument and returns \lstinline{True} if that program will eventually halt and \lstinline{False} otherwise
+
+\begin{lstlisting}[language={}]
+>>> halt_checker('loopy.py')
+True
+\end{lstlisting}
+
+\pause
+\bigskip
+
+Being able to implement the predicate function \lstinline{halt_checker()} is tantamount to solving what is called the halting problem
+
+\pause
+\bigskip
+
+Q: Is the halting problem solvable?
+
+\pause
+
+A: You will soon find out
+\end{frame}
+
+\section{Easy Problems}
+\begin{frame}[fragile]
+\pause
+
+An ``easy'' problem is one for which there exists a program -- or algorithm -- that is fast enough that we can solve the problem in polynomial time (worst-case order of growth is $N^k$, where $k$ is a constant)
+
+\pause
+\bigskip
+
+Examples
+\begin{itemize}
+\item Linear search: search for an item in a list of $N$ items; worst-case order of growth is $N$
+
+\item Insertion sort: put the $N$ items in a list in ascending (or descending) order; worst-case order of growth is $N^2$
+\end{itemize}
+\end{frame}
+
+\section{Hard Problems}
+\begin{frame}[fragile]
+\pause
+
+A ``hard problem'' is one that can be solved but requires impractically huge amount of time to solve
+
+\pause
+\bigskip
+
+\begin{itemize}
+\item Subset problem: given a set of $N$ items, print all its subsets; order of growth is $2^N$
+
+\item Traveling salesperson problem (TSP): given a set of $N$ cities with each pair connected by a direct flight, find an optimal tour for a salesperson who needs to travel to all the cities to market a product to potential customers; order of growth is $N!$
+\end{itemize}
+
+\pause
+\bigskip
+
+TSP belongs to a class of problems called NP-hard problems
+
+\pause
+\bigskip
+
+Nobody knows how to solve any of the NP-hard problems efficiently, ie, in polynomial time
+
+\pause
+\bigskip
+
+NP-hard problems all have the remarkable property that if any one of them can be solved efficiently, then all of them can be solved efficiently
+\end{frame}
+
+\section{Impossible Problems}
+\begin{frame}[fragile]
+\pause
+
+An ``impossible problem'' is a problem that is downright impossible to solve, no matter how much time we are willing to spend
+
+\pause
+\bigskip
+
+To establish that there exist impossible problems, we'll show that the number of computational is much larger (uncountably infinite) than the number of programs (countably infinite)
+
+\pause
+\bigskip
+
+Suppose you have three jelly beans; you know that you have three of them because you can match them up with the set of counting numbers $\{1,2,3\}$; in math speak, there is a bijection (or ``perfect matching'') between your set of three jelly beans and the set of counting numbers $\{1,2,3\}$
+
+\pause
+\bigskip
+
+More precisely, a bijection is a matching of elements from one set to another set such that every element in the first set is matched to a distinct element in the second set and every element in the second set is matched to something from the first set
+
+\pause
+\bigskip
+
+Two sets have the same cardinality (or ``size'') if there is a bijection between them
+
+\pause
+\bigskip
+
+This is true even when the two sets are infinite
+
+\pause
+\bigskip
+
+For example, the set of counting numbers and the set of even counting numbers have the same cardinality because we can establish a bijection between the two sets by associating each counting number $x$ with the even counting number $2x$
+\end{frame}
+
+\begin{frame}[fragile]
+\pause
+
+Any set that has the same cardinality as the counting numbers is said to be countably infinite
+
+\pause
+\bigskip
+
+Other examples of countably infinite sets
+\begin{itemize}
+\item The set of all integers (the counting numbers, the negatives of the counting numbers, and 0)
+
+\item The set of all rational numbers (numbers of the form $\frac{p}{q}$ where $p$ and $q \neq 0$ are integers
+\end{itemize}
+
+\pause
+\bigskip
+
+Q: Are all infinite sets countable?
+
+\pause
+\bigskip
+
+A: Surprisingly, ``no''! 
+
+\pause
+\bigskip
+
+Georg Cantor, a brilliant German mathematician, gave a beautiful proof that the set of real numbers (the set of all numbers, including the rational and irrational numbers) contains a ``larger'' infinity of elements than the set of counting numbers
+
+\pause
+\bigskip
+
+Cantor's proof is based on the method of proof by contradiction
+\end{frame}
+
+\begin{frame}[fragile]
+\pause
+
+We demonstrate the technique of proof by contradiction with a famous result that goes back to the days of ancient Greece
+
+\pause
+
+\begin{framed}
+The number $\sqrt{2}$ is irrational, ie, it cannot be written as a ratio of two integers
+\end{framed}
+
+\pause
+\smallskip
+
+Proof: Assume that $\sqrt{2}$ is rational. Then it can be written as a ratio of two integers, $\frac{p}{q}$ with $q \neq 0$. Every fraction can be written in lowest terms (ie, canceling out common factors), so let's assume that $\frac{p}{q}$ is in lowest terms. In particular, that means that $p$ and $q$ cannot both be even, since if they were we would have cancelled out the multiples of 2 from each of $p$ and $q$ when putting the fraction in lowest terms.
+
+\pause
+\bigskip
+
+OK, so now $\sqrt{2}=\frac{p}{q}$. Let's square both sides to get $2=\frac{p^2}{q^2}$ and now let's multiply both sides by $q^2$ to get $2q^2=p^2$. Since $2q^2$ is even, this means that $p^2$ is even. If $p^2$ is even, clearly $p$ must be even (since the square of an odd number is always odd!). Since $p$ is even, let's rewrite it as $p=2l$ where $l$ is also an integer. So now, $2q^2=p^2=(2l)^2=4l^2$. Since $2q^2=4l^2$, we can divide both sides by 2 and we get $q^2=2l^2$. So $q^2$ is even, which means $q$ is even. That's a contradiction because when we wrote $\sqrt{2}=\frac{p}{q}$ we stipulated that $\frac{p}{q}$ is in lowest terms, and thus $p$ and $q$ could not both be even.
+
+\pause
+\bigskip
+
+Therefore, $\sqrt{2}$ cannot be written as a fraction, ie, $\sqrt{2}$ is irrational.
+\end{frame}
+
+\begin{frame}[fragile]
+\pause
+
+Cantor not only showed that the real numbers are uncountably infinite, he showed that even the set of real numbers between 0 and 1 is uncountably infinite
+
+\pause
+\bigskip
+
+Assume that the set of real numbers between 0 and 1 is countably infinite
+
+\pause
+\bigskip
+
+Then, there must exist a bijection between the set of counting numbers and the set of real numbers between 0 and 1
+
+\pause
+\bigskip
+
+A real number between 0 and 1 can be represented by a decimal point followed by an infinite number of digits; for example, the number $.5$ can be represented as $.50000\dots$, the number $\frac{1}{3}$ can be represented as $.33333\dots$, the fractional part of $\pi$ would be $.14159\dots$, and so on
+
+\pause
+\bigskip
+
+So a bijection between the counting numbers and the real numbers between 0 and 1 could be represented by a table that looks ``something'' like this
+\begin{center}
+\begin{tabular}{c|c}
+counting number & real number \\ \hline
+1 & $.50000\dots$ \\ 
+2 & $.33333\dots$ \\
+3 & $.14159\dots$ \\ 
+$\vdots$ & $\vdots$ \\
+42 & $.71828\cdots$ \\
+$\vdots$ & $\vdots$
+\end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\pause
+
+We highlight the first digit of the real number matched with counting number 1, the second digit of the real number matched with counting number 2, and so on, all the way down the list
+\begin{center}
+\begin{tabular}{c|c}
+counting number & real number \\ \hline
+1 & $.{\color{red} 5}0000\dots$ \\ 
+2 & $.3{\color{red}3}333\dots$ \\
+3 & $.14{\color{red}1}59\dots$ \\ 
+$\vdots$ & $\vdots$ \\
+42 & $.71828\cdots$ \\
+$\vdots$ & $\vdots$
+\end{tabular}
+\end{center}
+
+\pause
+\bigskip
+
+We write down a new number, using Cantor's diagonalization method, that differs from the real number matched with 1 in its first digit (change {\color{red} 5} to 6), differs from the real number matched with 2 in its second digit (change {\color{red} 3} to 4), and so on
+
+\pause
+\bigskip
+
+In general, the new number differs from the real number matched with $n$ in its $n$th digit (change digit ${\color{red} d}$ to $d+1$)
+
+\pause
+\bigskip
+
+The new number is not in the list, which is a contradiction
+
+\pause
+\bigskip
+
+Therefore, the set of real numbers between 0 and 1 is uncountably infinite
+\end{frame}
+
+\begin{frame}[fragile]
+\pause
+
+We use Cantor's diagonalization method to show that there exist problems that are not solvable by any program
+
+\pause
+\bigskip
+
+The plan is to show that there is no matching between programs and problems
+\begin{itemize}
+\item The set of all programs is countably infinite, ie, there is a bijection between the counting numbers and the set of all programs in any programming language (we'll restrict ourselves to Python)
+
+\item The set of problems does not have a bijection with the counting numbers, ie, is uncountably infinite
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\pause
+
+A program is a string of symbols that we interpret as a sequence of instructions
+
+\pause
+\bigskip
+
+We list all possibles strings in alphabetical order from short ones to longer ones and for each such string, we check if it's a valid Python program, and if so, we match it to the next available counting number
+
+\pause
+\bigskip
+
+We thus have a bijection between between counting numbers and Python programs, ie, the set of all Python programs is countably infinite
+\end{frame}
+
+\begin{frame}[fragile]
+\pause
+
+For problems, let's restrict our attention to a special kind of problems where we take a counting number as input and return a boolean (\lstinline{True} or \lstinline{False})
+
+\pause
+\bigskip
+
+For example, consider the following function in Python that takes any counting number as input and returns \lstinline{True} if it's odd and \lstinline{False} otherwise
+
+\begin{lstlisting}[language=Python]
+def odd(x):
+    return x % 2 == 1
+\end{lstlisting}
+
+\pause
+\bigskip
+
+A function that takes any counting number as input and returns a boolean is called a counting number predicate
+
+\pause
+\bigskip
+
+The following table lists several counting number predicates, with the first column specifying the predicate name and the second column listing the output of the predicate (``T'' for \lstinline{True} and ``F'' for \lstinline{False}) for each counting number input (column header)
+\begin{center}
+\begin{tabular}{c|cccccccccc}
+predicate name & 1 & 2 & 3 & 4 & 5 & 6 & 7 & $\dots$ & 42 & $\dots$ \\ \hline
+odd            & T & F & T & F & T & F & T & $\dots$ & F  & $\dots$ \\ 
+even           & F & T & F & T & F & T & F & $\dots$ & T  & $\dots$ \\
+prime          & F & T & T & F & T & F & T & $\dots$ & F  & $\dots$ \\
+true           & T & T & T & T & T & T & T & $\dots$ & T  & $\dots$ \\
+forty-two      & F & F & F & F & F & F & F & $\dots$ & T  & $\dots$ \\
+$\vdots$       & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$& $\vdots$ & $\vdots$ & $\ddots$ & $\vdots$ & $\ddots$
+\end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\pause
+
+Suppose we have a bijection between counting numbers and counting number predicates, ie, we have the following listing that perfectly matches the counting numbers to the counting number predicates
+\begin{center}
+\begin{tabular}{c|cccccccccc}
+counting number & 1 & 2 & 3 & 4 & 5 & 6 & 7 & $\dots$ & 42 & $\dots$ \\ \hline
+1            & T & F & T & F & T & F & T & $\dots$ & F  & $\dots$ \\ 
+2            & F & T & F & T & F & T & F & $\dots$ & T  & $\dots$ \\
+3            & F & T & T & F & T & F & T & $\dots$ & F  & $\dots$ \\
+4            & T & T & T & T & T & T & T & $\dots$ & T  & $\dots$ \\
+5            & F & F & F & F & F & F & F & $\dots$ & T  & $\dots$ \\
+$\vdots$     & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$& $\vdots$ & $\vdots$ & $\ddots$ & $\vdots$ & $\ddots$
+\end{tabular}
+\end{center}
+
+\pause
+\bigskip
+
+We construct a predicate called Cantor as follows: for the predicate matched to the counting number $n$, Cantor says the opposite of what the predicate says for input $n$ (highlighted in red below)
+\begin{center}
+\begin{tabular}{c|cccccccccc}
+counting number & 1 & 2 & 3 & 4 & 5 & 6 & 7 & $\dots$ & 42 & $\dots$ \\ \hline
+1            & {\color{red} T} & F & T & F & T & F & T & $\dots$ & F  & $\dots$ \\ 
+2            & F & {\color{red} T} & F & T & F & T & F & $\dots$ & T  & $\dots$ \\
+3            & F & T & {\color{red} T} & F & T & F & T & $\dots$ & F  & $\dots$ \\
+4            & T & T & T & {\color{red} T} & T & T & T & $\dots$ & T  & $\dots$ \\
+5            & F & F & F & F & {\color{red} F} & F & F & $\dots$ & T  & $\dots$ \\
+$\vdots$     & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$& $\vdots$ & $\vdots$ & $\ddots$ & $\vdots$ & $\ddots$ \\ \hline
+Cantor       & F & F & F & F & T & $\dots$ & $\dots$ & $\dots$ & $\dots$ & $\dots$
+\end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\pause
+
+Clearly, Cantor is a new predicate not in the list, so we have a contradiction
+
+\pause
+\bigskip
+
+We cannot have a bijection between the set of counting numbers and the set of counting number predicates, ie, the set of problems is uncountably infinite
+
+\pause
+\bigskip
+
+We have thus shown that the set of all programs is countably infinite, but the set of all problems is uncountably infinite
+
+\pause
+\bigskip
+
+Therefore, there are problems that are impossible to solve
+\end{frame}
+
+\section{Uncomputable Problems}
+\begin{frame}[fragile]
+\pause
+
+Consider the following program \lstinline{paradox.py} that takes the name of a Python program as command-line argument, checks (using the function \lstinline{halt_checker()} described earlier) if the program will eventually halt, and if so, goes into an infinite loop, and halts otherwise
+\begin{lstlisting}[language=python]
+import stdio
+import sys
+
+def main():
+    program = sys.argv[1]
+    if halt_checker(program):
+        while True:
+            stdio.writeln('Look! I am in an infinite loop!')
+    
+if __name__ == '__main__':
+    main()
+\end{lstlisting}
+
+\pause
+\bigskip
+
+Running \lstinline{paradox.py} on itself as follows leads to a contradiction, suggesting that writing the function \lstinline{halt_checker()} is impossible
+\begin{lstlisting}[language={}]
+$ python paradox.py paradox.py
+\end{lstlisting}
+
+\pause
+\bigskip
+
+The halting problem is therefore uncomputable!
+
+\pause
+\bigskip
+
+In fact, any property that we would like to test about the behavior of a program is uncomputable
+\end{frame}
+
+\section{Conclusion}
+\begin{frame}[fragile]
+\pause
+
+In this section we have taken a whirlwind tour of two major areas of computer science: complexity theory and computability theory
+
+\pause
+\bigskip
+
+Complexity theory is the study of the ``easy'' and ``hard'' problems - problems for which algorithmic solutions exist but the running time (or memory or other resources) may vary from modest to outrageous
+
+\pause
+\bigskip
+
+Computability theory explores those problems that are ``impossible'' to solve, such as the halting problem
+\end{frame}
+\end{document}
