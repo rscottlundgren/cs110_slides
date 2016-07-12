@@ -18,16 +18,21 @@
 
 \section{Lists}
 \begin{frame}[fragile]
-A \emph{collection} (aka \emph{container} or \emph{data structure}) is a way to organize data that we wish to process with a computer program
+\pause
 
+A collection (aka container or data structure) is a way to organize data that we wish to process with a computer program
+
+\pause
 \bigskip
 
-A \emph{list} (aka \emph{one-dimensional array} or \emph{array}) is a collection that stores a sequence of (references to) objects
+A list (aka one-dimensional array or array) is a collection that stores a sequence of (references to) objects
 
+\pause
 \bigskip
 
 The simplest way to create a list (an object of the built-in sequence type \lstinline{list}) in Python is to place comma-separated values between matching square brackets
 
+\pause
 \bigskip
 
 For example, the following code creates a list \lstinline{suits} with four strings, and creates lists \lstinline{x} and \lstinline{y}, each with three floats
@@ -38,10 +43,12 @@ x = [0.30, 0.60, 0.10]
 y = [0.40, 0.10, 0.50]
 \end{lstlisting}
 
+\pause
 \bigskip
 
 After creating a list, we can refer to any individual object by specifying the list name followed by an integer index within square brackets
 
+\pause
 \bigskip
 
 For example, if we have two lists of floats \lstinline{x} and \lstinline{y} whose length is given by a variable \lstinline{n}, we can calculate their dot product as follows
@@ -54,15 +61,24 @@ for i in range(n):
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 We refer to the first element of an $n$-element list \lstinline{a} as \lstinline{a[0]}, the second element as \lstinline{a[1]}, and so on; the last ($n$th) element is referred to as \lstinline{a[n - 1]}
 
+\pause
 \bigskip
 
 We can access the length of a list \lstinline{a} using the built-in function \lstinline{len()}
 
+\pause
 \bigskip
 
-We can use the \lstinline{+=} operator to append elements to a list; For example, the following code creates a list \lstinline{a} with $n$ floats, with each element initialized to \lstinline{0.0}
+We can use the \lstinline{+=} operator to append elements to a list
+
+\pause
+\bigskip
+
+For example, the following code creates a list \lstinline{a} with $n$ floats, with each element initialized to \lstinline{0.0}
 
 \begin{lstlisting}[language=Python]
 a = []
@@ -70,21 +86,25 @@ for i in range(n):
     a += [0.0]
 \end{lstlisting} 
 
+\pause
 \bigskip
 
 Lists are fundamental data structures in that they have a direct correspondence with memory
 
 \begin{center}
-\includegraphics[scale=0.4]{figures/list_rep.pdf}
-
-\smallskip
-
-\tiny Memory representation of list \lstinline{a}
+\visible<6->{\includegraphics[scale=0.4]{figures/list_rep.pdf}}
 \end{center}
 \end{frame}
 
 \begin{frame}[fragile]
-Lists are \emph{mutable} objects because we can change their values; For example, the following code reverses the order of elements in a list \lstinline{a}
+\pause
+
+Lists are mutable objects because we can change their values
+
+\pause
+\bigskip
+
+For example, the following code reverses the order of elements in a list \lstinline{a}
 
 \begin{lstlisting}[language=Python]
 n = len(a)
@@ -94,9 +114,15 @@ for i in range(n / 2):
     a[n - 1 - i] = temp
 \end{lstlisting}
 
+\pause
 \bigskip
 
-One of the most basic operations on a list is to \emph{iterate} over all its elements; For example, the following code computes the average of a list of floats
+One of the most basic operations on a list is to iterate over all its elements
+
+\pause
+\bigskip
+
+For example, the following code computes the average of a list of floats
 
 \begin{lstlisting}[language=Python]
 total = 0.0
@@ -104,6 +130,8 @@ for i in range(len(a)):
     total += a[i]
 average = total / len(a)
 \end{lstlisting}
+
+\pause
 
 and the following code does the same without referring to the indices explicitly
 
@@ -116,7 +144,14 @@ average = total / len(a)
 \end{frame}
 
 \begin{frame}[fragile]
-Python has several built-in functions that take lists as arguments; For example, given a list \lstinline{a}
+\pause
+
+Python has several built-in functions that take lists as arguments
+
+\pause
+\bigskip
+
+For example, given a list \lstinline{a}
 \begin{itemize}
 \item \lstinline{len(a)} returns the number of elements in the list
 \item \lstinline{sum(a)} returns the sum of the elements in the list
@@ -125,13 +160,20 @@ Python has several built-in functions that take lists as arguments; For example,
 \item ...
 \end{itemize}
 
+\pause
 \bigskip
 
 We can write a list by passing it as an argument to \lstinline{stdio.write()} or \lstinline{stdio.writeln()}, or we can use a \lstinline{for} statement to write each element individually
 
+\pause
 \bigskip
 
-\emph{Aliasing} refers to the situation where two variables refer to the same object; For example, after the assignment statements
+Aliasing refers to the situation where two variables refer to the same object
+
+\pause
+\bigskip
+
+For example, after the assignment statements
 \begin{lstlisting}[language=Python]
 x = [.30, .60, .10]
 y = x
@@ -141,6 +183,8 @@ the value of \lstinline{y[1]} is also \lstinline{.99}
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 One way to make a copy \lstinline{y} of a given list \lstinline{x} is to iterate though \lstinline{x} to build \lstinline{y}
 \begin{lstlisting}[language=Python]
 y = []
@@ -148,10 +192,12 @@ for v in x:
     y += [v]
 \end{lstlisting}
 
+\pause
 \bigskip
 
-Alternatively, the expression \lstinline{a[i:j]}, called \emph{slicing},  evaluates to a new list whose elements are \lstinline{a[i], ..., a[j - 1]}; The default value for \lstinline{i} is \lstinline{0} and the default value for \lstinline{j} is \lstinline{len(a)}, so \lstinline{y = x[:]} is equivalent to the code above
+Alternatively, the expression \lstinline{a[i:j]}, called slicing,  evaluates to a new list whose elements are \lstinline{a[i], ..., a[j - 1]}; the default value for \lstinline{i} is \lstinline{0} and the default value for \lstinline{j} is \lstinline{len(a)}, so \lstinline{y = x[:]} is equivalent to the code above
 
+\pause
 \bigskip
 
 The \lstinline{stdarray} module from the authors of the IPP text defines functions for processing lists
@@ -165,15 +211,20 @@ $\dots$ & $\dots$
 \end{tabular} 
 \end{center}
 
+\pause
 \bigskip
 
 The \lstinline{sys.argv} object that we have been using to read command-line arguments is a list of string objects
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{framed}
 \tiny Example: Code for representing and processing playing cards.
 \end{framed}
+
+\pause
 
 Represent suits and ranks
 \begin{lstlisting}[language=Python]
@@ -182,12 +233,16 @@ RANKS = ['2', '3', '4', '5', '6', '7', '8', '9', '10',
          'Jack', 'Queen', 'King', 'Ace']
 \end{lstlisting}
 
+\pause
+
 Write a random card name
 \begin{lstlisting}[language=Python]
 rank = random.randrange(0, len(RANKS))
 suit = random.randrange(0, len(SUITS))
 stdio.writeln(RANKS[rank] + ' of ' + SUITS[suit])
 \end{lstlisting}
+
+\pause
 
 Create a deck
 \begin{lstlisting}[language=Python]
@@ -197,6 +252,8 @@ for rank in RANKS:
         card = rank + ' of ' + suit
         deck += [card]
 \end{lstlisting}
+
+\pause
 
 Shuffle the deck
 \begin{lstlisting}[language=Python]
@@ -210,6 +267,8 @@ for i in range(n):
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{framed}
 \tiny sample.py: Accept integers $m$ and $n$ as command-line arguments. Write to standard output a random sample of $m$ integers in the range $0 \dots n-1$ (no duplicates).
 \end{framed}
@@ -235,6 +294,8 @@ for i in range(m):
 stdio.writeln()
 \end{lstlisting}
 
+\pause
+
 \begin{lstlisting}[language={}]
 $ python sample.py 6 16
 9 6 0 8 5 15 
@@ -246,6 +307,8 @@ $ python sample.py 20 20
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{framed}
 \tiny couponcollector.py: Accept integer $n$ as a command-line argument. Write to standard output the number of coupons you collect before obtaining one of each of $n$ types.
 \end{framed}
@@ -269,6 +332,8 @@ while collectedCount < n:
 stdio.writeln(count)
 \end{lstlisting}
 
+\pause
+
 \begin{lstlisting}[language={}]
 $ python couponcollector.py 1000
 5821
@@ -280,6 +345,8 @@ $ python couponcollector.py 1000000
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{framed}
 \tiny primesieve.py: Accept integer $n$ as a command-line argument. Write to standard output the number of primes less than or equal to $n$.
 \end{framed}
@@ -302,6 +369,8 @@ for i in range(2, n + 1):
 stdio.writeln(count)
 \end{lstlisting}
 
+\pause
+
 \begin{lstlisting}[language={}]
 $ python primesieve.py 25
 9
@@ -317,12 +386,16 @@ $ python primesieve.py 100000000
 \end{frame}
 
 \begin{frame}[fragile]
-In many applications, a convenient way to store information is to use a table of numbers organized in a rectangular table and refer to \emph{rows} and \emph{columns} in the table
+\pause
 
+In many applications, a convenient way to store information is to use a table of numbers organized in a rectangular table and refer to rows and columns in the table
+
+\pause
 \bigskip
 
 The simplest way to create a two-dimensional list in Python is to place comma-separated one-dimensional lists between matching square brackets 
 
+\pause
 \bigskip
 
 For example, this matrix of integers having two rows and three columns 
@@ -337,10 +410,12 @@ can be represented in Python using this list of lists
 a = [[18, 19, 20], [21, 22, 23]]
 \end{lstlisting}
 
+\pause
 \bigskip
 
 Python represents an $m$-by-$n$ list as a list that contains $m$ objects, each of which is a list that contains $n$ objects
 
+\pause
 \bigskip
 
 For example, the following code creates an $m$-by-$n$ list \lstinline{a} of floats, with all elements initialized to \lstinline{0.0}
@@ -353,8 +428,11 @@ for i in range(m):
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 When \lstinline{a} is a two-dimensional list, the syntax \lstinline{a[i]} refers to its \lstinline{i}th row, which is a one-dimensional list; The syntax \lstinline{a[i][j]} refers to the object at row \lstinline{i} and column \lstinline{j}
 
+\pause
 \bigskip
 
 For example, the following code adds two $n$-by-$n$ matrices \lstinline{a} and \lstinline{b}
@@ -368,6 +446,8 @@ for i in range(n):
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{framed}
 \tiny selfavoid.py: Accept integers $n$ and $trials$ as command-line arguments. Do $trials$ random self-avoiding walks in an $n$-by-$n$ lattice. Write to standard output the percentage of dead ends encountered.
 \end{framed}
@@ -404,6 +484,8 @@ stdio.writeln(str(100 * deadEnds / trials) + '% dead ends')
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{lstlisting}[language={}]
 $ python selfavoid.py 5 100
 0% dead ends
@@ -425,8 +507,11 @@ $ python selfavoid.py 80 1000
 \end{frame}
 
 \begin{frame}[fragile]
-A list with rows of nonuniform length is known as a \emph{ragged list}
+\pause
 
+A list with rows of nonuniform length is known as a ragged list
+
+\pause
 \bigskip
 
 For example, the following code writes the contents of a ragged list
@@ -439,14 +524,22 @@ for i in range(len(a)):
     stdio.writeln()
 \end{lstlisting}
 
+\pause
 \bigskip
 
-The same notation extends to allow us to compose code using lists that have any number of dimensions; For example, using lists of lists of lists, we can create a three-dimensional list \lstinline{a}, and then refer to an individual element of \lstinline{a} as \lstinline{a[i][j][k]}
+The same notation extends to allow us to compose code using lists that have any number of dimensions
+
+\pause
+\bigskip
+
+For example, using lists of lists of lists, we can create a three-dimensional list \lstinline{a}, and then refer to an individual element of \lstinline{a} as \lstinline{a[i][j][k]}
 \end{frame}
 
 \section{Tuples}
 \begin{frame}[fragile]
-A \emph{tuple} (an object of the built-in sequence type \lstinline{tuple}) consists of a number of values separated by commas
+\pause
+
+A tuple (an object of the built-in sequence type \lstinline{tuple}) consists of a number of values separated by commas
 \begin{lstlisting}[language={}]
 >>> t = 12345, 54321, 'hello!'
 >>> t[0]
@@ -455,6 +548,7 @@ A \emph{tuple} (an object of the built-in sequence type \lstinline{tuple}) consi
 (12345, 54321, 'hello!')
 \end{lstlisting}
 
+\pause
 \bigskip
 
 Tuples may be nested
@@ -464,6 +558,7 @@ Tuples may be nested
 ((12345, 54321, 'hello!'), (1, 2, 3, 4, 5))
 \end{lstlisting}
 
+\pause
 \bigskip
 
 Tuples are immutable, but they can contain mutable objects
@@ -473,6 +568,7 @@ Tuples are immutable, but they can contain mutable objects
 ([1, 2, 3], [3, 2, 1])
 \end{lstlisting}
 
+\pause
 \bigskip
 
 Empty and singleton sequences
@@ -485,6 +581,7 @@ Empty and singleton sequences
 1
 \end{lstlisting}
 
+\pause
 \bigskip
 
 Sequence unpacking
@@ -495,7 +592,9 @@ Sequence unpacking
 
 \section{Sets}
 \begin{frame}[fragile]
-A \emph{set} (an object of the built-in sequence type \lstinline{set}) is an unordered collection with no duplicate elements
+\pause
+
+A set (an object of the built-in sequence type \lstinline{set}) is an unordered collection with no duplicate elements
 \begin{lstlisting}[language={}]
 >>> basket = ['apple', 'orange', 'apple', 'pear', 'orange', 'banana']
 >>> fruit = set(basket)
@@ -503,6 +602,7 @@ A \emph{set} (an object of the built-in sequence type \lstinline{set}) is an uno
 set(['orange', 'pear', 'apple', 'banana'])
 \end{lstlisting}
 
+\pause
 \bigskip
 
 Fast membership testing
@@ -513,6 +613,7 @@ True
 False
 \end{lstlisting}
 
+\pause
 \bigskip
 
 Set operations
@@ -534,7 +635,9 @@ set(['r', 'd', 'b', 'm', 'z', 'l'])
 
 \section{Dictionaries}
 \begin{frame}[fragile]
-A \emph{dictionary} (an object of the built-in mapping type \lstinline{dict}) is an unordered set of \emph{key}-\emph{value} pairs, with the requirement that the keys are unique
+\pause
+
+A dictionary (an object of the built-in mapping type \lstinline{dict}) is an unordered set of key-value pairs, with the requirement that the keys are unique
 \begin{lstlisting}[language={}]
 >>> tel = {'jack': 4098, 'sape': 4139}
 >>> tel['guido'] = 4127
@@ -549,6 +652,7 @@ A \emph{dictionary} (an object of the built-in mapping type \lstinline{dict}) is
 True
 \end{lstlisting}
 
+\pause
 \bigskip
 
 Dictionaries can be built directly from sequences of key-value pairs
@@ -556,13 +660,15 @@ Dictionaries can be built directly from sequences of key-value pairs
 >>> dict([('sape', 4139), ('guido', 4127), ('jack', 4098)])
 {'sape': 4139, 'jack': 4098, 'guido': 4127}
 \end{lstlisting}
-
 \end{frame}
 
 \section{Comprehensions}
 \begin{frame}[fragile]
-\emph{Comprehensions} provide a concise way to create collections
+\pause
 
+Comprehensions provide a concise way to create collections
+
+\pause
 \bigskip
 
 List comprehensions
@@ -574,6 +680,7 @@ List comprehensions
 [(1, 3), (1, 4), (2, 3), (2, 1), (2, 4), (3, 1), (3, 4)]
 \end{lstlisting}
 
+\pause
 \bigskip
 
 Nested list comprehensions
@@ -587,6 +694,7 @@ Nested list comprehensions
 [[1, 5, 9], [2, 6, 10], [3, 7, 11], [4, 8, 12]]
 \end{lstlisting}
 
+\pause
 \bigskip
 
 Set comprehensions
@@ -596,6 +704,7 @@ Set comprehensions
 set(['r', 'd'])
 \end{lstlisting}
 
+\pause
 \bigskip
 
 Dictionary comprehensions
@@ -607,6 +716,8 @@ Dictionary comprehensions
 
 \section{Looping Techniques}
 \begin{frame}[fragile]
+\pause
+
 When looping through a sequence, the position index and corresponding value can be retrieved at the same time using the \lstinline{enumerate()} function
 \begin{lstlisting}[language={}]
 >>> for i, v in enumerate(['tic', 'tac', 'toe']):
@@ -617,6 +728,7 @@ When looping through a sequence, the position index and corresponding value can 
 2 toe
 \end{lstlisting}
 
+\pause
 \bigskip
 
 To loop over two or more sequences at the same time, the entries can be paired with the \lstinline{zip()} function
@@ -633,6 +745,8 @@ What is your favorite color? It is blue.
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 To loop over a sequence in reverse, first specify the sequence in a forward direction and then call the \lstinline{reversed()} function
 \begin{lstlisting}[language={}]
 >>> for i in reversed(range(1, 10, 2)):
@@ -645,6 +759,7 @@ To loop over a sequence in reverse, first specify the sequence in a forward dire
 1
 \end{lstlisting}
 
+\pause
 \bigskip
 
 To loop over a sequence in sorted order, use the \lstinline{sorted()} function which returns a new sorted list while leaving the source unaltered
@@ -659,5 +774,4 @@ orange
 pear
 \end{lstlisting}
 \end{frame}
-
 \end{document}

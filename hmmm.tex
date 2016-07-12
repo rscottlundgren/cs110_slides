@@ -41,12 +41,17 @@ The Harvey Mudd Miniature Machine (HMMM) is organized as follows
 \pause
 \bigskip
 
-Instead of programming in binary (0's and 1's), we'll use \emph{assembly language}, a programming language where each instruction has a symbolic representation; For example, to compute \lstinline{r3 = r1 + r2}, we'll write \lstinline{add r3 r1 r2}
+Instead of programming in binary (0's and 1's), we'll use assembly language, a programming language where each instruction has a symbolic representation
 
 \pause
 \bigskip
 
-We'll use a program\footnote{\href{http://www.swamiiyer.net/teaching/hmmm.zip}{http://www.swamiiyer.net/teaching/hmmm.zip} (command-line) or \href{http://shickey.github.io/HMMM.js}{http://shickey.github.io/HMMM.js} (online)} to convert the assembly language into 0's and 1's -- the \emph{machine language} -- that the computer can execute
+For example, to compute \lstinline{r3 = r1 + r2}, we'll write \lstinline{add r3 r1 r2}
+
+\pause
+\bigskip
+
+We'll use a program\footnote{\href{http://www.swamiiyer.net/teaching/hmmm.zip}{http://www.swamiiyer.net/teaching/hmmm.zip} (command-line) or \href{http://shickey.github.io/HMMM.js}{http://shickey.github.io/HMMM.js} (online)} to convert the assembly language into 0's and 1's -- the machine language -- that the computer can execute
 \end{frame}
 
 \section{A Simple HMMM Program}
@@ -228,7 +233,7 @@ $ python hmmmSimulator.py -f combinations.b -n
 \begin{frame}[fragile]
 \pause
 
-A \emph{recursive function} is a function that calls itself on smaller inputs, and has a base case. For example, the factorial function $N!$ can be expressed recursively as 
+A recursive function is a function that calls itself on smaller inputs, and has a base case. For example, the factorial function $N!$ can be expressed recursively as 
 \[
 N! = \begin{dcases*}
 N(N-1)! & if $N > 0$, and \\
@@ -239,17 +244,17 @@ N(N-1)! & if $N > 0$, and \\
 \pause
 \bigskip
 
-A \emph{stack} is a storage mechanism (aka data structure) that remembers things and gives them back in reverse order
+A stack is a storage mechanism (aka data structure) that remembers things and gives them back in reverse order
 
 \pause
 \bigskip
 
-To implement a stack on a computer, we need a \emph{stack pointer}, a register (\lstinline{r15} on HMMM) that holds the memory address of the top item on the stack
+To implement a stack on a computer, we need a stack pointer, a register (\lstinline{r15} on HMMM) that holds the memory address of the top item on the stack
 
 \pause
 \bigskip
 
-The code to push something, say the contents of \lstinline{r4}, atop the stack looks like this:
+The code to push something, say the contents of \lstinline{r4}, atop the stack looks like this
 \begin{lstlisting}[language={}]
 addn   r15 1      # Point to a new location
 storer r4 r15     # Store r4 on the stack
@@ -258,7 +263,7 @@ storer r4 r15     # Store r4 on the stack
 \pause
 \bigskip
 
-The code to recover the value atop the stack, say into \lstinline{r3}, looks like this:
+The code to recover the value atop the stack, say into \lstinline{r3}, looks like this
 \begin{lstlisting}[language={}]
 loadr r3 r15     # Load r3 from the stack
 addn  r15 -1     # Point to new top of stack

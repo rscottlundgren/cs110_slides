@@ -37,38 +37,73 @@ Python also allows us to compose our own data types, ie, it supports object-orie
 \begin{frame}[fragile]
 \pause
 
-A literal is a Python-code representation of a data-type value;  For example, \lstinline{1234} and \lstinline{99} are \lstinline{int} literals; \lstinline{3.14159} and \lstinline{2.71828} are \lstinline{float} literals; \lstinline{True} and \lstinline{False} are \lstinline{bool} literals; \lstinline{'Hello, World'} is a \lstinline{str} literal
+A literal is a Python-code representation of a data-type value
 
 \pause
 \bigskip
 
-An operator is a Python-code representation of a data-type operation; For example, \lstinline{+} and \lstinline{*} represent addition and multiplication for integers and floating-point numbers; \lstinline{and}, \lstinline{or}, and \lstinline{not} represent boolean operations
+For example, \lstinline{1234} and \lstinline{99} are \lstinline{int} literals; \lstinline{3.14159} and \lstinline{2.71828} are \lstinline{float} literals; \lstinline{True} and \lstinline{False} are \lstinline{bool} literals; \lstinline{'Hello, World'} is a \lstinline{str} literal
 
 \pause
 \bigskip
 
-An identifier is a Python-code representation of a name; Each identifier is a sequence of letters, digits, and underscores, the first of which is not a digit; For example, \lstinline{abc}, \lstinline{Ab_}, \lstinline{abc123}, and \lstinline{a_b} are valid identifiers, but \lstinline{Ab*}, \lstinline{1abc}, and \lstinline{a+b} are not
+An operator is a Python-code representation of a data-type operation
 
 \pause
 \bigskip
 
-Certain keywords, such as \lstinline{and}, \lstinline{import}, \lstinline{in}, \lstinline{def}, \lstinline{while}, \lstinline{from}, and \lstinline{lambda}, are reserved, and we cannot use them as identifiers; Others such as \lstinline{int}, \lstinline{sum}, \lstinline{min}, \lstinline{max}, \lstinline{len}, \lstinline{id}, \lstinline{file}, and \lstinline{input}, have special meaning, so it is best not to use them, either
+For example, \lstinline{+} and \lstinline{*} represent addition and multiplication for integers and floating-point numbers; \lstinline{and}, \lstinline{or}, and \lstinline{not} represent boolean operations
+
+\pause
+\bigskip
+
+An identifier is a Python-code representation of a name
+
+\pause
+\bigskip
+
+Each identifier is a sequence of letters, digits, and underscores, the first of which is not a digit
+
+\pause
+\bigskip
+
+For example, \lstinline{abc}, \lstinline{Ab_}, \lstinline{abc123}, and \lstinline{a_b} are valid identifiers, but \lstinline{Ab*}, \lstinline{1abc}, and \lstinline{a+b} are not
+
+\pause
+\bigskip
+
+Certain keywords, such as \lstinline{and}, \lstinline{import}, \lstinline{in}, \lstinline{def}, \lstinline{while}, \lstinline{from}, and \lstinline{lambda}, are reserved, and we cannot use them as identifiers; others such as \lstinline{int}, \lstinline{sum}, \lstinline{min}, \lstinline{max}, \lstinline{len}, \lstinline{id}, \lstinline{file}, and \lstinline{input}, have special meaning, so it is best not to use them, either
 \end{frame}
 
 \begin{frame}[fragile]
 \pause
 
-A variable is a name associated with a data-type value; For example, the variable \lstinline{total} might represent the running total of a sequence of numbers
+A variable is a name associated with a data-type value
 
 \pause
 \bigskip
 
-A constant variable describes a variable whose associated data-type value does not change during the execution of a program; For example, the variable \lstinline{SPEED_OF_LIGHT} might represent the known speed of light
+For example, the variable \lstinline{total} might represent the running total of a sequence of numbers
 
 \pause
 \bigskip
 
-An expression is a combination of literals, variables, and operators that Python evaluates to produce a value; For example, \lstinline{4 * (x - 3)} is an expression
+A constant variable describes a variable whose associated data-type value does not change during the execution of a program
+
+\pause
+\bigskip
+
+For example, the variable \lstinline{SPEED_OF_LIGHT} might represent the known speed of light
+
+\pause
+\bigskip
+
+An expression is a combination of literals, variables, and operators that Python evaluates to produce a value
+
+\pause
+\bigskip
+
+For example, \lstinline{4 * (x - 3)} is an expression
 
 \pause
 \bigskip
@@ -143,7 +178,12 @@ The \lstinline{str} data type represents strings (sequences of characters), for 
 \pause
 \bigskip
 
-A \lstinline{str} literal is specified by enclosing a sequence of characters in matching single quotes; For example, \lstinline{'ab'}
+A \lstinline{str} literal is specified by enclosing a sequence of characters in matching single quotes
+
+\pause
+\bigskip
+
+For example, \lstinline{'ab'} is a \lstinline{str} literal
 
 \pause
 \bigskip
@@ -153,12 +193,22 @@ We can specify tab, newline, backslash, and single quote characters using escape
 \pause
 \bigskip
 
-We can concatenate two strings using the \lstinline{+} operator; For example, the expression \lstinline{'123' + '456'} evaluates to the \lstinline{str} object whose value is \lstinline{'123456'}
+We can concatenate two strings using the \lstinline{+} operator
 
 \pause
 \bigskip
 
-We can multiply a \lstinline{str} object $s$ by a number $n$ to obtain a \lstinline{str} object whose value is the string $s$ repeated $n$ times; For example, the expressions \lstinline{3 * 'ab'} and \lstinline{'ab' * 3} evaluate to the \lstinline{str} object whose value is \lstinline{'ababab'}
+For example, the expression \lstinline{'123' + '456'} evaluates to the \lstinline{str} object whose value is \lstinline{'123456'}
+
+\pause
+\bigskip
+
+We can multiply a \lstinline{str} object $s$ by a number $n$ to obtain a \lstinline{str} object whose value is the string $s$ repeated $n$ times
+
+\pause
+\bigskip
+
+For example, the expressions \lstinline{3 * 'ab'} and \lstinline{'ab' * 3} evaluate to the \lstinline{str} object whose value is \lstinline{'ababab'}
 
 \pause
 \bigskip
@@ -211,12 +261,22 @@ $ python ruler.py
 \begin{frame}[fragile]
 \pause
 
-The built-in function \lstinline{str()} can be used to convert numbers into strings; For example, \lstinline{str(123)} evaluates to the \lstinline{str} object \lstinline{'123'}, and \lstinline{str(123.45)} evaluates to the \lstinline{str} object \lstinline{'123.45'}
+The built-in function \lstinline{str()} can be used to convert numbers into strings
 
 \pause
 \bigskip
 
-The built-in functions \lstinline{int()} and \lstinline{float()} can be used to convert strings to numbers; For example, \lstinline{int('123')} is equivalent to the \lstinline{int} literal \lstinline{123}, and \lstinline{float('123.45')} is equivalent to the \lstinline{float} literal \lstinline{123.45}
+For example, \lstinline{str(123)} evaluates to the \lstinline{str} object \lstinline{'123'}, and \lstinline{str(123.45)} evaluates to the \lstinline{str} object \lstinline{'123.45'}
+
+\pause
+\bigskip
+
+The built-in functions \lstinline{int()} and \lstinline{float()} can be used to convert strings to numbers
+
+\pause
+\bigskip
+
+For example, \lstinline{int('123')} is equivalent to the \lstinline{int} literal \lstinline{123}, and \lstinline{float('123.45')} is equivalent to the \lstinline{float} literal \lstinline{123.45}
 \end{frame}
 
 \section{Integers}
@@ -298,7 +358,12 @@ The \lstinline{float} data type represents floating-point numbers, for use in sc
 \pause
 \bigskip
 
-We can specify a floating-point literal using a sequence of digits with a decimal point; For example, \lstinline{3.14159} represents an approximation to $\pi$
+We can specify a floating-point literal using a sequence of digits with a decimal point
+
+\pause
+\bigskip
+
+For example, \lstinline{3.14159} is a \lstinline{float} literal that represents an approximation to $\pi$
 
 \pause
 \bigskip
@@ -452,7 +517,12 @@ operators & \lstinline$and$, \lstinline$or$, \lstinline$not$
 \begin{frame}[fragile]
 \pause
 
-The comparison operators \lstinline{==}, \lstinline{!=}, \lstinline{<}, \lstinline{<=}, \lstinline{>}, \lstinline{>=}, \lstinline{is}, and \lstinline{is not} are defined for both integers and floats, and evaluate to a boolean result; For example, \lstinline{2 == 2} evaluates to \lstinline{True}, \lstinline{2 == 3} evaluates to \lstinline{False}, \lstinline{2 < 13} evaluates to \lstinline{True} 
+The comparison operators \lstinline{==}, \lstinline{!=}, \lstinline{<}, \lstinline{<=}, \lstinline{>}, \lstinline{>=}, \lstinline{is}, and \lstinline{is not} are defined for both integers and floats, and evaluate to a boolean result
+
+\pause
+\bigskip
+
+For example, \lstinline{2 == 2} evaluates to \lstinline{True}, \lstinline{2 == 3} evaluates to \lstinline{False}, \lstinline{2 < 13} evaluates to \lstinline{True} 
 
 \pause
 \bigskip
@@ -494,7 +564,7 @@ True
 \begin{frame}[fragile]
 \pause
 
-Many programming tasks involve using not only built-in operators, but also functions that perform useful operations
+Many programming tasks involve not only built-in operators, but also functions
 
 \pause
 \bigskip
@@ -511,7 +581,12 @@ We consider three kinds of functions
 \pause
 \bigskip
 
-We can call a function in our code by typing its name followed by arguments (which are just expressions), enclosed in parentheses and separated by commas; For example, \lstinline{math.sqrt(2.0)}
+We can call a function in our code by typing its name followed by arguments (which are just expressions), enclosed in parentheses and separated by commas
+
+\pause
+\bigskip
+
+For example, \lstinline{math.sqrt(2.0)} is a function call
 
 \pause
 \bigskip
@@ -521,12 +596,22 @@ When Python executes your program, we say that it calls (or evaluates) the funct
 \pause
 \bigskip
 
-A function call that returns a value is an expression, so we can use it in the same way that we use variables and literals to build up more complicated expressions; For example, \lstinline{math.sin(x) * math.cos(y)}
+A function call that returns a value is an expression, so we can use it in the same way that we use variables and literals to build up more complicated expressions
 
 \pause
 \bigskip
 
-A function call that does not return a value, but has a side effect, can only be used as a statement; For example, \lstinline{stdio.writeln('Hello, World')}
+For example, \lstinline{math.sin(x) * math.cos(y)} is an expression
+
+\pause
+\bigskip
+
+A function call that does not return a value, but has a side effect, can only be used as a statement
+
+\pause
+\bigskip
+
+For example, \lstinline{stdio.writeln('Hello, World')} is a statement
 \end{frame}
 
 \begin{frame}[fragile]
@@ -593,7 +678,12 @@ We can use built-in functions \lstinline{int()}, \lstinline{float()}, \lstinline
 \pause
 \bigskip
 
-Python also supports implicit conversion (aka automatic promotion or coercion); For example, we can use an integer where a float is expected, as in \lstinline{math.sqrt(4)}, which evaluates to \lstinline{2.0}
+Python also supports implicit conversion (aka automatic promotion or coercion)
+
+\pause
+\bigskip
+
+For example, we can use an integer where a float is expected, as in \lstinline{math.sqrt(4)}, which evaluates to \lstinline{2.0}
 \end{frame}
 
 \section{Interactive Python}

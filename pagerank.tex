@@ -18,29 +18,36 @@
 
 \section{Random Surfer Model}
 \begin{frame}[fragile]
+\pause
+
 The random surfer model is a simple model of the world-wide web (www) that has proven to be a particularly useful approach to understand some of its properties
 
+\pause
 \bigskip
 
-The www is modeled as a fixed set of pages, with each page containing a fixed set of links (called hyperlinks), and each link is a reference to some other page; such an abstraction is called a \textit{graph} in mathematics
+The www is modeled as a fixed set of pages, with each page containing a fixed set of links (called hyperlinks), and each link is a reference to some other page; such an abstraction is called a graph in mathematics
 
+\pause
 \bigskip
 
-We are interested in what happens to a person (a random surfer) who randomly moves from page to page according to the \emph{90-10 rule}: 90\% of the time the random surfer clicks a random link on the current page (each chosen with equal probability) and 10\% of the time the random surfer goes directly to a random page by typing a page name into the address bar (all pages on the www are chosen with equal probability)
+We are interested in what happens to a person (a random surfer) who randomly moves from page to page according to the 90-10 rule: 90\% of the time the random surfer clicks a random link on the current page and 10\% of the time the random surfer goes directly to a random page by typing a page name into the address bar
 \end{frame}
 
 \section{Input Format}
 \begin{frame}[fragile]
-An example of a tiny web of five pages and the file \lstinline{tiny.txt} that encodes it
+\pause
+
+A tiny web of five pages
 
 \begin{center}
-\includegraphics[scale=0.6]{figures/tiny_www.pdf}
-
-\smallskip
-
-\tiny A web of five pages
+\visible<2->{\includegraphics[scale=0.6]{figures/tiny_www.pdf}}
 \end{center}
 
+\pause
+\bigskip
+
+and a file \lstinline{tiny.txt} that encodes it
+ 
 \begin{lstlisting}[language={}]
 $ more tiny.txt
 5
@@ -56,8 +63,11 @@ $ more tiny.txt
 
 \section{Transition Matrix}
 \begin{frame}[fragile]
+\pause
+
 The transition matrix $P$ for a www with $N$ pages is an $N$-by-$N$ matrix such that the entry $P_{ij}$, ie, the entry in row $i$ and column $j$, is the probability that the random surfer moves to page $j$ when on page $i$
 
+\pause
 \bigskip
 
 For example, a transition matrix for our tiny five-page web is
@@ -72,6 +82,8 @@ P = \begin{bmatrix}
 \]
 \end{frame}
 \begin{frame}[fragile]
+\pause
+
 \begin{framed}
 \tiny transition.py: Read links from standard input and write the corresponding transition matrix to standard output. First, process the input to count the outlinks from each page. Then apply the 90-10 rule to compute the transition matrix. Assume that there are no pages that have no outlinks in the input.
 \end{framed}
@@ -96,6 +108,8 @@ for i in range(n):
     stdio.writeln()
 \end{lstlisting}
 
+\pause
+
 \begin{lstlisting}[language={}]
 $ python transition.py < tiny.txt
 5 5
@@ -109,6 +123,8 @@ $ python transition.py < tiny.txt
 
 \section{Simulating a Random Surfer}
 \begin{frame}[fragile]
+\pause
+
 \begin{framed}
 \tiny randomsurfer.py: Accept an integer $moves$ as a command-line argument. Read a transition matrix from standard input. Perform $moves$ moves as prescribed by the transition matrix, and write to standard output the relative frequency of hitting each page, ie, its page rank.
 \end{framed}
@@ -144,6 +160,8 @@ stdio.writeln()
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{lstlisting}[language={}]
 $ python transition.py < tiny.txt | python randomsurfer.py 100
  0.26000 0.27000 0.18000 0.26000 0.03000
@@ -156,34 +174,45 @@ $ python transition.py < tiny.txt | python randomsurfer.py 10000000
 
 \section{Markov Chain}
 \begin{frame}[fragile]
-A \emph{Markov chain} is a random process that describes behavior similar to the random surfer
+\pause
 
+A Markov chain is a random process that describes behavior similar to the random surfer
+
+\pause
 \bigskip
 
-A remarkable and useful property of Markov chains is that of \emph{mixing}, which states that the random surfer could start anywhere, since the probability that the surfer eventually winds up on any particular page is the same for all starting pages
+A remarkable and useful property of Markov chains is that of mixing, which states that the random surfer could start anywhere, since the probability that the surfer eventually winds up on any particular page is the same for all starting pages
 
+\pause
 \bigskip
 
-\emph{Page rank} is the probability that the random surfer lands on a page
+Page rank is the probability that the random surfer lands on a page
 \end{frame}
 
 \begin{frame}[fragile]
-Using the \emph{power method} we can obtain the probability that the random surfer will move from page $i$ to page $j$ in two moves by multiplying the transition matrix $P$ by itself
+\pause
 
+Using the power method we can obtain the probability that the random surfer will move from page $i$ to page $j$ in two moves by multiplying the transition matrix $P$ by itself
+
+\pause
 \bigskip
 
 In general, the probability that the random surfer will move from page $i$ to page $j$ in $t$ moves is obtained by computing $P^t$ 
 
+\pause
 \bigskip 
 
 Unfortunately, matrix-matrix multiplication is expensive
 
+\pause
 \bigskip
 
 Fortunately, because of the mixing property, we can make do with relatively inexpensive vector-matrix multiplications
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 For example, with our tiny web, if we start with the vector 
 \[
 \begin{bmatrix}
@@ -198,6 +227,7 @@ specifying that the random surfer starts on page 0, multiplying the vector by th
 \]
 specifying the probabilities that the surfer winds up on each of the pages after one step
 
+\pause
 \bigskip
 
 Now, multiplying the above vector by the transition matrix $P$ gives the vector
@@ -208,12 +238,15 @@ Now, multiplying the above vector by the transition matrix $P$ gives the vector
 \]
 which contains the probabilities that the surfer winds up on each of the pages after two steps
 
+\pause
 \bigskip
 
 The vector giving the probabilities that the random surfer is at each page after $t$ steps is the product of the corresponding vector for $t-1$ steps and the transition matrix $P$
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{framed}
 \tiny markov.py: Accept integer $moves$ from the command-line, and read a transition matrix from standard input. Compute the probabilities that a
 random surfer lands on each page (page ranks) after $moves$ matrix-vector multiplications, and write the page ranks to standard output.
@@ -243,6 +276,8 @@ for rank in ranks:
     stdio.writef("%8.5f", rank)
 stdio.writeln()
 \end{lstlisting}
+
+\pause
 
 \begin{lstlisting}[language={}]
 $ python transition.py < tiny.txt | python markov.py 20
