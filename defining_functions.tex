@@ -18,6 +18,8 @@
 
 \section{Using and Defining Functions}
 \begin{frame}[fragile]
+\pause
+
 Functions allow us to
 \begin{itemize}
 \item Transfer control back and forth between different pieces of code
@@ -25,6 +27,7 @@ Functions allow us to
 \item Reuse code
 \end{itemize}
 
+\pause
 \bigskip
 
 Function definition in Python
@@ -35,16 +38,22 @@ def <name>(<parameter name>, <parameter name>, ...):
     ...
 \end{lstlisting}
 
+\pause
+\bigskip
+
+Anatomy of a function
 \begin{itemize}
-\item The first line, known as the \emph{signature}, consists of the \lstinline{def} keyword, the function name, a sequence of zero or more parameter variables separated by commas and enclosed in parentheses, and a colon
+\item The first line, known as the signature, consists of the \lstinline{def} keyword, the function name, a sequence of zero or more parameter variables separated by commas and enclosed in parentheses, and a colon
 
-\item The indented statements following the signature constitute the \emph{function body}
+\item The indented statements following the signature constitute the function body
 
-\item The function body can contain a \emph{return statement}, which transfers control to the point where the function was called and returns the result of the computation (aka \emph{the return value})
+\item The function body can contain a return statement, which transfers control to the point where the function was called and returns the result of the computation (aka the return value)
 \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 For example, the following function tests if the argument $N$ is prime
 
 \begin{lstlisting}[language=Python]
@@ -59,24 +68,25 @@ def is_prime(N):
     return True
 \end{lstlisting}
 
+\pause
 \bigskip
 
-A \emph{function call} is its name followed by expressions that specify argument values in parentheses, separated by commas; For example, \lstinline{is_prime(31)}
+A function call, such as \lstinline{is_prime(31)}, is its name followed by expressions that specify argument values in parentheses, separated by commas
 
+\pause
 \bigskip
 
 When the function call is part of an expression, as in \lstinline{x = math.sqrt(3)}, the function computes a value that is used in place of the call in the expression
 
+\pause
 \bigskip
 
 Otherwise, the function call is a statement that generally causes side effects, as in \lstinline{stdio.writeln('Hello, World')}
-
-\bigskip
-
-When a module is executed directly by the \lstinline{python} command (and not via an \lstinline{import} statement), the module's \lstinline{__name__} is set equal to \lstinline{'__main__'}
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{framed}
 \tiny harmonicf.py:  Write to standard output the harmonic numbers specified as command-line arguments.
 \end{framed}
@@ -101,21 +111,31 @@ if __name__ == '__main__':
     main()
 \end{lstlisting}
 
+\pause
+
 \begin{lstlisting}[language={}]
 $ python harmonicf.py 1 2 4
 1.0
 1.5
 2.08333333333
 \end{lstlisting}
+
+\pause
+\bigskip
+
+When a module is executed directly by the \lstinline{python} command (and not via an \lstinline{import} statement), the module's \lstinline{__name__} attribute is set to \lstinline{'__main__'}
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 A Python function can have more than one parameter variable, so it can be called with more than one argument
 \begin{lstlisting}[language=Python]
 def hypot(a, b):
     return math.sqrt(a * a + b * b)
 \end{lstlisting}
 
+\pause
 \bigskip
 
 We can define as many functions as we want in a \lstinline{.py} file
@@ -127,29 +147,36 @@ def hypot(a, b):
     return math.sqrt(square(a) + square(b))
 \end{lstlisting}
 
+\pause
 \bigskip
 
 We can put \lstinline{return} statements in a function wherever we need them, as in the \lstinline{is_prime()} function
 
+\pause
 \bigskip
 
-A function provides only one return value to the caller; More precisely, it returns a reference to one object
+A function provides only one return value to the caller; more precisely, it returns a reference to one object
 
+\pause
 \bigskip
 
 The scope of a function's local and parameter variables is limited to that function
 
+\pause
 \bigskip
 
-The scope of a variable defined in global code --- known as a \emph{global variable} --- is limited to the \lstinline{.py} file containing that variable
+The scope of a variable defined in global code --- known as a global variable --- is limited to the \lstinline{.py} file containing that variable
 \end{frame}
 
 \begin{frame}[fragile]
-A function may designate an argument to be \emph{optional} by specifying a \emph{default value} for that argument
+\pause
 
+A function may designate an argument to be optional by specifying a default value for that argument
+
+\pause
 \bigskip
 
-For example, the following function computes the \emph{$n$th generalized harmonic number of order $r$}, $H_{n,r}=1+1/2^r+1/3^r+\cdots+1/n^r$
+For example, the following function computes the $n$th generalized harmonic number of order $r$, $H_{n,r}=1+1/2^r+1/3^r+\cdots+1/n^r$
 
 \begin{lstlisting}[language=Python]
 def harmonic(n, r = 1):
@@ -158,49 +185,62 @@ def harmonic(n, r = 1):
         total += 1.0 / (i ** r)
     return total
 \end{lstlisting}
-With this definition, \lstinline{harmonic(2, 2)} returns \lstinline{1.25}, while both \lstinline{harmonic(2, 1)} and \lstinline{harmonic(2)} return \lstinline{1.5}
+With the above definition, \lstinline{harmonic(2, 2)} returns \lstinline{1.25}, while both \lstinline{harmonic(2, 1)} and \lstinline{harmonic(2)} return \lstinline{1.5}
 
+\pause
 \bigskip
 
-\emph{Named arguments} allow us to specify arguments to a function in any order; For example, the call \lstinline{harmonic(r = 2, n = 3)} is the same as the call \lstinline{harmonic(3, 2)}
+Named arguments allow us to specify arguments to a function in any order
 
+\pause
 \bigskip
 
-Python supports \emph{functional polymorphism}, which allows us to define a single function for use with objects of different types; For example, \lstinline{square()} when called with an integer argument, returns an integer, but when called with a float argument, returns a float
+For example, the call \lstinline{harmonic(r = 2, n = 3)} is the same as the call \lstinline{harmonic(3, 2)}
+
+\pause
+\bigskip
+
+Python supports functional polymorphism, which allows us to define a single function for use with objects of different types
+
+\pause
+\bigskip
+
+For example, \lstinline{square()} when called with an integer argument, returns an integer, but when called with a float argument, returns a float
 \end{frame}
 
 \section{Implementing Mathematical Functions}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{minipage}{200pt}
-The \emph{standard normal (Gaussian) probability density function (pdf)} is characterized by the familiar bell-shaped curve defined by the formula $\phi(x)=e^{-x^2/2}/\sqrt{2\pi}$
+The standard Gaussian probability density function (pdf) is characterized by the familiar bell-shaped curve defined by the formula $\phi(x)=e^{-x^2/2}/\sqrt{2\pi}$
 
+\pause
 \bigskip
 
-The \emph{normal (Gaussian) pdf} $\phi(x, \mu, \sigma)$ is the same as $\phi((x-\mu)/\sigma)/\sigma$
+The Gaussian pdf $\phi(x, \mu, \sigma)$ is the same as $\phi((x-\mu)/\sigma)/\sigma$
 
+\pause
 \bigskip
 
-The \emph{standard normal (Gaussian) cumulative distribution function (cdf)} $\Phi(z)$ is defined to be the area under the curve defined by $\phi(x)$ above the $x$-axis and to the left of the vertical line $x=z$ 
+The standard Gaussian cumulative distribution function (cdf) $\Phi(z)$ is defined to be the area under the curve defined by $\phi(x)$ above the $x$-axis and to the left of the vertical line $x=z$ 
 
+\pause
 \bigskip
 
 No formula is known for $\Phi(z)$, but it can be approximated as follows $$\Phi(z)=\frac{1}{2}+\phi(z)\big(z+\frac{z^3}{3}+\frac{z^5}{3\cdot 5}+\frac{z^7}{3\cdot 5\cdot 7}+\cdots\big )$$
 \end{minipage}\hfill%
 \begin{minipage}{100pt}
 \begin{center}
-\includegraphics[scale=0.25]{figures/gaussian.png}
-
-\smallskip
-
-\tiny
-
-Gaussian probability functions
+\visible<2->{\includegraphics[scale=0.25]{figures/gaussian.png}}
 \end{center}
 \end{minipage}
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{framed}
 \tiny gaussian.py: Accept floats $z$, $mu$, and $sigma$ as command-line arguments. Use them to test the \lstinline{phi()} and \lstinline{Phi()} functions. Write the results to standard output.
 \end{framed}
@@ -230,6 +270,8 @@ def cdf(z, mu = 0.0, sigma = 1.0):
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{lstlisting}[language=Python]
 def main():
     z = float(sys.argv[1])
@@ -240,6 +282,8 @@ def main():
 if __name__ == '__main__':
     main()
 \end{lstlisting}
+
+\pause
 
 \begin{lstlisting}[language={}]
 $ python gaussian.py 820 1019 209
@@ -254,6 +298,8 @@ $ python gaussian.py 1500 1025 231
 \section{Using Functions to Organize Code}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{framed}
 \tiny coupon.py: Accept integer $n$ as a command-line argument. Write to standard output the number of coupons collected before obtaining one of each of $n$ types.
 \end{framed}
@@ -290,6 +336,8 @@ if __name__ == '__main__':
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{lstlisting}[language={}]
 $ python coupon.py 1000
 5193
@@ -302,16 +350,21 @@ $ python coupon.py 1000000
 
 \section{Passing Arguments and Returning Values}
 \begin{frame}[fragile]
+\pause
+
 We can use parameter variables anywhere in the body of the function in the same way as we use local variables
 
+\pause
 \bigskip
 
-Python initializes the parameter variable with the corresponding argument provided by the calling code --- an approach known as \emph{call by object reference} (aka \emph{call by value})
+Python initializes the parameter variable with the corresponding argument provided by the calling code --- an approach known as call by object reference (aka call by value)
 
+\pause
 \bigskip
 
 As a consequence, if a parameter variable refers to a mutable object and we change that object's value within a function, then this also changes the object's value in the calling code
 
+\pause
 \bigskip
 
 When a function takes a list as an argument, it implements a function that operates on an arbitrary number of objects
@@ -325,7 +378,9 @@ def mean(a):
 \end{frame}
 
 \begin{frame}[fragile]
-Since lists are \emph{mutable}, it is often the case that the purpose of a function that takes a list as argument is to produce a side effect
+\pause
+
+Since lists are mutable, it is often the case that the purpose of a function that takes a list as argument is to produce a side effect
 \begin{lstlisting}[language=Python]
 def exchange(a, i, j):
     temp = a[i]
@@ -333,6 +388,7 @@ def exchange(a, i, j):
     a[j] = temp
 \end{lstlisting}
 
+\pause
 \bigskip
 
 There are situations where it is useful for a function to return a list
@@ -346,6 +402,8 @@ def randomarray(n):
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{framed}
 \tiny playthattunedeluxe.py: Read sound samples from standard input, add harmonics, and play the resulting sound to standard audio.
 \end{framed}
@@ -383,6 +441,8 @@ def note(pitch, t):
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{lstlisting}[language=Python]
 def main():
     while not stdio.isEmpty():
@@ -396,6 +456,8 @@ if __name__ == '__main__':
     main()
 \end{lstlisting}
 
+\pause
+
 \begin{minipage}{170pt}
 \begin{lstlisting}[language={}]
 $ head -5 elise.txt
@@ -408,18 +470,22 @@ $ python playthattunedeluxe.py < elise.txt
 \end{lstlisting}
 \end{minipage}%
 \begin{minipage}{130pt}
-\hfill \includegraphics[scale=0.5]{figures/furelise.pdf}
+\hfill \visible<3->{\includegraphics[scale=0.5]{figures/furelise.pdf}}
 \end{minipage}
 \end{frame}
 
 \section{Filter, Lambda, Map, and Reduce Functions}
 \begin{frame}[fragile]
-In Python, functions are \emph{first-class citizens}, meaning they are actually data just like numbers, lists, and strings
+\pause
 
+In Python, functions are first-class objects, meaning they are actually data just like numbers, lists, and strings
+
+\pause
 \bigskip
 
-As a result, we can write functions that take \emph{other functions} as arguments and return \emph{other functions} as results
+As a result, we can write functions that take other functions as arguments and return other functions as results
 
+\pause
 \bigskip
 
 The built-in function \lstinline{filter(f, seq)} returns those items of the sequence \lstinline{seq} for which \lstinline{f(item)} is \lstinline{True}
@@ -429,9 +495,10 @@ The built-in function \lstinline{filter(f, seq)} returns those items of the sequ
 [2, 3, 5, 7]
 \end{lstlisting}
 
+\pause
 \bigskip
 
-A \emph{lambda function} is a ``disposable'' function that we can define just when we need it and then immediately throw it away after we are done using it
+A lambda function is a ``disposable'' function that we can define just when we need it and then immediately throw it away after we are done using it
 \begin{lstlisting}[language={}]
 >>> odds = filter(lambda x : x % 2 != 0, range(11))
 >>> odds
@@ -440,6 +507,8 @@ A \emph{lambda function} is a ``disposable'' function that we can define just wh
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 The built-in function \lstinline{map(f, seq)} returns a list of the results of applying the function \lstinline{f} to the items of the sequence \lstinline{seq}
 \begin{lstlisting}[language={}]
 squares = map(lambda x : x ** 2, range(11))
@@ -447,6 +516,7 @@ squares = map(lambda x : x ** 2, range(11))
 [0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
 \end{lstlisting}
 
+\pause
 \bigskip
 
 The built-in function \lstinline{reduce(f, seq)} applies a function \lstinline{f} of two arguments cumulatively to the items of a sequence \lstinline{seq}, from left to right, so as to reduce the sequence to a single value
@@ -458,21 +528,43 @@ The built-in function \lstinline{reduce(f, seq)} applies a function \lstinline{f
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
+The RSA cryptosystem is the most widely-used public key cryptography algorithm in the world, which can be used to encrypt a message without the need to exchange a secret key separately
+
+\pause
+\bigskip
+
+A message $x$ is encrypted using the function $f(x) = x^e \bmod n$, where $n=pq$ for two different large primes $p$ and $q$ chosen at random, and $e$ is a random prime number less than $m=(p-1)(q-1)$ such that $e$ does not divide $m$
+
+\pause
+\bigskip
+
+The maximum number that can be encrypted is $n-1$
+
+\pause
+\bigskip
+
+Together, the values $e$ and $n$ are called the public key
+
+\pause
+\bigskip
+
+A message $y$ is decrypted using the function $g(y) = y^d \bmod n$, where $1 \leq d < m$ is the multiplicative inverse of $e \bmod m$, ie, $ed \bmod m = 1$
+
+\pause
+\bigskip
+
+The value $d$ is called the private key
+\end{frame}
+
+\begin{frame}[fragile]
+\pause
+
 \begin{framed}
-\tiny cryptography.py: A module that implements RSA cryptography.
-\begin{itemize}
-
-\item A message $x$ is encrypted using the function $f(x) = x^e \bmod n$, where $n=pq$ for two different large primes $p$ and $q$ chosen at random, and $e$ is a random prime number less than $m=(p-1)(q-1)$ such that $e$ does not divide $m$
-
-\item The maximum number that can be encrypted is $n-1$
-
-\item Together, the values $e$ and $n$ are called the \emph{public key}
-
-\item A message $y$ is decrypted using the function $g(y) = y^d \bmod n$, where $1 \leq d < m$ is the multiplicative inverse of $e \bmod m$, ie, $ed \bmod m = 1$
-
-\item The value $d$ is called the \emph{private key}
-\end{itemize}
+\tiny cryptography.py: A module that implements RSA cryptosystem.
 \end{framed}
+
 \begin{lstlisting}[language=Python]
 import random
 import stdio
@@ -489,11 +581,7 @@ def is_prime(N):
 
 def primes(N):
     return filter(is_prime, range(N))
-\end{lstlisting}
-\end{frame}
 
-\begin{frame}[fragile]
-\begin{lstlisting}[language=Python]
 def inverse(e, m):
     return filter(lambda d: e * d % m == 1, range(1, m))[0]
 
@@ -506,10 +594,12 @@ def make_encoder_decoder(N):
     while m % e == 0:
         e = random.choice(primes(m))
     d = inverse(e, m)
-    encoder = lambda x: (x ** e) % n
-    decoder = lambda y: (y ** d) % n
-    return [encoder, decoder]
+    return [lambda x: (x ** e) % n, lambda y: (y ** d) % n]
 \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\pause
 
 \begin{lstlisting}[language={}]
 >>> import cryptography
