@@ -18,17 +18,21 @@
 
 \section{Using Functions in Other Programs}
 \begin{frame}[fragile]
-Using \emph{modular programming} we can not only divide a program into functions, but also keep them in different files
+\pause
 
+Using modular programming we can not only divide a program into functions, but also keep them in different files
+
+\pause
 \bigskip
 
 We distinguish between two types of Python programs
 \begin{itemize}
-\item A \emph{module} contains functions that are available for use by other programs
+\item A module contains functions that are available for use by other programs
 
-\item A \emph{client} is a program that makes use of a function in a module
+\item A client is a program that makes use of a function in a module
 \end{itemize}
 
+\pause
 \bigskip
 
 Five steps involved in creating and using modules
@@ -44,6 +48,7 @@ Five steps involved in creating and using modules
 \item Make the module accessible to the client
 \end{enumerate}
 
+\pause
 \bigskip
 
 Modular programming enables us to independently develop and debug functions for an application and then utilize them at any later time
@@ -51,8 +56,10 @@ Modular programming enables us to independently develop and debug functions for 
 
 \section{Modular Programming Abstractions}
 \begin{frame}[fragile]
-\emph{User-defined modules} are files that each contain a set of related functions for use by other programs
+\pause
+User-defined modules are files that each contain a set of related functions for use by other programs
 
+\pause
 \bigskip
 
 We use three abstractions to manage the process of developing user-defined modules
@@ -83,11 +90,19 @@ def cdf(z, mu = 0.0, sigma = 1.0):
 \end{frame}
 
 \begin{frame}[fragile]
-A \emph{library} is a collection of related modules; For example, \emph{NumPy} is a library for scientific computing
+\pause
 
+A library is a collection of related modules
+
+\pause
 \bigskip
 
-A \emph{private function}, having its name start with an underscore by convention, is a helper function that is not intended to be called directly by clients
+For example, NumPy is a library for scientific computing
+
+\pause
+\bigskip
+
+A private function, having its name start with an underscore by convention, is a helper function that is not intended to be called directly by clients
 \begin{lstlisting}[language=Python]
 def _phi(x):
     return math.exp(- x * x / 2.0) / math.sqrt(2 * math.pi)
@@ -96,6 +111,7 @@ def phi(x, mu = 0.0, sigma = 1.0):
     return _phi(float((x - mu) / sigma)) / sigma
 \end{lstlisting}
 
+\pause
 \bigskip
 
 Documentation for modules and their functions is provided by embedding the documentaion string in triple quotes
@@ -117,6 +133,8 @@ def uniformInt(lo, hi):
 
 \section{Random Numbers}
 \begin{frame}[fragile]
+\pause
+
 API for \lstinline{stdrandom} module
 \begin{center}
 \begin{tabular}{cc}
@@ -135,6 +153,8 @@ function & description \\ \hline
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{framed}
 \tiny stdrandom\_client.py: Accept integer $trials$ as a command-line argument. Plot $trials$ number of $(x, y)$ points to standard draw, where $x$ and $y$ are drawn from a Gaussian distribution.
 \end{framed}
@@ -153,17 +173,21 @@ for i in range(trials):
 stddraw.show()
 \end{lstlisting}
 
+\pause
+
 \begin{minipage}{160pt}
 \begin{lstlisting}[language={}]
 $ python stdrandom_client.py 100000
 \end{lstlisting}
 \end{minipage}%
 \begin{minipage}{140pt}
-\hfill \includegraphics[scale=0.17]{figures/stdrandom_client.png}
+\hfill \visible<3->{\includegraphics[scale=0.17]{figures/stdrandom_client.png}}
 \end{minipage}
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{framed}
 \tiny stdrandom.py: Random number module that defines functions related to pseudo-random numbers.
 \end{framed}
@@ -197,6 +221,8 @@ def gaussian(mean = 0.0, stddev = 1.0):
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{lstlisting}[language=Python]
 def discrete(a):
     r = uniformFloat(0.0, sum(a))
@@ -233,6 +259,8 @@ if __name__ == '__main__':
 
 \section{List Processing}
 \begin{frame}[fragile]
+\pause
+
 API for \lstinline{stdarray} module
 \begin{center}
 \begin{tabular}{cc}
@@ -252,6 +280,8 @@ function & description \\ \hline
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{framed}
 \tiny ifs.py: Accept integer $n$ as a command-line argument. Read a $1$-by-$m$ vector (probabilities) and two $m$-by-$3$ matrices (coefficients for updating $x$ and $y$, respectively) from standard input. Plot the results as a set of $n$ points to standard draw.
 \end{framed}
@@ -285,6 +315,8 @@ if __name__ == '__main__':
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 Sierpinski triangle
 
 \begin{minipage}{160pt}
@@ -305,10 +337,11 @@ $ python ifs.py 20000 < sierpinski.txt
 \end{minipage}%
 \begin{minipage}{140pt}
 \begin{center}
-\hfill \includegraphics[scale=0.17]{figures/sierpinski.png}
+\hfill \visible<2->{\includegraphics[scale=0.17]{figures/sierpinski.png}}
 \end{center}
 \end{minipage}
 
+\pause
 \bigskip
 
 Barnsley fern
@@ -333,15 +366,16 @@ $ python ifs.py 20000 < barnsley.txt
 \end{minipage}%
 \begin{minipage}{140pt}
 \begin{center}
-\hfill \includegraphics[scale=0.17]{figures/barnsley.png}
+\hfill \visible<3->{\includegraphics[scale=0.17]{figures/barnsley.png}}
 \end{center}
 \end{minipage}
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{framed}
-\tiny stdarray.py: List module that defines functions related to creating, reading,
-and writing one- and two-dimensional lists.
+\tiny stdarray.py: List module that defines functions related to creating, reading, and writing one- and two-dimensional lists.
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -373,8 +407,9 @@ def write1D(a):
 \end{lstlisting}
 \end{frame}
 
-
 \begin{frame}[fragile]
+\pause
+
 \begin{lstlisting}[language=Python]
 def write2D(a):
     rowCount = len(a)
@@ -412,6 +447,8 @@ def readInt2D():
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{lstlisting}[language=Python]
 def readFloat1D():
     count = stdio.readInt()
@@ -440,6 +477,8 @@ def readBool1D():
 
 
 \begin{frame}[fragile]
+\pause
+
 \begin{lstlisting}[language=Python]
 def readBool2D():
     rowCount = stdio.readInt()
@@ -461,6 +500,8 @@ if __name__ == '__main__':
 
 \section{Standard Statistics}
 \begin{frame}[fragile]
+\pause
+
 API for \lstinline{stdstats} module
 \begin{center}
 \begin{tabular}{cc}
@@ -477,6 +518,8 @@ function & description \\ \hline
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{framed}
 \tiny bernoulli.py: Accept integers $n$ and $trials$ as command-line arguments. Perform $trials$ experiments, each of which counts the number of heads found when a fair coin is flipped $n$ times. Then draw the results to standard draw. 
 \end{framed}
@@ -516,17 +559,21 @@ if __name__ == '__main__':
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{minipage}{160pt}
 \begin{lstlisting}[language={}]
 $ python bernoulli.py 20 100000
 \end{lstlisting}
 \end{minipage}%
 \begin{minipage}{140pt}
-\hfill \includegraphics[scale=0.12]{figures/bernoulli.png}
+\hfill \visible<2->{\includegraphics[scale=0.12]{figures/bernoulli.png}}
 \end{minipage}
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{framed}
 \tiny stdstats.py: Statistics module that defines functions related to statistical analysis and graphical data display.
 \end{framed}
@@ -567,6 +614,8 @@ def plotPoints(a):
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{lstlisting}[language=Python]
 def plotLines(a):
     n = len(a)
