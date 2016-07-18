@@ -1,4 +1,4 @@
-\documentclass[8pt,a4paper,compress,handout]{beamer}
+\documentclass[8pt,a4paper,compress]{beamer}
 
 \usepackage{/home/siyer/lib/slides}
 
@@ -18,26 +18,31 @@
 
 \section{Stacks}
 \begin{frame}[fragile]
-A \emph{stack} is an iterable collection that is based on the last-in-first-out (LIFO) policy
+\pause
 
+A stack is an iterable collection that is based on the last-in-first-out (LIFO) policy
+
+\pause
 \bigskip
 
 A data type \lstinline{Stack} that represents a stack
 \begin{center}
 \begin{tabular}{cc}
 method & description \\ \hline
-\lstinline$Stack()$ & constructs an empty stack $s$ \\
-\lstinline$s.isEmpty()$ & tests if $s$ empty \\
-\lstinline$s.push(item)$ & pushes $item$ on top of $s$ \\
-\lstinline$s.pop()$ &  pops and returns the item on top of $s$ \\
-\lstinline$str(s)$ & returns a string representation of $s$
+\lstinline$Stack()$ & construct an empty stack $s$ \\
+\lstinline$s.isEmpty()$ & is $s$ empty \\
+\lstinline$s.push(item)$ & push $item$ on top of $s$ \\
+\lstinline$s.pop()$ &  pop and return the item on top of $s$ \\
+\lstinline$str(s)$ & a string representation of $s$
 \end{tabular} 
 \end{center}
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{framed}
-\tiny stack.py: Defines a data type \lstinline{Stack}
+\tiny stack.py: Definition of \lstinline{Stack} data type.
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -65,6 +70,8 @@ class Stack:
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{lstlisting}[language=Python]
 def main():
     stack = Stack()
@@ -80,10 +87,14 @@ if __name__ == '__main__':
     main()
 \end{lstlisting}
 
+\pause
+
 \begin{lstlisting}[language={}]
 $ more tobe.txt
 to be or not to - be - - that - - - is
 \end{lstlisting}
+
+\pause
 
 \begin{lstlisting}[language={}]
 $ python stack.py < tobe.txt 
@@ -92,8 +103,10 @@ to be not that or be
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{framed}
-\tiny evaluate.py: Reads a fully parenthesized numeric expression from standard input, evaluates it, and writes the resulting number to standard output.
+\tiny evaluate.py: Read a fully parenthesized numeric expression from standard input, evaluate it, and write the resulting number to standard output.
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -124,6 +137,8 @@ if __name__ == '__main__':
     main()
 \end{lstlisting}
 
+\pause
+
 \begin{lstlisting}[language={}]
 $ python evaluate.py
 ( ( 1 + sqrt ( 5.0 ) ) * 0.5 )
@@ -133,27 +148,33 @@ $ python evaluate.py
 \end{frame}
 
 \section{Queues}
-\begin{frame}[fragile]
-A \emph{queue} is an iterable collection that is based on the first-in-first-out (FIFO) policy
 
+\begin{frame}[fragile]
+\pause
+
+A queue is an iterable collection that is based on the first-in-first-out (FIFO) policy
+
+\pause
 \bigskip
 
 A data type \lstinline{Queue} that represents a queue
 \begin{center}
 \begin{tabular}{cc}
 method & description \\ \hline
-\lstinline$Queue()$ & constructs an empty queue $q$ \\
-\lstinline$q.isEmpty()$ & tests if $q$ empty \\
-\lstinline$q.enqueue(item)$ & adds $item$ to the end of $q$ \\
-\lstinline$q.dequeue()$ &  removes and returns the first item of $q$ \\
-\lstinline$str(q)$ & returns a string representation of $q$
+\lstinline$Queue()$ & construct an empty queue $q$ \\
+\lstinline$q.isEmpty()$ & is $q$ empty \\
+\lstinline$q.enqueue(item)$ & add $item$ to the end of $q$ \\
+\lstinline$q.dequeue()$ &  remove and return the first item of $q$ \\
+\lstinline$str(q)$ & a string representation of $q$
 \end{tabular} 
 \end{center}
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{framed}
-\tiny queue.py: Defines a data type \lstinline{Queue}.
+\tiny queue.py: Definition of \lstinline{Queue} data type.
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -181,6 +202,8 @@ class Queue:
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{lstlisting}[language=Python]
 def main():
     queue = Queue()
@@ -197,10 +220,14 @@ if __name__ == '__main__':
     main()
 \end{lstlisting}
 
+\pause
+
 \begin{lstlisting}[language={}]
 $ more tobe.txt
 to be or not to - be - - that - - - is
 \end{lstlisting}
+
+\pause
 
 \begin{lstlisting}[language={}]
 $ python queue.py < tobe.txt
@@ -209,8 +236,10 @@ to be or not to be
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{framed}
-\tiny mm1queue.py: Accepts float command-line arguments $lamb$ and $mu$, simulates an M/M/1 queue with arrival rate $lamb$ and service rate $mu$.
+\tiny mm1queue.py: Accept float command-line arguments $lamb$ and $mu$, and simulate an M/M/1 queue with arrival rate $lamb$ and service rate $mu$.
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -249,6 +278,8 @@ if __name__ == '__main__':
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{minipage}{200pt}
 \begin{lstlisting}[language={}]
 $ python mm1queue.py .167 .25
@@ -257,14 +288,11 @@ $ python mm1queue.py .167 .25
 \hfill
 \begin{minipage}{100pt}
 \begin{center}
-\includegraphics[scale=0.15]{figures/mm1queue1.png}
-
-\smallskip
-
-\tiny M/M/1 queue ($\lambda=0.167, \mu=0.25$)
+\visible<2->{\includegraphics[scale=0.15]{figures/mm1queue1.png}}
 \end{center}
 \end{minipage}%
 
+\pause
 \bigskip
 
 \begin{minipage}{200pt}
@@ -275,11 +303,7 @@ $ python mm1queue.py .167 .2
 \hfill
 \begin{minipage}{100pt}
 \begin{center}
-\includegraphics[scale=0.15]{figures/mm1queue2.png}
-
-\smallskip
-
-\tiny M/M/1 queue ($\lambda=0.167, \mu=0.2$)
+\visible<3->{\includegraphics[scale=0.15]{figures/mm1queue2.png}}
 \end{center}
 \end{minipage}
 \end{frame}

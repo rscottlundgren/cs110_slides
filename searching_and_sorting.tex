@@ -1,4 +1,4 @@
-\documentclass[8pt,a4paper,compress,handout]{beamer}
+\documentclass[8pt,a4paper,compress]{beamer}
 
 \usepackage{/home/siyer/lib/slides}
 
@@ -18,30 +18,38 @@
 
 \section{Performance}
 \begin{frame}[fragile]
-\emph{Algorithms} are methods for solving computational problems
+\pause
 
+Algorithms are methods for solving computational problems
+
+\pause
 \bigskip
 
-\emph{Data structures} are schemes for arranging data, amenable to efficient processing by algorithms
+Data structures are schemes for arranging data, amenable to efficient processing by algorithms
 
+\pause
 \bigskip
 
 The performance characteristics of a program is determined by
 \begin{itemize}
-\item its \emph{time complexity}, ie, how long it takes; and 
+\item its time complexity, ie, how long it takes; and 
 
-\item its \emph{space complexity}, ie, how much memory it needs
+\item its space complexity, ie, how much memory it needs
 \end{itemize}
+
+\pause
+\bigskip
+
+The running time of a program is determined by the cost of executing each statement, and the frequency of execution of each statement
+
+\pause
+\bigskip
+
+Running time is expressed using an order-of-growth function of the problem size $N$, without any lower-order terms or constant coefficients
 \end{frame}
 
 \begin{frame}[fragile]
-The running time of a program is determined by the cost of executing each statement, and the frequency of execution of each statement
-
-\bigskip
-
-Running time is expressed using an \emph{order-of-growth} function of the problem size $N$, without any lower-order terms or constant coefficients
-
-\bigskip
+\pause
 
 Order-of-growth classifications
 \begin{center}
@@ -57,17 +65,21 @@ exponential & $2^N$ & exhaustive search & check all subsets
 \end{tabular} 
 \end{center}
 \begin{center}
-\includegraphics[scale=0.25]{{./figures/order_of_growth}.pdf}
+\visible<2->{\includegraphics[scale=0.4]{{./figures/order_of_growth}.pdf}}
 \end{center}
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 The sizes of objects of built-in types differ from system to system, so the sizes of data types that we create also differ accordingly
 
+\pause
 \bigskip
 
 The function call \lstinline{sys.getsizeof(x)} returns the number of bytes that a built-in object \lstinline{x} consumes on a particular system
 
+\pause
 \bigskip
 
 Sizes of built-in objects on a typical system
@@ -87,8 +99,10 @@ user-defined & hundreds of bytes, at least
 
 \section{Searching}
 \begin{frame}[fragile]
-The \emph{search problem} involves searching for a key in a collection of $N$ keys
+\pause
+The search problem involves searching for a key in a collection of $N$ keys
 
+\pause
 \bigskip
 
 Linear search
@@ -100,34 +114,50 @@ def search(key, a):
     return -1
 \end{lstlisting}
 
-\bigskip
+\pause
 
+Order of growth: $N$ (linear)
+\end{frame}
+
+\begin{frame}[fragile]
+\pause
 Binary search
 
 \begin{minipage}{150pt}
+\visible<2->{
 \begin{center}
-\includegraphics[scale=0.4]{./figures/bs1.pdf}
+\includegraphics[scale=0.45]{./figures/bs1.pdf}
 
 \smallskip
 
 \tiny successful search for the key 23
 \end{center}
+}
 \end{minipage}
 \begin{minipage}{150pt}%
 \hfill
+\visible<3->{
 \begin{center}
-\includegraphics[scale=0.4]{./figures/bs2.pdf}
+\includegraphics[scale=0.45]{./figures/bs2.pdf}
 
 \smallskip
 
 \tiny unsuccessful search for the key 50
 \end{center}
+}
 \end{minipage}
+
+\pause
+\bigskip
+
+\visible<4->{Order of growth: $\log N$ (logarithmic)}
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{framed}
-\tiny binarysearch.py: Accepts as a command-line argument a string which is the name of a whitelist file, and writes to standard output the keys in standard input that are not in the whitelist file.
+\tiny binarysearch.py: Accept as a command-line argument a string which is the name of a whitelist file, and write to standard output the keys in standard input that are not in the whitelist file.
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -163,6 +193,8 @@ if __name__ == '__main__':
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{lstlisting}[language={}]
 $ more emails.txt 
 bob@office
@@ -176,6 +208,8 @@ eve@airport
 alice@home
 \end{lstlisting}
 
+\pause
+
 \begin{lstlisting}[language={}]
 $ more white.txt
 alice@home
@@ -183,6 +217,8 @@ bob@office
 carl@beach
 dave@boat
 \end{lstlisting}
+
+\pause
 
 \begin{lstlisting}[language={}]
 $ python binarysearch.py white.txt < emails.txt 
@@ -194,23 +230,26 @@ eve@airport
 
 \section{Sorting}
 \begin{frame}[fragile]
-The \emph{sort problem} involves rearranging a sequence of objects so as to put them in some logical order
+\pause
 
+The sort problem involves rearranging a sequence of objects so as to put them in some logical order
+
+\pause
 \bigskip
 
-\emph{Insertion sort} is similar to sorting a bridge hand --- consider the cards one at a time, inserting each into its proper place among those already considered
-\begin{center}
-\includegraphics[scale=0.3]{figures/insertion.png}
+Insertion sort is similar to sorting a bridge hand --- consider the cards one at a time, inserting each into its proper place among those already considered
 
-\smallskip
+\pause
+\bigskip
 
-\tiny insertion sort
-\end{center}
+Order of growth: $N^2$ (quadratic)
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{framed}
-\tiny insertion.py: Reads strings from standard input, sorts them into increasing order, and writes them to standard output.
+\tiny insertion.py: Read strings from standard input, sort them into increasing order, and write them to standard output.
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -239,10 +278,14 @@ if __name__ == '__main__':
     main()
 \end{lstlisting}
 
+\pause
+
 \begin{lstlisting}[language={}]
 $ more tiny.txt 
 the and was his you tom but for had him
 \end{lstlisting}
+
+\pause
 
 \begin{lstlisting}[language={}]
 $ python insertion.py < tiny.txt 
@@ -251,24 +294,39 @@ and but for had him his the tom was you
 \end{frame}
 
 \begin{frame}[fragile]
-\emph{Merge sort} is based on a simple operation known as \emph{merging}: combining two ordered lists to make one larger ordered list
+\pause
 
+Trace
+\begin{center}
+\visible<2->{\includegraphics[scale=0.6]{figures/insertion_trace.pdf}}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\pause
+
+Merge sort is based on a simple operation known as merging: combining two ordered lists to make one larger ordered list
+
+\pause
 \bigskip
 
 To sort a list, we divide it into two halves, sort the two halves recursively, and then merge the results
 
 \begin{center}
-\includegraphics[scale=0.3]{figures/merge.png}
-
-\smallskip
-
-\tiny merge sort
+\visible<3->{\includegraphics[scale=0.55]{figures/mergesort_overview.pdf}}
 \end{center}
+
+\pause
+\bigskip
+
+Order of growth: $N \log N$ (linearithmic)
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{framed}
-\tiny merge.py: Reads strings from standard input, sorts them into increasing order, and writes them to standard output.
+\tiny merge.py: Read strings from standard input, sort them into increasing order, and write them to standard output.
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -298,6 +356,8 @@ def _merge(a, lo, mid, hi, aux):
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{lstlisting}[language=Python]
 def _sort(a, lo, hi, aux):
     n = hi - lo
@@ -324,10 +384,14 @@ if __name__ == '__main__':
     main()
 \end{lstlisting}
 
+\pause
+
 \begin{lstlisting}[language={}]
 $ more tiny.txt 
 the and was his you tom but for had him
 \end{lstlisting}
+
+\pause
 
 \begin{lstlisting}[language={}]
 $ python merge.py < tiny.txt 
@@ -336,8 +400,30 @@ and but for had him his the tom was you
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
+Trace (\lstinline{_merge()})
+
+\begin{center}
+\visible<2->{\includegraphics[scale=0.55]{figures/merge_trace.pdf}}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\pause
+
+Trace (\lstinline{_sort()})
+
+\begin{center}
+\visible<2->{\includegraphics[scale=0.55]{figures/mergetd_trace.pdf}}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\pause
+
 \begin{framed}
-\tiny frequencycount.py: Reads words from standard input, and writes the frequency counts of the words to standard output.
+\tiny frequencycount.py: Read words from standard input, and write the frequency counts of the words to standard output.
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -362,6 +448,8 @@ def main():
 if __name__ == '__main__':
     main()
 \end{lstlisting}
+
+\pause
 
 \begin{lstlisting}[language={}]
 $ python frequencycount.py < tomsawyer.txt
