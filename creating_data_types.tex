@@ -1,4 +1,4 @@
-\documentclass[8pt,a4paper,compress,handout]{beamer}
+\documentclass[8pt,a4paper,compress]{beamer}
 
 \usepackage{/home/siyer/lib/slides}
 
@@ -18,44 +18,57 @@
 
 \section{Basic Elements of a Data Type}
 \begin{frame}[fragile]
-We implement a data type as a \emph{class} --- the keyword \lstinline{class}, followed by the class name, followed by a colon, and then a list of method definitions
+\pause
 
+We implement a data type as a class --- the keyword \lstinline{class}, followed by the class name, followed by a colon, and then a list of method definitions
+
+\pause
 \bigskip
 
 A class typically defines a constructor, instance variables (aka attributes of the class), and methods
 
+\pause
 \bigskip
 
 A constructor creates an object of the specified type and returns a reference to that object
 
+\pause
 \bigskip
 
 When a client calls a constructor, Python calls the \lstinline{__init__()} method of the data type to define and initialize the instance variables, and returns a reference to the new object
 
+\pause
 \bigskip
 
-A \emph{method} definition consists of its signature --- the \lstinline{def} keyword followed by its name, a list of parameter variables, and a colon --- and its body
+A method definition consists of its signature --- the \lstinline{def} keyword followed by its name, a list of parameter variables, and a colon --- and its body
 
+\pause
 \bigskip
 
-By convention, the first parameter of a method is named \emph{self}
+By convention, the first parameter of a method is named \lstinline{self}
 
+\pause
 \bigskip
 
-When a client calls a method, the \emph{self} parameter variable references the object to be manipulated, ie, the object that was used to invoke the method; in the case of \lstinline{__init__()}, it is a reference to the newly created object
+When a client calls a method, the \lstinline{self} parameter variable references the object to be manipulated, ie, the object that was used to invoke the method; in the case of \lstinline{__init__()}, it is a reference to the newly created object
 \end{frame}
 
 \begin{frame}[fragile]
-\emph{Instance variables} implement the values of a data type 
+\pause
 
+Instance variables implement the values of a data type 
+
+\pause
 \bigskip
 
 An instance variable belongs to a particular instance of a class, ie, to a particular object 
 
+\pause
 \bigskip
 
 By convention, instance variable names begin with an underscore
 
+\pause
 \bigskip
 
 A method typically uses three kinds of variables
@@ -67,14 +80,17 @@ A method typically uses three kinds of variables
 \item Local variables
 \end{itemize}
 
+\pause
 \bigskip
 
 The key difference between functions and methods is that a method is associated with a specified object, with direct access to its instance variables
 
+\pause
 \bigskip
 
 To support the operation \lstinline{str(o)}, where \lstinline{o} is an object of data type \lstinline{T}, we must implement the method \lstinline{__str()__} in \lstinline{T}
 
+\pause
 \bigskip
 
 A client should access a data type only through the methods in its API
@@ -83,20 +99,24 @@ A client should access a data type only through the methods in its API
 \section{Examples of Data Types}
 
 \begin{frame}[fragile]
+\pause
+
 A data type \lstinline{Charge} for charged particles
 \begin{center}
 \begin{tabular}{cc}
 method & description \\ \hline
 \lstinline$Charge(x0, y0, q0)$ & a new charge $c$ centered at $(x_0, y_0)$ with charge value $q_0$ \\
-\lstinline$c.potentialAt(x, y)$ & electric potential of charge $c$ at point $(x, y)$ \\
-\lstinline$str(c)$ & string representation of charge $c$
+\lstinline$c.potentialAt(x, y)$ & electric potential of $c$ at point $(x, y)$ \\
+\lstinline$str(c)$ & string representation of $c$
 \end{tabular} 
 \end{center}
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{framed}
-\tiny charge.py: Defines a data type \lstinline{Charge}. 
+\tiny charge.py: Definition of \lstinline{Charge} data type. 
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -127,6 +147,8 @@ class Charge:
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{lstlisting}[language=Python]
 def main():
     x = float(sys.argv[1])
@@ -139,6 +161,8 @@ if __name__ == '__main__':
     main()
 \end{lstlisting}
 
+\pause
+
 \begin{lstlisting}[language={}]
 $ python charge.py .5 .5
 21.3 at (0.51, 0.63)
@@ -147,6 +171,8 @@ $ python charge.py .5 .5
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 A data type \lstinline{Stopwatch} representing a stopwatch
 \begin{center}
 \begin{tabular}{cc}
@@ -158,8 +184,10 @@ method & description \\ \hline
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{framed}
-\tiny stopwatch.py: Defines a data type \lstinline{Stopwatch}. 
+\tiny stopwatch.py: Definition of \lstinline{Stopwatch} data type. 
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -192,6 +220,8 @@ if __name__ == '__main__':
     main()
 \end{lstlisting}
 
+\pause
+
 \begin{lstlisting}[language={}]
 $ python stopwatch.py 1000000
 1.000000
@@ -200,20 +230,24 @@ $ python stopwatch.py 1000000
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 A data type \lstinline{Histogram} for graphically representing distributions of data
 \begin{center}
 \begin{tabular}{cc}
 method & description \\ \hline
 \lstinline$Histogram(n)$ & a new histogram $h$ from the integer values in $0, 1, \dots, n-1$ \\
-\lstinline$h.addDataPoint(i)$ & add an occurrence of integer $i$ to the histogram $h$ \\
+\lstinline$h.addDataPoint(i)$ & add an occurrence of integer $i$ to $h$ \\
 \lstinline$h.draw()$ & draw $h$ to standard draw
 \end{tabular} 
 \end{center}
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{framed}
-\tiny histogram.py: Defines a data type \lstinline{Histogram}.
+\tiny histogram.py: Definition of \lstinline{Histogram} data type.
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -252,6 +286,8 @@ if __name__ == '__main__':
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{minipage}{200pt}
 \begin{lstlisting}[language={}]
 $ python histogram.py 50 .5 1000000
@@ -260,14 +296,11 @@ $ python histogram.py 50 .5 1000000
 \hfill
 \begin{minipage}{100pt}
 \begin{center}
-\includegraphics[scale=0.2]{figures/histogram1.png}
-
-\smallskip
-
-\tiny Binomial distribution ($n=50$, $p=0.5$)
+\visible<2->{\includegraphics[scale=0.2]{figures/histogram1.png}}
 \end{center}
 \end{minipage}%
 
+\pause
 \bigskip
 
 \begin{minipage}{200pt}
@@ -278,14 +311,11 @@ $ python histogram.py 50 .2 1000000
 \hfill
 \begin{minipage}{100pt}
 \begin{center}
-\includegraphics[scale=0.2]{figures/histogram2.png}
-
-\smallskip
-
-\tiny Binomial distribution ($n=50$, $p=0.2$)
+\visible<3->{\includegraphics[scale=0.2]{figures/histogram2.png}}
 \end{center}
 \end{minipage}%
 
+\pause
 \bigskip
 
 \begin{minipage}{200pt}
@@ -296,17 +326,15 @@ $ python histogram.py 50 .8 1000000
 \hfill
 \begin{minipage}{100pt}
 \begin{center}
-\includegraphics[scale=0.2]{figures/histogram3.png}
-
-\smallskip
-
-\tiny Binomial distribution ($n=50$, $p=0.8$)
+\visible<4->{\includegraphics[scale=0.2]{figures/histogram3.png}}
 \end{center}
 \end{minipage}%
 \end{frame}
 
 \begin{frame}[fragile]
-A data type \lstinline{Turtle} for producing turtle graphics
+\pause
+
+A data type \lstinline{Turtle} for producing turtle graphics\footnote{Turtle graphics was part of the original Logo programming language developed by Wally Feurzig and Seymour Papert in 1966 for introducing programming to kids}
 \begin{center}
 \begin{tabular}{cc}
 method & description \\ \hline
@@ -318,8 +346,10 @@ method & description \\ \hline
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{framed}
-\tiny turtle.py: Defines a data type \lstinline{Turtle}.
+\tiny turtle.py: Definition of \lstinline{Turtle} data type.
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -358,6 +388,8 @@ if __name__ == '__main__':
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{minipage}{200pt}
 \begin{lstlisting}[language={}]
 $ python turtle.py 3
@@ -366,14 +398,11 @@ $ python turtle.py 3
 \hfill
 \begin{minipage}{100pt}
 \begin{center}
-\includegraphics[scale=0.12]{figures/turtle1.png}
-
-\smallskip
-
-\tiny 3-sided polygon
+\visible<2->{\includegraphics[scale=0.12]{figures/turtle1.png}}
 \end{center}
 \end{minipage}%
 
+\pause
 \bigskip
 
 \begin{minipage}{200pt}
@@ -384,14 +413,11 @@ $ python turtle.py 7
 \hfill
 \begin{minipage}{100pt}
 \begin{center}
-\includegraphics[scale=0.12]{figures/turtle2.png}
-
-\smallskip
-
-\tiny 7-sided polygon
+\visible<3->{\includegraphics[scale=0.12]{figures/turtle2.png}}
 \end{center}
 \end{minipage}%
 
+\pause
 \bigskip
 
 \begin{minipage}{200pt}
@@ -402,18 +428,16 @@ $ python turtle.py 30
 \hfill
 \begin{minipage}{100pt}
 \begin{center}
-\includegraphics[scale=0.12]{figures/turtle3.png}
-
-\smallskip
-
-\tiny 30-sided polygon
+\visible<4->{\includegraphics[scale=0.12]{figures/turtle3.png}}
 \end{center}
 \end{minipage}%
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{framed}
-\tiny koch.py: Accepts integer $n$ as a command-line argument and plots a Koch curve of order $n$.
+\tiny koch.py: Accept integer $n$ as a command-line argument and plot a Koch curve of order $n$.
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -449,6 +473,8 @@ if __name__ == '__main__':
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{minipage}{200pt}
 \begin{lstlisting}[language={}]
 $ python koch.py 0
@@ -457,14 +483,11 @@ $ python koch.py 0
 \hfill
 \begin{minipage}{100pt}
 \begin{center}
-\includegraphics[scale=0.12]{figures/koch1.png}
-
-\smallskip
-
-\tiny Koch curve of order 0
+\visible<2->{\includegraphics[scale=0.12]{figures/koch1.png}}
 \end{center}
 \end{minipage}%
 
+\pause
 \bigskip
 
 \begin{minipage}{200pt}
@@ -475,14 +498,11 @@ $ python koch.py 1
 \hfill
 \begin{minipage}{100pt}
 \begin{center}
-\includegraphics[scale=0.12]{figures/koch2.png}
-
-\smallskip
-
-\tiny Koch curve of order 1
+\visible<3->{\includegraphics[scale=0.12]{figures/koch2.png}}
 \end{center}
 \end{minipage}%
 
+\pause
 \bigskip
 
 \begin{minipage}{200pt}
@@ -493,14 +513,11 @@ $ python koch.py 2
 \hfill
 \begin{minipage}{100pt}
 \begin{center}
-\includegraphics[scale=0.12]{figures/koch3.png}
-
-\smallskip
-
-\tiny Koch curve of order 2
+\visible<4->{\includegraphics[scale=0.12]{figures/koch3.png}}
 \end{center}
 \end{minipage}%
 
+\pause
 \bigskip
 
 \begin{minipage}{200pt}
@@ -511,14 +528,11 @@ $ python koch.py 3
 \hfill
 \begin{minipage}{100pt}
 \begin{center}
-\includegraphics[scale=0.12]{figures/koch4.png}
-
-\smallskip
-
-\tiny Koch curve of order 3
+\visible<5->{\includegraphics[scale=0.12]{figures/koch4.png}}
 \end{center}
 \end{minipage}%
 
+\pause
 \bigskip
 
 \begin{minipage}{200pt}
@@ -529,18 +543,16 @@ $ python koch.py 4
 \hfill
 \begin{minipage}{100pt}
 \begin{center}
-\includegraphics[scale=0.12]{figures/koch5.png}
-
-\smallskip
-
-\tiny Koch curve of order 4
+\visible<6->{\includegraphics[scale=0.12]{figures/koch5.png}}
 \end{center}
 \end{minipage}
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{framed}
-\tiny spiral.py: Accepts command-line arguments $n$ (an integer specifying a number  of sides), $wraps$ (an integer specifying a wrap count), and $decay$ (a float specifying a decay factor), and draws a spiral with those characteristics.
+\tiny spiral.py: Accept command-line arguments $n$ (an integer specifying a number  of sides), $wraps$ (an integer specifying a wrap count), and $decay$ (a float specifying a decay factor), and draw a spiral with those characteristics.
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -569,6 +581,8 @@ if __name__ == '__main__':
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{minipage}{200pt}
 \begin{lstlisting}[language={}]
 $ python spiral.py 3 10 1.2
@@ -577,14 +591,11 @@ $ python spiral.py 3 10 1.2
 \hfill
 \begin{minipage}{100pt}
 \begin{center}
-\includegraphics[scale=0.2]{figures/spiral1.png}
-
-\smallskip
-
-\tiny 3-sided outward spiral
+\visible<2->{\includegraphics[scale=0.2]{figures/spiral1.png}}
 \end{center}
 \end{minipage}%
 
+\pause
 \bigskip
 
 \begin{minipage}{200pt}
@@ -595,18 +606,16 @@ $ python spiral.py 1440 10 1.0004
 \hfill
 \begin{minipage}{100pt}
 \begin{center}
-\includegraphics[scale=0.2]{figures/spiral2.png}
-
-\smallskip
-
-\tiny 1440-sided outward spiral
+\visible<3->{\includegraphics[scale=0.2]{figures/spiral2.png}}
 \end{center}
 \end{minipage}
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{framed}
-\tiny drunk.py: Accepts as command-line arguments an integer $stepCount$ specifying the number of iterations, and a float $stepSize$ specifying a step size, creates a \lstinline{Turtle} object, and has it make $stepCount$ random steps of size $stepSize$.
+\tiny drunk.py: Accept as command-line arguments an integer $stepCount$ specifying the number of iterations, and a float $stepSize$ specifying a step size, create a \lstinline{Turtle} object, and have it make $stepCount$ random steps of size $stepSize$.
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -632,6 +641,8 @@ if __name__ == '__main__':
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{minipage}{200pt}
 \begin{lstlisting}[language={}]
 $ python drunk.py 10000 .01
@@ -640,18 +651,16 @@ $ python drunk.py 10000 .01
 \hfill
 \begin{minipage}{100pt}
 \begin{center}
-\includegraphics[scale=0.2]{figures/drunk.png}
-
-\smallskip
-
-\tiny One drunk turtle
+\visible<2->{\includegraphics[scale=0.2]{figures/drunk.png}}
 \end{center}
 \end{minipage}
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{framed}
-\tiny drunks.py: Accepts as command-line arguments an integer $turtleCount$, an integer $stepCount$, and a float $stepSize$, creates $turtleCount$ \lstinline{Turtle} objects, and has them make $stepCount$ random steps of size $stepSize$.
+\tiny drunks.py: Accept as command-line arguments an integer $turtleCount$, an integer $stepCount$, and a float $stepSize$, create $turtleCount$ \lstinline{Turtle} objects, and have them make $stepCount$ random steps of size $stepSize$.
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -684,6 +693,8 @@ if __name__ == '__main__':
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{minipage}{200pt}
 \begin{lstlisting}[language={}]
 $ python drunk.py 20 5000 .005
@@ -692,18 +703,17 @@ $ python drunk.py 20 5000 .005
 \hfill
 \begin{minipage}{100pt}
 \begin{center}
-\includegraphics[scale=0.2]{figures/drunks.png}
-
-\smallskip
-
-\tiny 20 drunk turtles
+\visible<2->{\includegraphics[scale=0.2]{figures/drunks.png}}
 \end{center}
 \end{minipage}
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 A complex number is a number of the form $x+yi$, where $x$ (the real part) and $y$ (the imaginary part) are real numbers and $i=\sqrt{-1}$
 
+\pause
 \bigskip
 
 Complex arithmetic
@@ -717,6 +727,7 @@ Complex arithmetic
 \item Magnitude: $|x+yi|=\sqrt{x^2+y^2}$
 \end{itemize}
 
+\pause
 \bigskip
 
 A data type \lstinline{Complex} for representing complex numbers
@@ -729,15 +740,17 @@ method & description \\ \hline
 \lstinline$c.conjugate()$ & conjugate of $c$ \\
 \lstinline$c + d$ & sum of $c$ and $d$ \\
 \lstinline$c * d$ & product of $c$ and $d$ \\
-\lstinline$abs(c)$ & magnitute of $c$ \\
-\lstinline$str(c)$ & \lstinline$x + yi$ (string representation of $c$)
+\lstinline$abs(c)$ & magnitude of $c$ \\
+\lstinline$str(c)$ & string representation of $c$
 \end{tabular} 
 \end{center}
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{framed}
-\tiny complex.py: Defines a data type \lstinline{Complex}.
+\tiny complex.py: Definition of \lstinline{Complex} data type.
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -771,6 +784,8 @@ class Complex:
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{lstlisting}[language=Python]
     def __abs__(self):
         return math.sqrt(self._re * self._re + self._im * self._im)
@@ -789,6 +804,8 @@ if __name__ == '__main__':
     main()
 \end{lstlisting}
 
+\pause
+
 \begin{lstlisting}[language={}]
 $ python complex.py 
 -7.0 + 7.0i
@@ -796,8 +813,10 @@ $ python complex.py
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{framed}
-\tiny mandelbrot.py: Accepts float command-line arguments $xc$, $yc$, and $size$ that specify the center and size of a square region of interest, and makes a digital image showing the result of sampling the Mandelbrot set in that region. The algorithm is as follows:
+\tiny mandelbrot.py: Accept float command-line arguments $xc$, $yc$, and $size$ that specify the center and size of a square region of interest, and make a digital image showing the result of sampling the Mandelbrot set in that region. The algorithm is as follows:
 \begin{itemize}
 \item Consider $z_0, z_1, \dots, z_t$, where $z_{t+1}=z_t^2+z_0$
 \item If the sequence $|z_t|$ diverges to infinity, then $z_0$ is not in the Mandelbrot set; if the sequence is bounded, then $z_0$ is in the set
@@ -818,7 +837,13 @@ def mandel(z0, limit):
             return t
         z = z * z + z0
     return limit
+\end{lstlisting}
+\end{frame}
 
+\begin{frame}[fragile]
+\pause
+
+\begin{lstlisting}[language=Python]
 def main():
     MAX = 255
     n = int(sys.argv[1])
@@ -826,11 +851,6 @@ def main():
     yc = float(sys.argv[3])
     size = float(sys.argv[4])
     pic = Picture(n, n)
-\end{lstlisting}
-\end{frame}
-
-\begin{frame}[fragile]
-\begin{lstlisting}[language=Python]
     for col in range(n):
         for row in range(n):
             x0 = xc - (size / 2) + (size * col / n)
@@ -849,6 +869,8 @@ if __name__ == '__main__':
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{minipage}{200pt}
 \begin{lstlisting}[language={}]
 $ python mandelbrot.py 512 -.5 0 2
@@ -857,14 +879,11 @@ $ python mandelbrot.py 512 -.5 0 2
 \hfill
 \begin{minipage}{100pt}
 \begin{center}
-\includegraphics[scale=0.2]{figures/mandelbrot1.png}
-
-\smallskip
-
-\tiny Mandelbrot set
+\visible<2->{\includegraphics[scale=0.2]{figures/mandelbrot1.png}}
 \end{center}
 \end{minipage}%
 
+\pause
 \bigskip
 
 \begin{minipage}{200pt}
@@ -875,31 +894,31 @@ $ python mandelbrot.py 512 .1015 -.633 .01
 \hfill
 \begin{minipage}{100pt}
 \begin{center}
-\includegraphics[scale=0.2]{figures/mandelbrot2.png}
-
-\smallskip
-
-\tiny A portion of the Mandelbrot set
+\visible<3->{\includegraphics[scale=0.2]{figures/mandelbrot2.png}}
 \end{center}
 \end{minipage}%
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 A data type \lstinline{StockAccount} for maitaining customer accounts containing shares of various stocks
 \begin{center}
 \begin{tabular}{cc}
 method & description \\ \hline
 \lstinline$StockAccount(filename)$ & a new account $a$, created from data from file $filename$ \\
-\lstinline$a.valueOf()$ & total value of account $a$ \\
-\lstinline$a.write(filename)$ & write account $a$ to $filename$ \\
-\lstinline$a.writeReport()$ & write to standard output a detailed report for account $a$
+\lstinline$a.valueOf()$ & total value of $a$ \\
+\lstinline$a.write(filename)$ & write $a$ to $filename$ \\
+\lstinline$a.writeReport()$ & write to standard output a detailed report for $a$
 \end{tabular} 
 \end{center}
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{framed}
-\tiny stockaccount.py: Accepts as a command-line argument the name of a file, reads from the file to create a \lstinline{StockAccount} object, and writes a report to standard output.
+\tiny stockaccount.py: Accept as a command-line argument the name of a file, read from the file to create a \lstinline{StockAccount} object, and write a report to standard output.
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -933,6 +952,8 @@ class StockAccount:
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{lstlisting}[language=Python]
     def write(self, filename):
         outStream = OutStream(filename)
@@ -966,6 +987,8 @@ if __name__ == '__main__':
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{lstlisting}[language={}]
 $ more turing.txt 
 Turing, Alan
@@ -975,6 +998,11 @@ Turing, Alan
  25 GOOG
  97 IBM
 250 MSFT
+\end{lstlisting}
+
+\pause
+
+\begin{lstlisting}[language={}]
 $ python stockaccount.py turing.txt 
 Turing, Alan
  100  ADBE     91.32     9132.00
