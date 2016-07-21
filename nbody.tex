@@ -1,4 +1,4 @@
-\documentclass[8pt,a4paper,compress,handout]{beamer}
+\documentclass[8pt,a4paper,compress]{beamer}
 
 \usepackage{/home/siyer/lib/slides}
 
@@ -18,12 +18,16 @@
 
 \section{$N$-Body Simulation}
 \begin{frame}[fragile]
+\pause
+
 Newton's first law of motion states that a body in motion remains in motion at the same velocity unless acted on by an outside force
 
+\pause
 \bigskip
 
 Newton's second law of motion explains how outside forces on a body affect its velocity
 
+\pause
 \bigskip
 
 The $N$-body simulation problem, originally formulated by Isaac Newton over 350 years ago, describes the motion of the $N$ bodies, mutually affected by gravitational forces
@@ -31,21 +35,25 @@ The $N$-body simulation problem, originally formulated by Isaac Newton over 350 
 
 \section{Body Data Type}
 \begin{frame}[fragile]
+\pause
+
 A data type \lstinline{Body} for moving bodies
 \begin{center}
 \begin{tabular}{cc}
 method & description \\ \hline
 \lstinline$Body(r, v, mass)$ & a new body $b$ with mass $mass$ at position $r$ moving at velocity $v$ \\
 \lstinline$b.move(f, dt)$ & move $b$ by applying force $f$ for $dt$ seconds \\
-\lstinline$b.forceFrom(a)$ & force vector from body $a$ on body $b$ \\
-\lstinline$b.draw()$ & draw body $b$ to standard draw
+\lstinline$b.forceFrom(a)$ & force vector from body $a$ on $b$ \\
+\lstinline$b.draw()$ & draw $b$ to standard draw
 \end{tabular} 
 \end{center}
 
+\pause
 \bigskip
 
 Note that \lstinline{Body} is a \lstinline{Vector} client --- the values of the data type are \lstinline{Vector} objects that carry the body's position and velocity, as well as a float that carries the mass
 
+\pause
 \bigskip
 
 We use Newton's second law ($\mathbf{F}=m\mathbf{a}$) for updating the position and velocity of a body due to a given force vector \lstinline{f} and amount of time \lstinline{dt}
@@ -56,15 +64,13 @@ r = r + v.scale(dt)
 \end{lstlisting}
 
 \begin{center}
-\includegraphics[scale=0.45]{figures/vector_add_acc.png}
-
-\smallskip
-
-\tiny Motion near a stationary body
+\visible<4->{\includegraphics[scale=0.35]{figures/vector_add_acc.pdf}}
 \end{center}
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 We use Newton's law of universal gravitation ($\mathbf{F}=-G\frac{m_1m_2}{r^2}\hat{\mathbf{r}}$) for computing the force imposed on one body by another
 
 \begin{lstlisting}[language=Python]
@@ -76,17 +82,15 @@ f = delta.direction().scale(magnitude)
 \end{lstlisting}
 
 \begin{center}
-\includegraphics[scale=0.5]{figures/vector_force.png}
-
-\smallskip
-
-\tiny Force on one body due to another
+\visible<2->{\includegraphics[scale=0.45]{figures/vector_force.pdf}}
 \end{center}
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{framed}
-\tiny body.py: Defines a data type \lstinline{Body} representing a gravitating body.
+\tiny body.py: Definition of \lstinline{Body} data type representing a gravitating body.
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -118,6 +122,8 @@ class Body:
 
 \section{Universe Data Type}
 \begin{frame}[fragile]
+\pause
+
 The data type \lstinline{Universe} models the universe
 \begin{center}
 \begin{tabular}{cc}
@@ -128,6 +134,7 @@ method & description \\ \hline
 \end{tabular} 
 \end{center}
 
+\pause
 \bigskip
 
 The constructor reads the universe parameters and body descriptions from a file that contains the following information
@@ -136,6 +143,11 @@ The constructor reads the universe parameters and body descriptions from a file 
 \item The radius of the universe
 \item The position, velocity, and mass of each body
 \end{itemize}
+
+\pause
+\bigskip
+
+Example (parameters for a 2-body system)
 \begin{lstlisting}[language={}]
 $ more 2body.txt
 2 
@@ -146,8 +158,10 @@ $ more 2body.txt
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{framed}
-\tiny universe.py: Accepts a string $filename$ and a float $dt$ as command-line arguments, and simulates the motion in the universe defined by the contents of $filename$, increasing time at the rate specified by $dt$.
+\tiny universe.py: Accept a string $filename$ and a float $dt$ as command-line arguments, and simulate the motion in the universe defined by the contents of $filename$, increasing time at the rate specified by $dt$.
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -179,6 +193,8 @@ class Universe:
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{lstlisting}[language=Python]
     def increaseTime(self, dt):
         n = len(self._bodies)
@@ -212,20 +228,33 @@ if __name__ == '__main__':
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
 \begin{minipage}{200pt}
-2-body system
+A 2-body system
 \begin{lstlisting}[language={}]
 $ more 2body.txt
 2 
 5.0e10 
 0.0e00  4.5e10  1.0e04 0.0e00 1.5e30 
 0.0e00 -4.5e10 -1.0e04 0.0e00 1.5e30 
-$ python universe.py 2body.txt 20000
 \end{lstlisting}
 
-\bigskip
+\begin{lstlisting}[language={}]
+$ python universe.py 2body.txt 20000
+\end{lstlisting}
+\end{minipage}%
+\hfill
+\begin{minipage}{100pt}
+\begin{center}
+\visible<2->{\includegraphics[scale=0.13]{figures/2body.png}}
+\end{center}
+\end{minipage}
 
-3-body system
+\pause
+\smallskip
+
+\begin{minipage}{200pt}
+A 3-body system
 \begin{lstlisting}[language={}]
 $ more 3body.txt
 3 
@@ -233,12 +262,24 @@ $ more 3body.txt
 0.0e00  0.0e00 0.05e04 0.0e00 5.97e24 
 0.0e00  4.5e10  3.0e04 0.0e00 1.989e30 
 0.0e00 -4.5e10 -3.0e04 0.0e00 1.989e30 
-$ python universe.py 3body.txt 20000
 \end{lstlisting}
 
-\bigskip
+\begin{lstlisting}[language={}]
+$ python universe.py 3body.txt 20000
+\end{lstlisting}
+\end{minipage}%
+\hfill
+\begin{minipage}{100pt}
+\begin{center}
+\visible<3->{\includegraphics[scale=0.13]{figures/3body.png}}
+\end{center}
+\end{minipage}
 
-4-body system
+\pause
+\smallskip
+
+\begin{minipage}{200pt}
+A 4-body system
 \begin{lstlisting}[language={}]
 $ more 4body.txt
 4 
@@ -247,33 +288,16 @@ $ more 4body.txt
 -1.0e10 0.0e00 0.0e00  1.4e04 3.0e28 
  1.0e10 0.0e00 0.0e00 -1.4e04 3.0e28 
  3.5e10 0.0e00 0.0e00 -1.4e03 3.0e28 
+\end{lstlisting}
+
+\begin{lstlisting}[language={}]
 $ python universe.py 4body.txt 20000
 \end{lstlisting}
 \end{minipage}%
 \hfill
 \begin{minipage}{100pt}
 \begin{center}
-\includegraphics[scale=0.13]{figures/2body.png}
-
-\smallskip
-
-\tiny 2-body system
-
-\smallskip
-
-\includegraphics[scale=0.13]{figures/3body.png}
-
-\smallskip
-
-\tiny 3-body system
-
-\smallskip
-
-\includegraphics[scale=0.13]{figures/4body.png}
-
-\smallskip
-
-\tiny 4-body system
+\visible<4->{\includegraphics[scale=0.13]{figures/4body.png}}
 \end{center}
 \end{minipage}
 \end{frame}
