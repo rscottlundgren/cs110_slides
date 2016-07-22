@@ -1,4 +1,4 @@
-\documentclass[8pt,a4paper,compress,handout]{beamer}
+\documentclass[8pt,a4paper,compress]{beamer}
 
 \usepackage{/home/siyer/lib/slides}
 
@@ -18,114 +18,149 @@
 
 \section{APIs}
 \begin{frame}[fragile]
+\pause
+
 Precisely specifying a data type using an API improves design because it leads to client code that can clearly express its computation 
 
+\pause
 \bigskip
 
 By using APIs to separate clients from implementations, we reap the benefits of standard interfaces for every program that we compose
 
+\pause
 \bigskip
 
-We should avoid APIs that are too hard to implement, too narrow, too wide, too general, or too specific
+APIs should provide to clients just the methods they need and no others
 \end{frame}
 
 \section{Encapsulation}
 \begin{frame}[fragile]
-The process of separating clients from implementations by hiding information is known as \emph{encapsulation}
+\pause
 
+The process of separating clients from implementations by hiding information is known as encapsulation
+
+\pause
 \bigskip
 
 Encapsulation allows one implementation of an API to be substituted for another
 
+\pause
 \bigskip
 
-Encapsulation also helps programmers ensure that their code operates as intended
+Encapsulation helps programmers ensure that their code operates as intended
 
+\pause
 \bigskip
 
 Python does not enforce encapsulation; instead, through a naming convention, clients are informed that they should not directly access the instance variable, method, or function thus named
 
+\pause
 \bigskip
 
-\emph{Modular programming} is insisting on the API being the only point of dependence between client and implementation
+The API should be the only point of dependence between client and implementation --- this is called modular programming
 \end{frame}
 
 \section{Immutability}
 \begin{frame}[fragile]
-An object from a data type is \emph{immutable} if its data-type value cannot change once created
+\pause
 
+An object from a data type is immutable if its data-type value cannot change once created
+
+\pause
 \bigskip
 
-The purpose of many data types (eg, \lstinline{Vector}) is to encapsulate values that do not change, while for many other data types (eg, \lstinline{Counter}), the very purpose of the abstraction is to encapsulate values as they change 
+The purpose of many data types (eg, \lstinline{Stopwatch}) is to encapsulate values that do not change, while for many other data types (eg, \lstinline{Turtle}), the very purpose of the abstraction is to encapsulate values as they change 
 
+\pause
 \bigskip
 
 Generally, immutable data types are easier to use and harder to misuse because the scope of code that can change object values is far smaller than for mutable types
 
+\pause
 \bigskip
 
 In Python, lists are mutable, whereas and strings and tuples are immutable
 
+\pause
 \bigskip
 
-The downside of immutability is that we must create a new object for every value, which is called \emph{defensive copy}
+The downside of immutability is that we must create a new object for every value, which is called defensive copy
+
+\begin{lstlisting}[language=Python]
+class Vector:
+    def __init__(self, a):
+        self._coords = a[:] # self._coords is a defensive copy of a
+        self._n = len(a)
+\end{lstlisting}
 \end{frame}
 
 \section{Polymorphism}
 \begin{frame}[fragile]
-A method (or function) that can take arguments with different types is said to be \emph{polymorphic}
+\pause
 
+A method (or function) that can take arguments with different types is said to be polymorphic
+
+\pause
 \bigskip
 
-\emph{Duck typing} is a programming style in which the language does not formally specify the requirements for a function's arguments
+Duck typing is a programming style in which the language does not formally specify the requirements for a function's arguments
 
-\bigskip
-
-If an object walks like a duck, swims like a duck, and quacks like a duck, we can treat that object as a duck; we don't need to explicitly declare it to be a duck
-
+\pause
 \bigskip
 
 Python uses duck typing for all operations (function calls, method calls, and operators), and raises a \lstinline{TypeError} at run time if an operation cannot be applied to an object because it is of an inappropriate type
 
+\pause
 \bigskip
 
 Duck typing leads to simpler and more flexible client code and puts the focus on operations rather than the type
 
+\pause
 \bigskip
 
-The primary disadvantage of duck typing is that it is difficult to know precisely what the contract is between the client and the implementation --- the API simply does not carry this information
+A disadvantage of duck typing is that it is difficult to know precisely what the contract is between the client and the implementation --- the API simply does not carry this information
 \end{frame}
 
 \section{Overloading}
 \begin{frame}[fragile]
-The ability to define a data type that provides its own definitions of operators is a form of polymorphism known as \emph{operator overloading}
+\pause
 
+The ability to define a data type that provides its own definitions of operators is a form of polymorphism known as operator overloading
+
+\pause
 \bigskip
 
 In Python, we can overload almost every operator, including operators for arithmetic, comparisons, indexing, and slicing
 
+\pause
 \bigskip
 
 We can also overload built-in functions, including absolute value, length, hashing, and type conversion
 
+\pause
 \bigskip
 
 Overloading operators and built-in functions makes user-defined types behave more like built-in types
 
+\pause
 \bigskip
 
 To perform an operation, Python internally converts the expression into a call on the corresponding special method
 
+\pause
 \bigskip
 
 To call a built-in function, Python internally calls the corresponding special method instead
 
+\pause
 \bigskip
 
 To overload an operator or built-in function, we include an implementation of the corresponding special method with our own code
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 Special methods for arithmetic operators
 \begin{center}
 \begin{tabular}{ccc}
@@ -142,6 +177,7 @@ client operation & special method & description \\ \hline
 \end{tabular} 
 \end{center}
 
+\pause
 \bigskip
 
 Special methods for comparison operators
@@ -159,6 +195,8 @@ client operation & special method & description \\ \hline
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 Special methods for built-in functions
 \begin{center}
 \begin{tabular}{ccc}
@@ -176,15 +214,19 @@ client operation & special method & description \\ \hline
 
 \section{Functions are Objects}
 \begin{frame}[fragile]
-In Python, \emph{everything} is an object, including functions, which means we can use them as arguments to functions and return them as results
+\pause
 
+In Python, everything is an object, including functions, which means we can use them as arguments to functions and return them as results
+
+\pause
 \bigskip
 
-Defining \emph{higher-order functions} that manipulate other functions is common both in mathematics and scientific computing
+Defining higher-order functions that manipulate other functions is common both in mathematics and scientific computing
 
+\pause
 \bigskip
 
-For example, the following function evaluates the \emph{Riemann integral} (ie, the area under the curve) of a real-valued function $f()$ in the interval $(a, b)$, using the rectangle rule with $n$ rectangles
+For example, the following function evaluates the Riemann integral (ie, the area under the curve) of a real-valued function $f()$ in the interval $(a, b)$, using the rectangle rule with $n$ rectangles
 
 \begin{lstlisting}[language=Python]
 def integrate(f, a, b, n = 1000):
@@ -195,54 +237,20 @@ def integrate(f, a, b, n = 1000):
     return total
 \end{lstlisting}
 
-and the following statement uses the function above to compute the area under the curve $f(x)=x^2$ in the interval $(0, 1)$
+\pause
+\bigskip
+
+The following statement uses the above function to compute the area under the curve $f(x)=x^2$ in the interval $(0, 1)$
 
 \begin{lstlisting}[language=Python]
 area = integrate(lambda x : x * x, 0, 1)
 \end{lstlisting}
 \end{frame}
 
-\section{Inheritance}
-\begin{frame}[fragile]
-Python provides language support for defining relationships among classes, known as \emph{inheritance}
-
-\bigskip
-
-Inheritance enables \emph{subclassing}, where the idea is to define a new class (\emph{subclass}, or \emph{derived class}) that inherits instance variables and methods from another class (\emph{superclass}, or \emph{base class})
-
-\begin{lstlisting}[language={}]
-class DerivedClassName(BaseClassName):
-    <statement>
-    <statement>
-    ...
-\end{lstlisting}
-
-\bigskip
-
-Every class in Python implicitly inherits from \lstinline{object}
-
-\bigskip
-
-Python supports two built-in functions that work with inheritance
-\begin{itemize}
-\item \lstinline{isinstance(o, T)} checks if instance \lstinline{o} is of type \lstinline{T}
-\item \lstinline{issubclass(T1, T2)} checks if \lstinline{T1} is a subclass of \lstinline{T2}
-\end{itemize}
-
-\bigskip
-
-Python supports a limited form of multiple inheritance as well
-
-\begin{lstlisting}[language={}]
-class DerivedClassName(Base1, Base2, Base3):
-    <statement>
-    <statement>
-    ...
-\end{lstlisting}
-\end{frame}
-
 \section{Examples}
 \begin{frame}[fragile]
+\pause
+
 A data type \lstinline{Complex} for complex numbers
 \begin{center}
 \begin{tabular}{cc}
@@ -254,12 +262,14 @@ method & description \\ \hline
 \lstinline$c + d$ & sum of $c$ and $d$ \\
 \lstinline$c * d$ & product of $c$ and $d$ \\
 \lstinline$abs(c)$ & magnitude of $c$ \\
-\lstinline$str(c)$ & \lstinline$x + yi$ (string representation of $c$)
+\lstinline$str(c)$ & string representation of $c$
 \end{tabular} 
 \end{center}
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{framed}
 \tiny \lstinline{complexpolar.py}: \lstinline{Complex} data type redux. 
 \end{framed}
@@ -296,6 +306,8 @@ class Complex:
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{lstlisting}[language=Python]
     def __abs__(self):
         return self._r
@@ -303,7 +315,7 @@ class Complex:
     def __str__(self):
         return str(self.re()) + ' + ' + str(self.im()) + 'i'
 
-def main():
+def _main():
     z0 = Complex(1.0, 1.0)
     z = z0
     z = z * z + z0
@@ -311,8 +323,10 @@ def main():
     stdio.writeln(z)
 
 if __name__ == '__main__':
-    main()
+    _main()
 \end{lstlisting}
+
+\pause
 
 \begin{lstlisting}[language={}]
 $ python complexpolar.py 
@@ -321,6 +335,8 @@ $ python complexpolar.py
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 A data type \lstinline{Counter} for counting
 \begin{center}
 \begin{tabular}{cc}
@@ -340,8 +356,10 @@ method & description \\ \hline
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{framed}
-\tiny counter.py: Defines a data type \lstinline{Counter}.
+\tiny counter.py: Definition of \lstinline{Counter} data type.
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -377,6 +395,8 @@ class Counter:
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{lstlisting}[language=Python]
     def __gt__(self, other):
         return self._count > other._count
@@ -387,7 +407,7 @@ class Counter:
     def __ge__(self, other):
         return self._count >= other._count
 
-def main():
+def _main():
     n = int(sys.argv[1])
     p = float(sys.argv[2])
     heads = Counter('Heads', n)
@@ -401,8 +421,10 @@ def main():
     stdio.writeln(tails)
 
 if __name__ == '__main__':
-    main()
+    _main()
 \end{lstlisting}
+
+\pause
 
 \begin{lstlisting}[language={}]
 $ python counter.py 1000 .5
@@ -418,8 +440,11 @@ Tails: 720
 \end{frame}
 
 \begin{frame}[fragile]
-A \emph{spatial vector} is an abstract entity that has a magnitude and a direction
+\pause
 
+A spatial vector is an abstract entity that has a magnitude and a direction
+
+\pause
 \bigskip
 
 Vector operations, assuming $\mathbf{x}=(x_0,x_1,\dots,x_{n-1})$, $\mathbf{y}=(y_0,y_1,\dots,y_{n-1})$, and $\alpha \in \mathbb{R}$
@@ -434,6 +459,8 @@ Vector operations, assuming $\mathbf{x}=(x_0,x_1,\dots,x_{n-1})$, $\mathbf{y}=(y
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 A data type \lstinline{Vector} for spatial vectors
 \begin{center}
 \begin{tabular}{cc}
@@ -442,8 +469,8 @@ method & description \\ \hline
 \lstinline$v[i]$ & $i$th Cartesian coordinates of $v$ \\
 \lstinline$v + w$ & sum of $v$ and $w$ \\
 \lstinline$v - w$ & difference of $v$ and $w$ \\
-\lstinline$v.dot(w)$ & dot product of $v$ and $w$ \\
 \lstinline$v.scale(alpha)$ & scalar product of float $\alpha$ and $v$ \\
+\lstinline$v.dot(w)$ & dot product of $v$ and $w$ \\
 \lstinline$v.direction()$ & unit vector in the same direction as $v$ \\
 \lstinline$abs(v)$ & magnitude of $v$ \\
 \lstinline$len(v)$ & length of $v$ \\
@@ -453,8 +480,10 @@ method & description \\ \hline
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{framed}
-\tiny vector.py: Defines a data type \lstinline{Vector}.
+\tiny vector.py: Definition of \lstinline{Vector} data type.
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -491,6 +520,8 @@ class Vector:
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{lstlisting}[language=Python]
     def dot(self, other):
         result = 0
@@ -510,7 +541,7 @@ class Vector:
     def __str__(self):
         return str(self._coords)
         
-def main():
+def _main():
     xCoords = [1.0, 2.0, 3.0, 4.0]
     yCoords = [5.0, 2.0, 4.0, 1.0]
     x = Vector(xCoords)
@@ -524,11 +555,13 @@ def main():
     stdio.writeln('|x - y|  = ' + str(abs(x - y)))
 
 if __name__ == '__main__':
-    main()
+    _main()
 \end{lstlisting}
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{lstlisting}[language={}]
 $ python vector.py
 x        = [1.0, 2.0, 3.0, 4.0]
@@ -542,20 +575,24 @@ x + y    = [6.0, 4.0, 7.0, 5.0]
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 A data type \lstinline{Sketch} for compactly representing the content of a document
 \begin{center}
 \begin{tabular}{cc}
 method & description \\ \hline
 \lstinline$Sketch(text, k, d)$ & \makecell{a new sketch $s$ built from the string $text$ \\ using $k$-grams and dimension $d$} \\
 \lstinline$s.similarTo(t)$ & \makecell{similarity measure between sketches $s$ and $t$ (a float \\ between 0.0 and 1.0)} \\
-\lstinline$str(s)$ & string representation of sketch $s$
+\lstinline$str(s)$ & string representation of $s$
 \end{tabular} 
 \end{center}
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{framed}
-\tiny sketch.py: Defines a data type \lstinline{Sketch}. 
+\tiny sketch.py: Definition of \lstinline{Sketch} data type. 
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -580,7 +617,7 @@ class Sketch:
     def __str__(self):
         return str(self._sketch)
 
-def main():
+def _main():
     text = stdio.readAll()
     k = int(sys.argv[1])
     d = int(sys.argv[2])
@@ -588,14 +625,21 @@ def main():
     stdio.writeln(sketch)
 
 if __name__ == '__main__':
-    main()
+    _main()
 \end{lstlisting}
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{lstlisting}[language={}]
 $ more genome20.txt
 ATAGATGCATAGCGCATAGC
+\end{lstlisting}
+
+\pause
+
+\begin{lstlisting}[language={}]
 $ python sketch.py 2 16 < genome20.txt 
 [0.37210420376762543, 0.37210420376762543, 0.49613893835683387, 0.0, 
 0.12403473458920847, 0.0, 0.0, 0.0, 0.0, 0.0, 0.24806946917841693, 0.0, 
@@ -604,8 +648,10 @@ $ python sketch.py 2 16 < genome20.txt
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{framed}
-\tiny comparedocuments.py: Accepts integers $k$ and $d$ as command-line arguments, reads a document list from standard input, computes $d$-dimensional profiles based on $k$-gram frequencies for all the documents, and writes a matrix of similarity measures between all pairs of documents.
+\tiny comparedocuments.py: Accept integers $k$ and $d$ as command-line arguments, read a document list from standard input, compute $d$-dimensional profiles based on $k$-gram frequencies for all the documents, and write a matrix of similarity measures between all pairs of documents.
 \end{framed}
 
 \begin{lstlisting}[language=Python]
@@ -639,6 +685,8 @@ if __name__ == '__main__':
 \end{frame}
 
 \begin{frame}[fragile]
+\pause
+
 \begin{lstlisting}[language={}]
 $ more documents.txt
 constitution.txt
@@ -649,6 +697,11 @@ vector.py
 djia.csv
 amazon.html
 actg.txt
+\end{lstlisting}
+
+\pause
+
+\begin{lstlisting}[language={}]
 $ python comparedocuments.py 5 10000 < documents.txt
         cons    toms    huck    prej    vect    djia    amaz    actg
 cons    1.00    0.67    0.61    0.64    0.10    0.18    0.19    0.12
@@ -662,28 +715,278 @@ actg    0.12    0.15    0.14    0.16    0.01    0.12    0.09    1.00
 \end{lstlisting}
 \end{frame}
 
-\section{Design by Contract}
 \begin{frame}[fragile]
-When using the design-by-contract model, the designer of a data type expresses
-\begin{itemize}
-\item A \emph{precondition} - the condition that the client promises to satisfy when calling a method
-\item A \emph{postcondition} - the condition that the implementation promises to achieve when returning from a method
-\item \emph{Invariants} - any condition that the implementation promises to satisfy while the method is executing 
-\item \emph{Side effects} - any other change in state that the method could cause
-\end{itemize}
+\pause
 
-\bigskip
-
-\emph{Exceptions} and \emph{assertions} are Python language mechanisms that enable us to test these conditions
+A comparable data type \lstinline{Planet} for representing planets
+\begin{center}
+\begin{tabular}{cc}
+method & description \\ \hline
+\lstinline$Planet(name, moons)$ & create a new planet $p$ given its name and number of moons \\
+\lstinline$cmp(p, q)$ & \makecell{compare planets $p$ and $q$ by name (return negative integer, zero, \\ or positive integer depending on whether the name of $p$ is less \\ than, equal to, or greater than the name of $q$)} \\
+\lstinline$str(p)$ & string representation of $p$
+\end{tabular} 
+\end{center}
 \end{frame}
 
 \begin{frame}[fragile]
-An \emph{exception} is a disruptive event that occurs while a program is running, often to signal an error
+\pause
 
+\begin{framed}
+\tiny planet.py: Definition of \lstinline{Planet} data type.
+\end{framed}
+
+\begin{lstlisting}[language=Python]
+import stdio
+
+class Planet:
+    def __init__(self, name, moons):
+        self._name = name
+        self._moons = moons
+
+    def __cmp__(self, other):
+        return cmp(self._name, other._name)
+        
+    def __str__(self):
+        return self._name + ", " + str(self._moons)
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\pause
+
+\begin{lstlisting}[language=Python]
+def _main():
+    planets = [None] * 8
+    planets[0] = Planet("Mercury", 0)
+    planets[1] = Planet("Venus", 0)
+    planets[2] = Planet("Earth", 1)
+    planets[3] = Planet("Mars", 2)
+    planets[4] = Planet("Jupiter", 67)
+    planets[5] = Planet("Saturn", 62)
+    planets[6] = Planet("Uranus", 27)
+    planets[7] = Planet("Neptune", 14)
+    stdio.writeln("Unsorted:")
+    for v in planets:
+        stdio.writeln("  " + str(v))
+    planets.sort()
+    stdio.writeln("Sorted by name:")
+    for v in planets:
+        stdio.writeln("  " + str(v))
+    planets.sort(cmp = lambda x, y: cmp(x._moons, y._moons))
+    stdio.writeln("Sorted by # of moons:")
+    for v in planets:
+        stdio.writeln("  " + str(v))
+
+if __name__ == '__main__':
+    _main()
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\pause
+
+\begin{lstlisting}[language={}]
+$ python planet.py 
+Unsorted:
+  Mercury, 0
+  Venus, 0
+  Earth, 1
+  Mars, 2
+  Jupiter, 67
+  Saturn, 62
+  Uranus, 27
+  Neptune, 14
+Sorted by name:
+  Earth, 1
+  Jupiter, 67
+  Mars, 2
+  Mercury, 0
+  Neptune, 14
+  Saturn, 62
+  Uranus, 27
+  Venus, 0
+Sorted by # of moons:
+  Mercury, 0
+  Venus, 0
+  Earth, 1
+  Mars, 2
+  Neptune, 14
+  Uranus, 27
+  Saturn, 62
+  Jupiter, 67
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\pause
+
+An iterable \lstinline{Fibonacci} data type for iterating over Fibonacci sequences
+\begin{center}
+\begin{tabular}{cc}
+method & description \\ \hline
+\lstinline$Fibonacci(n)$ & a new object $f$ for iterating over the first $n$ Fibonacci numbers \\
+\lstinline$iter(f)$ & an iterable object $fiter$ on $f$ \\
+\lstinline$next(fiter)$ & the next number in the Fibonacci sequence $fiter$
+\end{tabular} 
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\pause
+
+\begin{framed}
+\tiny fibonacci.py: Definition of \lstinline{Fibonacci} data type.
+\end{framed}
+
+\begin{lstlisting}[language=Python]
+import stdio
+import sys
+
+class Fibonacci:
+    def __init__(self, n):
+        self._n = n
+        self._current = 0
+        self._a = 1
+        self._b = 1
+
+    def __iter__(self):
+        return self
+        
+    def next(self):
+        self._current += 1
+        if self._current > self._n:
+            raise StopIteration
+        if self._current <= 2:
+            return 1
+        self._a, self._b = self._b, self._a + self._b
+        return self._b
+
+def _main():
+    n = int(sys.argv[1])
+    for i in Fibonacci(n):
+        stdio.writeln(i)
+
+if __name__ == '__main__':
+    _main()
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\pause
+
+\begin{lstlisting}[language={}]
+>>> from fibonacci import Fibonacci
+>>> f = Fibonacci(5)
+>>> fiter = iter(f) # calls f.__iter__()
+>>> next(fiter)     # calls fiter.next()
+1
+>>> next(fiter)
+1
+>>> next(fiter)
+2
+>>> next(fiter)
+3
+>>> next(fiter)
+5
+>>> next(fiter)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+StopIteration
+>>> 
+\end{lstlisting}
+
+\pause
+
+\begin{lstlisting}[language={}]
+$ python fibonacci.py 10
+1
+1
+2
+3
+5
+8
+13
+21
+34
+55
+\end{lstlisting}
+\end{frame}
+
+\section{Inheritance}
+\begin{frame}[fragile]
+\pause
+
+Python provides language support for defining relationships among classes, known as inheritance
+
+\pause
 \bigskip
 
-The action taken is known as \emph{raising an exception} (or \emph{error})
+Inheritance enables subclassing, where the idea is to define a new class (subclass, or derived class) that inherits instance variables and methods from another class (superclass, or base class)
 
+\begin{lstlisting}[language={}]
+class DerivedClassName(BaseClassName):
+    <statement>
+    <statement>
+    ...
+\end{lstlisting}
+
+\pause
+\bigskip
+
+Every class in Python implicitly inherits from \lstinline{object}
+
+\pause
+\bigskip
+
+Python supports two built-in functions that work with inheritance
+\begin{itemize}
+\item \lstinline{isinstance(o, T)} checks if instance \lstinline{o} is of type \lstinline{T}
+\item \lstinline{issubclass(T1, T2)} checks if \lstinline{T1} is a subclass of \lstinline{T2}
+\end{itemize}
+
+\pause
+\bigskip
+
+Python supports a limited form of multiple inheritance as well
+
+\begin{lstlisting}[language={}]
+class DerivedClassName(Base1, Base2, Base3):
+    <statement>
+    <statement>
+    ...
+\end{lstlisting}
+\end{frame}
+
+\section{Design by Contract}
+\begin{frame}[fragile]
+\pause
+
+Design by contract model is one in which the designer of a data type expresses
+\begin{itemize}
+\item A precondition - the condition that the client promises to satisfy when calling a method
+\item A postcondition - the condition that the implementation promises to achieve when returning from a method
+\item Invariants - any condition that the implementation promises to satisfy while the method is executing 
+\item Side effects - any other change in state that the method could cause
+\end{itemize}
+
+\pause
+\bigskip
+
+Exceptions and assertions are Python language mechanisms that enable us to test these conditions
+\end{frame}
+
+\begin{frame}[fragile]
+\pause
+
+An exception is a disruptive event that occurs while a program is running, often to signal an error
+
+\pause
+\bigskip
+
+The action taken in response is known as raising an exception (or error)
+
+\pause
 \bigskip
 
 We can raise our own exceptions as follows
@@ -691,6 +994,7 @@ We can raise our own exceptions as follows
 raise Exception('Error message here.')
 \end{lstlisting} 
 
+\pause
 \bigskip
 
 For example, in \lstinline{vector.py}, we can raise an exception in \lstinline{__add__()} if the two \lstinline{Vectors} to be added have different dimensions
@@ -699,9 +1003,15 @@ if len(self) != len(other):
     raise Exception('vectors have different dimensions')
 \end{lstlisting} 
 
+\pause
 \bigskip
 
-We handle exceptions using a try-except block; For example
+We can handle exceptions using a try-except block
+
+\pause
+\bigskip
+
+For example
 \begin{lstlisting}[language=Python]
 (x, y) = (5, 0)
 try:
@@ -713,15 +1023,22 @@ stdio.writeln(z)
 \end{frame}
 
 \begin{frame}[fragile]
-An \emph{assertion} is a boolean expression that we affirm is \lstinline{True}, and if it is \lstinline{False}, the program will raise an \lstinline{AssertionError} at run time
+\pause
 
+An assertion is a boolean expression that we affirm is \lstinline{True}, and if it is \lstinline{False}, the program will raise an \lstinline{AssertionError} at run time
+
+\pause
 \bigskip
+
 For example, in \lstinline{counter.py}, we might check that the counter is never negative by adding the following assertion as the last statement in \lstinline{increment()}
 \begin{lstlisting}[language=Python]
 assert self.__count >= 0
 \end{lstlisting} 
 
-We can also put an optional message, such as
+\pause
+\bigskip
+
+We can also include an optional message, such as
 \begin{lstlisting}[language=Python]
 assert self.__count >= 0, 'Negative count detected'
 \end{lstlisting} 

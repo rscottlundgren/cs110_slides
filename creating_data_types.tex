@@ -150,7 +150,7 @@ class Charge:
 \pause
 
 \begin{lstlisting}[language=Python]
-def main():
+def _main():
     x = float(sys.argv[1])
     y = float(sys.argv[2])
     c = Charge(.51, .63, 21.3)
@@ -158,7 +158,7 @@ def main():
     stdio.writeln(c.potentialAt(x, y))
 
 if __name__ == '__main__':
-    main()
+    _main()
 \end{lstlisting}
 
 \pause
@@ -202,7 +202,7 @@ class Stopwatch:
     def elapsedTime(self):
         return time.clock() - self._creationTime
 
-def main():
+def _main():
     n = int(sys.argv[1])
     total1 = 0.0
     watch1 = Stopwatch()
@@ -217,7 +217,7 @@ def main():
     stdio.writef('%f\n%f\n', total1 / total2, time1 / time2)
 
 if __name__ == '__main__':
-    main()
+    _main()
 \end{lstlisting}
 
 \pause
@@ -268,7 +268,7 @@ class Histogram:
         stddraw.setYscale(0, max(self._freqCounts))
         stdstats.plotBars(self._freqCounts)
 
-def main():
+def _main():
     n = int(sys.argv[1]) 
     p = float(sys.argv[2])
     trialCount = int(sys.argv[3]) 
@@ -281,7 +281,7 @@ def main():
     stddraw.show()
 
 if __name__ == '__main__':
-    main()
+    _main()
 \end{lstlisting}
 \end{frame}
 
@@ -373,7 +373,7 @@ class Turtle:
         self._y += step * math.sin(math.radians(self._angle))
         stddraw.line(oldx, oldy, self._x, self._y)
 
-def main():
+def _main():
     n = int(sys.argv[1])
     turtle = Turtle(.5, .0, 180.0 / n)
     stepSize = math.sin(math.radians(180.0 / n))
@@ -383,7 +383,7 @@ def main():
     stddraw.show()
 
 if __name__ == '__main__':
-    main()
+    _main()
 \end{lstlisting}
 \end{frame}
 
@@ -793,7 +793,7 @@ class Complex:
     def __str__(self):
         return str(self._re) + ' + ' + str(self._im) + 'i'
 
-def main():
+def _main():
     z0 = Complex(1.0, 1.0)
     z = z0
     z = z * z + z0
@@ -801,7 +801,7 @@ def main():
     stdio.writeln(z)
 
 if __name__ == '__main__':
-    main()
+    _main()
 \end{lstlisting}
 
 \pause
@@ -977,12 +977,12 @@ class StockAccount:
         stdio.writef('%21s %10.2f\n', 'Cash:', self._cash)
         stdio.writef('%21s %10.2f\n', 'Total:', total)
 
-def main():
+def _main():
     acct = StockAccount(sys.argv[1])
     acct.writeReport()
 
 if __name__ == '__main__':
-    main()
+    _main()
 \end{lstlisting}
 \end{frame}
 
