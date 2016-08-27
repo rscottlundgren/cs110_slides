@@ -276,6 +276,9 @@ By adding the directive \lstinline{>} to the command that invokes a program, we 
 For example
 \begin{lstlisting}[language={}]
 $ python randomseq.py 1000 > data.txt
+\end{lstlisting}
+
+\begin{lstlisting}[language={}]
 $ head -5 data.txt 
 0.12490675039
 0.509198876091
@@ -434,11 +437,16 @@ $ head -5 usa.txt
  1103961.1110   247133.3330
  1104677.7780   247205.5560
  1108586.1110   249238.8890
+\end{lstlisting}
+
+\pause
+
+\begin{lstlisting}[language={}]
 $ python plotfilter.py < usa.txt
 \end{lstlisting}
 \end{minipage}%
 \begin{minipage}{150pt}
-\hfill \visible<3->{\includegraphics[scale=0.18]{figures/usa.png}}
+\hfill \visible<4->{\includegraphics[scale=0.18]{figures/usa.png}}
 \end{minipage}
 \end{frame}
 
@@ -544,11 +552,16 @@ $ head -5 elise.txt
 7 .125 
 6 .125 
 7 .125 
+\end{lstlisting}
+
+\pause
+
+\begin{lstlisting}[language={}]
 $ python playthattune.py < elise.txt
 \end{lstlisting}
 \end{minipage}%
 \begin{minipage}{150pt}
-\hfill \visible<3->{\includegraphics[scale=0.5]{figures/furelise.pdf}}
+\hfill \visible<4->{\includegraphics[scale=0.5]{figures/furelise.pdf}}
 \end{minipage}
 \end{frame}
 \end{document}
