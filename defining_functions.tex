@@ -213,7 +213,7 @@ For example, \lstinline{square()} when called with an integer argument, returns 
 \begin{frame}[fragile]
 \pause
 
-\begin{minipage}{200pt}
+\begin{minipage}{170pt}
 The standard Gaussian probability density function (pdf) is characterized by the familiar bell-shaped curve defined by the formula $\phi(x)=e^{-x^2/2}/\sqrt{2\pi}$
 
 \pause
@@ -231,9 +231,9 @@ The standard Gaussian cumulative distribution function (cdf) $\Phi(z)$ is define
 
 No formula is known for $\Phi(z)$, but it can be approximated as follows $$\Phi(z)=\frac{1}{2}+\phi(z)\big(z+\frac{z^3}{3}+\frac{z^5}{3\cdot 5}+\frac{z^7}{3\cdot 5\cdot 7}+\cdots\big )$$
 \end{minipage}\hfill%
-\begin{minipage}{100pt}
+\begin{minipage}{130pt}
 \begin{center}
-\visible<2->{\includegraphics[scale=0.25]{figures/gaussian.png}}
+\visible<2->{\includegraphics[scale=0.3]{figures/gaussian.pdf}}
 \end{center}
 \end{minipage}
 \end{frame}
@@ -466,11 +466,16 @@ $ head -5 elise.txt
 7 .125 
 6 .125 
 7 .125 
+\end{lstlisting}
+
+\pause
+
+\begin{lstlisting}[language={}]
 $ python playthattunedeluxe.py < elise.txt
 \end{lstlisting}
 \end{minipage}%
 \begin{minipage}{130pt}
-\hfill \visible<3->{\includegraphics[scale=0.5]{figures/furelise.pdf}}
+\hfill \visible<4->{\includegraphics[scale=0.5]{figures/furelise.pdf}}
 \end{minipage}
 \end{frame}
 
