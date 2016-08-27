@@ -281,21 +281,24 @@ Finding the simplest form of a boolean function is provably as hard as some of t
 
 An electromechanical switch in which when the input power is off, the output is ``low'' (0), and when the input power is on, the output is ``high'' (1)
 \begin{center}
-\visible<2->{\includegraphics[scale=0.22]{figures/em_switch.png}}
+\visible<2->{\includegraphics[scale=0.4]{figures/em_switch.pdf}}
 \end{center}
 
 \pause
 \bigskip
 
-Devices (\lstinline{AND} and \lstinline{OR} gates) for computing $x$ \lstinline{AND} $y$ and $x$ \lstinline{OR} $y$, constructed using electromechanical switches
+The \lstinline{NOT} gate constructed using a switch that conducts only when the input power is off
 \begin{center}
-\visible<3->{\includegraphics[scale=0.22]{figures/and_gate.png}\hspace{1cm} \includegraphics[scale=0.22]{figures/or_gate.png}}
+\visible<3->{\includegraphics[scale=0.4]{figures/em_switch_not.pdf}}
 \end{center}
 
 \pause
 \bigskip
 
-The function \lstinline{NOT} $x$ can be implemented by constructing a switch that conducts if and only $x$ is 0
+The \lstinline{AND} and \lstinline{OR} gates for computing $x$ \lstinline{AND} $y$ and $x$ \lstinline{OR} $y$, constructed using electromechanical switches
+\begin{center}
+\visible<4->{\includegraphics[scale=0.5]{figures/and_gate.pdf}\hspace{1cm} \includegraphics[scale=0.5]{figures/or_gate.pdf}}
+\end{center}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -308,7 +311,7 @@ Computers today are built with much smaller, much faster, more reliable, and mor
 
 Since the details of the switches aren't terribly important at this level of abstraction, we represent, or ``abstract'', the gates using the following symbols
 \begin{center}
-\visible<3->{\includegraphics[scale=0.3]{figures/gate_symbols.png}}
+\visible<3->{\includegraphics[scale=0.5]{figures/gate_symbols.pdf}}
 \end{center}
 
 \pause
@@ -316,7 +319,7 @@ Since the details of the switches aren't terribly important at this level of abs
 
 A logical circuit for the implication function $\bar{x}\bar{y}+\bar{x}y+xy$
 \begin{center}
-\visible<4->{\includegraphics[scale=0.22]{figures/implication_circuit.png}}
+\visible<4->{\includegraphics[scale=0.4]{figures/implication_circuit.pdf}}
 \end{center}
 \end{frame}
 
@@ -360,7 +363,7 @@ We can ``chain'' $n$ full adders together to add two $n$-bit numbers, and the re
 
 A 2-bit ripple-carry adder
 \begin{center}
-\visible<4->{\includegraphics[scale=0.4]{figures/ripple_carry_adder.png}}
+\visible<4->{\includegraphics[scale=0.4]{figures/ripple_carry_adder.pdf}}
 \end{center}
 \end{frame}
 
@@ -394,7 +397,7 @@ By aggregating millions of latches we have the Random Access Memory (RAM)
 
 A latch can be constructed from two \lstinline{NOR} gates as shown below
 \begin{center}
-\visible<5->{\includegraphics[scale=0.4]{figures/latch.png}}
+\visible<5->{\includegraphics[scale=0.45]{figures/latch.pdf}}
 \end{center}
 where the input $S$ is known as ``set'' while the input $R$ is known as ``reset''
 \end{frame}
@@ -488,7 +491,7 @@ Our computer operates by repeatedly performing the following procedure
 \end{enumerate}
 
 \begin{center}
-\visible<2->{\includegraphics[scale=0.35]{figures/von_neumann_arch.png}}
+\visible<2->{\includegraphics[scale=0.4]{figures/von_neumann_arch.pdf}}
 \end{center}
 \end{frame}
 \end{document}
