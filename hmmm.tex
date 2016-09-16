@@ -189,7 +189,35 @@ Call a function (\lstinline{calln rX N}): copy the next address into \lstinline$
 \pause
 
 \begin{framed}
-\tiny combinations.hmmm: Calculate $C(N, K)$ (aka $N$ choose $K$) defined as $C(N, K)=N!/(K!(N-K)!)$.
+\tiny square.hmmm: Calculate the square of a number $N$.
+\end{framed}
+
+\begin{lstlisting}[language={}]
+0    read    r1    # Get N
+1    calln   r14 5 # Calculate N^2 
+2    write   r2    # Write answer
+3    halt
+4    nop           # Waste some space
+
+# Square function. N is in r1. Result (N^2) is in r2. Return address is in r14.
+5    mul     r2 r1 r1 # Calculate and store N^2 in r2
+6    jumpr   r14      # Done; return to caller
+\end{lstlisting}
+
+\pause
+
+\begin{lstlisting}[language={}]
+$ python hmmmSimulator.py -f square.b -n
+11
+121
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\pause
+
+\begin{framed}
+\tiny combinations.hmmm: Calculate $C(N, K)$ (aka $N$ choose $K$) defined as $C(N, K)=N!/(K!(N-K)!)$, where $N!$ ($N$ factorial) is defined as $N! = N \times (N-1) \times (N-2) \times \dots \times 2 \times 1$, with $0! = 1$.
 \end{framed}
 
 \begin{lstlisting}[language={}]
@@ -226,6 +254,28 @@ $ python hmmmSimulator.py -f combinations.b -n
 2
 10
 \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\pause
+
+\begin{minipage}{150pt}
+\visible<2->{
+Trace of the factorial function ($N=4$)
+\begin{center}
+\includegraphics[scale=0.4]{./figures/hmmm_faciter_trace.pdf}
+\end{center}
+}
+\end{minipage}
+\begin{minipage}{150pt}%
+\hfill
+\visible<3->{
+Trace of the program ($N=5, K=2$)
+\begin{center}
+\includegraphics[scale=0.4]{./figures/hmmm_combinations_trace.pdf}
+\end{center}
+}
+\end{minipage}
 \end{frame}
 
 \section{Recursion}
@@ -311,6 +361,15 @@ $ python hmmmSimulator.py -f factorial_rec.b -n
 5
 120
 \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\pause
+
+Trace of the recursive factorial function ($N=3$)
+\begin{center}
+\visible<2->{\includegraphics[scale=0.36]{./figures/hmmm_facrec_trace.pdf}}
+\end{center}
 \end{frame}
 
 \section{HMMM Instruction Set}
