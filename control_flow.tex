@@ -533,15 +533,23 @@ while i <= N / i:
     if N % i == 0:
         break
     i += 1
-if i > N / i:
-    stdio.writeln(str(N) + ' is prime')
-else 
-    stdio.writeln(str(N) + ' is not prime')
+stdio.writeln(str(N) + (' is ' if i > N / i else ' is not ') + 'prime')
 \end{lstlisting}
 
 \pause
 \bigskip
 
 The \lstinline{continue} statement skips to next iteration of a loop
+
+\pause
+\bigskip
+
+For example, the following code iterates over the characters in the English alphabet and prints only the consonants
+\begin{lstlisting}[language=Python]
+for c in 'abcdefghijklmnopqrstuvwxyz':
+    if c == 'a' or c == 'e' or c == 'i' or c == 'o' or c == 'u':
+        continue
+    stdio.writeln(c)
+\end{lstlisting}
 \end{frame}
 \end{document}
