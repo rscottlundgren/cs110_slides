@@ -102,7 +102,7 @@ If we are using base 10 and only have eight digits to represent our numbers, we 
 \pause
 \bigskip
 
-For example, 12345678 would represent $0.123456 \times 10^{78}$
+For example, 31415901 would represent $0.314159 \times 10^{1} = 3.14159$
 
 \pause
 \bigskip
@@ -222,7 +222,13 @@ Any function of boolean variables, no matter how complex, can be expressed in te
 \pause
 \bigskip
 
-For example, the ``implication'' function ($x \implies y$) described by the truth table
+Consider the proposition ``if you score over 93\% in this course, then you will get an A''
+
+\pause
+\bigskip
+
+The truth values for the above proposition is given by the ``implication'' function ($x \implies y$) having the following truth table
+
 \begin{center}
 \begin{tabular}{cc|c}
 $x$ & $y$ & $x \implies y$ \\ \hline
@@ -232,12 +238,11 @@ $x$ & $y$ & $x \implies y$ \\ \hline
 1 & 1 & 1
 \end{tabular}
 \end{center}
-can be expressed as \lstinline{NOT} $x$ \lstinline{OR} $x$ \lstinline{AND} $y$ (or $\bar{x}+xy$)
 
 \pause
 \bigskip
 
-An example of the implication function is ``if you score over 93\% in this course, then you will receive an A''
+The function can be compactly written as \lstinline{NOT} $x$ \lstinline{OR} $x$ \lstinline{AND} $y$ (or $\bar{x}+xy$)
 \end{frame}
 
 \begin{frame}[fragile]
@@ -279,7 +284,7 @@ Finding the simplest form of a boolean function is provably as hard as some of t
 \begin{frame}[fragile]
 \pause
 
-An electromechanical switch in which when the input power is off, the output is ``low'' (0), and when the input power is on, the output is ``high'' (1)
+An electromechanical switch in which when the input is off, the output is ``low'' (0), and when the input is on, the output is ``high'' (1)
 \begin{center}
 \visible<2->{\includegraphics[scale=0.4]{figures/em_switch.pdf}}
 \end{center}
@@ -287,7 +292,7 @@ An electromechanical switch in which when the input power is off, the output is 
 \pause
 \bigskip
 
-The \lstinline{NOT} gate constructed using a switch that conducts only when the input power is off
+The \lstinline{NOT} gate constructed using a switch that conducts only when the input is off
 \begin{center}
 \visible<3->{\includegraphics[scale=0.4]{figures/em_switch_not.pdf}}
 \end{center}
