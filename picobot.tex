@@ -158,15 +158,26 @@ An algorithm (in English) instructing a PicoBot to move back and forth in an emp
 \pause
 \bigskip
 
-The above algorithm in PicoBot
+The above algorithm as a PicoBot program \lstinline{east_west.pb}
 \begin{lstlisting}[language={}]
 0 **x* -> W 0
-
 0 **W* -> E 1
-
 1 *x** -> E 1
-
 1 *E** -> W 0
+\end{lstlisting}
+
+\pause
+\bigskip
+
+The program can be run on the terminal in text mode as
+\begin{lstlisting}[language={}]
+$ python picobot.py -e env1.txt -r east_west.pb
+\end{lstlisting}
+
+or in graphics mode as
+
+\begin{lstlisting}[language={}]
+$ python picobot.py -e env1.txt -r east_west.pb -g
 \end{lstlisting}
 \end{frame}
 
