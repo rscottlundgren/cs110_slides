@@ -365,6 +365,7 @@ $ python harmonic.py 10000
 \tiny sqrt.py: Accept a float $c$ as a command-line argument. Write to standard output the square root of $c$ to 15 decimal places of accuracy, calculated using Newton's method.
 \end{framed}
 
+\begin{minipage}{150pt}
 \begin{lstlisting}[language=Python]
 import stdio
 import sys
@@ -376,6 +377,10 @@ while abs(t - c / t) > (EPSILON * t):
     t = (c / t + t) / 2.0
 stdio.writeln(t)
 \end{lstlisting}
+\end{minipage}%
+\begin{minipage}{150pt}
+\hfill \visible<2->{\includegraphics[scale=0.4]{figures/sqrt.pdf}}
+\end{minipage}
 
 \pause
 
@@ -394,6 +399,7 @@ $ python sqrt.py 2544545
 \tiny binary.py: Accept integer $n$ as a command-line argument. Write the binary representation of $n$ to standard output.
 \end{framed}
 
+\begin{minipage}{150pt}
 \begin{lstlisting}[language=Python]
 import sys
 import stdio
@@ -411,6 +417,11 @@ while v > 0:
     v //= 2
 stdio.writeln()
 \end{lstlisting}
+
+\end{minipage}%
+\begin{minipage}{150pt}
+\hfill \visible<2->{\includegraphics[scale=0.4]{figures/binary.pdf}}
+\end{minipage}
 
 \pause
 
@@ -433,6 +444,7 @@ $ python binary.py 1000000000
 \tiny gambler.py: Accept integer command-line arguments $stake$, $goal$, and $trials$. Run $trials$ experiments that start with $stake$ dollars and terminate on 0 dollars or $goal$. Write to standard output the percentage of wins and the average number of bets per experiment, which can be calculated as $100 \times stake / goal$ and $stake \times (goal - stake)$, respectively.
 \end{framed}
 
+\begin{minipage}{200pt}
 \begin{lstlisting}[language=Python]
 import random
 import stdio
@@ -456,6 +468,10 @@ for t in range(trials):
 stdio.writeln(str(100 * wins // trials) + '% wins')
 stdio.writeln('Avg # bets: ' + str(bets // trials))
 \end{lstlisting}
+\end{minipage}%
+\begin{minipage}{100pt}
+\hfill \visible<2->{\includegraphics[scale=0.45]{figures/gambler.png}}
+\end{minipage}
 
 \pause
 
