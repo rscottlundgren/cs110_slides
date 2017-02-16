@@ -351,6 +351,7 @@ $ python couponcollector.py 1000000
 \tiny primesieve.py: Accept integer $n$ as a command-line argument. Write to standard output the number of primes less than or equal to $n$.
 \end{framed}
 
+\begin{minipage}{160pt}
 \begin{lstlisting}[language=Python]
 import stdarray
 import stdio
@@ -368,6 +369,11 @@ for i in range(2, n + 1):
         count += 1
 stdio.writeln(count)
 \end{lstlisting}
+
+\end{minipage}%
+\begin{minipage}{140pt}
+\hfill \visible<2->{\includegraphics[scale=0.5]{figures/sieve.pdf}}
+\end{minipage}
 
 \pause
 
@@ -452,6 +458,7 @@ for i in range(n):
 \tiny selfavoid.py: Accept integers $n$ and $trials$ as command-line arguments. Do $trials$ random self-avoiding walks in an $n$-by-$n$ lattice. Write to standard output the percentage of dead ends encountered.
 \end{framed}
 
+\begin{minipage}{190pt}
 \begin{lstlisting}[language=Python]
 import random
 import stdarray
@@ -465,9 +472,11 @@ for t in range(trials):
     a = stdarray.create2D(n, n, False)
     x = n / 2
     y = n / 2
-    while (x > 0) and (x < n - 1) and (y > 0) and (y < n - 1):
+    while (x > 0) and (x < n - 1) and 
+          (y > 0) and (y < n - 1):
         a[x][y] = True
-        if a[x - 1][y] and a[x + 1][y] and a[x][y - 1] and a[x][y + 1]:
+        if a[x - 1][y] and a[x + 1][y] and 
+           a[x][y - 1] and a[x][y + 1]:
             deadEnds += 1
             break
         r = random.randrange(1, 5)
@@ -479,8 +488,13 @@ for t in range(trials):
             y += 1
         elif (r == 4) and (not a[x][y - 1]):
             y -= 1
-stdio.writeln(str(100 * deadEnds / trials) + '% dead ends')
+stdio.writeln(str(100 * deadEnds / trials) + 
+              '% dead ends')
 \end{lstlisting}
+\end{minipage}%
+\begin{minipage}{110pt}
+\hfill \visible<2->{\includegraphics[scale=0.45]{figures/selfavoid.pdf}}
+\end{minipage}
 \end{frame}
 
 \begin{frame}[fragile]
