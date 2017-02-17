@@ -31,6 +31,11 @@ The www is modeled as a fixed set of pages, with each page containing a fixed se
 \bigskip
 
 We are interested in what happens to a person (a random surfer) who randomly moves from page to page according to the 90-10 rule: 90\% of the time the random surfer clicks a random link on the current page and 10\% of the time the random surfer goes directly to a random page by typing a page name into the address bar
+
+\pause
+\bigskip
+
+Page rank is the probability that the random surfer lands on a page
 \end{frame}
 
 \section{Input Format}
@@ -186,13 +191,8 @@ A remarkable and useful property of Markov chains is that of mixing, which state
 \pause
 \bigskip
 
-Page rank is the probability that the random surfer lands on a page
-\end{frame}
+Using the power method we can obtain the probability $P^2_{ij}$ that the random surfer will move from page $i$ to page $j$ in two moves by multiplying the transition matrix $P$ by itself $$P^2_{ij} = P_{i:} \cdot P_{:j}$$ 
 
-\begin{frame}[fragile]
-\pause
-
-Using the power method we can obtain the probability that the random surfer will move from page $i$ to page $j$ in two moves by multiplying the transition matrix $P$ by itself
 
 \pause
 \bigskip
