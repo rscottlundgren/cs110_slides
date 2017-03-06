@@ -603,13 +603,6 @@ def median(a):
         return b[length // 2]
     else:
         return float(b[length // 2 - 1] + b[length // 2]) / 2.0
-
-def plotPoints(a):
-    n = len(a)
-    stddraw.setXscale(-1, n)
-    stddraw.setPenRadius(1.0 / (3.0 * n))
-    for i in range(n):
-        stddraw.point(i, a[i])
 \end{lstlisting}
 \end{frame}
 
@@ -617,6 +610,13 @@ def plotPoints(a):
 \pause
 
 \begin{lstlisting}[language=Python]
+def plotPoints(a):
+    n = len(a)
+    stddraw.setXscale(-1, n)
+    stddraw.setPenRadius(1.0 / (3.0 * n))
+    for i in range(n):
+        stddraw.point(i, a[i])
+
 def plotLines(a):
     n = len(a)
     stddraw.setXscale(-1, n)
