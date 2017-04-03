@@ -265,6 +265,31 @@ method & description \\ \hline
 \lstinline$str(c)$ & string representation of $c$
 \end{tabular} 
 \end{center}
+
+\pause
+\bigskip
+
+\begin{minipage}{200pt}
+A complex number $z$ in the polar form is expressed as $z = re^{i\theta}$
+
+\bigskip
+
+Polar to cartesian: $x = r\cos \theta$ and $y = r\sin \theta$
+
+\bigskip
+
+Cartesian to polar: $r = \sqrt{x^2 + y^2}$ and $\theta = \arctan(y/x)$
+
+\bigskip
+
+If $z_1 = r_1e^{i\theta_1}$ and $z_2 = r_2e^{i\theta_2}$, then $z_1 z_2 = r_1 r_2 e^{i(\theta_1 + \theta_2)}$
+\end{minipage}%
+\hfill
+\begin{minipage}{100pt}
+\begin{center}
+\visible<3->{\includegraphics[scale=0.4]{figures/complex_plane_polar.pdf}}
+\end{center}
+\end{minipage}%
 \end{frame}
 
 \begin{frame}[fragile]
@@ -442,19 +467,27 @@ Tails: 720
 \begin{frame}[fragile]
 \pause
 
+\begin{minipage}{200pt}
 A spatial vector is an abstract entity that has a magnitude and a direction
+\end{minipage}%
+\hfill
+\begin{minipage}{100pt}
+\begin{center}
+\visible<2->{\includegraphics[scale=0.4]{figures/vector.pdf}}
+\end{center}
+\end{minipage}%
 
 \pause
 \bigskip
 
-Vector operations, assuming $\mathbf{x}=(x_0,x_1,\dots,x_{n-1})$, $\mathbf{y}=(y_0,y_1,\dots,y_{n-1})$, and $\alpha \in \mathbb{R}$
+Vector operations, assuming $\mathbf{x}=(x_1,x_2,\dots,x_n)$, $\mathbf{y}=(y_1,y_2,\dots,y_n)$, and $\alpha \in \mathbb{R}$
 \begin{itemize}
-\item Addition: $\mathbf{x}+\mathbf{y}=(x_0+y_0,x_1+y_1,\dots,x_{n-1}+y_{n-1})$
-\item Subtraction: $\mathbf{x}-\mathbf{y}=(x_0-y_0,x_1-y_1,\dots,x_{n-1}-y_{n-1})$
-\item Scalar product: $\alpha\mathbf{x}=(\alpha x_0,\alpha x_1,\dots,\alpha x_{n-1})$
-\item Dot product: $\mathbf{x}\cdot\mathbf{y}=x_0y_0+x_1y_1+\dots+x_{n-1}y_{n-1}$
-\item Magnitude: $|\mathbf{x}|=(x_0^2+x_1^2+\dots+x_{n-1}^2)^{1/2}$
-\item Direction: $\mathbf{x}/|\mathbf{x}|=(x_0/|\mathbf{x}|,x_1/|\mathbf{x}|,\dots,x_{n-1}/|\mathbf{x}|)$
+\item Addition: $\mathbf{x}+\mathbf{y}=(x_1+y_1,x_2+y_2,\dots,x_n+y_n)$
+\item Subtraction: $\mathbf{x}-\mathbf{y}=(x_1-y_1,x_2-y_2,\dots,x_n-y_n)$
+\item Scalar product: $\alpha\mathbf{x}=(\alpha x_1,\alpha x_2,\dots,\alpha x_n)$
+\item Dot product: $\mathbf{x}\cdot\mathbf{y}=x_1y_1+x_2y_2+\dots+x_ny_n$
+\item Magnitude: $|\mathbf{x}|=(x_1^2+x_2^2+\dots+x_n^2)^{1/2}$
+\item Direction: $\mathbf{x}/|\mathbf{x}|=(x_1/|\mathbf{x}|,x_2/|\mathbf{x}|,\dots,x_n/|\mathbf{x}|)$
 \end{itemize}
 \end{frame}
 
