@@ -40,12 +40,12 @@ With four consecutive powers $2^0, 2^1, 2^2, 2^3$, we can make all of the intege
 \pause
 \bigskip
 
-For example, $13 = 1 \cdot 2^3 + 1 \cdot 2^2 + 0 \cdot 2^1 + 1 \cdot 2^0 = 1101$; in other words, 1101 in base 2 means $1101 = 1 \cdot 2^3 + 1 \cdot 2^2 + 0 \cdot 2^1 + 1 \cdot 2^0$
+For example, $13_{10} = 1 \cdot 2^3 + 1 \cdot 2^2 + 0 \cdot 2^1 + 1 \cdot 2^0 = 1101_{2}$; in other words, 1101 in base 2 means $1101_{2} = 1 \cdot 2^3 + 1 \cdot 2^2 + 0 \cdot 2^1 + 1 \cdot 2^0 = 13_{10}$
 
 \pause
 \bigskip
 
-Analogously, 603 in base 10 means $603 = 6 \cdot 10^2 + 0 \cdot 10^1 + 3 \cdot 10^0$ and 207 in base 8 means $207 = 2 \cdot 8^2 + 0 \cdot 8^1 + 7 \cdot 8^0$
+Analogously, 603 in base 10 means $603_{10} = 6 \cdot 10^2 + 0 \cdot 10^1 + 3 \cdot 10^0$ and 207 in base 8 means $207_{8} = 2 \cdot 8^2 + 0 \cdot 8^1 + 7 \cdot 8^0 = 135_{10}$
 
 \pause
 \bigskip
@@ -107,7 +107,7 @@ For example, 31415901 would represent $0.314159 \times 10^{1} = 3.14159$
 \pause
 \bigskip
 
-Computers use a similar idea to represent fractional numbers, except that base 2 is used instead of base 10
+Computers use a similar idea to represent fractional numbers
 \end{frame}
 
 \section{Letters and Strings}
@@ -268,11 +268,24 @@ Minterm expansion algorithm
 
 \item Combine all of the minterms for the rows using \lstinline{OR}
 \end{enumerate}
+\end{frame}
 
+\begin{frame}[fragile]
 \pause
-\bigskip
 
-For the implication function, the minterm expansion algorithm produces the boolean function $\bar{x}\bar{y}+\bar{x}y+xy$, which is equivalent to the simpler $\bar{x}+xy$ function
+For the implication function, the minterm expansion algorithm applied as follows 
+
+\begin{center}
+\begin{tabular}{cc|c|c}
+$x$ & $y$ & $x \implies y$ & minterm \\ \hline
+0 & 0 & 1 & $\bar{x}\bar{y}$ \\
+0 & 1 & 1 & $\bar{x}y$ \\
+\color{lightgray}1 & \color{lightgray}0 & \color{lightgray}0 & \\
+1 & 1 & 1 & $xy$
+\end{tabular}
+\end{center}
+
+produces the boolean function $\bar{x}\bar{y}+\bar{x}y+xy$, which is equivalent to the simpler $\bar{x}+xy$ function
 
 \pause
 \bigskip
@@ -358,8 +371,38 @@ Building a corresponding circuit using the minterm expansion algorithm is infeas
 
 We build a relatively simple circuit called a full adder (FA) that does just one column of addition
 
+\bigskip
+
+\begin{minipage}{150pt}
+\begin{center}
+\visible<2->{\includegraphics[scale=0.4]{figures/full_adder.pdf}}
+\end{center}
+\end{minipage}%
+\begin{minipage}{150pt}
+\begin{center}
+\begin{tabular}{ccc|cc}
+$x$ & $y$ & $c_{in}$ & $z$ & $c_{out}$ \\ \hline
+0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 1 & 1 & 0 \\
+0 & 1 & 0 & 1 & 0 \\
+0 & 1 & 1 & 0 & 1 \\
+1 & 0 & 0 & 1 & 0 \\
+1 & 0 & 1 & 0 & 1 \\
+1 & 1 & 0 & 0 & 1 \\
+1 & 1 & 1 & 1 & 1
+\end{tabular}
+\end{center}
+\end{minipage}
+
 \pause
 \bigskip
+
+The minterm expansion principle applied to the truth table for the FA circut yields the following boolean functions $$z = \bar{x}\bar{y}c_{in}+\bar{x}y\bar{c}_{in}+x\bar{y}\bar{c}_{in}+xyc_{in}$$ $$c_{out} = \bar{x}yc_{in}+x\bar{y}c_{in}+xy\bar{c}_{in}+xyc_{in}$$
+
+\end{frame}
+
+\begin{frame}[fragile]
+\pause
 
 We can ``chain'' $n$ full adders together to add two $n$-bit numbers, and the resulting circuit is called a ripple-carry adder
 
