@@ -184,7 +184,17 @@ $ python hmmmSimulator.py -f triangle3.b -n
 \begin{frame}[fragile]
 \pause
 
-Call a function (\lstinline{calln rX N}): copy the next address into \lstinline$rX$ and then jump to address \lstinline{N}; Return from a function (\lstinline{jumpr rX}): set program counter to address in \lstinline{rX}
+Call a function (\lstinline{calln rX N}): copy the next address (aka return address) into \lstinline$rX$ and then jump to address \lstinline{N}
+
+\pause
+\bigskip
+
+Return from a function (\lstinline{jumpr rX}): set program counter to the return address in \lstinline{rX}
+
+\pause
+\bigskip
+
+By convention, we use register \lstinline{r14} to store the return address
 
 \pause
 
@@ -299,7 +309,7 @@ A stack is a storage mechanism (aka data structure) that remembers things and gi
 \pause
 \bigskip
 
-To implement a stack on a computer, we need a stack pointer, a register (\lstinline{r15} on HMMM) that holds the memory address of the top item on the stack
+To implement a stack on a computer, we need a stack pointer, a register (\lstinline{r15} by convention) that holds the memory address of the top item on the stack
 
 \pause
 \bigskip
