@@ -20,12 +20,12 @@
 \begin{frame}[fragile]
 \pause
 
-A collection (aka container or data structure) is a way to organize data that we wish to process with a computer program
+A collection is a way to organize data that we wish to process with a computer program
 
 \pause
 \bigskip
 
-A list (aka one-dimensional array or array) is a collection that stores a sequence of (references to) objects
+A list (aka array) is a collection that stores a sequence of (references to) objects
 
 \pause
 \bigskip
@@ -35,12 +35,11 @@ The simplest way to create a list (an object of the built-in sequence type \lsti
 \pause
 \bigskip
 
-For example, the following code creates a list \lstinline{suits} with four strings, and creates lists \lstinline{x} and \lstinline{y}, each with three floats
+For example, the following code creates a list \lstinline{suits} with four strings and list \lstinline{x} with three floats
 
 \begin{lstlisting}[language=Python]
 suits = ['Clubs', 'Diamonds', 'Hearts', 'Spades']
 x = [0.30, 0.60, 0.10]
-y = [0.40, 0.10, 0.50]
 \end{lstlisting}
 
 \pause
@@ -57,6 +56,18 @@ For example, if we have two lists of floats \lstinline{x} and \lstinline{y} whos
 total = 0.0
 for i in range(n):
     total += x[i] * y[i]
+\end{lstlisting}
+
+\pause
+
+Variable trace when \lstinline{x = [1.0, 2.0, 3.0]}, \lstinline{y = [4.0, 5.0, 6.0]}, and \lstinline{n = 3}
+\begin{lstlisting}[language={}]
+i    x[i] * y[i]         total
+------------------------------
+                         0.0
+0    1.0 * 4.0 = 4.0     4.0
+1    2.0 * 5.0 = 10.0    14.0
+2    3.0 * 6.0 = 18.0    32.0
 \end{lstlisting} 
 \end{frame}
 
@@ -115,6 +126,16 @@ for i in range(n / 2):
 \end{lstlisting}
 
 \pause
+
+Variable trace when \lstinline{a = [1, 2, 3, 4, 5]}
+\begin{lstlisting}[language={}]
+i    n - 1 - i    a
+---------------------------------
+0    4            [5, 2, 3, 4, 1]
+1    3            [5, 4, 3, 2, 1]
+\end{lstlisting} 
+
+\pause
 \bigskip
 
 One of the most basic operations on a list is to iterate over all its elements
@@ -133,6 +154,21 @@ average = total / len(a)
 
 \pause
 
+Variable trace when \lstinline{a = [1.0, 2.0, 3.0]}
+\begin{lstlisting}[language={}]
+i    a[i]    total    average
+-----------------------------
+             0.0
+0    1.0     1.0
+1    2.0     3.0
+2    3.0     6.0
+             6.0      2.0
+\end{lstlisting} 
+\end{frame}
+
+\begin{frame}[fragile]
+\pause
+
 and the following code does the same without referring to the indices explicitly
 
 \begin{lstlisting}[language=Python]
@@ -141,10 +177,22 @@ for v in a:
     total += v
 average = total / len(a)
 \end{lstlisting}
-\end{frame}
 
-\begin{frame}[fragile]
 \pause
+
+Variable trace when \lstinline{a = [1.0, 2.0, 3.0]}
+\begin{lstlisting}[language={}]
+v      total    average
+-----------------------
+       0.0
+1.0    1.0
+2.0    3.0
+3.0    6.0
+       6.0      2.0
+\end{lstlisting} 
+
+\pause
+\bigskip
 
 Python has several built-in functions that take lists as arguments
 
@@ -164,9 +212,10 @@ For example, given a list \lstinline{a}
 \bigskip
 
 We can write a list by passing it as an argument to \lstinline{stdio.write()} or \lstinline{stdio.writeln()}, or we can use a \lstinline{for} statement to write each element individually
+\end{frame}
 
+\begin{frame}[fragile]
 \pause
-\bigskip
 
 Aliasing refers to the situation where two variables refer to the same object
 
@@ -180,10 +229,9 @@ y = x
 x[1] = .99
 \end{lstlisting}
 the value of \lstinline{y[1]} is also \lstinline{.99}
-\end{frame}
 
-\begin{frame}[fragile]
 \pause
+\bigskip
 
 One way to make a copy \lstinline{y} of a given list \lstinline{x} is to iterate though \lstinline{x} to build \lstinline{y}
 \begin{lstlisting}[language=Python]
@@ -449,6 +497,18 @@ for i in range(n):
     for j in range(n):
         c[i][j] = a[i][j] + b[i][j]
 \end{lstlisting}
+
+\pause
+
+Variable trace when \lstinline{a = [[1.0, 2.0], [3.0, 4.0]]} and \lstinline{b = [[2.0, 3.0], [4.0, 5.0]]}
+\begin{lstlisting}[language=Python]
+i    j    a[i][j]    b[i][j]    c[i][j]
+---------------------------------------
+0    0    1.0        1.0        3.0
+0    1    2.0        3.0        5.0
+1    0    3.0        4.0        7.0
+1    1    4.0        5.0        9.0
+\end{lstlisting}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -536,6 +596,16 @@ for i in range(len(a)):
         stdio.write(a[i][j])
         stdio.write(' ')
     stdio.writeln()
+\end{lstlisting}
+
+So, the ragged list \lstinline{a = [[1], [1, 1], [1, 2, 1], [1, 3, 3, 1], [1, 4, 6, 4, 1]]} (representing Pascal's triangle of order 4) is written out as
+
+\begin{lstlisting}[language={}]
+1
+1 1
+1 2 1
+1 3 3 1
+1 4 6 4 1
 \end{lstlisting}
 
 \pause
