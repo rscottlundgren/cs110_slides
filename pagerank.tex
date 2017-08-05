@@ -78,11 +78,11 @@ The transition matrix $P$ for a www with $N$ pages is an $N$-by-$N$ matrix such 
 For example, a transition matrix for our tiny five-page web is
 \[
 P = \begin{bmatrix}
-0.02 & 0.92 & 0.02 & 0.02 & 0.02 \\
-0.02 & 0.02 & 0.38 & 0.38 & 0.20 \\
-0.02 & 0.02 & 0.02 & 0.92 & 0.02 \\
-0.92 & 0.02 & 0.02 & 0.02 & 0.02 \\
-0.47 & 0.02 & 0.47 & 0.02 & 0.02
+.02 & .92 & .02 & .02 & .02 \\
+.02 & .02 & .38 & .38 & .20 \\
+.02 & .02 & .02 & .92 & .02 \\
+.92 & .02 & .02 & .02 & .02 \\
+.47 & .02 & .47 & .02 & .02
 \end{bmatrix}
 \]
 \end{frame}
@@ -134,6 +134,7 @@ $ python transition.py < tiny.txt
 \tiny randomsurfer.py: Accept an integer $moves$ as a command-line argument. Read a transition matrix from standard input. Perform $moves$ moves as prescribed by the transition matrix, and write to standard output the relative frequency of hitting each page, ie, its page rank.
 \end{framed}
 
+\begin{minipage}{170pt}
 \begin{lstlisting}[language=Python]
 import random
 import stdarray
@@ -162,6 +163,12 @@ for v in hits:
     stdio.writef("%8.5f", 1.0 * v / moves)
 stdio.writeln()
 \end{lstlisting}
+\end{minipage}
+\begin{minipage}{130pt}
+\visible<2->{
+\includegraphics[scale=0.35]{figures/roulette.pdf}
+}
+\end{minipage}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -186,16 +193,48 @@ A Markov chain is a random process that describes behavior similar to the random
 \pause
 \bigskip
 
-A remarkable and useful property of Markov chains is that of mixing, which states that the random surfer could start anywhere, since the probability that the surfer eventually winds up on any particular page is the same for all starting pages
+An useful property of Markov chains is that of mixing, which states that the random surfer could start anywhere, since the probability that the surfer eventually winds up on any particular page is the same for all starting pages
 
 \pause
 \bigskip
 
-Using the power method we can obtain the probability $P^2_{ij}$ that the random surfer will move from page $i$ to page $j$ in two moves by multiplying the transition matrix $P$ by itself $$P^2_{ij} = P_{i:} \cdot P_{:j}$$ 
-
+Using the power method we can obtain the probability $P^2_{ij}$ that the random surfer will move from page $i$ to page $j$ in two moves by squaring the transition matrix $P$ $$P^2_{ij} = P_{i:} \cdot P_{:j}$$ 
 
 \pause
 \bigskip
+
+For example, for our tiny web, we have
+\begin{align*}
+P^2_{ij} &= 
+\begin{bmatrix}
+.02 & .92 & .02 & .02 & .02 \\
+.02 & .02 & .38 & .38 & .20 \\
+.02 & .02 & .02 & .92 & .02 \\
+.92 & .02 & .02 & .02 & .02 \\
+.47 & .02 & .47 & .02 & .02
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+.02 & .92 & .02 & .02 & .02 \\
+.02 & .02 & .38 & .38 & .20 \\
+.02 & .02 & .02 & .92 & .02 \\
+.92 & .02 & .02 & .02 & .02 \\
+.47 & .02 & .47 & .02 & .02
+\end{bmatrix} \\
+& =
+\begin{bmatrix}
+.05 & .04 & .36 & .37 & .19 \\
+.45 & .04 & .12 & .37 & .02 \\
+.86 & .04 & .04 & .05 & .02 \\
+.05 & .85 & .04 & .05 & .02 \\
+.05 & .44 & .04 & .45 & .02
+\end{bmatrix} 
+\end{align*}
+
+\end{frame}
+
+\begin{frame}[fragile]
+\pause
 
 In general, the probability that the random surfer will move from page $i$ to page $j$ in $t$ moves is obtained by computing $P^t$ 
 
@@ -208,10 +247,9 @@ Unfortunately, matrix-matrix multiplication is expensive
 \bigskip
 
 Fortunately, because of the mixing property, we can make do with relatively inexpensive vector-matrix multiplications
-\end{frame}
 
-\begin{frame}[fragile]
 \pause
+\bigskip
 
 For example, with our tiny web, if we start with the vector 
 \[
@@ -220,20 +258,45 @@ For example, with our tiny web, if we start with the vector
 \end{bmatrix}
 \]
 specifying that the random surfer starts on page 0, multiplying the vector by the transition matrix $P$ gives the vector 
+
 \[
 \begin{bmatrix}
-0.02 & 0.92 & 0.02 & 0.02 & 0.02
+1.0 & 0.0 & 0.0 & 0.0 & 0.0
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+.02 & .92 & .02 & .02 & .02 \\
+.02 & .02 & .38 & .38 & .20 \\
+.02 & .02 & .02 & .92 & .02 \\
+.92 & .02 & .02 & .02 & .02 \\
+.47 & .02 & .47 & .02 & .02
+\end{bmatrix} = 
+\begin{bmatrix}
+.02 & .92 & .02 & .02 & .02
 \end{bmatrix}
 \]
+
 specifying the probabilities that the surfer winds up on each of the pages after one step
+\end{frame}
 
+\begin{frame}[fragile]
 \pause
-\bigskip
 
-Now, multiplying the above vector by the transition matrix $P$ gives the vector
+Now, multiplying the above vector by the transition matrix $P$ again gives the vector
 \[
 \begin{bmatrix}
-0.05 & 0.04 & 0.36 & 0.37 & 0.19
+.02 & .92 & .02 & .02 & .02
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+.02 & .92 & .02 & .02 & .02 \\
+.02 & .02 & .38 & .38 & .20 \\
+.02 & .02 & .02 & .92 & .02 \\
+.92 & .02 & .02 & .02 & .02 \\
+.47 & .02 & .47 & .02 & .02
+\end{bmatrix} =
+\begin{bmatrix}
+.05 & .04 & .36 & .37 & .19
 \end{bmatrix}
 \]
 which contains the probabilities that the surfer winds up on each of the pages after two steps
