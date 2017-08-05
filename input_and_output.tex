@@ -475,7 +475,7 @@ while True:
         vy = -vy
     rx = rx + vx
     ry = ry + vy
-    stddraw.clear(stddraw.WHITE)
+    # stddraw.clear(stddraw.WHITE)
     stddraw.filledCircle(rx, ry, RADIUS)
     stddraw.show(DT)
 \end{lstlisting}
@@ -496,7 +496,17 @@ $ python bouncingball.py
 \begin{frame}[fragile]
 \pause
 
-The \lstinline{stdaudio} module is an abstraction for playing, manipulating, and synthesizing sounds
+To obtain a digital sound, we sample a continuous sound signal (represented by a sine curve) at regular intervals --- a widely used sampling rate is 44,100 samples per second
+
+\pause
+\bigskip
+
+A digital sound is thus a list of real numbers between −1 and +1
+
+\pause
+\bigskip
+
+The \lstinline{stdaudio} module is an abstraction for playing, manipulating, and synthesizing digital sounds
 
 \pause
 \bigskip
