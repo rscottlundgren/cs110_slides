@@ -102,6 +102,7 @@ def harmonic(n):
     return total
 
 def main():
+    stdio.writeln('in main()')
     for j in range(1, len(sys.argv)):
         arg = int(sys.argv[j])
         value = harmonic(arg)
@@ -114,16 +115,22 @@ if __name__ == '__main__':
 \pause
 
 \begin{lstlisting}[language={}]
-$ python harmonicf.py 1 2 4
-1.0
+$ python harmonicf.py 2
+in main()
 1.5
-2.08333333333
 \end{lstlisting}
 
 \pause
 \bigskip
 
 When a program is executed directly by the \lstinline{python} command (and not imported as a module via the \lstinline{import} statement), the program's \lstinline{__name__} attribute is set to \lstinline{'__main__'}
+
+\begin{lstlisting}[language={}]
+>>> import harmonicf
+>>> 
+>>> harmonicf.harmonic(4)
+2.08333333333
+\end{lstlisting}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -367,20 +374,7 @@ As a consequence, if a parameter variable refers to a mutable object and we chan
 \pause
 \bigskip
 
-When a function takes a list as an argument, it implements a function that operates on an arbitrary number of objects
-\begin{lstlisting}[language=Python]
-def mean(a):
-    total = 0.0
-    for v in a:
-        total += v
-    return total / len(a)
-\end{lstlisting}
-\end{frame}
-
-\begin{frame}[fragile]
-\pause
-
-Since lists are mutable, it is often the case that the purpose of a function that takes a list as argument is to produce a side effect
+For example, the following function exchanges the values in the list \lstinline{a} at indices \lstinline{i} and \lstinline{j}
 \begin{lstlisting}[language=Python]
 def exchange(a, i, j):
     temp = a[i]
@@ -388,10 +382,39 @@ def exchange(a, i, j):
     a[j] = temp
 \end{lstlisting}
 
+\begin{lstlisting}[language=Python]
+a = [1, 2, 3, 4, 5]
+exchange(a, 1, 4) 
+stdio.writeln(a)    # will output [1, 5, 3, 4, 2]
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\pause
+
+When a function takes a list as an argument, it typically implements a function that operates on an arbitrary number of objects
+
+\pause
+\bigskip
+
+For example, the following function computes and returns the average value of the numbers in the list \lstinline{a}
+\begin{lstlisting}[language=Python]
+def mean(a):
+    total = 0.0
+    for v in a:
+        total += v
+    return total / len(a)
+\end{lstlisting}
+
 \pause
 \bigskip
 
 There are situations where it is useful for a function to return a list
+
+\pause
+\bigskip
+
+For example, the following function returns a list containing \lstinline{n} random numbers, each between 0 and 1
 \begin{lstlisting}[language=Python]
 def randomarray(n):
     a = stdarray.create1D(n)
