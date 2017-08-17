@@ -596,8 +596,7 @@ def stddev(a):
     return math.sqrt(var(a))
 
 def median(a):
-    b = list(a)
-    b.sort()
+    b = sorted(a)
     length = len(b)
     if length % 2 == 1:
         return b[length // 2]
