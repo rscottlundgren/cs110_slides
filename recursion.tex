@@ -174,6 +174,7 @@ gcd(1440, 408)
 \tiny towersofhanoi.py: Accept integer $n$ as a command-line argument. Write to standard output instructions to move $n$ Towers of Hanoi disks to the left.
 \end{framed}
 
+\begin{minipage}{200pt}
 \begin{lstlisting}[language=Python]
 import stdio
 import sys
@@ -208,6 +209,10 @@ $ python towersofhanoi.py 3
 2 right
 1 left
 \end{lstlisting}
+\end{minipage}
+\begin{minipage}{100pt}
+\visible<2->{\includegraphics[scale=0.3]{figures/hanoi.pdf}}
+\end{minipage}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -455,7 +460,7 @@ def harmonic(n):
 Recursion does not address smaller subproblems
 \begin{lstlisting}[language=Python]
 def harmonic(n):
-    if n == 1: 
+    if n == 1:
         return 1.0
     return 1.0 / n + harmonic(n)
 \end{lstlisting}
@@ -463,13 +468,25 @@ def harmonic(n):
 \pause
 \bigskip
 
-Recursion addresses overlapping subproblems
-\begin{lstlisting}[language=Python]
-def fibonacci(n):
+\begin{minipage}{150pt}
+Recursion addresses overlapping subproblems; for example, computing $N$th Fibonacci number
+
+\begin{lstlisting}[language=Java]
+def f(n):
     if n == 0 or n == 1:
         return n
-    return fibonacci(n - 1) + fibonacci(n - 2)  
+    return f(n - 1) + f(n - 2)  
 \end{lstlisting}
+\end{minipage}
+\begin{minipage}{150pt}
+\begin{center}
+Call trace for \lstinline{f(5)}
+
+\smallskip
+
+\visible<4->{\includegraphics[scale=0.35]{figures/fib_trace.pdf}}
+\end{center}
+\end{minipage}
 
 \pause
 \bigskip
