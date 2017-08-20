@@ -194,8 +194,7 @@ def flow(isOpen):
                 isFull[i][j] = True
     return isFull
 
-def percolates(isOpen):
-    isFull = flow(isOpen)
+def percolates(isFull):
     n = len(isFull)
     for j in range(n):
         if isFull[n - 1][j]:
@@ -204,8 +203,9 @@ def percolates(isOpen):
 
 def main():
     isOpen = stdarray.readBool2D()
-    stdarray.write2D(flow(isOpen))
-    stdio.writeln(percolates(isOpen))
+    isFull = flow(isOpen)
+    stdarray.write2D(isFull)
+    stdio.writeln(percolates(isFull))
     
 if __name__ == '__main__':
     main()
@@ -268,8 +268,8 @@ def main():
         stddraw.setPenColor(stddraw.BLACK)
         percolationio.draw(isOpen, False)
         stddraw.setPenColor(stddraw.BLUE)
-        full = percolationv.flow(isOpen)
-        percolationio.draw(full, True)
+        isFull = percolationv.flow(isOpen)
+        percolationio.draw(isFull, True)
         stddraw.show(1000.0)
     stddraw.show()
 
@@ -333,7 +333,8 @@ def evaluate(n, p, trials):
     count = 0
     for i in range(trials):
         isOpen = percolationio.random(n, p)
-        if (percolationv.percolates(isOpen)):
+        isFull = percolationv.flow(isOpen)
+        if (percolationv.percolates(isFull)):
             count += 1
     return 1.0 * count / trials
 
@@ -428,8 +429,7 @@ def flow(isOpen):
 \pause
 
 \begin{lstlisting}[language=Python]
-def percolates(isOpen):
-    isFull = flow(isOpen)
+def percolates(isFull):
     n = len(isFull)
     for j in range(n):
         if isFull[n - 1][j]:
@@ -438,8 +438,9 @@ def percolates(isOpen):
 
 def main():
     isOpen = stdarray.readBool2D()
-    stdarray.write2D(flow(isOpen))
-    stdio.writeln(percolates(isOpen))
+    isFull = flow(isOpen)
+    stdarray.write2D(isFull)
+    stdio.writeln(percolates(isFull))
 
 if __name__ == '__main__':
     main()
@@ -502,8 +503,8 @@ def main():
         stddraw.setPenColor(stddraw.BLACK)
         percolationio.draw(isOpen, False)
         stddraw.setPenColor(stddraw.BLUE)
-        full = percolation.flow(isOpen)
-        percolationio.draw(full, True)
+        isFull = percolation.flow(isOpen)
+        percolationio.draw(isFull, True)
         stddraw.show(1000.0)
     stddraw.show()
 
@@ -567,7 +568,8 @@ def evaluate(n, p, trials):
     count = 0
     for i in range(trials):
         isOpen = percolationio.random(n, p)
-        if (percolation.percolates(isOpen)):
+        isFull = percolation.flow(isOpen)
+        if (percolation.percolates(isFull)):
             count += 1
     return 1.0 * count / trials
 
