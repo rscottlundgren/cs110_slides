@@ -76,7 +76,7 @@ We'll use a program\footnote{\href{http://www.swamiiyer.net/teaching/hmmm.zip}{h
 \pause
 
 \begin{lstlisting}[language={}]
-$ python hmmmAssembler.py -f triangle1.hmmm -o triangle1.b
+$ python3 hmmmAssembler.py -f triangle1.hmmm -o triangle1.b
 
 ----------------------
 | ASSEMBLY SUCCESSFUL |
@@ -94,7 +94,7 @@ $ python hmmmAssembler.py -f triangle1.hmmm -o triangle1.b
 \pause
 
 \begin{lstlisting}[language={}]
-$ python hmmmSimulator.py -f triangle1.b -n
+$ python3 hmmmSimulator.py -f triangle1.b -n
 4
 5
 10
@@ -127,7 +127,7 @@ Unconditional jump (\lstinline{jumpn N}): set program counter to address \lstinl
 \pause
 
 \begin{lstlisting}[language={}]
-$ python hmmmSimulator.py -f triangle2.b -n
+$ python3 hmmmSimulator.py -f triangle2.b -n
 4
 5
 10
@@ -168,7 +168,7 @@ Conditional jump (\lstinline{jeqzn rX N}): if \lstinline{rX == 0}, then jump to 
 \pause
 
 \begin{lstlisting}[language={}]
-$ python hmmmSimulator.py -f triangle3.b -n
+$ python3 hmmmSimulator.py -f triangle3.b -n
 4
 5
 10
@@ -217,7 +217,7 @@ By convention, we use register \lstinline{r14} to store the return address
 \pause
 
 \begin{lstlisting}[language={}]
-$ python hmmmSimulator.py -f square.b -n
+$ python3 hmmmSimulator.py -f square.b -n
 11
 121
 \end{lstlisting}
@@ -259,7 +259,7 @@ $ python hmmmSimulator.py -f square.b -n
 \pause
 
 \begin{lstlisting}[language={}]
-$ python hmmmSimulator.py -f combinations.b -n
+$ python3 hmmmSimulator.py -f combinations.b -n
 5
 2
 10
@@ -269,23 +269,11 @@ $ python hmmmSimulator.py -f combinations.b -n
 \begin{frame}[fragile]
 \pause
 
-\begin{minipage}{140pt}
-\visible<2->{
-Trace of the factorial function ($N=4$)
+Trace of the iterative factorial function ($N=4$)
+
 \begin{center}
-\includegraphics[scale=0.4]{./figures/hmmm_faciter_trace.pdf}
+\visible<2->{\includegraphics[scale=0.4]{./figures/hmmm_faciter_trace.pdf}}
 \end{center}
-}
-\end{minipage}
-\begin{minipage}{160pt}%
-\hfill
-\visible<3->{
-Trace of the program ($N=5, K=2$)
-\begin{center}
-\includegraphics[scale=0.4]{./figures/hmmm_combinations_trace.pdf}
-\end{center}
-}
-\end{minipage}
 \end{frame}
 
 \section{Recursion}
@@ -367,7 +355,7 @@ addn  r15 -1     # Point to new top of stack
 \pause
 
 \begin{lstlisting}[language={}]
-$ python hmmmSimulator.py -f factorial_rec.b -n
+$ python3 hmmmSimulator.py -f factorial_rec.b -n
 5
 120
 \end{lstlisting}
@@ -378,7 +366,7 @@ $ python hmmmSimulator.py -f factorial_rec.b -n
 
 Trace of the recursive factorial function ($N=3$)
 \begin{center}
-\visible<2->{\includegraphics[scale=0.36]{./figures/hmmm_facrec_trace.pdf}}
+\visible<2->{\includegraphics[scale=0.32]{./figures/hmmm_facrec_trace.pdf}}
 \end{center}
 \end{frame}
 
