@@ -9,9 +9,9 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="86.900909mm"
+   width="157.25545mm"
    height="121.79733mm"
-   viewBox="0 0 307.9166 431.56535"
+   viewBox="0 0 557.20433 431.56535"
    id="svg2"
    version="1.1"
    inkscape:version="0.91 r13725"
@@ -25,9 +25,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.979899"
-     inkscape:cx="102.68049"
-     inkscape:cy="313.23411"
+     inkscape:zoom="0.9899495"
+     inkscape:cx="117.61283"
+     inkscape:cy="313.23412"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -43,8 +43,8 @@
     <inkscape:grid
        type="xygrid"
        id="grid4140"
-       originx="67.202331"
-       originy="-241.54217" />
+       originx="316.49005"
+       originy="-241.54214" />
   </sodipodi:namedview>
   <metadata
      id="metadata7">
@@ -62,7 +62,7 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(67.20233,-379.25467)">
+     transform="translate(316.49006,-379.25467)">
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:17.5px;line-height:125%;font-family:Courier;-inkscape-font-specification:'Courier Bold';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -108,8 +108,8 @@
          x="50"
          y="412.36221" /></text>
     <path
-       style="fill:#cccccc;fill-rule:evenodd;stroke:#cccccc;stroke-width:2.12183285;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m -67.20233,402.3622 307.91662,0"
+       style="fill:#cccccc;fill-rule:evenodd;stroke:#cccccc;stroke-width:2.11660576;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m -65.687097,402.3622 306.401387,0"
        id="path4176"
        inkscape:connector-curvature="0" />
     <text
@@ -599,5 +599,47 @@
          id="tspan4224-6-7-9"
          x="-62.659496"
          y="808.16003">20 jumpr r14</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:17.5px;line-height:125%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="-231.68137"
+       y="410.75769"
+       id="text4136-1-3"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4138-5-6"
+         x="-231.68137"
+         y="410.75769">code</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:17.5px;line-height:125%;font-family:Courier;-inkscape-font-specification:'Courier Bold';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="-317.71506"
+       y="442.94174"
+       id="text4284"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4286"
+         x="-317.71506"
+         y="442.94174">15    setn    r2 1</tspan><tspan
+         sodipodi:role="line"
+         x="-317.71506"
+         y="464.81674"
+         id="tspan4288">16    jeqzn   r1 20</tspan><tspan
+         sodipodi:role="line"
+         x="-317.71506"
+         y="486.69174"
+         id="tspan4290">17    mul     r2 r1 r2</tspan><tspan
+         sodipodi:role="line"
+         x="-317.71506"
+         y="508.56674"
+         id="tspan4292">18    addn    r1 -1</tspan><tspan
+         sodipodi:role="line"
+         x="-317.71506"
+         y="530.44171"
+         id="tspan4294">19    jumpn   16</tspan><tspan
+         sodipodi:role="line"
+         x="-317.71506"
+         y="552.31671"
+         id="tspan4296">20    jumpr   r14</tspan></text>
   </g>
 </svg>
