@@ -51,7 +51,38 @@ For example, to compute \lstinline{r3 = r1 + r2}, we'll write \lstinline{add r3 
 \pause
 \bigskip
 
-We'll use a program\footnote{\href{http://www.swamiiyer.net/teaching/hmmm.zip}{http://www.swamiiyer.net/teaching/hmmm.zip \ExternalLink} (command-line) or \href{http://shickey.github.io/HMMM.js}{http://shickey.github.io/HMMM.js \ExternalLink} (online)} to convert the assembly language into 0's and 1's -- the machine language -- that the computer can execute
+We'll use a program to convert the assembly language into 0's and 1's -- the machine language -- that the computer can execute
+\end{frame}
+
+\begin{frame}[fragile]
+\pause
+
+Online Simulator (\href{http://shickey.github.io/HMMM.js}{http://shickey.github.io/HMMM.js \ExternalLink})
+
+\begin{center}
+\visible<2->{\includegraphics[scale=0.2]{./figures/hmmm_simulator1.png}}
+
+\bigskip
+
+\visible<2->{\includegraphics[scale=0.2]{./figures/hmmm_simulator2.png}}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\pause
+
+Terminal-based Simulator (\href{http://www.swamiiyer.net/teaching/hmmm.zip}{http://www.swamiiyer.net/teaching/hmmm.zip \ExternalLink})
+\begin{itemize}
+\item To assemble an HMMM program \lstinline{my_program.hmmm} into the binary program \lstinline{my_program.b}, we run the following command on the terminal
+\begin{lstlisting}[language={}]
+$ python3 hmmmAssembler.py -f my_program.hmmm -o my_program.b
+\end{lstlisting}
+
+\item To run the binary program \lstinline{my_program.b}, we run the following command on the terminal
+\begin{lstlisting}[language={}]
+$ python3 hmmmSimulator.py -f my_program.b -n
+\end{lstlisting}
+\end{itemize}
 \end{frame}
 
 \section{A Simple HMMM Program}
