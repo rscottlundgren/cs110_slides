@@ -53,7 +53,7 @@ Our programming environment
 To program in Python
 \begin{itemize}
 \item Compose a program by typing it into a file named, say, \lstinline{helloworld.py}
-\item Run (or execute) the program by typing \lstinline{python helloworld.py} in the terminal window
+\item Run (or execute) the program by typing \lstinline{python3 helloworld.py} in the terminal window
 \end{itemize}
 
 \begin{center}
@@ -64,7 +64,7 @@ To program in Python
 	   block2/.style={rectangle,align=center}]
 \node [block1] (1) {editor \\ (IDLE)};
 \node [block2] (2) [right=of 1] {\lstinline$helloworld.py$};
-\node [block1] (3) [right=of 2] {compiler/ \\ interpreter \\ (\lstinline$python$)};
+\node [block1] (3) [right=of 2] {compiler/ \\ interpreter \\ (\lstinline$python3$)};
 \node [block2] (4) [right=of 3] {\lstinline$Hello, World$};
 \path (1) edge node [above] {} (2);
 \path (2) edge node [above] {} (3);
@@ -91,7 +91,7 @@ stdio.writeln('Hello, World')
 \pause
 
 \begin{lstlisting}[language={}]
-$ python helloworld.py 
+$ python3 helloworld.py 
 Hello, World
 \end{lstlisting}
 
@@ -167,7 +167,7 @@ Bird's-eye view of a Python program
 Command-line arguments are the inputs we list after a program name when we run the program
 
 \begin{lstlisting}[language={}]
-$ python my_program.py arg_1 arg_2 ... arg_n
+$ python3 my_program.py arg_1 arg_2 ... arg_n
 \end{lstlisting}
 
 \pause
@@ -199,11 +199,11 @@ stdio.writeln('. How are you?')
 
 \pause
 \begin{lstlisting}[language={}]
-$ python useargument.py Alice
+$ python3 useargument.py Alice
 Hi, Alice. How are you?
-$ python useargument.py Bob
+$ python3 useargument.py Bob
 Hi, Bob. How are you?
-$ python useargument.py Carol
+$ python3 useargument.py Carol
 Hi, Carol. How are you?
 \end{lstlisting}
 \end{frame}
