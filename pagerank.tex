@@ -116,7 +116,7 @@ for i in range(n):
 \pause
 
 \begin{lstlisting}[language={}]
-$ python transition.py < tiny.txt
+$ python3 transition.py < tiny.txt
 5 5
  0.02000 0.92000 0.02000 0.02000 0.02000
  0.02000 0.02000 0.38000 0.38000 0.20000
@@ -175,11 +175,11 @@ stdio.writeln()
 \pause
 
 \begin{lstlisting}[language={}]
-$ python transition.py < tiny.txt | python randomsurfer.py 100
+$ python3 transition.py < tiny.txt | python3 randomsurfer.py 100
  0.26000 0.27000 0.18000 0.26000 0.03000
-$ python transition.py < tiny.txt | python randomsurfer.py 10000
+$ python3 transition.py < tiny.txt | python3 randomsurfer.py 10000
  0.27410 0.26500 0.14570 0.24890 0.06630
-$ python transition.py < tiny.txt | python randomsurfer.py 10000000
+$ python3 transition.py < tiny.txt | python3 randomsurfer.py 10000000
  0.27308 0.26568 0.14616 0.24719 0.06789
 \end{lstlisting}
 \end{frame}
@@ -343,9 +343,9 @@ stdio.writeln()
 \pause
 
 \begin{lstlisting}[language={}]
-$ python transition.py < tiny.txt | python markov.py 20
+$ python3 transition.py < tiny.txt | python3 markov.py 20
  0.27245 0.26515 0.14669 0.24764 0.06806
-$ python transition.py < tiny.txt | python markov.py 40
+$ python3 transition.py < tiny.txt | python3 markov.py 40
  0.27303 0.26573 0.14618 0.24723 0.06783
 \end{lstlisting}
 \end{frame}

@@ -79,7 +79,7 @@ for i in range(n):
 \pause
 
 \begin{lstlisting}[language={}]
-$ python randomseq.py 10
+$ python3 randomseq.py 10
 0.534835410847
 0.249397020334
 0.0460440369486
@@ -218,7 +218,7 @@ while guess != secret:
 \pause
 
 \begin{lstlisting}[language={}]
-$ python twentyquestions.py
+$ python3 twentyquestions.py
 I am thinking of a secret number between 1 and 1000000
 What is your guess? 500000
 Too low
@@ -255,7 +255,7 @@ stdio.writeln('Average is ' + str(avg))
 \pause
 
 \begin{lstlisting}[language={}]
-$ python average.py
+$ python3 average.py
 10.0 5.0 6.0
 3.0
 7.0 32.0
@@ -275,7 +275,7 @@ By adding the directive \lstinline{>} to the command that invokes a program, we 
 
 For example
 \begin{lstlisting}[language={}]
-$ python randomseq.py 1000 > data.txt
+$ python3 randomseq.py 1000 > data.txt
 \end{lstlisting}
 
 \begin{lstlisting}[language={}]
@@ -297,7 +297,7 @@ Similarly, by adding the directive \lstinline{<} to the command that invokes a p
 
 For example
 \begin{lstlisting}[language={}]
-$ python average.py < data.txt
+$ python3 average.py < data.txt
 Average is 0.499379975213
 \end{lstlisting}
 
@@ -311,9 +311,9 @@ The standard output of one program can be mapped to the standard input stream of
 
 For example
 \begin{lstlisting}[language={}]
-$ python randomseq.py 1000 | python average.py 
+$ python3 randomseq.py 1000 | python3 average.py 
 Average is 0.501346917807
-$ python randomseq.py 1000 | python average.py | wc
+$ python3 randomseq.py 1000 | python3 average.py | wc
       1       3      26
 \end{lstlisting}
 \end{frame}
@@ -341,14 +341,14 @@ stdio.writeln()
 \pause
 
 \begin{lstlisting}[language={}]
-$ python rangefilter.py 100 400
+$ python3 rangefilter.py 100 400
 358 1330 55 165 689 1014 3066 387 575 843 203 48 292 877 65 998
 358 165 387 203 292
 <ctrl-d>
-$ seq 1 100 | shuf | python rangefilter.py 25 75
+$ seq 1 100 | shuf | python3 rangefilter.py 25 75
 50 41 45 70 32 34 55 26 27 51 71 58 44 59 39 72 66 35 25 29 40 43 73 64 56 31 38 
 65 69 46 54 30 62 67 57 48 68 74 36 42 37 52 53 33 75 47 28 60 63 49 61 
-$ seq 1 1000 | shuf | python rangefilter.py 250 750 | wc -w
+$ seq 1 1000 | shuf | python3 rangefilter.py 250 750 | wc -w
 501
 \end{lstlisting}
 \end{frame}
@@ -442,7 +442,7 @@ $ head -5 usa.txt
 \pause
 
 \begin{lstlisting}[language={}]
-$ python plotfilter.py < usa.txt
+$ python3 plotfilter.py < usa.txt
 \end{lstlisting}
 \end{minipage}%
 \begin{minipage}{150pt}
@@ -484,7 +484,7 @@ while True:
 
 \begin{minipage}{150pt}
 \begin{lstlisting}[language={}]
-$ python bouncingball.py
+$ python3 bouncingball.py
 \end{lstlisting}
 \end{minipage}%
 \begin{minipage}{150pt}
@@ -567,7 +567,7 @@ $ head -5 elise.txt
 \pause
 
 \begin{lstlisting}[language={}]
-$ python playthattune.py < elise.txt
+$ python3 playthattune.py < elise.txt
 \end{lstlisting}
 \end{minipage}%
 \begin{minipage}{150pt}
