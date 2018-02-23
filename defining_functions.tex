@@ -61,7 +61,7 @@ def is_prime(N):
     if N < 2: 
         return False
     i = 2
-    while i <= N / i:
+    while i <= N // i:
         if N % i == 0:
             return False
         i += 1
@@ -115,7 +115,7 @@ if __name__ == '__main__':
 \pause
 
 \begin{lstlisting}[language={}]
-$ python harmonicf.py 2
+$ python3 harmonicf.py 2
 in main()
 1.5
 \end{lstlisting}
@@ -293,11 +293,11 @@ if __name__ == '__main__':
 \pause
 
 \begin{lstlisting}[language={}]
-$ python gaussian.py 820 1019 209
+$ python3 gaussian.py 820 1019 209
 0.170509668691
-$ python gaussian.py 1500 1019 209
+$ python3 gaussian.py 1500 1019 209
 0.989316483738
-$ python gaussian.py 1500 1025 231
+$ python3 gaussian.py 1500 1025 231
 0.980122090737
 \end{lstlisting}
 \end{frame}
@@ -346,11 +346,11 @@ if __name__ == '__main__':
 \pause
 
 \begin{lstlisting}[language={}]
-$ python coupon.py 1000
+$ python3 coupon.py 1000
 5193
-$ python coupon.py 1000
+$ python3 coupon.py 1000
 6865
-$ python coupon.py 1000000
+$ python3 coupon.py 1000000
 15490879
 \end{lstlisting}
 \end{frame}
@@ -494,7 +494,7 @@ $ head -5 elise.txt
 \pause
 
 \begin{lstlisting}[language={}]
-$ python playthattunedeluxe.py < elise.txt
+$ python3 playthattunedeluxe.py < elise.txt
 \end{lstlisting}
 \end{minipage}%
 \begin{minipage}{130pt}
