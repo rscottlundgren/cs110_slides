@@ -108,7 +108,7 @@ def _phi(x):
     return math.exp(- x * x / 2.0) / math.sqrt(2 * math.pi)
     
 def phi(x, mu = 0.0, sigma = 1.0):
-    return _phi(float((x - mu) / sigma)) / sigma
+    return _phi((x - mu) / sigma) / sigma
 \end{lstlisting}
 
 \pause
@@ -215,7 +215,7 @@ def binomial(n, p = 0.5):
             heads += 1
     return heads
     
-def gaussian(mean = 0.0, stddev = 1.0):
+def gaussian(mu = 0.0, sigma = 1.0):
     return random.gauss(mu, sigma)
 \end{lstlisting}
 \end{frame}
@@ -583,14 +583,14 @@ import math
 import stddraw
 
 def mean(a):
-    return sum(a) / float(len(a))
+    return sum(a) / len(a)
 
 def var(a):
     mu = mean(a)
     total = 0.0
     for x in a:
         total += (x - mu) * (x - mu)
-    return total / (float(len(a)) - 1.0)
+    return total / (len(a) - 1)
 
 def stddev(a):
     return math.sqrt(var(a))
@@ -601,7 +601,7 @@ def median(a):
     if length % 2 == 1:
         return b[length // 2]
     else:
-        return float(b[length // 2 - 1] + b[length // 2]) / 2.0
+        return (b[length // 2 - 1] + b[length // 2]) / 2
 \end{lstlisting}
 \end{frame}
 
