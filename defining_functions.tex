@@ -547,9 +547,9 @@ squares = map(lambda x : x ** 2, range(11))
 \pause
 \bigskip
 
-The built-in function \lstinline{reduce(f, seq)} applies a function \lstinline{f} of two arguments cumulatively to the items of a sequence \lstinline{seq}, from left to right, so as to reduce the sequence to a single value
+The function \lstinline{functools.reduce(f, seq)} applies a function \lstinline{f} of two arguments cumulatively to the items of a sequence \lstinline{seq}, from left to right, so as to reduce the sequence to a single value
 \begin{lstlisting}[language={}]
->>> total = reduce(lambda x, y: x + y, range(11))
+>>> total = functools.reduce(lambda x, y: x + y, range(11))
 >>> total
 55
 \end{lstlisting}

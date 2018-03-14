@@ -105,7 +105,7 @@ For example, NumPy is a library for scientific computing
 A private function, having its name start with an underscore by convention, is a helper function that is not intended to be called directly by clients
 \begin{lstlisting}[language=Python]
 def _phi(x):
-    return math.exp(- x * x / 2.0) / math.sqrt(2 * math.pi)
+    return math.exp(- x * x / 2) / math.sqrt(2 * math.pi)
     
 def phi(x, mu = 0.0, sigma = 1.0):
     return _phi((x - mu) / sigma) / sigma
