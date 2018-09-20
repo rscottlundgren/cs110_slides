@@ -68,12 +68,18 @@ else:
 \begin{lstlisting}[language={}]
 $ python3 flip.py 
 Tails
+\end{lstlisting}
+
+\pause
+
+\begin{lstlisting}[language={}]
 $ python3 flip.py 
 Heads
-$ python3 flip.py 
-Heads
-$ python3 flip.py 
-Tails
+\end{lstlisting}
+
+\pause
+
+\begin{lstlisting}[language={}]
 $ python3 flip.py 
 Heads
 \end{lstlisting}
@@ -368,19 +374,6 @@ $ python3 divisorpattern.py 3
 * *   2
 *   * 3
 \end{lstlisting}
-\begin{lstlisting}[language={}]
-$ python3 divisorpattern.py 10
-* * * * * * * * * * 1
-* *   *   *   *   * 2
-*   *     *     *   3
-* *   *       *     4
-*       *         * 5
-* * *     *         6
-*           *       7
-* *   *       *     8
-*   *           *   9
-* *     *         * 10
-\end{lstlisting}
 \end{minipage}\hfill
 \begin{minipage}{100pt}
 Variable trace (\lstinline{n = 3})
@@ -398,6 +391,24 @@ i    j    output
 3    3    '* 3\n'
 \end{lstlisting}
 \end{minipage}
+\end{frame}
+
+\begin{frame}[fragile]
+\pause
+
+\begin{lstlisting}[language={}]
+$ python3 divisorpattern.py 10
+* * * * * * * * * * 1
+* *   *   *   *   * 2
+*   *     *     *   3
+* *   *       *     4
+*       *         * 5
+* * *     *         6
+*           *       7
+* *   *       *     8
+*   *           *   9
+* *     *         * 10
+\end{lstlisting}
 \end{frame}
 
 \section{Applications}
@@ -424,8 +435,18 @@ stdio.writeln(total)
 \begin{lstlisting}[language={}]
 $ python3 harmonic.py 2
 1.5
+\end{lstlisting}
+
+\pause
+
+\begin{lstlisting}[language={}]
 $ python3 harmonic.py 10
 2.92896825397
+\end{lstlisting}
+
+\pause
+
+\begin{lstlisting}[language={}]
 $ python3 harmonic.py 10000
 9.78760603604
 \end{lstlisting}
@@ -460,6 +481,11 @@ stdio.writeln(t)
 \begin{lstlisting}[language={}]
 $ python3 sqrt.py 2.0
 1.41421356237
+\end{lstlisting}
+
+\pause
+
+\begin{lstlisting}[language={}]
 $ python3 sqrt.py 2544545
 1595.16300108
 \end{lstlisting}
@@ -501,12 +527,20 @@ stdio.writeln()
 \begin{lstlisting}[language={}]
 $ python3 binary.py 19
 10011
+\end{lstlisting}
+
+\pause
+
+\begin{lstlisting}[language={}]
 $ python3 binary.py 255
 11111111
+\end{lstlisting}
+
+\pause
+
+\begin{lstlisting}[language={}]
 $ python3 binary.py 512
 1000000000
-$ python3 binary.py 1000000000
-111011100110101100101000000000
 \end{lstlisting}
 \end{frame}
 
@@ -552,9 +586,6 @@ stdio.writeln('Avg # bets: ' + str(bets // trials))
 $ python3 gambler.py 50 250 100
 24% wins
 Avg # bets: 12548
-$ python3 gambler.py 500 2500 100
-27% wins
-Avg # bets: 1124855
 \end{lstlisting}
 \end{frame}
 
@@ -586,6 +617,11 @@ stdio.writeln()
 \begin{lstlisting}[language={}]
 $ python3 factors.py 3757208
 2 2 2 7 13 13 397
+\end{lstlisting}
+
+\pause
+
+\begin{lstlisting}[language={}]
 $ python3 factors.py 287994837222311
 17 1739347 9739789
 \end{lstlisting}
