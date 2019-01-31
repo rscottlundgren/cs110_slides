@@ -26,6 +26,10 @@ Examples of integers: -128, 0, 42
 
 \pause\transdissolve\bigskip
 
+An integer is even if it is divisible by 2, and odd otherwise
+
+\pause\transdissolve\bigskip
+
 The set of all integers is denoted as $\mathbb{Z}$
 
 \pause\transdissolve\bigskip
@@ -62,7 +66,7 @@ The set of all real numbers is denoted as $\mathbb{R}$
 
 \pause\transdissolve\bigskip
 
-Hierarchy of number systems: $\mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q} \subset \mathbb{R}$
+Hierarchy of number systems ($\subset$ means proper subset): $\mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q} \subset \mathbb{R}$
 
 \pause\transdissolve\bigskip
 
@@ -93,12 +97,75 @@ A natural number greater than 1 that is not prime is called a composite number
 \pause\transdissolve\bigskip
 
 Examples of composite numbers: 8, 46, 99
+
+\pause\transdissolve\bigskip
+
+Prime factorization is the decomposition of a composite number into a product of primes
+
+\pause\transdissolve\bigskip
+
+For example, the prime factorization of 18 is $2 \times 3 \times 3$
 \end{frame}
 
-\section{Arithmetic Operations}
+\section{Operations on Numbers}
 \begin{frame}[fragile]
 \pause\transdissolve
 
+Addition ($x + y$)
+
+\pause\transdissolve\bigskip
+
+Subtraction ($x - y$)
+
+\pause\transdissolve\bigskip
+
+Multiplication ($x \times y$)
+
+\pause\transdissolve\bigskip
+
+Division ($x \div y$)
+
+\pause\transdissolve\bigskip
+
+Exponentiation ($x^y$)
+
+\pause\transdissolve\bigskip
+
+Order of operations: (P)arenthesis, (E)xponents, (M)ultiplication, (D)ivision, (A)ddition, (S)ubtraction
+
+\pause\transdissolve\bigskip
+
+For example, $(5 - 3) \times 2^3 + 24 \div 4 = 262$
+
+\pause\transdissolve\bigskip
+
+If $x$ and $d$ ($\neq 0$) are integers, then there exist unique integers $q$ (quotient) and $r$ (remainder), such that $x = q \times d + r$ and $0 \leq r \leq |d|$
+
+\pause\transdissolve\bigskip
+
+For example, $43 = 8 \times 5 + 3$
+\end{frame}
+
+\begin{frame}[fragile]
+\pause\transdissolve
+
+Laws of exponents
+\visible<2->{
+\tcbox[enhanced,drop shadow southwest,sharp corners,size=fbox,colback=white]{
+\begin{tabular}{ll}
+\textbf{Law} & \textbf{Example} \\ \hline \\
+$x^1=x$ & $6^1=6$ \\
+$x^0=1$ & $7^0=1$ \\
+$x^mx^n=x^{m+n}$ & $x^2x^3=x^5$ \\ 
+$x^m/x^n=x^{m-n}$ & $x^6/x^2=x^4$ \\ 
+$(x^m)^n=x^{mn}$ & $(x^2)^3=x^6$ \\
+$(xy)^n=x^ny^n$ & $(xy)^3=x^3y^3$ \\
+$(x/y)^n=x^n/y^n$ & $(x/y)^2=x^2/y^2$ \\
+$x^{-n}=1/x^n$ & $x^{-3}=1/x^3$ \\
+$x^{m/n}=\sqrt[n]{x^m}=(\sqrt[n]{x})^m$ & $x^{2/3}=\sqrt[3]{x^2}=(\sqrt[3]{x})^2$ \\
+\end{tabular}
+}
+}
 \end{frame}
 
 \section{Functions}
@@ -107,9 +174,16 @@ Examples of composite numbers: 8, 46, 99
 
 \end{frame}
 
-\section{Basic Probability and Statistics}
+\section{Basic Probability}
 \begin{frame}[fragile]
 \pause\transdissolve
+
+\end{frame}
+
+\section{Basic Statistics}
+\begin{frame}[fragile]
+\pause\transdissolve
+
 
 \end{frame}
 \end{document}
