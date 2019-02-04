@@ -11,40 +11,24 @@
 \titlepage
 \end{frame}
 
-\begin{frame}
-\frametitle{Outline}
-\tableofcontents
-\end{frame}
-
 \section{Programming in Python}
 \begin{frame}[fragile]
 \pause
 
-\begin{minipage}{200pt}
-Our programming environment
+Our programming environment consists of
 \begin{itemize}
+\pause
 \item Python programming language  
-\item IDLE, a simple integrated development environment (IDE)
+
+\pause
+\item Code, a simple editor
+
+\pause
 \item Terminal
-\item Input and output libraries from the authors of the IPP text \end{itemize}
-\end{minipage}%
-\begin{minipage}{100pt}
-\begin{center}
-\visible<2->{\includegraphics[scale=0.16]{figures/idle.png}}
 
-\smallskip
-
-\tiny IDLE
-
-\smallskip
-
-\visible<2->{\includegraphics[scale=0.16]{figures/terminal.png}}
-
-\smallskip
-
-\tiny Terminal
-\end{center}
-\end{minipage}
+\pause
+\item Input and output libraries from the authors of our text
+\end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -52,7 +36,10 @@ Our programming environment
 
 To program in Python
 \begin{itemize}
+\pause
 \item Compose a program by typing it into a file named, say, \lstinline{helloworld.py}
+
+\pause
 \item Run (or execute) the program by typing \lstinline{python3 helloworld.py} in the terminal window
 \end{itemize}
 
@@ -62,7 +49,7 @@ To program in Python
 	   node distance=2.0cm,on grid,>=stealth,
   	   block1/.style={rectangle,draw,align=center},
 	   block2/.style={rectangle,align=center}]
-\node [block1] (1) {editor \\ (IDLE)};
+\node [block1] (1) {editor \\ (Code)};
 \node [block2] (2) [right=of 1] {\lstinline$helloworld.py$};
 \node [block1] (3) [right=of 2] {compiler/ \\ interpreter \\ (\lstinline$python3$)};
 \node [block2] (4) [right=of 3] {\lstinline$Hello, World$};
@@ -81,31 +68,34 @@ To program in Python
 \tiny helloworld.py: Write 'Hello, World' to standard output.
 \end{framed}
 
-\begin{lstlisting}[language=Python,numbers=left]
+\begin{lstlisting}[language=Python,numbers=left,style=focusin]
 import stdio
 
 # Write 'Hello, World' to standard output.
 stdio.writeln('Hello, World')
 \end{lstlisting}
 
-\pause
+\pause\bigskip
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 helloworld.py 
 Hello, World
 \end{lstlisting}
 
-\pause
-\bigskip
+\pause\bigskip
 
 Anatomy of \lstinline{helloworld.py}
 \begin{itemize}
+\pause
 \item The first line is a statement that tells Python that you intend to use features defined in the \lstinline{stdio} module
  
+\pause
 \item The second line is a blank line; Python ignores blank lines; programmers use them to separate logical blocks of code
 
+\pause
 \item The third line is a comment; Python ignores comments; they are only for human readers of the program
 
+\pause
 \item The fourth line is a statement that calls the \lstinline{stdio.writeln()} function to write the given text to the terminal; This is called ``writing to standard output''
 \end{itemize}
 \end{frame}
@@ -155,10 +145,12 @@ Bird's-eye view of a Python program
 \end{scope}
 \end{tikzpicture}
 \end{center}
-\begin{itemize}
-\item Input types: command-line arguments, standard input, file input
-\item Output types: standard output, file output, graphical output, audio output
-\end{itemize}
+
+\pause
+Input types: command-line arguments, standard input, file input
+
+\pause\bigskip
+Output types: standard output, file output, graphical output, audio output
 \end{frame}
 
 \begin{frame}[fragile]
@@ -166,17 +158,17 @@ Bird's-eye view of a Python program
 
 Command-line arguments are the inputs we list after a program name when we run the program
 
-\begin{lstlisting}[language={}]
+\bigskip
+
+\begin{lstlisting}[language={},style=focusin]
 $ python3 my_program.py arg_1 arg_2 ... arg_n
 \end{lstlisting}
 
-\pause
-\bigskip
+\pause\bigskip
 
-The command-line arguments can be accessed within a program, such as \lstinline{my_program.py} above, via the array (aka list) \lstinline{sys.argv}\footnote{The \lstinline{sys} module provides access to variables and functions that interact with the Python interpreter}  as \lstinline{sys.argv[1]}, \lstinline{sys.argv[2]}, $\dots$, \lstinline{sys.argv[n]}
+The command-line arguments can be accessed within a program, such as \lstinline{my_program.py} above, via the array (aka list) \lstinline{sys.argv} as \lstinline{sys.argv[1]}, \lstinline{sys.argv[2]}, $\dots$, \lstinline{sys.argv[n]}
 
-\pause
-\bigskip
+\pause\bigskip
 
 The name of the program (\lstinline{my_program.py}) is stored in \lstinline{sys.argv[0]} 
 \end{frame}
@@ -188,7 +180,7 @@ The name of the program (\lstinline{my_program.py}) is stored in \lstinline{sys.
 \tiny useargument.py: Accept a name as a command-line argument. Write a message containing that name to standard output.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 import stdio
 import sys
 
@@ -197,20 +189,23 @@ stdio.write(sys.argv[1])
 stdio.writeln('. How are you?')
 \end{lstlisting}
 
-\pause
-\begin{lstlisting}[language={}]
+\pause\bigskip
+
+\begin{lstlisting}[language={},style=focusin]
 $ python3 useargument.py Alice
 Hi, Alice. How are you?
 \end{lstlisting}
 
-\pause
-\begin{lstlisting}[language={}]
+\pause\bigskip
+
+\begin{lstlisting}[language={},style=focusin]
 $ python3 useargument.py Bob
 Hi, Bob. How are you?
 \end{lstlisting}
 
-\pause
-\begin{lstlisting}[language={}]
+\pause\bigskip
+
+\begin{lstlisting}[language={},style=focusin]
 $ python3 useargument.py Carol
 Hi, Carol. How are you?
 \end{lstlisting}

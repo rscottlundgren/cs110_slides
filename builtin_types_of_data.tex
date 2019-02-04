@@ -11,24 +11,17 @@
 \titlepage
 \end{frame}
 
-\begin{frame}
-\frametitle{Outline}
-\tableofcontents
-\end{frame}
-
 \section{Types}
 \begin{frame}[fragile]
 \pause
 
 A data type is set of values and a set of operations defined on those values
 
-\pause
-\bigskip
+\pause\bigskip
 
 Python supports several built-in data types: \lstinline{int} (for integers), \lstinline{float} (for floating-point numbers), \lstinline{str} (for sequences of characters), \lstinline{bool} (for true/false values), and others
 
-\pause
-\bigskip
+\pause\bigskip
 
 Python also allows us to compose our own data types, ie, it supports object-oriented programming (OOP)
 \end{frame}
@@ -39,38 +32,31 @@ Python also allows us to compose our own data types, ie, it supports object-orie
 
 A literal is a Python-code representation of a data-type value
 
-\pause
-\bigskip
+\pause\bigskip
 
 For example, \lstinline{1234} and \lstinline{99} are \lstinline{int} literals; \lstinline{3.14159} and \lstinline{2.71828} are \lstinline{float} literals; \lstinline{True} and \lstinline{False} are \lstinline{bool} literals; \lstinline{'Hello, World'} is a \lstinline{str} literal
 
-\pause
-\bigskip
+\pause\bigskip
 
 An operator is a Python-code representation of a data-type operation
 
-\pause
-\bigskip
+\pause\bigskip
 
 For example, \lstinline{+} and \lstinline{*} represent addition and multiplication for integers and floating-point numbers; \lstinline{and}, \lstinline{or}, and \lstinline{not} represent boolean operations
 
-\pause
-\bigskip
+\pause\bigskip
 
 An identifier is a Python-code representation of a name
 
-\pause
-\bigskip
+\pause\bigskip
 
 Each identifier is a sequence of letters, digits, and underscores, the first of which is not a digit
 
-\pause
-\bigskip
+\pause\bigskip
 
 For example, \lstinline{abc}, \lstinline{Ab_}, \lstinline{abc123}, and \lstinline{a_b} are valid identifiers, but \lstinline{Ab*}, \lstinline{1abc}, and \lstinline{a+b} are not
 
-\pause
-\bigskip
+\pause\bigskip
 
 Certain keywords, such as \lstinline{and}, \lstinline{import}, \lstinline{in}, \lstinline{def}, \lstinline{while}, \lstinline{from}, and \lstinline{lambda}, are reserved, and we cannot use them as identifiers; others such as \lstinline{int}, \lstinline{sum}, \lstinline{min}, \lstinline{max}, \lstinline{len}, \lstinline{id}, \lstinline{file}, and \lstinline{input}, have special meaning, so it is best not to use them, either
 \end{frame}
@@ -80,40 +66,37 @@ Certain keywords, such as \lstinline{and}, \lstinline{import}, \lstinline{in}, \
 
 A variable is a name associated with a data-type value
 
-\pause
-\bigskip
+\pause\bigskip
 
 For example, the variable \lstinline{total} might represent the running total of a sequence of numbers
 
-\pause
-\bigskip
+\pause\bigskip
 
 A constant variable describes a variable whose associated data-type value does not change during the execution of a program
 
-\pause
-\bigskip
+\pause\bigskip
 
 For example, the variable \lstinline{SPEED_OF_LIGHT} might represent the known speed of light
 
-\pause
-\bigskip
+\pause\bigskip
 
 An expression is a combination of literals, variables, and operators that Python evaluates to produce a value
 
-\pause
-\bigskip
+\pause\bigskip
 
 For example, \lstinline{4 * (x - 3)} is an expression
 
-\pause
-\bigskip
+\pause\bigskip
 
 Python has a natural and well-defined set of precedence rules that fully specify the order in which the operators are applied in an expression
 \begin{itemize}
+\pause
 \item For arithmetic operations, multiplication and division are performed before addition and subtraction
 
+\pause
 \item When arithmetic operations have the same precedence, they are left associative, with the exception of the exponentiation operator \lstinline{**}, which is right associative
 
+\pause
 \item We can use parentheses to override precedence rules
 \end{itemize} 
 \end{frame}
@@ -122,31 +105,36 @@ Python has a natural and well-defined set of precedence rules that fully specify
 \pause
 
 We use an assignment statement to define a variable and associate it with a data-type value
-\begin{lstlisting}[language={}]
+
+\smallskip
+
+\begin{lstlisting}[language={},style=focusin]
 <variable> = <value>
 \end{lstlisting}
 
-\pause
-\bigskip
+\pause\bigskip
 
 For example, the statement 
-\begin{lstlisting}[language=Python]
+
+\smallskip
+
+\begin{lstlisting}[language=Python,style=focusin]
 a = 1234
 \end{lstlisting}
+
+\smallskip
+
 defines an identifier \lstinline{a} to be a new variable and associates it with the integer data-type value \lstinline{1234}
 
-\pause
-\bigskip
+\pause\bigskip
 
 To represent the absence of a value, we can use the value \lstinline{None}
 
-\pause
-\bigskip
+\pause\bigskip
 
 All data values in Python are represented by objects, each characterized by its identity (or memory address), type, and value
 
-\pause
-\bigskip
+\pause\bigskip
 
 For example, the following figure shows how the variable \lstinline{a} as defined above, might be represented in memory (left) and conceptually (right) 
 \begin{center}
@@ -157,7 +145,9 @@ For example, the following figure shows how the variable \lstinline{a} as define
 \begin{frame}[fragile]
 Consider the following code that exchanges \lstinline{a = 1234} and \lstinline{b = 99} (more precisely, the objects bound to \lstinline{a} and \lstinline{b})
 
-\begin{lstlisting}[language=Python]
+\smallskip
+
+\begin{lstlisting}[language=Python,style=focusin]
 t = a
 a = b
 b = t
@@ -178,43 +168,35 @@ The object-level trace for the code is shown below
 
 The \lstinline{str} data type represents strings (sequences of characters), for use in text processing
 
-\pause
-\bigskip
+\pause\bigskip
 
 A \lstinline{str} literal is specified by enclosing a sequence of characters in matching single quotes
 
-\pause
-\bigskip
+\pause\bigskip
 
 For example, \lstinline{'ab'} is a \lstinline{str} literal
 
-\pause
-\bigskip
+\pause\bigskip
 
 We can specify tab, newline, backslash, and single quote characters using escape sequences \lstinline{'\t'}, \lstinline{'\n'}, \lstinline{'\\'}, and \lstinline{'\''}, respectively
 
-\pause
-\bigskip
+\pause\bigskip
 
 We can concatenate two strings using the \lstinline{+} operator
 
-\pause
-\bigskip
+\pause\bigskip
 
 For example, the expression \lstinline{'123' + '456'} evaluates to the \lstinline{str} object whose value is \lstinline{'123456'}
 
-\pause
-\bigskip
+\pause\bigskip
 
 We can multiply a \lstinline{str} object $s$ by a number $n$ to obtain a \lstinline{str} object whose value is the string $s$ repeated $n$ times
 
-\pause
-\bigskip
+\pause\bigskip
 
 For example, the expressions \lstinline{3 * 'ab'} and \lstinline{'ab' * 3} evaluate to the \lstinline{str} object whose value is \lstinline{'ababab'}
 
-\pause
-\bigskip
+\pause\bigskip
 
 The \lstinline{str} data type
 
@@ -237,7 +219,7 @@ divides $2n$. The $i$th row in the output lists the values of $R(n)$ for $n=1,2,
 \dots,2^i-1$.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 import stdio
 
 ruler1 = '1'
@@ -250,9 +232,9 @@ stdio.writeln(ruler3)
 stdio.writeln(ruler4)
 \end{lstlisting}
 
-\pause
+\pause\bigskip
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 ruler.py 
 1
 1 2 1
@@ -266,18 +248,15 @@ $ python3 ruler.py
 
 The built-in function \lstinline{str()} can be used to convert numbers into strings
 
-\pause
-\bigskip
+\pause\bigskip
 
 For example, \lstinline{str(123)} evaluates to the \lstinline{str} object \lstinline{'123'}, and \lstinline{str(123.45)} evaluates to the \lstinline{str} object \lstinline{'123.45'}
 
-\pause
-\bigskip
+\pause\bigskip
 
 The built-in functions \lstinline{int()} and \lstinline{float()} can be used to convert strings to numbers
 
-\pause
-\bigskip
+\pause\bigskip
 
 For example, \lstinline{int('123')} is equivalent to the \lstinline{int} literal \lstinline{123}, and \lstinline{float('123.45')} is equivalent to the \lstinline{float} literal \lstinline{123.45}
 \end{frame}
@@ -288,18 +267,15 @@ For example, \lstinline{int('123')} is equivalent to the \lstinline{int} literal
 
 The \lstinline{int} data type represents integers or natural numbers
 
-\pause
-\bigskip
+\pause\bigskip
 
 We can specify an \lstinline{int} literal with a sequence of digits \lstinline{0} through \lstinline{9}
 
-\pause
-\bigskip
+\pause\bigskip
 
 Python includes operators for common arithmetic operations on integers, including \lstinline{+} for addition, \lstinline{-} for subtraction, \lstinline{*} for multiplication, \lstinline{//} for floored division, \lstinline{%} for remainder, and \lstinline{**} for exponentiation
 
-\pause
-\bigskip
+\pause\bigskip
 
 The \lstinline{int} data type
 \begin{center}
@@ -319,7 +295,7 @@ operators & \lstinline$+$ \lstinline$-$, \lstinline$+$, \lstinline$-$, \lstinlin
 \tiny intops.py: Accept two integers $a$ and $b$ as command-line arguments, perform integer operations on them, and write the results to standard output.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 import stdio
 import sys
 
@@ -339,9 +315,9 @@ stdio.writeln(str(a) + ' %  ' + str(b) + ' = ' + str(rem))
 stdio.writeln(str(a) + ' ** ' + str(b) + ' = ' + str(exp))
 \end{lstlisting}
 
-\pause
+\pause\bigskip
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 intops.py 1234 5
 1234 +  5 = 1239
 1234 -  5 = 1229
@@ -358,28 +334,23 @@ $ python3 intops.py 1234 5
 
 The \lstinline{float} data type represents floating-point numbers, for use in scientific and commercial applications
 
-\pause
-\bigskip
+\pause\bigskip
 
 We can specify a floating-point literal using a sequence of digits with a decimal point
 
-\pause
-\bigskip
+\pause\bigskip
 
 For example, \lstinline{3.14159} is a \lstinline{float} literal that represents an approximation to $\pi$
 
-\pause
-\bigskip
+\pause\bigskip
 
 Alternatively, we can use a notation similar to scientific notation: the literal \lstinline{6.022e23} represents the number $6.022 \times 10^{23}$
 
-\pause
-\bigskip
+\pause\bigskip
 
 Python includes operators for common arithmetic operations on floating-point numbers, including \lstinline{+} for addition, \lstinline{-} for subtraction, \lstinline{*} for multiplication, \lstinline{/} for division, and \lstinline{**} for exponentiation
 
-\pause
-\bigskip
+\pause\bigskip
 
 The \lstinline{float} data type
 \begin{center}
@@ -399,7 +370,7 @@ operators & \lstinline$+$ \lstinline$-$, \lstinline$+$, \lstinline$-$, \lstinlin
 \tiny floatops.py: Accept two floats $a$ and $b$ as command-line arguments, perform floating-point operations on them, and write the results to standard output.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 import stdio
 import sys
 
@@ -417,9 +388,9 @@ stdio.writeln(str(a) + ' /  ' + str(b) + ' = ' + str(quot))
 stdio.writeln(str(a) + ' ** ' + str(b) + ' = ' + str(exp))
 \end{lstlisting}
 
-\pause
+\pause\bigskip
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 floatops.py 123.456 78.9
 123.456 +  78.9 = 202.356
 123.456 -  78.9 = 44.556
@@ -436,7 +407,7 @@ $ python3 floatops.py 123.456 78.9
 \tiny quadratic.py: Accept floats $b$ and $c$ as command-line arguments, compute the the roots of the polynomial $x^2 + bx + c$ using the quadratic formula $x=(-b\pm \sqrt{b^2-4c})/2$, and write the roots to standard output.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 import math
 import stdio
 import sys
@@ -449,15 +420,15 @@ stdio.writeln((-b + d) / 2.0)
 stdio.writeln((-b - d) / 2.0)
 \end{lstlisting}
 
-\pause
+\pause\bigskip
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 quadratic.py -3.0 2.0
 2.0
 1.0
 \end{lstlisting}
 
-\pause
+\pause\bigskip
 
 \begin{lstlisting}[language={}]
 $ python3 quadratic.py -1.0 -1.0
@@ -465,9 +436,9 @@ $ python3 quadratic.py -1.0 -1.0
 -0.61803398875
 \end{lstlisting}
 
-\pause
+\pause\bigskip
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python quadratic.py 1.0 1.0
 Traceback (most recent call last):
   File "quadratic.py", line 17, in <module>
@@ -482,13 +453,11 @@ ValueError: math domain error
 
 The \lstinline{bool} data type represents truth values (true or false) from logic 
 
-\pause
-\bigskip
+\pause\bigskip
 
 The two \lstinline{bool} literals are represented as \lstinline{True} and \lstinline{False}
 
-\pause
-\bigskip
+\pause\bigskip
 
 The operators defined for \lstinline{bool} objects, namely \lstinline{and}, \lstinline{or}, and \lstinline{not}, are known as logical operators, and having the following truth tables
 
@@ -512,8 +481,7 @@ The operators defined for \lstinline{bool} objects, namely \lstinline{and}, \lst
 \end{tabular}
 \end{center}
 
-\pause
-\bigskip
+\pause\bigskip
 
 The \lstinline{bool} data type
 
@@ -532,13 +500,11 @@ operators & \lstinline$and$, \lstinline$or$, \lstinline$not$
 
 The comparison operators \lstinline{==}, \lstinline{!=}, \lstinline{<}, \lstinline{<=}, \lstinline{>}, \lstinline{>=}, \lstinline{is}, and \lstinline{is not} are defined for both integers and floats, and evaluate to a boolean result
 
-\pause
-\bigskip
+\pause\bigskip
 
 For example, \lstinline{2 == 2} evaluates to \lstinline{True}, \lstinline{2 == 3} evaluates to \lstinline{False}, \lstinline{2 < 13} evaluates to \lstinline{True} 
 
-\pause
-\bigskip
+\pause\bigskip
 
 Comparison operators have lower precedence than arithmetic operators and higher precedence than boolean operators, so you do not need the parentheses in an expression like \lstinline{(b * b - 4.0 * a * c) >= 0.0}
 \end{frame}
@@ -550,7 +516,7 @@ Comparison operators have lower precedence than arithmetic operators and higher 
 \tiny leapyear.py: Accept an integer $year$ as command-line argument, and write \lstinline{True} to standard output if $year$ is a leap year and \lstinline{False} otherwise. A year is a leap year if it is divisible by 4 \emph{and} not divisible by 100 \emph{or} is divisible by 400.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 import stdio
 import sys
 
@@ -561,23 +527,23 @@ isLeapYear = isLeapYear or  (year % 400 == 0)
 stdio.writeln(isLeapYear)
 \end{lstlisting}
 
-\pause
+\pause\bigskip
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 leapyear.py 2016
 True
 \end{lstlisting}
 
-\pause
+\pause\bigskip
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 leapyear.py 1900
 False
 \end{lstlisting}
 
-\pause
+\pause\bigskip
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 leapyear.py 2000
 True
 \end{lstlisting}
@@ -589,50 +555,45 @@ True
 
 Many programming tasks involve not only built-in operators, but also functions
 
-\pause
-\bigskip
+\pause\bigskip
 
 We consider three kinds of functions
 \begin{enumerate}
+\pause
 \item Built-in functions (such as \lstinline{int()}, \lstinline{float()}, and \lstinline{str()}) that you can use directly in any Python program
 
+\pause
 \item Standard functions (such as \lstinline{math.sqrt()}) that are defined in a Python standard module and are available in any program that imports the module
 
+\pause
 \item User-defined functions (such as \lstinline{stdio.write()} and \lstinline{stdio.writeln()}) that are defined in third-party modules
 \end{enumerate}
 
-\pause
-\bigskip
+\pause\bigskip
 
 We can call a function in our code by typing its name followed by arguments (which are just expressions), enclosed in parentheses and separated by commas
 
-\pause
-\bigskip
+\pause\bigskip
 
 For example, \lstinline{math.sqrt(2.0)} is a function call
 
-\pause
-\bigskip
+\pause\bigskip
 
 When Python executes your program, we say that it calls (or evaluates) the function with the given arguments.
 
-\pause
-\bigskip
+\pause\bigskip
 
 A function call that returns a value is an expression, so we can use it in the same way that we use variables and literals to build up more complicated expressions
 
-\pause
-\bigskip
+\pause\bigskip
 
 For example, \lstinline{math.sin(x) * math.cos(y)} is an expression
 
-\pause
-\bigskip
+\pause\bigskip
 
 A function call that does not return a value, but has a side effect, can only be used as a statement
 
-\pause
-\bigskip
+\pause\bigskip
 
 For example, \lstinline{stdio.writeln('Hello, World')} is a statement
 \end{frame}
@@ -642,8 +603,7 @@ For example, \lstinline{stdio.writeln('Hello, World')} is a statement
 
 We summarize functions in a table called the application programming interface (API)
 
-\pause
-\bigskip
+\pause\bigskip
 
 Built-in functions
 
@@ -656,8 +616,7 @@ $\dots$ & $\dots$
 \end{tabular} 
 \end{center}
 
-\pause
-\smallskip
+\pause\smallskip
 
 Standard functions from Python's \lstinline{math} and \lstinline{random} modules
 
@@ -677,8 +636,7 @@ $\dots$ & $\dots$
 \end{tabular} 
 \end{center}
 
-\pause
-\smallskip
+\pause\smallskip
 
 User-defined functions from the \lstinline{stdio} module
 
@@ -698,13 +656,11 @@ $\dots$ & $\dots$
 
 We can use built-in functions \lstinline{int()}, \lstinline{float()}, \lstinline{str()}, and \lstinline{round()} to explicitly convert from strings to integers or floats, and vice versa
 
-\pause
-\bigskip
+\pause\bigskip
 
 Python also supports implicit conversion (aka automatic promotion or coercion)
 
-\pause
-\bigskip
+\pause\bigskip
 
 For example, we can use an integer where a float is expected, as in \lstinline{math.sqrt(4)}, which evaluates to \lstinline{2.0}
 \end{frame}
@@ -715,7 +671,9 @@ For example, we can use an integer where a float is expected, as in \lstinline{m
 
 We can use Python as a calculator by the running command \lstinline{python3} in the terminal
 
-\begin{lstlisting}[language={}]
+\smallskip
+
+\begin{lstlisting}[language={},style=focusin]
 $ python3
 ...
 >>> 1 + 2
@@ -731,20 +689,20 @@ $ python3
 2.718281828459045
 \end{lstlisting}
 
-\pause
-\bigskip
+\pause\bigskip
 
-We can type \lstinline{dir()} without arguments to get a list of names in the current local scope; with an object argument, we get a list of valid attributes for that object
-\begin{lstlisting}[language={}]
->>> dir()
-['__builtins__', '__doc__', '__name__', '__package__', 'a', 'b', 'math']
+We can type \lstinline{dir(object)} to get a list of valid attributes for the object
+
+\smallskip
+
+\begin{lstlisting}[language={},style=focusin]
 >>> dir(math)
-['__doc__', '__name__', '__package__', 'acos', 'acosh', 'asin', 'asinh', 'atan', 
-'atan2', 'atanh', 'ceil', 'copysign', 'cos', 'cosh', 'degrees', 'e', 'erf', 
-'erfc', 'exp', 'expm1', 'fabs', 'factorial', 'floor', 'fmod', 'frexp', 'fsum', 
-'gamma', 'hypot', 'isinf', 'isnan', 'ldexp', 'lgamma', 'log', 'log10', 'log1p', 
-'modf', 'pi', 'pow', 'radians', 'sin', 'sinh', 'sqrt', 'tan', 'tanh', 'trunc']
->>> 
+['__doc__', '__name__', '__package__', 'acos', 'acosh', 'asin', 'asinh', 
+ 'atan', 'atan2', 'atanh', 'ceil', 'copysign', 'cos', 'cosh', 'degrees', 
+ 'e', 'erf', 'erfc', 'exp', 'expm1', 'fabs', 'factorial', 'floor', 
+ 'fmod', 'frexp', 'fsum', 'gamma', 'hypot', 'isinf', 'isnan', 'ldexp', 
+ 'lgamma', 'log', 'log10', 'log1p', 'modf', 'pi', 'pow', 'radians', 
+ 'sin', 'sinh', 'sqrt', 'tan', 'tanh', 'trunc']
 \end{lstlisting}
 \end{frame}
 
@@ -752,7 +710,10 @@ We can type \lstinline{dir()} without arguments to get a list of names in the cu
 \pause
 
 We can type \lstinline{help()} to get access to Python's extensive interactive documentation
-\begin{lstlisting}[language={}]
+
+\smallskip
+
+\begin{lstlisting}[language={},style=focusin]
 >>> help(math)
 
 Help on built-in module math:
@@ -778,11 +739,13 @@ DATA
     pi = 3.141592653589793
 \end{lstlisting}
 
-\pause
-\bigskip
+\pause\bigskip
 
 We can type \lstinline{exit()} to return to the terminal
-\begin{lstlisting}[language={}]
+
+\smallskip
+
+\begin{lstlisting}[language={},style=focusin]
 >>> exit()
 $
 \end{lstlisting}
