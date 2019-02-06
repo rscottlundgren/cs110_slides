@@ -154,10 +154,13 @@ We can represent any information as a sequence of numbers
 
 Examples
 \begin{itemize}
+\pause
 \item A picture can be represented as a sequence of pixels, each represented as three numbers giving the amount of red, green, and blue at that pixel
 
+\pause
 \item A sound can be represented as a temporal sequence of ``sound pressure levels'' in the air
 
+\pause
 \item A movie can be represented as a temporal sequence of individual pictures, usually 24 or 30 per second, along with a matching sound sequence
 \end{itemize}
 \end{frame}
@@ -245,17 +248,23 @@ The minterm expansion algorithm, due to Claude Shannon, provides a systematic ap
 
 Minterm expansion algorithm
 \begin{enumerate}
+\pause
 \item Write down the truth table for the boolean function under consideration
 
+\pause
 \item Delete all rows from the truth table where the value of the function is 0
 
+\pause
 \item For each remaining row, create something called a ``minterm'' as follows
 \begin{enumerate}[a.]
+\pause
 \item For each variable that has a 1 in that row, write the name of the variable. If the input variable is 0 in that row, write the variable with a negation symbol to \lstinline{NOT} it
 
+\pause
 \item Now \lstinline{AND} all of these variables together
 \end{enumerate}
 
+\pause
 \item Combine all of the minterms for the rows using \lstinline{OR}
 \end{enumerate}
 \end{frame}
@@ -387,7 +396,11 @@ $x$ & $y$ & $c_{in}$ & $z$ & $c_{out}$ \\ \hline
 \pause
 \bigskip
 
-The minterm expansion principle applied to the truth table for the FA circut yields the following boolean functions $$z = \bar{x}\bar{y}c_{in}+\bar{x}y\bar{c}_{in}+x\bar{y}\bar{c}_{in}+xyc_{in}$$ $$c_{out} = \bar{x}yc_{in}+x\bar{y}c_{in}+xy\bar{c}_{in}+xyc_{in}$$
+The minterm expansion principle applied to the truth table for the FA circut yields the following boolean functions 
+\pause
+$$z = \bar{x}\bar{y}c_{in}+\bar{x}y\bar{c}_{in}+x\bar{y}\bar{c}_{in}+xyc_{in}$$ 
+\pause
+$$c_{out} = \bar{x}yc_{in}+x\bar{y}c_{in}+xy\bar{c}_{in}+xyc_{in}$$
 
 \end{frame}
 
@@ -517,14 +530,19 @@ For example, the instruction \lstinline{add 3 0 2} (meaning add the contents of 
 
 Our computer operates by repeatedly performing the following procedure
 \begin{enumerate}
+\pause
 \item Send the address in the program counter (commonly called the PC) to the memory, asking it to read that location
 
+\pause
 \item Load the value from memory into the instruction register
 
+\pause
 \item Decode the instruction register to determine what instruction to execute and which registers to use
 
+\pause
 \item Execute the requested instruction, which involves reading operands from registers, performing arithmetic, and sending the results back to the destination register
 
+\pause
 \item Increment PC so that it contains the address of the next instruction in memory
 \end{enumerate}
 
