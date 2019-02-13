@@ -11,21 +11,15 @@
 \titlepage
 \end{frame}
 
-\begin{frame}
-\frametitle{Outline}
-\tableofcontents
-\end{frame}
-
 \section{If Statement}
 \begin{frame}[fragile]
 \pause
 
 Most computations require different actions for different inputs and one way to express these differences in Python is using the \lstinline{if} statement
 
-\pause
-\smallskip
+\pause\bigskip
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 if <boolean expression>:
     <statement>
     <statement>
@@ -53,7 +47,7 @@ else:
 \tiny flip.py: Simulate a coin flip by writing 'Heads' or 'Tails' to standard output.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 import random
 import stdio
 
@@ -63,23 +57,23 @@ else:
     stdio.writeln('Tails')
 \end{lstlisting}
 
-\pause
+\pause\bigskip
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 flip.py 
 Tails
 \end{lstlisting}
 
-\pause
+\pause\bigskip
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 flip.py 
 Heads
 \end{lstlisting}
 
-\pause
+\pause\bigskip
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 flip.py 
 Heads
 \end{lstlisting}
@@ -91,10 +85,9 @@ Heads
 
 Many computations are inherently repetitive and the basic Python construct for handling such computations is the \lstinline{while} statement
 
-\pause
-\smallskip
+\pause\bigskip
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 while <boolean expression>:
     <statement>
     <statement>
@@ -109,7 +102,7 @@ while <boolean expression>:
 \tiny tenhellos.py: Write 10 Hellos to standard output.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 import stdio
 
 stdio.writeln('1st Hello')
@@ -121,10 +114,10 @@ while i <= 10:
     i = i + 1
 \end{lstlisting}
 
-\pause
+\pause\bigskip
 
 \begin{minipage}{150pt}
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 tenhellos.py 
 1st Hello
 2nd Hello
@@ -140,7 +133,7 @@ $ python3 tenhellos.py
 \end{minipage}\hfill
 \begin{minipage}{100pt}
 Variable trace
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 i     output
 ----------------
 
@@ -163,7 +156,7 @@ i     output
 \tiny powersoftwo.py: Accept positive integer $n$ as a command-line argument. Write to standard output a table showing the first $n$ powers of two.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 import stdio
 import sys
 
@@ -176,10 +169,10 @@ while i <= n:
     i = i + 1
 \end{lstlisting}
 
-\pause
+\pause\bigskip
 
 \begin{minipage}{150pt}
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 powersoftwo.py 8
 0 1
 1 2
@@ -194,7 +187,7 @@ $ python3 powersoftwo.py 8
 \end{minipage}\hfill
 \begin{minipage}{100pt}
 Variable trace (\lstinline{n = 8})
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 power    i    output
 --------------------
 1        0    0 1
@@ -221,23 +214,27 @@ Modifying a variable is something that we do so often that Python provides short
 
 The most common practice is to abbreviate an assignment statement of the form 
 
-\begin{lstlisting}[language=Python]
+\smallskip
+
+\begin{lstlisting}[language=Python,style=focusin]
 i = i + 1
 \end{lstlisting}
 
+\smallskip
+
 with the shorthand notation
 
-\begin{lstlisting}[language=Python]
+\smallskip
+
+\begin{lstlisting}[language=Python,style=focusin]
 i += 1
 \end{lstlisting}
 
-\pause
-\bigskip
+\pause\bigskip
 
 The same notation works for other binary operators, including \lstinline{-}, \lstinline{*}, and \lstinline{/}
 
-\pause
-\bigskip
+\pause\bigskip
 
 The scope of a variable is part of the program where it is defined, ie, statements that follow the definition in the same block (marked by indentation level)
 \end{frame}
@@ -248,36 +245,34 @@ The scope of a variable is part of the program where it is defined, ie, statemen
 
 The \lstinline{for} statement provides a more compact notation for carrying out repeated computations
 
-\pause
-\smallskip
+\pause\bigskip
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 for <variable> in <iterable object>:
     <statement>
     <statement>
     ...
 \end{lstlisting}
 
-\pause
-\bigskip
+\pause\bigskip
 
 The most commonly used iterable objects are the lists containing arithmetic progressions of integers, returned by the built-in function \lstinline{range()}
 
-\pause
-\bigskip
+\pause\bigskip
 
 The call \lstinline{range(start, stop[, step])} returns a list starting at \lstinline{start}, ending just before \lstinline{stop}, and in increments (or decrements) given by the optional \lstinline{step} argument, which defaults to 1
 
-\pause
-\bigskip
+\pause\bigskip
 
 The call \lstinline{range(stop)} is shorthand for \lstinline{range(0, stop)}
 
-\pause
-\bigskip
+\pause\bigskip
 
 For example
-\begin{lstlisting}[language={}]
+
+\smallskip
+
+\begin{lstlisting}[language={},style=focusin]
 range(8, 0, -2) = [8, 6, 4, 2]
 
 range(3, 9)     = [3, 4, 5, 6, 7, 8]
@@ -291,7 +286,9 @@ range(5)        = [0, 1, 2, 3, 4]
 
 The \lstinline{tenhellos.py} program can be written using a \lstinline{for} statement as follows
 
-\begin{lstlisting}[language=Python]
+\smallskip
+
+\begin{lstlisting}[language=Python,style=focusin]
 import stdio
 
 stdio.writeln('1st Hello')
@@ -301,25 +298,30 @@ for i in range(4, 11):
     stdio.writeln(str(i) + 'th Hello')
 \end{lstlisting}
 
-\pause
-\bigskip
+\pause\bigskip
 
 Strings are iterable objects, so its characters can be enumerated using a for loop 
 
-\pause
-\bigskip
+\pause\bigskip
 
 For example, the following code
-\begin{lstlisting}[language=Python]
+
+\smallskip
+
+\begin{lstlisting}[language=Python,style=focusin]
 import stdio
 
 for c in 'AGCT':
     stdio.writeln(c)
 \end{lstlisting}
 
+\smallskip
+
 produces the output
 
-\begin{lstlisting}[language={}]
+\smallskip
+
+\begin{lstlisting}[language={},style=focusin]
 A
 G
 C
@@ -333,13 +335,11 @@ T
 
 The \lstinline{if}, \lstinline{while}, and \lstinline{for} statements, collectively called control-flow statements, have the same status as assignment statements or any other statements in Python
 
-\pause
-\bigskip
+\pause\bigskip
 
 As a result, we can use a control-flow statement whenever a statement is called for
 
-\pause
-\bigskip
+\pause\bigskip
 
 In particular, we can nest one or more of the control-flow statements in the body of another
 \end{frame}
@@ -351,7 +351,7 @@ In particular, we can nest one or more of the control-flow statements in the bod
 \tiny divisorpattern.py: Accept integer command-line argument $n$. Write to standard output an $n$-by-$n$ table with an asterisk in row $i$ and column $j$ if either $i$ divides $j$ or $j$ divides $i$.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 import stdio
 import sys
 
@@ -365,10 +365,10 @@ for i in range(1, n + 1):
     stdio.writeln(i)
 \end{lstlisting}
 
-\pause
+\pause\bigskip
 
 \begin{minipage}{150pt}
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 divisorpattern.py 3
 * * * 1
 * *   2
@@ -377,7 +377,7 @@ $ python3 divisorpattern.py 3
 \end{minipage}\hfill
 \begin{minipage}{100pt}
 Variable trace (\lstinline{n = 3})
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 i    j    output
 ----------------
 1    1    '* '
@@ -396,7 +396,7 @@ i    j    output
 \begin{frame}[fragile]
 \pause
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 divisorpattern.py 10
 * * * * * * * * * * 1
 * *   *   *   *   * 2
@@ -419,7 +419,7 @@ $ python3 divisorpattern.py 10
 \tiny harmonic.py: Accept integer $n$ as a command-line argument. Write to standard output the $n$th harmonic number $H_n$, computed as $H_n=1+1/2+1/3+\cdots+1/n$. Note that $H_n \approx \ln(n) + 0.57721$ for large $n$.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 import stdio
 import sys
 
@@ -430,23 +430,23 @@ for i in range(1, n + 1):
 stdio.writeln(total)
 \end{lstlisting}
 
-\pause
+\pause\bigskip
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 harmonic.py 2
 1.5
 \end{lstlisting}
 
-\pause
+\pause\bigskip
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 harmonic.py 10
 2.92896825397
 \end{lstlisting}
 
-\pause
+\pause\bigskip
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 harmonic.py 10000
 9.78760603604
 \end{lstlisting}
@@ -460,7 +460,7 @@ $ python3 harmonic.py 10000
 \end{framed}
 
 \begin{minipage}{150pt}
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 import stdio
 import sys
 
@@ -476,16 +476,16 @@ stdio.writeln(t)
 \hfill \visible<2->{\includegraphics[scale=0.4]{figures/sqrt.pdf}}
 \end{minipage}
 
-\pause
+\pause\bigskip
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 sqrt.py 2.0
 1.41421356237
 \end{lstlisting}
 
-\pause
+\pause\bigskip
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 sqrt.py 2544545
 1595.16300108
 \end{lstlisting}
@@ -499,7 +499,7 @@ $ python3 sqrt.py 2544545
 \end{framed}
 
 \begin{minipage}{150pt}
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 import sys
 import stdio
 
@@ -522,23 +522,23 @@ stdio.writeln()
 \hfill \visible<2->{\includegraphics[scale=0.4]{figures/binary.pdf}}
 \end{minipage}
 
-\pause
+\pause\bigskip
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 binary.py 19
 10011
 \end{lstlisting}
 
-\pause
+\pause\bigskip
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 binary.py 255
 11111111
 \end{lstlisting}
 
-\pause
+\pause\bigskip
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 binary.py 512
 1000000000
 \end{lstlisting}
@@ -552,7 +552,7 @@ $ python3 binary.py 512
 \end{framed}
 
 \begin{minipage}{200pt}
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 import random
 import stdio
 import sys
@@ -580,9 +580,9 @@ stdio.writeln('Avg # bets: ' + str(bets // trials))
 \hfill \visible<2->{\includegraphics[scale=0.3]{figures/gambler.pdf}}
 \end{minipage}
 
-\pause
+\pause\bigskip
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 gambler.py 50 250 100
 24% wins
 Avg # bets: 12548
@@ -596,7 +596,7 @@ Avg # bets: 12548
 \tiny factors.py: Accept integer $n$ as a command-line argument. Write to standard output the prime factors of $n$.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 import stdio
 import sys
 
@@ -612,16 +612,16 @@ if n > 1:
 stdio.writeln()
 \end{lstlisting}
 
-\pause
+\pause\bigskip
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 factors.py 3757208
 2 2 2 7 13 13 397
 \end{lstlisting}
 
-\pause
+\pause\bigskip
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 factors.py 287994837222311
 17 1739347 9739789
 \end{lstlisting}
@@ -633,26 +633,33 @@ $ python3 factors.py 287994837222311
 
 The conditional expression supports an alternate form of an \lstinline$if-else$ statement
  
-\begin{lstlisting}[language={}]
+\smallskip
+
+\begin{lstlisting}[language={},style=focusin]
 <expression> if <boolean expression> else <expression>
 \end{lstlisting}
 
+\pause\bigskip
+
 For example, the following code assigns \lstinline{'Heads'} or \lstinline{'Tails'} to the variable \lstinline{flip}, each with probability $1/2$
 
-\begin{lstlisting}[language=Java]
+\smallskip
+
+\begin{lstlisting}[language=Python,style=focusin]
 flip = 'Heads' if random.random() < 0.5 else 'Tails'
 \end{lstlisting}
 
-\pause
-\bigskip
+\pause\bigskip
 
 The \lstinline{break} statement immediately exits a loop without letting it to run to completion
 
-\pause
-\bigskip
+\pause\bigskip
 
 For example, the following code tests and prints if a number $N$ is prime or not
-\begin{lstlisting}[language=Python]
+
+\smallskip
+
+\begin{lstlisting}[language=Python,style=focusin]
 i = 2
 while i <= N // i:
     if N % i == 0:
@@ -661,16 +668,17 @@ while i <= N // i:
 stdio.writeln(str(N) + (' is ' if i > N // i else ' is not ') + 'prime')
 \end{lstlisting}
 
-\pause
-\bigskip
+\pause\bigskip
 
 The \lstinline{continue} statement skips to next iteration of a loop
 
-\pause
-\bigskip
+\pause\bigskip
 
 For example, the following code iterates over the characters in the English alphabet and prints only the consonants
-\begin{lstlisting}[language=Python]
+
+\smallskip
+
+\begin{lstlisting}[language=Python,style=focusin]
 for c in 'abcdefghijklmnopqrstuvwxyz':
     if c == 'a' or c == 'e' or c == 'i' or c == 'o' or c == 'u':
         continue
