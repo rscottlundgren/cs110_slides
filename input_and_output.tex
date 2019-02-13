@@ -11,11 +11,6 @@
 \titlepage
 \end{frame}
 
-\begin{frame}
-\frametitle{Outline}
-\tableofcontents
-\end{frame}
-
 \section{Input and Output}
 \begin{frame}[fragile]
 \pause
@@ -35,26 +30,36 @@
 \end{tikzpicture}
 \end{center}
 
-\pause
-\bigskip
+\pause\bigskip
 
 Input
 \begin{itemize}
+\pause
 \item Command-line input: The mechanism we have been using to provide
 input values to our programs; we list them after the program name and access them using the \lstinline{sys.argv} list within the program
+
+\pause
 \item Standard input: Makes it possible to write programs that
 process arbitrary amounts of input and to interact with the programs
+
+\pause
 \item File input: Makes it possible to write programs that process multiple input streams
 \end{itemize}
 
-\pause
-\bigskip
+\pause\bigskip
 
 Output
 \begin{itemize}
+\pause
 \item Standard output: The mechanism we have been using to print output from our programs to the terminal window; we use methods such as \lstinline{stdio.write()} and \lstinline{stdio.writeln()}
+
+\pause
 \item Standard drawing: Makes it possible to work with graphical representations of images
+
+\pause
 \item Standard audio: Makes it possible to write programs that create sound
+
+\pause
 \item File output: Makes it possible to write programs that process multiple output streams
 \end{itemize}
 \end{frame}
@@ -66,7 +71,7 @@ Output
 \tiny randomseq.py: Accept an integer command-line argument $n$. Write to standard output a random sequence of $n$ floats in the range $[0, 1)$.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 import random
 import stdio
 import sys
@@ -76,9 +81,9 @@ for i in range(n):
     stdio.writeln(random.random())
 \end{lstlisting}
 
-\pause
+\pause\bigskip
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 randomseq.py 10
 0.534835410847
 0.249397020334
@@ -107,37 +112,48 @@ function & description \\ \hline
 \end{tabular} 
 \end{center}
 
-\pause
-\bigskip
+\pause\bigskip
 
 Formatted writing: In its simplest form, \lstinline{stdio.writef()} takes two arguments; the first argument is a format string that describes how to convert the second argument into a string for output
 
-\pause
-\bigskip
+\pause\bigskip
 
 For example
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 stdio.writef('pi is approximately %.2f.\n', math.pi)
 \end{lstlisting}
+
+\smallskip
+
 writes the output
-\begin{lstlisting}[language={}]
+
+\smallskip
+
+\begin{lstlisting}[language={},style=focusin]
 pi is approximately 3.14.
 \end{lstlisting}
 
-\pause
-\bigskip
+\pause\bigskip
 
 The \lstinline{stdio.writef()} function can take more than two arguments, in which case, the format string will have a format specifier for each additional argument, perhaps separated by other characters to pass through to the output
 
-\pause
-\bigskip
+\pause\bigskip
 
 For example
-\begin{lstlisting}[language=Python]
+
+\smallskip
+
+\begin{lstlisting}[language=Python,style=focusin]
 stdio.writef('The %dth decimal digit of %.10f is %d.\n', 5, math.pi, 9)
 \end{lstlisting}
+
+\smallskip
+
 writes the output
-\begin{lstlisting}[language={}]
+
+\smallskip
+
+\begin{lstlisting}[language={},style=focusin]
 The 5th decimal digit of 3.1415926536 is 9.
 \end{lstlisting}
 \end{frame}
@@ -148,18 +164,15 @@ The 5th decimal digit of 3.1415926536 is 9.
 
 The standard input stream is an abstract data stream that may be empty or may contain a sequence of values separated by whitespace 
 
-\pause
-\bigskip
+\pause\bigskip
 
 The end of the input stream is marked by the end-of-file (EOF) character, specified using \lstinline$<ctrl-d>$ or \lstinline$<ctrl-z>$ 
 
-\pause
-\bigskip
+\pause\bigskip
 
 The \lstinline{stdio} module also supports reading from standard input stream
 
-\pause
-\bigskip
+\pause\bigskip
 
 A program that reads from standard input stream consumes the values, ie, it cannot back up and read them again
 \end{frame}
@@ -195,7 +208,7 @@ function & description \\ \hline
 \tiny twentyquestions.py: Generate a random integer. Repeatedly read user guesses from standard input. Write 'Too low' or 'Too high' to standard output, as appropriate, in response to each guess. Write 'You win!' and exit when the user's guess is correct.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 import random
 import stdio
 
@@ -215,16 +228,14 @@ while guess != secret:
         stdio.writeln('You win!')
 \end{lstlisting}
 
-\pause
+\pause\bigskip
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 twentyquestions.py
 I am thinking of a secret number between 1 and 1000000
 What is your guess? 500000
 Too low
 What is your guess? 750000     
-Too high
-What is your guess? 625000
 Too high
 ...
 What is your guess? 501686
@@ -239,7 +250,7 @@ You win!
 \tiny average.py: Read floats from the standard input stream until end-of-file. Write to standard output the average of those floats.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 import stdio
 
 total = 0.0
@@ -252,9 +263,9 @@ avg = total / count
 stdio.writeln('Average is ' + str(avg))
 \end{lstlisting}
 
-\pause
+\pause\bigskip
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 average.py
 10.0 5.0 6.0
 3.0
@@ -270,15 +281,19 @@ Average is 10.5
 
 Adding the directive \lstinline{>} to the command that invokes a program redirects its standard output to a file
 
-\pause
-\bigskip
+\pause\bigskip
 
 For example
-\begin{lstlisting}[language={}]
+
+\smallskip
+
+\begin{lstlisting}[language={},style=focusin]
 $ python3 randomseq.py 1000 > data.txt
 \end{lstlisting}
 
-\begin{lstlisting}[language={}]
+\pause\smallskip
+
+\begin{lstlisting}[language={},style=focusin]
 $ head -5 data.txt 
 0.12490675039
 0.509198876091
@@ -287,37 +302,39 @@ $ head -5 data.txt
 0.296035502122
 \end{lstlisting}
 
-\pause
-\bigskip
+\pause\bigskip
 
 Adding the directive \lstinline{<} to the command that invokes a program redirects standard input so that \lstinline{stdio} reads data from a file instead of the terminal
 
-\pause
-\bigskip
+\pause\bigskip
 
 For example
-\begin{lstlisting}[language={}]
+
+\smallskip
+
+\begin{lstlisting}[language={},style=focusin]
 $ python3 average.py < data.txt
 Average is 0.499379975213
 \end{lstlisting}
 
-\pause
-\bigskip
+\pause\bigskip
 
 The standard output of one program can be mapped to the standard input stream of another program using the (pipe) directive \lstinline{|}
 
-\pause
-\bigskip
+\pause\bigskip
 
 For example
-\begin{lstlisting}[language={}]
+
+\smallskip
+
+\begin{lstlisting}[language={},style=focusin]
 $ python3 randomseq.py 1000 | python3 average.py 
 Average is 0.501346917807
 \end{lstlisting}
 
-\pause
+\pause\smallskip
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 randomseq.py 1000 | python3 average.py | wc
       1       3      26
 \end{lstlisting}
@@ -330,7 +347,7 @@ $ python3 randomseq.py 1000 | python3 average.py | wc
 \tiny rangefilter.py: Accept integer command-line arguments $lo$ and $hi$. Read integers from standard input until end-of-file. Write to standard output each of those integers that is in the range $lo$ to $hi$, inclusive.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 import stdio
 import sys
 
@@ -343,26 +360,27 @@ while not stdio.isEmpty():
 stdio.writeln()
 \end{lstlisting}
 
-\pause
+\pause\bigskip
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 rangefilter.py 100 400
 358 1330 55 165 689 1014 3066 387 575 843 203 48 292 877 65 998
 358 165 387 203 292
 <ctrl-d>
 \end{lstlisting}
 
-\pause
+\pause\bigskip
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ seq 1 100 | shuf | python3 rangefilter.py 25 75
-50 41 45 70 32 34 55 26 27 51 71 58 44 59 39 72 66 35 25 29 40 43 73 64 56 31 38 
-65 69 46 54 30 62 67 57 48 68 74 36 42 37 52 53 33 75 47 28 60 63 49 61 
+50 41 45 70 32 34 55 26 27 51 71 58 44 59 39 72 66 35 25 29 40 43 73 64 
+56 31 38 65 69 46 54 30 62 67 57 48 68 74 36 42 37 52 53 33 75 47 28 60 
+63 49 61 
 \end{lstlisting}
 
-\pause
+\pause\bigskip
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ seq 1 1000 | shuf | python3 rangefilter.py 250 750 | wc -w
 501
 \end{lstlisting}
@@ -374,8 +392,7 @@ $ seq 1 1000 | shuf | python3 rangefilter.py 250 750 | wc -w
 
 The \lstinline{stddraw} module provides an abstraction for producing drawings as output
 
-\pause
-\bigskip
+\pause\bigskip
 
 API for the \lstinline{stddraw} module (drawing functions)
 \begin{center}
@@ -424,7 +441,7 @@ function call & description \\ \hline
 \tiny plotfilter.py: Read $x$ and $y$ scales from standard input, and configure standard draw accordingly. Then read points from standard input until end-of-file, and plot them on standard draw.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 import stddraw
 import stdio
 
@@ -445,7 +462,7 @@ stddraw.show()
 \pause
 
 \begin{minipage}{150pt}
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ head -5 usa.txt 
 669905.0 247205.0 1244962.0 500000.0
  1097038.8890   245552.7780
@@ -456,12 +473,12 @@ $ head -5 usa.txt
 
 \pause
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 plotfilter.py < usa.txt
 \end{lstlisting}
 \end{minipage}%
 \begin{minipage}{150pt}
-\hfill \visible<4->{\includegraphics[scale=0.18]{figures/usa.png}}
+\hfill \visible<4->{\includegraphics[scale=0.17]{figures/usa.png}}
 \end{minipage}
 \end{frame}
 
@@ -472,7 +489,7 @@ $ python3 plotfilter.py < usa.txt
 \tiny bouncingball.py: Draw a bouncing ball to standard draw.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 import stddraw
 
 RADIUS = .05
@@ -498,12 +515,12 @@ while True:
 \pause
 
 \begin{minipage}{150pt}
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 bouncingball.py
 \end{lstlisting}
 \end{minipage}%
 \begin{minipage}{150pt}
-\hfill \visible<3->{\includegraphics[scale=0.13]{figures/bouncing_ball.png}}
+\hfill \visible<3->{\includegraphics[scale=0.11]{figures/bouncing_ball.png}}
 \end{minipage}
 \end{frame}
 
@@ -513,18 +530,15 @@ $ python3 bouncingball.py
 
 To obtain a digital sound, we sample a continuous sound signal (represented by a sine curve) at regular intervals --- a widely used sampling rate is 44,100 samples per second
 
-\pause
-\bigskip
+\pause\bigskip
 
 A digital sound is thus a list of real numbers between $-1$ and $+1$
 
-\pause
-\bigskip
+\pause\bigskip
 
 The \lstinline{stdaudio} module is an abstraction for playing, manipulating, and synthesizing digital sounds
 
-\pause
-\bigskip
+\pause\bigskip
 
 API for the \lstinline{stdaudio} module
 \begin{center}
@@ -546,7 +560,7 @@ function call & description \\ \hline
 \tiny playthattune.py: Read sound samples from standard input, and play the sound to standard audio.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 import math
 import stdarray
 import stdaudio
@@ -567,10 +581,10 @@ while not stdio.isEmpty():
 stdaudio.wait()
 \end{lstlisting}
 
-\pause
+\pause\bigskip
 
 \begin{minipage}{150pt}
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ head -5 elise.txt
 7 .125 
 6 .125 
@@ -581,7 +595,7 @@ $ head -5 elise.txt
 
 \pause
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 playthattune.py < elise.txt
 \end{lstlisting}
 \end{minipage}%
