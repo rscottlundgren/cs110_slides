@@ -11,29 +11,21 @@
 \titlepage
 \end{frame}
 
-\begin{frame}
-\frametitle{Outline}
-\tableofcontents
-\end{frame}
-
 \section{Random Surfer Model}
 \begin{frame}[fragile]
 \pause
 
 The random surfer model is a simple model of the world-wide web (www) that has proven to be a particularly useful approach to understand some of its properties
 
-\pause
-\bigskip
+\pause\bigskip
 
 The www is modeled as a fixed set of pages, with each page containing a fixed set of links (called hyperlinks), and each link is a reference to some other page; such an abstraction is called a graph in mathematics
 
-\pause
-\bigskip
+\pause\bigskip
 
 We are interested in what happens to a person (a random surfer) who randomly moves from page to page according to the 90-10 rule: 90\% of the time the random surfer clicks a random link on the current page and 10\% of the time the random surfer goes directly to a random page by typing a page name into the address bar
 
-\pause
-\bigskip
+\pause\bigskip
 
 Page rank is the probability that the random surfer lands on a page
 \end{frame}
@@ -48,12 +40,13 @@ A tiny web of five pages
 \visible<2->{\includegraphics[scale=0.6]{figures/tiny_www.pdf}}
 \end{center}
 
-\pause
-\bigskip
+\pause\bigskip
 
 and a file \lstinline{tiny.txt} that encodes it
- 
-\begin{lstlisting}[language={}]
+
+\smallskip
+
+\begin{lstlisting}[language={},style=focusin]
 $ more tiny.txt
 5
 0 1
@@ -72,8 +65,7 @@ $ more tiny.txt
 
 The transition matrix $P$ for a www with $N$ pages is an $N$-by-$N$ matrix such that the entry $P_{ij}$, ie, the entry in row $i$ and column $j$, is the probability that the random surfer moves to page $j$ when on page $i$
 
-\pause
-\bigskip
+\pause\bigskip
 
 For example, a transition matrix for our tiny five-page web is
 \[
@@ -93,7 +85,7 @@ P = \begin{bmatrix}
 \tiny transition.py: Read links from standard input and write the corresponding transition matrix to standard output. First, process the input to count the outlinks from each page. Then apply the 90-10 rule to compute the transition matrix. Assume that there are no pages that have no outlinks in the input.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 import stdarray
 import stdio
 
@@ -113,9 +105,9 @@ for i in range(n):
     stdio.writeln()
 \end{lstlisting}
 
-\pause
+\pause\bigskip
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 transition.py < tiny.txt
 5 5
  0.02000 0.92000 0.02000 0.02000 0.02000
@@ -135,7 +127,7 @@ $ python3 transition.py < tiny.txt
 \end{framed}
 
 \begin{minipage}{170pt}
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 import random
 import stdarray
 import stdio
@@ -174,21 +166,21 @@ stdio.writeln()
 \begin{frame}[fragile]
 \pause
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 transition.py < tiny.txt | python3 randomsurfer.py 100
  0.26000 0.27000 0.18000 0.26000 0.03000
 \end{lstlisting}
 
-\pause
+\pause\bigskip
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 transition.py < tiny.txt | python3 randomsurfer.py 10000
  0.27410 0.26500 0.14570 0.24890 0.06630
 \end{lstlisting}
 
-\pause
+\pause\bigskip
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 transition.py < tiny.txt | python3 randomsurfer.py 10000000
  0.27308 0.26568 0.14616 0.24719 0.06789
 \end{lstlisting}
@@ -200,18 +192,15 @@ $ python3 transition.py < tiny.txt | python3 randomsurfer.py 10000000
 
 A Markov chain is a random process that describes behavior similar to the random surfer
 
-\pause
-\bigskip
+\pause\bigskip
 
 An useful property of Markov chains is that of mixing, which states that the random surfer could start anywhere, since the probability that the surfer eventually winds up on any particular page is the same for all starting pages
 
-\pause
-\bigskip
+\pause\bigskip
 
 Using the power method we can obtain the probability $P^2_{ij}$ that the random surfer will move from page $i$ to page $j$ in two moves by squaring the transition matrix $P$ $$P^2_{ij} = P_{i:} \cdot P_{:j}$$ 
 
-\pause
-\bigskip
+\pause\bigskip
 
 For example, for our tiny web, we have
 \begin{align*}
@@ -248,18 +237,15 @@ P^2_{ij} &=
 
 In general, the probability that the random surfer will move from page $i$ to page $j$ in $t$ moves is obtained by computing $P^t$ 
 
-\pause
-\bigskip 
+\pause\bigskip 
 
 Unfortunately, matrix-matrix multiplication is expensive
 
-\pause
-\bigskip
+\pause\bigskip
 
 Fortunately, because of the mixing property, we can make do with relatively inexpensive vector-matrix multiplications
 
-\pause
-\bigskip
+\pause\bigskip
 
 For example, with our tiny web, if we start with the vector 
 \[
@@ -311,8 +297,7 @@ Now, multiplying the above vector by the transition matrix $P$ again gives the v
 \]
 which contains the probabilities that the surfer winds up on each of the pages after two steps
 
-\pause
-\bigskip
+\pause\bigskip
 
 The vector giving the probabilities that the random surfer is at each page after $t$ steps is the product of the corresponding vector for $t-1$ steps and the transition matrix $P$
 \end{frame}
@@ -325,7 +310,7 @@ The vector giving the probabilities that the random surfer is at each page after
 random surfer lands on each page (page ranks) after $moves$ matrix-vector multiplications, and write the page ranks to standard output.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 import stdarray
 import stdio
 import sys
@@ -349,17 +334,19 @@ for rank in ranks:
     stdio.writef("%8.5f", rank)
 stdio.writeln()
 \end{lstlisting}
+\end{frame}
 
+\begin{frame}[fragile]
 \pause
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 transition.py < tiny.txt | python3 markov.py 20
  0.27245 0.26515 0.14669 0.24764 0.06806
 \end{lstlisting}
 
-\pause
+\pause\bigskip
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 transition.py < tiny.txt | python3 markov.py 40
  0.27303 0.26573 0.14618 0.24723 0.06783
 \end{lstlisting}
