@@ -11,11 +11,6 @@
 \titlepage
 \end{frame}
 
-\begin{frame}
-\frametitle{Outline}
-\tableofcontents
-\end{frame}
-
 \section{Using Functions in Other Programs}
 \begin{frame}[fragile]
 \pause
@@ -27,8 +22,10 @@ Using modular programming we can not only divide a program into functions, but a
 
 We distinguish between two types of Python programs
 \begin{itemize}
+\pause
 \item A module contains functions that are available for use by other programs
 
+\pause
 \item A client is a program that makes use of a function in a module
 \end{itemize}
 
@@ -37,14 +34,19 @@ We distinguish between two types of Python programs
 
 Five steps involved in creating and using modules
 \begin{enumerate}
+\pause
 \item In the client, import the module
 
+\pause
 \item In the client, qualify function calls to the module
 
+\pause
 \item In the module, compose a test client
 
+\pause
 \item In the module, eliminate arbitrary global code
 
+\pause
 \item Make the module accessible to the client
 \end{enumerate}
 
@@ -64,6 +66,7 @@ User-defined modules are files that each contain a set of related functions for 
 
 We use three abstractions to manage the process of developing user-defined modules
 \begin{enumerate}
+\pause
 \item Application programming interfaces (APIs)
 \begin{center}
 \begin{tabular}{cc}
@@ -73,13 +76,15 @@ function & description \\ \hline
 \end{tabular} 
 \end{center}
 
+\pause
 \item Clients
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 percent = gaussian.cdf(score, mu, sigma)
 \end{lstlisting}
 
+\pause
 \item Implementations
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 def pdf(x, mu = 0.0, sigma = 1.0):
     ...
     
@@ -103,7 +108,7 @@ For example, NumPy is a library for scientific computing
 \bigskip
 
 A private function, having its name start with an underscore by convention, is a helper function that is not intended to be called directly by clients
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 def _phi(x):
     return math.exp(- x * x / 2) / math.sqrt(2 * math.pi)
     
@@ -115,7 +120,7 @@ def phi(x, mu = 0.0, sigma = 1.0):
 \bigskip
 
 Documentation for modules and their functions is provided by embedding the documentaion string in triple quotes
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 """
 stdrandom.py
 
@@ -159,7 +164,7 @@ function & description \\ \hline
 \tiny stdrandom\_client.py: Accept integer $trials$ as a command-line argument. Plot $trials$ number of $(x, y)$ points to standard draw, where $x$ and $y$ are drawn from a Gaussian distribution.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 import stddraw
 import stdrandom
 import sys
@@ -176,7 +181,7 @@ stddraw.show()
 \pause
 
 \begin{minipage}{160pt}
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 stdrandom_client.py 100000
 \end{lstlisting}
 \end{minipage}%
@@ -192,7 +197,7 @@ $ python3 stdrandom_client.py 100000
 \tiny stdrandom.py: Random number module that defines functions related to pseudo-random numbers.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 import random
 import math
 
@@ -223,7 +228,7 @@ def gaussian(mu = 0.0, sigma = 1.0):
 \begin{frame}[fragile]
 \pause
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 def discrete(a):
     r = uniformFloat(0.0, sum(a))
     subtotal = 0.0
@@ -286,7 +291,7 @@ function & description \\ \hline
 \tiny ifs.py: Accept integer $n$ as a command-line argument. Read a $1$-by-$m$ vector (probabilities) and two $m$-by-$3$ matrices (coefficients for updating $x$ and $y$, respectively) from standard input. Plot the results as a set of $n$ points to standard draw.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 import stdarray
 import stddraw
 import stdrandom
@@ -320,7 +325,7 @@ if __name__ == '__main__':
 Sierpinski triangle
 
 \begin{minipage}{160pt}
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ more sierpinski.txt
 3   
   .33 .33 .34 
@@ -334,7 +339,7 @@ $ more sierpinski.txt
   .00 .50 .433 
 \end{lstlisting}
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 ifs.py 20000 < sierpinski.txt
 \end{lstlisting}
 \end{minipage}%
@@ -350,7 +355,7 @@ $ python3 ifs.py 20000 < sierpinski.txt
 Barnsley fern
 
 \begin{minipage}{160pt}
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ more barnsley.txt
 4
    0.01  0.85  0.07  0.07
@@ -366,7 +371,7 @@ $ more barnsley.txt
    0.26  0.24 -0.086
 \end{lstlisting}
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 ifs.py 20000 < barnsley.txt
 \end{lstlisting}
 \end{minipage}%
@@ -384,7 +389,7 @@ $ python3 ifs.py 20000 < barnsley.txt
 \tiny stdarray.py: List module that defines functions related to creating, reading, and writing one- and two-dimensional lists.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 import stdio
 
 def create1D(length, value=None):
@@ -416,7 +421,7 @@ def write1D(a):
 \begin{frame}[fragile]
 \pause
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 def write2D(a):
     rowCount = len(a)
     colCount = len(a[0])
@@ -455,7 +460,7 @@ def readInt2D():
 \begin{frame}[fragile]
 \pause
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 def readFloat1D():
     count = stdio.readInt()
     a = create1D(count, None)
@@ -485,7 +490,7 @@ def readBool1D():
 \begin{frame}[fragile]
 \pause
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 def readBool2D():
     rowCount = stdio.readInt()
     colCount = stdio.readInt()
@@ -530,7 +535,7 @@ function & description \\ \hline
 \tiny bernoulli.py: Accept integers $n$ and $trials$ as command-line arguments. Perform $trials$ experiments, each of which counts the number of heads found when a fair coin is flipped $n$ times. Then draw the results to standard draw. 
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 import gaussian
 import math
 import stdarray
@@ -568,7 +573,7 @@ if __name__ == '__main__':
 \pause
 
 \begin{minipage}{160pt}
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 bernoulli.py 20 100000
 \end{lstlisting}
 \end{minipage}%
@@ -584,7 +589,7 @@ $ python3 bernoulli.py 20 100000
 \tiny stdstats.py: Statistics module that defines functions related to statistical analysis and graphical data display.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 import math
 import stddraw
 
@@ -614,7 +619,7 @@ def median(a):
 \begin{frame}[fragile]
 \pause
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 def plotPoints(a):
     n = len(a)
     stddraw.setXscale(-1, n)

@@ -11,19 +11,17 @@
 \titlepage
 \end{frame}
 
-\begin{frame}
-\frametitle{Outline}
-\tableofcontents
-\end{frame}
-
 \section{What is Recursion?}
 \begin{frame}[fragile]
 \pause
 
 A recursive function is a function that calls itself and meets the following conditions
 \begin{itemize}
+\pause
 \item Has a base case
+\pause
 \item Addresses subproblems that are smaller in some sense
+\pause
 \item Does not address subproblems that overlap
 \end{itemize}
 
@@ -50,7 +48,7 @@ N(N-1)! & if $N > 0$, and \\
 
 Implementation of $N!$ in Python
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 def factorial(N):
     if N == 0:
         return 1
@@ -61,7 +59,7 @@ def factorial(N):
 \bigskip
 
 Call trace for \lstinline{factorial(5)}
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 factorial(5)
   factorial(4)
     factorial(3)
@@ -93,7 +91,7 @@ H_n = \begin{dcases*}
 
 Implementation of $H_n$ in Python
  
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 def harmonic(n):
     if n == 1:
         return 1
@@ -104,7 +102,7 @@ def harmonic(n):
 \bigskip
 
 Call trace for \lstinline{harmonic(5)}
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 harmonic(5)
   harmonic(4)
     harmonic(3)
@@ -134,7 +132,7 @@ p       & if $q = 0$
 
 Implementation of $\text{gcd}(p, q)$ in Python
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 def gcd(p, q):
     return p if q == 0 else gcd(q, p % q) 
 \end{lstlisting}
@@ -144,7 +142,7 @@ def gcd(p, q):
 
 Call trace for \lstinline{gcd(1440, 408)}
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 gcd(1440, 408)
   gcd(408, 216)
     gcd(216, 192)
@@ -166,7 +164,7 @@ gcd(1440, 408)
 \end{framed}
 
 \begin{minipage}{200pt}
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 import stdio
 import sys
 
@@ -190,7 +188,7 @@ if __name__ == '__main__':
 
 \pause
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 towersofhanoi.py 3
 1 left
 2 right
@@ -211,7 +209,7 @@ $ python3 towersofhanoi.py 3
 
 Call trace for \lstinline{moves(3, True)}
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 moves(3, True)
   moves(2, False)
     moves(1, True)
@@ -230,7 +228,7 @@ moves(3, True)
 
 \pause
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 towersofhanoi.py 4
 1 right
 2 left
@@ -255,7 +253,7 @@ $ python3 towersofhanoi.py 4
 
 Call trace for \lstinline{moves(4, True)}
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 moves(4, True)
   moves(3, False)
     moves(2, True)
@@ -296,7 +294,7 @@ moves(4, True)
 \tiny htree.py: Accept integer $n$ as a command-line argument. Draw a level $n$ H-tree centered at $(.5, .5)$ with lines of length $.5$.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 import stddraw
 import sys
 
@@ -330,7 +328,7 @@ if __name__ == '__main__':
 \pause
 
 \begin{minipage}{160pt}
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 htree.py 1
 \end{lstlisting}
 \end{minipage}%
@@ -342,7 +340,7 @@ $ python3 htree.py 1
 \smallskip
 
 \begin{minipage}{160pt}
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 htree.py 3
 \end{lstlisting}
 \end{minipage}%
@@ -354,7 +352,7 @@ $ python3 htree.py 3
 \smallskip
 
 \begin{minipage}{160pt}
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 htree.py 5
 \end{lstlisting}
 \end{minipage}%
@@ -370,7 +368,7 @@ $ python3 htree.py 5
 \tiny brownian.py: Accept a Hurst exponent as a command-line argument. Use the Hurst exponent to compute a scale factor. Draw a Brownian bridge from $(0, .5)$ to $(1.0, .5)$ with variance $.01$ and that scale factor.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 import math
 import stddraw
 import stdrandom
@@ -402,7 +400,7 @@ if __name__ == '__main__':
 \pause
 
 \begin{minipage}{160pt}
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 brownian.py 1
 \end{lstlisting}
 \end{minipage}%
@@ -414,7 +412,7 @@ $ python3 brownian.py 1
 \smallskip
 
 \begin{minipage}{160pt}
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 brownian.py .5
 \end{lstlisting}
 \end{minipage}%
@@ -426,7 +424,7 @@ $ python3 brownian.py .5
 \smallskip
 
 \begin{minipage}{160pt}
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 brownian.py .05
 \end{lstlisting}
 \end{minipage}%
@@ -440,7 +438,7 @@ $ python3 brownian.py .05
 \pause
 
 Missing base case
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 def harmonic(n):
     return 1 / n + harmonic(n - 1)
 \end{lstlisting}
@@ -449,7 +447,7 @@ def harmonic(n):
 \bigskip
 
 Recursion does not address smaller subproblems
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 def harmonic(n):
     if n == 1:
         return 1
@@ -462,7 +460,7 @@ def harmonic(n):
 \begin{minipage}{150pt}
 Recursion addresses overlapping subproblems; for example, computing $N$th Fibonacci number
 
-\begin{lstlisting}[language=Java]
+\begin{lstlisting}[language=Java,style=focusin]
 def f(n):
     if n == 0 or n == 1:
         return n
