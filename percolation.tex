@@ -11,11 +11,6 @@
 \titlepage
 \end{frame}
 
-\begin{frame}
-\frametitle{Outline}
-\tableofcontents
-\end{frame}
-
 \section{Percolation}
 \begin{frame}[fragile]
 \pause
@@ -32,9 +27,13 @@ Percolation refers to the abstract process that models such situations
 
 Some Applications
 \begin{itemize}
+\pause
 \item Spread of forest fires
+\pause
 \item Flow of electricity through a network of resistors
+\pause
 \item Permeation of gas in a coal mine through a gas mask filter
+\pause
 \item Studying Fermi's paradox, the apparent contradiction between the high estimates of the probability of the existence of extraterrestrial civilizations and the lack of evidence for them
 \end{itemize}
 \end{frame}
@@ -44,8 +43,11 @@ Some Applications
 
 Abstract model
 \begin{itemize}
+\pause
 \item $n$-by-$n$ grid of sites
+\pause
 \item Each site is either blocked or open
+\pause
 \item An open site is full if it is connected to the top via open sites
 \end{itemize}
 
@@ -76,7 +78,7 @@ We use one $n$-by-$n$ boolean matrix to store which sites are open, and another 
 \tiny percolationio.py: Implements percolation support functions.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 import stdarray
 import stddraw
 import stdrandom
@@ -114,7 +116,7 @@ if __name__ == '__main__':
 \pause
 
 \begin{minipage}{160pt}
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 percolationio.py 10 .8
 \end{lstlisting}
 \end{minipage}%
@@ -126,7 +128,7 @@ $ python3 percolationio.py 10 .8
 \smallskip
 
 \begin{minipage}{160pt}
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 percolationio.py 10 .2
 \end{lstlisting}
 \end{minipage}%
@@ -138,7 +140,7 @@ $ python3 percolationio.py 10 .2
 \smallskip
 
 \begin{minipage}{160pt}
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 percolationio.py 100 .6
 \end{lstlisting}
 \end{minipage}%
@@ -179,7 +181,7 @@ To determine if a system vertically percolates, scan rows from top to bottom
 \tiny percolationv.py: Read from standard input a boolean matrix that represents the open sites of a system. Write to standard output a boolean matrix representing the full sites of the system. Then write \lstinline{True} if the system percolates and \lstinline{False} otherwise.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 import stdarray
 import stdio
 
@@ -215,7 +217,7 @@ if __name__ == '__main__':
 \begin{frame}[fragile]
 \pause
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ more test8.txt 
 8 8
 0 0 1 1 1 0 0 0
@@ -230,7 +232,7 @@ $ more test8.txt
 
 \pause
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 percolationv.py < test8.txt 
 8 8
 0 0 1 1 1 0 0 0 
@@ -252,7 +254,7 @@ False
 \tiny visualizev.py: Accept integer $n$, float $p$, and integer $trials$ as command-line arguments. Generate an $n$-by-$n$ random system with site vacancy probability $p$. Compute the directed percolation flow, and draw result to standard draw. Repeat $trials$ times.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 import percolationio
 import percolationv
 import stddraw
@@ -282,7 +284,7 @@ if __name__ == '__main__':
 \pause
 
 \begin{minipage}{160pt}
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 visualizev.py 20 .65 1
 \end{lstlisting}
 \end{minipage}%
@@ -294,7 +296,7 @@ $ python3 visualizev.py 20 .65 1
 \smallskip
 
 \begin{minipage}{160pt}
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 visualizev.py 20 .60 1
 \end{lstlisting}
 \end{minipage}%
@@ -306,7 +308,7 @@ $ python3 visualizev.py 20 .60 1
 \smallskip
 
 \begin{minipage}{160pt}
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 visualizev.py 20 .55 1
 \end{lstlisting}
 \end{minipage}%
@@ -323,7 +325,7 @@ $ python3 visualizev.py 20 .55 1
 write that fraction to standard output.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 import percolationio
 import percolationv
 import stdio
@@ -351,7 +353,7 @@ if __name__ == '__main__':
 
 \pause
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 estimatev.py 20 .65 1000
 0.004
 $ python3 estimatev.py 20 .60 1000
@@ -372,9 +374,13 @@ Given an $n$-by-$n$ system, is there any path of open sites from the top to the 
 
 To visit all sites reachable from site $(i, j)$, do depth first search (DFS)
 \begin{itemize}
+\pause
 \item If $(i, j)$ already marked as reachable, return
+\pause
 \item If $(i, j)$ not open, return
+\pause
 \item Mark $(i, j)$ as reachable
+\pause
 \item Visit the four neighbors of $(i, j)$ recursively
 \end{itemize}
 
@@ -383,7 +389,9 @@ To visit all sites reachable from site $(i, j)$, do depth first search (DFS)
 
 Percolation solution
 \begin{itemize}
+\pause
 \item Run DFS from each site of top row
+\pause
 \item Check if any site in bottom row is marked as reachable
 \end{itemize}
 \end{frame}
@@ -396,7 +404,7 @@ Percolation solution
 
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 import stdarray
 import stdio
 
@@ -428,7 +436,7 @@ def flow(isOpen):
 \begin{frame}[fragile]
 \pause
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 def percolates(isFull):
     n = len(isFull)
     for j in range(n):
@@ -450,7 +458,7 @@ if __name__ == '__main__':
 \begin{frame}[fragile]
 \pause
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ more test8.txt 
 8 8
 0 0 1 1 1 0 0 0
@@ -465,7 +473,7 @@ $ more test8.txt
 
 \pause
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 percolation.py < test8.txt 
 8 8
 0 0 1 1 1 0 0 0 
@@ -487,7 +495,7 @@ True
 \tiny visualize.py: Accept integer $n$, float $p$, and integer $trials$ as command-line arguments. Generate an $n$-by-$n$ random system with site vacancy probability $p$. Compute the directed percolation flow, and draw result to standard draw. Repeat $trials$ times.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 import percolation
 import percolationio
 import stddraw
@@ -517,7 +525,7 @@ if __name__ == '__main__':
 \pause
 
 \begin{minipage}{160pt}
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 visualize.py 20 .65 1
 \end{lstlisting}
 \end{minipage}%
@@ -529,7 +537,7 @@ $ python3 visualize.py 20 .65 1
 \smallskip
 
 \begin{minipage}{160pt}
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 visualize.py 20 .60 1
 \end{lstlisting}
 \end{minipage}%
@@ -541,7 +549,7 @@ $ python3 visualize.py 20 .60 1
 \smallskip
 
 \begin{minipage}{160pt}
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 visualize.py 20 .55 1
 \end{lstlisting}
 \end{minipage}%
@@ -558,7 +566,7 @@ $ python3 visualize.py 20 .55 1
 write that fraction to standard output.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 import percolation
 import percolationio
 import stdio
@@ -586,7 +594,7 @@ if __name__ == '__main__':
 
 \pause
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 estimate.py 20 .65 1000
 0.868
 $ python3 estimate.py 20 .60 1000
@@ -603,7 +611,7 @@ $ python3 estimate.py 20 .55 1000
 \tiny percplot.py:  Accept integer $n$ as a command-line argument. Plot to standard draw a graph that relates site vacancy probability (control variable) to percolation probability (experimental observations) for a $n$-by-$n$ system.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 import sys
 import stddraw
 import estimate
@@ -636,7 +644,7 @@ if __name__ == '__main__':
 \pause
 
 \begin{minipage}{160pt}
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 percplot.py 10
 \end{lstlisting}
 \end{minipage}%
@@ -648,7 +656,7 @@ $ python3 percplot.py 10
 \smallskip
 
 \begin{minipage}{160pt}
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 percplot.py 20
 \end{lstlisting}
 \end{minipage}%
@@ -660,7 +668,7 @@ $ python3 percplot.py 20
 \smallskip
 
 \begin{minipage}{160pt}
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ python3 percplot.py 30
 \end{lstlisting}
 \end{minipage}%
