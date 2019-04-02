@@ -11,11 +11,6 @@
 \titlepage
 \end{frame}
 
-\begin{frame}
-\frametitle{Outline}
-\tableofcontents
-\end{frame}
-
 \section{Methods}
 \begin{frame}[fragile]
 \pause
@@ -36,7 +31,10 @@ We call (or invoke) a method using a variable name, followed by the dot operator
 \bigskip
 
 Example (\lstinline{bits.py})
-\begin{lstlisting}[language={}]
+
+\smallskip
+
+\begin{lstlisting}[language=python,style=focusin]
 import stdio
 
 x, y, z = 200, 300, 600
@@ -47,9 +45,10 @@ stdio.writeln(zbits)
 \end{lstlisting}
 
 \pause
+\bigskip
 
-\begin{lstlisting}[language={}]
-$ python bits.py
+\begin{lstlisting}[language={},style=focusin]
+$ python3 bits.py
 8
 9
 10
@@ -61,7 +60,10 @@ $ python bits.py
 \pause
 
 Methods in the built-in \lstinline{int} data type
-\begin{lstlisting}[language={}]
+
+\smallskip
+
+\begin{lstlisting}[language={},style=focusin]
 >>> dir(int) 
 ['bit_length', 'conjugate']
 \end{lstlisting}
@@ -70,7 +72,10 @@ Methods in the built-in \lstinline{int} data type
 \bigskip
 
 Methods in the built-in \lstinline{float} data type
-\begin{lstlisting}[language={}]
+
+\smallskip
+
+\begin{lstlisting}[language={},style=focusin]
 >>> dir(float) 
 ['as_integer_ratio', 'conjugate', 'fromhex', 'hex', 'is_integer']
 \end{lstlisting}
@@ -79,7 +84,10 @@ Methods in the built-in \lstinline{float} data type
 \bigskip
 
 Methods in the built-in \lstinline{bool} data type
-\begin{lstlisting}[language={}]
+
+\smallskip
+
+\begin{lstlisting}[language={},style=focusin]
 >>> dir(bool) 
 ['bit_length', 'conjugate']
 \end{lstlisting}
@@ -88,7 +96,10 @@ Methods in the built-in \lstinline{bool} data type
 \bigskip
 
 Methods in the built-in \lstinline{str} data type
-\begin{lstlisting}[language={}]
+
+\smallskip
+
+\begin{lstlisting}[language={},style=focusin]
 >>> dir(str)
 ['capitalize', 'center', 'count', 'decode', 'encode', 'endswith', 'expandtabs', 
  'find', 'format', 'index', 'isalnum', 'isalpha', 'isdigit', 'islower', 
@@ -106,7 +117,7 @@ Methods in the built-in \lstinline{str} data type
 \tiny potentialgene.py: Accept a DNA sequence as a command-line argument, and write \lstinline{True} to standard output if the sequence corresponds to a potential gene, and \lstinline{False} otherwise.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 import stdio
 import sys
 
@@ -132,11 +143,18 @@ if __name__ == '__main__':
 \end{lstlisting}
 
 \pause
+\bigskip
 
-\begin{lstlisting}[language={}]
-$ python potentialgene.py ATGCGCCTGCGTCTGTACTAG
+\begin{lstlisting}[language={},style=focusin]
+$ python3 potentialgene.py ATGCGCCTGCGTCTGTACTAG
 True
-$ python potentialgene.py ATGCGCTGCGTCTGTACTAG
+\end{lstlisting}
+
+\pause
+\smallskip
+
+\begin{lstlisting}[language={},style=focusin]
+$ python3 potentialgene.py ATGCGCTGCGTCTGTACTAG
 False
 \end{lstlisting}
 \end{frame}
@@ -146,7 +164,10 @@ False
 \pause
 
 Methods in the built-in \lstinline{list} data type
-\begin{lstlisting}[language={}]
+
+\smallskip
+
+\begin{lstlisting}[language={},style=focusin]
 >>> dir(list)
 ['append', 'count', 'extend', 'index', 'insert', 'pop', 'remove', 'reverse', 
  'sort']
@@ -156,7 +177,10 @@ Methods in the built-in \lstinline{list} data type
 \bigskip
 
 Methods in the built-in \lstinline{tuple} data type
-\begin{lstlisting}[language={}]
+
+\smallskip
+
+\begin{lstlisting}[language={},style=focusin]
 >>> dir(tuple)
 ['count', 'index']
 \end{lstlisting}
@@ -165,7 +189,10 @@ Methods in the built-in \lstinline{tuple} data type
 \bigskip
 
 Methods in the built-in \lstinline{set} data type
-\begin{lstlisting}[language={}]
+
+\smallskip
+
+\begin{lstlisting}[language={},style=focusin]
 >>> dir(set)
 ['add', 'clear', 'copy', 'difference', 'difference_update', 'discard', 
  'intersection', 'intersection_update', 'isdisjoint', 'issubset', 
@@ -177,7 +204,10 @@ Methods in the built-in \lstinline{set} data type
 \bigskip
 
 Methods in the built-in \lstinline{dict} data type
-\begin{lstlisting}[language={}]
+
+\smallskip
+
+\begin{lstlisting}[language={},style=focusin]
 >>> dir(dict)
 ['clear', 'copy', 'fromkeys', 'get', 'has_key', 'items', 'iteritems', 
  'iterkeys', 'itervalues', 'keys', 'pop', 'popitem', 'setdefault', 'update', 
@@ -218,7 +248,10 @@ In any data-type implementation, it is worthwhile to include an operation that c
 \bigskip
 
 We use the following form of the \lstinline{import} statement to import a data type \lstinline{XYZ} defined in a file \lstinline{xyz.py}
-\begin{lstlisting}[language={}]
+
+\smallskip
+
+\begin{lstlisting}[language=python,style=focusin]
 from xyz import XYZ
 \end{lstlisting}
 \end{frame}
@@ -230,7 +263,7 @@ from xyz import XYZ
 \tiny chargeclient.py: Accept floats $x$ and $y$ as command-line arguments, create two \lstinline{Charge} objects with fixed position and electrical charge, and write to standard output the potential at $(x, y)$ due to the two charges.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 import stdio
 import sys
 from charge import Charge
@@ -252,14 +285,21 @@ if __name__ == '__main__':
 \end{lstlisting}
 
 \pause
+\bigskip
 
-\begin{lstlisting}[language={}]
-$ python chargeclient.py .2 .5
+\begin{lstlisting}[language={},style=focusin]
+$ python3 chargeclient.py .2 .5
 potential at (0.20, 0.50) due to
   21.3 at (0.51, 0.63) and
   81.9 at (0.13, 0.94)
 is 2.22e+12
-$ python chargeclient.py .51 .94
+\end{lstlisting}
+
+\pause
+\smallskip
+
+\begin{lstlisting}[language={},style=focusin]
+$ python3 chargeclient.py .51 .94
 potential at (0.51, 0.94) due to
   21.3 at (0.51, 0.63) and
   81.9 at (0.13, 0.94)
@@ -290,7 +330,7 @@ method & description \\ \hline
 \tiny alberssquares.py: Accept integers $r_1$, $g_1$, $b_1$, $r_2$, $g_2$, and $b_2$ as command-line arguments, and draw to standard draw Albers squares using colors $(r_1, g_1, b_1)$ and $(r_2, g_2, b_2)$.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 import stddraw
 import sys
 from color import Color
@@ -325,8 +365,8 @@ if __name__ == '__main__':
 \pause
 
 \begin{minipage}{180pt}
-\begin{lstlisting}[language={}]
-$ python alberssquares.py 9 90 166 100 100 100
+\begin{lstlisting}[language={},style=focusin]
+$ python3 alberssquares.py 9 90 166 100 100 100
 \end{lstlisting}
 \end{minipage}%
 \hfill
@@ -340,8 +380,8 @@ $ python alberssquares.py 9 90 166 100 100 100
 \bigskip
 
 \begin{minipage}{180pt}
-\begin{lstlisting}[language={}]
-$ python alberssquares.py 0 174 239 147 149 252
+\begin{lstlisting}[language={},style=focusin]
+$ python3 alberssquares.py 0 174 239 147 149 252
 \end{lstlisting}
 \end{minipage}%
 \hfill
@@ -355,8 +395,8 @@ $ python alberssquares.py 0 174 239 147 149 252
 \bigskip
 
 \begin{minipage}{180pt}
-\begin{lstlisting}[language={}]
-$ python alberssquares.py 110 110 110 145 160 156
+\begin{lstlisting}[language={},style=focusin]
+$ python3 alberssquares.py 110 110 110 145 160 156
 \end{lstlisting}
 \end{minipage}%
 \hfill
@@ -374,7 +414,7 @@ $ python alberssquares.py 110 110 110 145 160 156
 \tiny luminance.py: Accept six RGB values defining two colors as command-line arguments, and write \lstinline{True} to standard output if the two colors are compatible, and \lstinline{False} otherwise.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 import stdio
 import sys
 from color import Color
@@ -401,13 +441,26 @@ if __name__ == '__main__':
 \end{lstlisting}
 
 \pause
+\bigskip
 
-\begin{lstlisting}[language={}]
-$ python luminance.py 232 232 232 0 0 0
+\begin{lstlisting}[language={},style=focusin]
+$ python3 luminance.py 232 232 232 0 0 0
 True
-$ python luminance.py 9 90 166 232 232 232
+\end{lstlisting}
+
+\pause
+\smallskip
+
+\begin{lstlisting}[language={},style=focusin]
+$ python3 luminance.py 9 90 166 232 232 232
 True
-$ python luminance.py 9 90 166 0 0 0
+\end{lstlisting}
+
+\pause
+\smallskip
+
+\begin{lstlisting}[language={},style=focusin]
+$ python3 luminance.py 9 90 166 0 0 0
 False
 \end{lstlisting}
 \end{frame}
@@ -437,7 +490,7 @@ method & description \\ \hline
 \tiny grayscale.py: Accept the name of a JPG or PNG file as a command-line argument, read an image from the file, and draw a gray scale version of that image to standard draw.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 import luminance
 import stddraw
 import sys
@@ -459,10 +512,11 @@ if __name__ == '__main__':
 \end{lstlisting}
 
 \pause
+\bigskip
 
 \begin{minipage}{200pt}
-\begin{lstlisting}[language={}]
-$ python grayscale.py mandrill.jpg
+\begin{lstlisting}[language={},style=focusin]
+$ python3 grayscale.py mandrill.jpg
 \end{lstlisting}
 \end{minipage}%
 \hfill
@@ -480,7 +534,7 @@ $ python grayscale.py mandrill.jpg
 \tiny scale.py: Accept the name $fileName$ of a JPG or PNG image file, an integer $w$, and an integer $h$ as command line arguments, read an image from the file, and draw to standard draw the image scaled to width $w$ and height $h$.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 import stddraw
 import sys
 from picture import Picture
@@ -509,8 +563,8 @@ if __name__ == '__main__':
 \pause
 
 \begin{minipage}{200pt}
-\begin{lstlisting}[language={}]
-$ python scale.py mandrill.jpg 200 200
+\begin{lstlisting}[language={},style=focusin]
+$ python3 scale.py mandrill.jpg 200 200
 \end{lstlisting}
 \end{minipage}%
 \hfill
@@ -524,8 +578,8 @@ $ python scale.py mandrill.jpg 200 200
 \bigskip
 
 \begin{minipage}{200pt}
-\begin{lstlisting}[language={}]
-$ python scale.py mandrill.jpg 200 100
+\begin{lstlisting}[language={},style=focusin]
+$ python3 scale.py mandrill.jpg 200 100
 \end{lstlisting}
 \end{minipage}%
 \hfill
@@ -539,8 +593,8 @@ $ python scale.py mandrill.jpg 200 100
 \bigskip
 
 \begin{minipage}{200pt}
-\begin{lstlisting}[language={}]
-$ python scale.py mandrill.jpg 100 200
+\begin{lstlisting}[language={},style=focusin]
+$ python3 scale.py mandrill.jpg 100 200
 \end{lstlisting}
 \end{minipage}%
 \hfill
@@ -558,7 +612,7 @@ $ python scale.py mandrill.jpg 100 200
 \tiny fade.py: Accept strings $sourceFile$ and $targetFile$ and integer $n$ as command-line arguments, and then, over the course of $n$ frames, gradually replace the image from $sourceFile$ with the image from $targetFile$, and display to standard draw each intermediate image. 
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 import stddraw
 import sys
 from color import Color
@@ -580,13 +634,6 @@ def main():
     height = source.height()
     stddraw.setCanvasSize(width, height)
     pic = Picture(width, height)
-\end{lstlisting}
-\end{frame}
-
-\begin{frame}[fragile]
-\pause
-
-\begin{lstlisting}[language=Python]
     for t in range(n + 1):
         for col in range(width):
             for row in range(height):
@@ -602,14 +649,16 @@ def main():
 if __name__ == '__main__':
     main()
 \end{lstlisting}
+\end{frame}
 
+\begin{frame}[fragile]
 \pause
 
-\begin{lstlisting}[language={}]
-$ python fade.py mandrill.jpg darwin.jpg 5
+\begin{lstlisting}[language={},style=focusin]
+$ python3 fade.py mandrill.jpg darwin.jpg 5
 \end{lstlisting}
 \begin{minipage}{300pt}
-\visible<3->{
+\visible<2->{
 \begin{center}
 \includegraphics[scale=0.15]{figures/fade1.png}\hfill
 \includegraphics[scale=0.15]{figures/fade2.png}\hfill
@@ -628,7 +677,7 @@ $ python fade.py mandrill.jpg darwin.jpg 5
 \tiny potential.py: Read values from standard input to create a list of charged particles, set each pixel color in an image to a grayscale value proportional to the potential due to the particles at corresponding points, and draw the resulting image to standard draw.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 import stdarray
 import stddraw
 import stdio
@@ -661,7 +710,7 @@ def main():
 \begin{frame}[fragile]
 \pause
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
             v = (MAX_GRAY_SCALE / 2.0)  + (v / 2.0e10)
             if v < 0:
                 grayScale = 0
@@ -682,7 +731,7 @@ if __name__ == '__main__':
 \begin{minipage}{150pt}
 \pause
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ more charges.txt
 9
 .51 .63 -100
@@ -697,9 +746,10 @@ $ more charges.txt
 \end{lstlisting}
 
 \pause
+\smallskip
 
-\begin{lstlisting}[language={}]
-$ python potential.py < charges.txt
+\begin{lstlisting}[language={},style=focusin]
+$ python3 potential.py < charges.txt
 \end{lstlisting}
 \end{minipage}%
 \hfill
@@ -749,7 +799,7 @@ method & description \\ \hline
 \tiny cat.py: Copy files or web pages whose names are given by \lstinline{sys.argv[1:n - 2]} to the file whose name is given by \lstinline{sys.argv[n - 1]}.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 import sys
 from instream import InStream
 from outstream import OutStream
@@ -768,24 +818,34 @@ if __name__ == '__main__':
 \end{lstlisting}
 
 \pause
+\bigskip
 
-\begin{lstlisting}[language={}]
-$ more in1.txt
-This is
+\begin{lstlisting}[language={},style=focusin]
 $ more in2.txt
 a tiny
 test.
 \end{lstlisting}
 
 \pause
+\smallskip
 
-\begin{lstlisting}[language={}]
-$ python cat.py in1.txt in2.txt out.txt
+\begin{lstlisting}[language={},style=focusin]
+$ more in2.txt
+a tiny
+test.
 \end{lstlisting}
 
 \pause
+\smallskip
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
+$ python3 cat.py in1.txt in2.txt out.txt
+\end{lstlisting}
+
+\pause
+\smallskip
+
+\begin{lstlisting}[language={},style=focusin]
 $ more out.txt
 This is
 a tiny
@@ -800,7 +860,7 @@ test.
 \tiny stockquote.py: Accept string $stockSymbol$ as a command-line argument, and write to standard output the current stock price for $stockSymbol$, as reported by the website \href{http://finance.yahoo.com/}{http://finance.yahoo.com/}.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 import stdio
 import sys
 from instream import InStream
@@ -830,9 +890,10 @@ if __name__ == '__main__':
 \end{lstlisting}
 
 \pause
+\bigskip
 
-\begin{lstlisting}[language={}]
-$ python stockquote.py goog
+\begin{lstlisting}[language={},style=focusin]
+$ python3 stockquote.py goog
 733.76
 \end{lstlisting}
 \end{frame}
@@ -844,7 +905,7 @@ $ python stockquote.py goog
 \tiny split.py: Accept string $fileName$ and integer $fieldCount$ as command-line arguments, split the file whose name is \lstinline{fileName.csv}, by field, into $fieldCount$ files named \lstinline{fileName0.txt}, \lstinline{fileName1.txt}, etc.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 import stdarray
 import sys
 from instream import InStream
@@ -872,7 +933,7 @@ if __name__ == '__main__':
 \begin{frame}[fragile]
 \pause
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ more ip.csv 
 www.princeton.edu,128.112.128.15
 www.cs.princeton.edu,128.112.136.35
@@ -881,19 +942,27 @@ www.math.princeton.edu,128.112.18.11
 \end{lstlisting}
 
 \pause
+\smallskip
 
-\begin{lstlisting}[language={}]
-$ python split.py ip 2
+\begin{lstlisting}[language={},style=focusin]
+$ python3 split.py ip 2
 \end{lstlisting}
 
 \pause
+\smallskip
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ more ip0.txt
 www.princeton.edu
 www.cs.princeton.edu
 www.math.princeton.edu
 ...
+\end{lstlisting}
+
+\pause
+\smallskip
+
+\begin{lstlisting}[language={},style=focusin]
 $ more ip1.txt
 128.112.128.15
 128.112.136.35
