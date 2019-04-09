@@ -11,11 +11,6 @@
 \titlepage
 \end{frame}
 
-\begin{frame}
-\frametitle{Outline}
-\tableofcontents
-\end{frame}
-
 \section{Basic Elements of a Data Type}
 \begin{frame}[fragile]
 \pause
@@ -73,10 +68,13 @@ By convention, instance variable names begin with an underscore
 
 A method typically uses three kinds of variables
 \begin{itemize}
+\pause
 \item The \lstinline{self} object's instance variables
 
+\pause
 \item The method's parameter variables
 
+\pause
 \item Local variables
 \end{itemize}
 
@@ -119,7 +117,7 @@ method & description \\ \hline
 \tiny charge.py: Definition of \lstinline{Charge} data type. 
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=python,style=focusin]
 import math
 import stdio
 import sys
@@ -143,13 +141,7 @@ class Charge:
         result = str(self._q) + ' at ('
         result += str(self._rx) + ', ' + str(self._ry) + ')'
         return result
-\end{lstlisting}
-\end{frame}
 
-\begin{frame}[fragile]
-\pause
-
-\begin{lstlisting}[language=Python]
 def _main():
     x = float(sys.argv[1])
     y = float(sys.argv[2])
@@ -162,9 +154,10 @@ if __name__ == '__main__':
 \end{lstlisting}
 
 \pause
+\bigskip
 
-\begin{lstlisting}[language={}]
-$ python charge.py .5 .5
+\begin{lstlisting}[language={},style=focusin]
+$ python3 charge.py .5 .5
 21.3 at (0.51, 0.63)
 1.46863824819e+12
 \end{lstlisting}
@@ -190,7 +183,7 @@ method & description \\ \hline
 \tiny stopwatch.py: Definition of \lstinline{Stopwatch} data type. 
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=python,style=focusin]
 import stdio
 import sys
 import time
@@ -221,9 +214,10 @@ if __name__ == '__main__':
 \end{lstlisting}
 
 \pause
+\bigskip
 
-\begin{lstlisting}[language={}]
-$ python stopwatch.py 1000000
+\begin{lstlisting}[language={},style=focusin]
+$ python3 stopwatch.py 1000000
 1.000000
 1.280855
 \end{lstlisting}
@@ -250,7 +244,7 @@ method & description \\ \hline
 \tiny histogram.py: Definition of \lstinline{Histogram} data type.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=python,style=focusin]
 import stdarray
 import stddraw
 import stdrandom
@@ -289,8 +283,8 @@ if __name__ == '__main__':
 \pause
 
 \begin{minipage}{200pt}
-\begin{lstlisting}[language={}]
-$ python histogram.py 50 .5 1000000
+\begin{lstlisting}[language={},style=focusin]
+$ python3 histogram.py 50 .5 1000000
 \end{lstlisting}
 \end{minipage}%
 \hfill
@@ -304,8 +298,8 @@ $ python histogram.py 50 .5 1000000
 \bigskip
 
 \begin{minipage}{200pt}
-\begin{lstlisting}[language={}]
-$ python histogram.py 50 .2 1000000
+\begin{lstlisting}[language={},style=focusin]
+$ python3 histogram.py 50 .2 1000000
 \end{lstlisting}
 \end{minipage}%
 \hfill
@@ -319,8 +313,8 @@ $ python histogram.py 50 .2 1000000
 \bigskip
 
 \begin{minipage}{200pt}
-\begin{lstlisting}[language={}]
-$ python histogram.py 50 .8 1000000
+\begin{lstlisting}[language={},style=focusin]
+$ python3 histogram.py 50 .8 1000000
 \end{lstlisting}
 \end{minipage}%
 \hfill
@@ -352,7 +346,7 @@ method & description \\ \hline
 \tiny turtle.py: Definition of \lstinline{Turtle} data type.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=python,style=focusin]
 import math
 import stddraw
 import sys
@@ -391,8 +385,8 @@ if __name__ == '__main__':
 \pause
 
 \begin{minipage}{200pt}
-\begin{lstlisting}[language={}]
-$ python turtle.py 3
+\begin{lstlisting}[language={},style=focusin]
+$ python3 turtle.py 3
 \end{lstlisting}
 \end{minipage}%
 \hfill
@@ -406,8 +400,8 @@ $ python turtle.py 3
 \bigskip
 
 \begin{minipage}{200pt}
-\begin{lstlisting}[language={}]
-$ python turtle.py 7
+\begin{lstlisting}[language={},style=focusin]
+$ python3 turtle.py 7
 \end{lstlisting}
 \end{minipage}%
 \hfill
@@ -421,8 +415,8 @@ $ python turtle.py 7
 \bigskip
 
 \begin{minipage}{200pt}
-\begin{lstlisting}[language={}]
-$ python turtle.py 30
+\begin{lstlisting}[language={},style=focusin]
+$ python3 turtle.py 30
 \end{lstlisting}
 \end{minipage}%
 \hfill
@@ -440,7 +434,7 @@ $ python turtle.py 30
 \tiny koch.py: Accept integer $n$ as a command-line argument and plot a Koch curve of order $n$.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=python,style=focusin]
 import stddraw
 import sys
 from turtle import Turtle
@@ -476,8 +470,8 @@ if __name__ == '__main__':
 \pause
 
 \begin{minipage}{200pt}
-\begin{lstlisting}[language={}]
-$ python koch.py 0
+\begin{lstlisting}[language={},style=focusin]
+$ python3 koch.py 0
 \end{lstlisting}
 \end{minipage}%
 \hfill
@@ -491,8 +485,8 @@ $ python koch.py 0
 \bigskip
 
 \begin{minipage}{200pt}
-\begin{lstlisting}[language={}]
-$ python koch.py 1
+\begin{lstlisting}[language={},style=focusin]
+$ python3 koch.py 1
 \end{lstlisting}
 \end{minipage}%
 \hfill
@@ -506,8 +500,8 @@ $ python koch.py 1
 \bigskip
 
 \begin{minipage}{200pt}
-\begin{lstlisting}[language={}]
-$ python koch.py 2
+\begin{lstlisting}[language={},style=focusin]
+$ python3 koch.py 2
 \end{lstlisting}
 \end{minipage}%
 \hfill
@@ -521,8 +515,8 @@ $ python koch.py 2
 \bigskip
 
 \begin{minipage}{200pt}
-\begin{lstlisting}[language={}]
-$ python koch.py 3
+\begin{lstlisting}[language={},style=focusin]
+$ python3 koch.py 3
 \end{lstlisting}
 \end{minipage}%
 \hfill
@@ -536,8 +530,8 @@ $ python koch.py 3
 \bigskip
 
 \begin{minipage}{200pt}
-\begin{lstlisting}[language={}]
-$ python koch.py 4
+\begin{lstlisting}[language={},style=focusin]
+$ python3 koch.py 4
 \end{lstlisting}
 \end{minipage}%
 \hfill
@@ -555,7 +549,7 @@ $ python koch.py 4
 \tiny spiral.py: Accept command-line arguments $n$ (an integer specifying a number  of sides), $wraps$ (an integer specifying a wrap count), and $decay$ (a float specifying a decay factor), and draw a spiral with those characteristics.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=python,style=focusin]
 import math
 import stddraw
 import sys
@@ -584,8 +578,8 @@ if __name__ == '__main__':
 \pause
 
 \begin{minipage}{200pt}
-\begin{lstlisting}[language={}]
-$ python spiral.py 3 10 1.2
+\begin{lstlisting}[language={},style=focusin]
+$ python3 spiral.py 3 10 1.2
 \end{lstlisting}
 \end{minipage}%
 \hfill
@@ -599,8 +593,8 @@ $ python spiral.py 3 10 1.2
 \bigskip
 
 \begin{minipage}{200pt}
-\begin{lstlisting}[language={}]
-$ python spiral.py 1440 10 1.0004
+\begin{lstlisting}[language={},style=focusin]
+$ python3 spiral.py 1440 10 1.0004
 \end{lstlisting}
 \end{minipage}%
 \hfill
@@ -618,7 +612,7 @@ $ python spiral.py 1440 10 1.0004
 \tiny drunk.py: Accept as command-line arguments an integer $stepCount$ specifying the number of iterations, and a float $stepSize$ specifying a step size, create a \lstinline{Turtle} object, and have it make $stepCount$ random steps of size $stepSize$.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=python,style=focusin]
 import stddraw
 import stdrandom
 import sys
@@ -630,7 +624,7 @@ def main():
     stddraw.setPenRadius(0.0)
     myTurtle = Turtle(0.5, 0.5, 0.0)
     for i in range(stepCount):
-        myTurtle.turnLeft(360.0 * stdrandom.uniformFloat(0.0, 360.0))
+        myTurtle.turnLeft(stdrandom.uniformFloat(0.0, 360.0)
         myTurtle.goForward(stepSize)
         stddraw.show(0.0)
     stddraw.show()
@@ -644,8 +638,8 @@ if __name__ == '__main__':
 \pause
 
 \begin{minipage}{200pt}
-\begin{lstlisting}[language={}]
-$ python drunk.py 10000 .01
+\begin{lstlisting}[language={},style=focusin]
+$ python3 drunk.py 10000 .01
 \end{lstlisting}
 \end{minipage}%
 \hfill
@@ -663,7 +657,7 @@ $ python drunk.py 10000 .01
 \tiny drunks.py: Accept as command-line arguments an integer $turtleCount$, an integer $stepCount$, and a float $stepSize$, create $turtleCount$ \lstinline{Turtle} objects, and have them make $stepCount$ random steps of size $stepSize$.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=python,style=focusin]
 import stdarray
 import stddraw
 import stdrandom
@@ -696,8 +690,8 @@ if __name__ == '__main__':
 \pause
 
 \begin{minipage}{200pt}
-\begin{lstlisting}[language={}]
-$ python drunk.py 20 5000 .005
+\begin{lstlisting}[language={},style=focusin]
+$ python3 drunk.py 20 5000 .005
 \end{lstlisting}
 \end{minipage}%
 \hfill
@@ -726,12 +720,16 @@ A complex number $z$ in the cartesian form is expressed as $z = x+yi$, where $x$
 
 Complex arithmetic
 \begin{itemize}
+\pause
 \item Conjugate: $(x+yi)^\star=x-yi$
 
+\pause
 \item Addition: $(x+yi)+(v+wi) = (x+v) + (y+w)i$
 
+\pause
 \item Multiplication: $(x+yi)\times(v+wi) = (xv-yw) + (yv+xw)i$
 
+\pause
 \item Magnitude: $|x+yi|=\sqrt{x^2+y^2}$
 \end{itemize}
 
@@ -761,7 +759,7 @@ method & description \\ \hline
 \tiny complex.py: Definition of \lstinline{Complex} data type.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=python,style=focusin]
 import math
 import stdio
 
@@ -794,7 +792,7 @@ class Complex:
 \begin{frame}[fragile]
 \pause
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=python,style=focusin]
     def __abs__(self):
         return math.sqrt(self._re * self._re + self._im * self._im)
 
@@ -813,9 +811,10 @@ if __name__ == '__main__':
 \end{lstlisting}
 
 \pause
+\bigskip
 
-\begin{lstlisting}[language={}]
-$ python complex.py 
+\begin{lstlisting}[language={},style=focusin]
+$ python3 complex.py 
 -7.0 + 7.0i
 \end{lstlisting}
 \end{frame}
@@ -831,7 +830,7 @@ $ python complex.py
 \end{itemize}
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=python,style=focusin]
 import stddraw
 import sys
 from color import Color
@@ -851,7 +850,7 @@ def mandel(z0, limit):
 \begin{frame}[fragile]
 \pause
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=python,style=focusin]
 def main():
     MAX = 255
     n = int(sys.argv[1])
@@ -880,8 +879,8 @@ if __name__ == '__main__':
 \pause
 
 \begin{minipage}{200pt}
-\begin{lstlisting}[language={}]
-$ python mandelbrot.py 512 -.5 0 2
+\begin{lstlisting}[language={},style=focusin]
+$ python3 mandelbrot.py 512 -.5 0 2
 \end{lstlisting}
 \end{minipage}%
 \hfill
@@ -895,8 +894,8 @@ $ python mandelbrot.py 512 -.5 0 2
 \bigskip
 
 \begin{minipage}{200pt}
-\begin{lstlisting}[language={}]
-$ python mandelbrot.py 512 .1015 -.633 .01
+\begin{lstlisting}[language={},style=focusin]
+$ python3 mandelbrot.py 512 .1015 -.633 .01
 \end{lstlisting}
 \end{minipage}%
 \hfill
@@ -929,7 +928,7 @@ method & description \\ \hline
 \tiny stockaccount.py: Accept as a command-line argument the name of a file, read from the file to create a \lstinline{StockAccount} object, and write a report to standard output.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=python,style=focusin]
 import stdarray
 import stdio
 import stockquote
@@ -962,7 +961,7 @@ class StockAccount:
 \begin{frame}[fragile]
 \pause
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=python,style=focusin]
     def write(self, filename):
         outStream = OutStream(filename)
         outStream.writeln(self._name)
@@ -997,7 +996,7 @@ if __name__ == '__main__':
 \begin{frame}[fragile]
 \pause
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ more turing.txt 
 Turing, Alan
 10.24
@@ -1009,9 +1008,10 @@ Turing, Alan
 \end{lstlisting}
 
 \pause
+\bigskip
 
-\begin{lstlisting}[language={}]
-$ python stockaccount.py turing.txt 
+\begin{lstlisting}[language={},style=focusin]
+$ python3 stockaccount.py turing.txt 
 Turing, Alan
  100  ADBE     91.32     9132.00
   25  GOOG    740.34    18508.50
