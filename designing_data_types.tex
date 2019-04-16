@@ -11,11 +11,6 @@
 \titlepage
 \end{frame}
 
-\begin{frame}
-\frametitle{Outline}
-\tableofcontents
-\end{frame}
-
 \section{APIs}
 \begin{frame}[fragile]
 \pause
@@ -86,7 +81,7 @@ In Python, lists are mutable, whereas and strings and tuples are immutable
 
 The downside of immutability is that we must create a new object for every value, which is called defensive copy
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 class Vector:
     def __init__(self, a):
         self._coords = a[:] # self._coords is a defensive copy of a
@@ -228,7 +223,7 @@ Defining higher-order functions that manipulate other functions is common both i
 
 For example, the following function evaluates the Riemann integral (ie, the area under the curve) of a real-valued function $f()$ in the interval $(a, b)$, using the rectangle rule with $n$ rectangles
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 def integrate(f, a, b, n = 1000):
     total = 0.0
     dt = 1.0 * (b - a) / n
@@ -242,7 +237,7 @@ def integrate(f, a, b, n = 1000):
 
 The following statement uses the above function to compute the area under the curve $f(x)=x^2$ in the interval $(0, 1)$
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 area = integrate(lambda x : x * x, 0, 1)
 \end{lstlisting}
 \end{frame}
@@ -299,7 +294,7 @@ If $z_1 = r_1e^{i\theta_1}$ and $z_2 = r_2e^{i\theta_2}$, then $z_1 z_2 = r_1 r_
 \tiny \lstinline{complexpolar.py}: \lstinline{Complex} data type redux. 
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 import math
 import stdio
 
@@ -333,7 +328,7 @@ class Complex:
 \begin{frame}[fragile]
 \pause
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
     def __abs__(self):
         return self._r
 
@@ -352,9 +347,10 @@ if __name__ == '__main__':
 \end{lstlisting}
 
 \pause
+\bigskip
 
-\begin{lstlisting}[language={}]
-$ python complexpolar.py 
+\begin{lstlisting}[language={},style=focusin]
+$ python3 complexpolar.py 
 -7.0 + 7.0i
 \end{lstlisting}
 \end{frame}
@@ -387,7 +383,7 @@ method & description \\ \hline
 \tiny counter.py: Definition of \lstinline{Counter} data type.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 import stdio
 import stdrandom
 import sys
@@ -422,7 +418,7 @@ class Counter:
 \begin{frame}[fragile]
 \pause
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
     def __gt__(self, other):
         return self._count > other._count
 
@@ -450,15 +446,16 @@ if __name__ == '__main__':
 \end{lstlisting}
 
 \pause
+\bigskip
 
-\begin{lstlisting}[language={}]
-$ python counter.py 1000 .5
+\begin{lstlisting}[language={},style=focusin]
+$ python3 counter.py 1000 .5
 Heads: 483
 Tails: 517
-$ python counter.py 1000 .5
+$ python3 counter.py 1000 .5
 Heads: 503
 Tails: 497
-$ python counter.py 1000 .3
+$ python3 counter.py 1000 .3
 Heads: 280
 Tails: 720
 \end{lstlisting}
@@ -482,11 +479,17 @@ A spatial vector is an abstract entity that has a magnitude and a direction
 
 Vector operations, assuming $\mathbf{x}=(x_1,x_2,\dots,x_n)$, $\mathbf{y}=(y_1,y_2,\dots,y_n)$, and $\alpha \in \mathbb{R}$
 \begin{itemize}
+\pause
 \item Addition: $\mathbf{x}+\mathbf{y}=(x_1+y_1,x_2+y_2,\dots,x_n+y_n)$
+\pause
 \item Subtraction: $\mathbf{x}-\mathbf{y}=(x_1-y_1,x_2-y_2,\dots,x_n-y_n)$
+\pause
 \item Scalar product: $\alpha\mathbf{x}=(\alpha x_1,\alpha x_2,\dots,\alpha x_n)$
+\pause
 \item Dot product: $\mathbf{x}\cdot\mathbf{y}=x_1y_1+x_2y_2+\dots+x_ny_n$
+\pause
 \item Magnitude: $|\mathbf{x}|=(x_1^2+x_2^2+\dots+x_n^2)^{1/2}$
+\pause
 \item Direction: $\mathbf{x}/|\mathbf{x}|=(x_1/|\mathbf{x}|,x_2/|\mathbf{x}|,\dots,x_n/|\mathbf{x}|)$
 \end{itemize}
 \end{frame}
@@ -519,7 +522,7 @@ method & description \\ \hline
 \tiny vector.py: Definition of \lstinline{Vector} data type.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 import math
 import stdarray
 import stdio
@@ -555,7 +558,7 @@ class Vector:
 \begin{frame}[fragile]
 \pause
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
     def dot(self, other):
         result = 0
         for i in range(self._n):
@@ -595,8 +598,8 @@ if __name__ == '__main__':
 \begin{frame}[fragile]
 \pause
 
-\begin{lstlisting}[language={}]
-$ python vector.py
+\begin{lstlisting}[language={},style=focusin]
+$ python3 vector.py
 x        = [1.0, 2.0, 3.0, 4.0]
 y        = [5.0, 2.0, 4.0, 1.0]
 x + y    = [6.0, 4.0, 7.0, 5.0]
@@ -628,7 +631,7 @@ method & description \\ \hline
 \tiny sketch.py: Definition of \lstinline{Sketch} data type. 
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 import stdarray
 import stdio
 import sys
@@ -665,15 +668,16 @@ if __name__ == '__main__':
 \begin{frame}[fragile]
 \pause
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ more genome20.txt
 ATAGATGCATAGCGCATAGC
 \end{lstlisting}
 
 \pause
+\bigskip
 
-\begin{lstlisting}[language={}]
-$ python sketch.py 2 16 < genome20.txt 
+\begin{lstlisting}[language={},style=focusin]
+$ python3 sketch.py 2 16 < genome20.txt 
 [0.37210420376762543, 0.37210420376762543, 0.49613893835683387, 0.0, 
 0.12403473458920847, 0.0, 0.0, 0.0, 0.0, 0.0, 0.24806946917841693, 0.0, 
 0.12403473458920847, 0.6201736729460423, 0.0, 0.0]
@@ -687,7 +691,7 @@ $ python sketch.py 2 16 < genome20.txt
 \tiny comparedocuments.py: Accept integers $k$ and $d$ as command-line arguments, read a document list from standard input, compute $d$-dimensional profiles based on $k$-gram frequencies for all the documents, and write a matrix of similarity measures between all pairs of documents.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 import stdarray
 import stdio
 import sys
@@ -720,7 +724,7 @@ if __name__ == '__main__':
 \begin{frame}[fragile]
 \pause
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ more documents.txt
 constitution.txt
 tomsawyer.txt
@@ -733,9 +737,10 @@ actg.txt
 \end{lstlisting}
 
 \pause
+\bigskip
 
-\begin{lstlisting}[language={}]
-$ python comparedocuments.py 5 10000 < documents.txt
+\begin{lstlisting}[language={},style=focusin]
+$ python3 comparedocuments.py 5 10000 < documents.txt
         cons    toms    huck    prej    vect    djia    amaz    actg
 cons    1.00    0.67    0.61    0.64    0.10    0.18    0.19    0.12
 toms    0.67    1.00    0.93    0.87    0.08    0.23    0.19    0.15
@@ -769,7 +774,7 @@ method & description \\ \hline
 \tiny planet.py: Definition of \lstinline{Planet} data type.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 import stdio
 
 class Planet:
@@ -788,7 +793,7 @@ class Planet:
 \begin{frame}[fragile]
 \pause
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 def _main():
     planets = [None] * 8
     planets[0] = Planet("Mercury", 0)
@@ -819,8 +824,8 @@ if __name__ == '__main__':
 \begin{frame}[fragile]
 \pause
 
-\begin{lstlisting}[language={}]
-$ python planet.py 
+\begin{lstlisting}[language={},style=focusin]
+$ python3 planet.py 
 Unsorted:
   Mercury, 0
   Venus, 0
@@ -872,7 +877,7 @@ method & description \\ \hline
 \tiny fibonacci.py: Definition of \lstinline{Fibonacci} data type.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 import stdio
 import sys
 
@@ -908,7 +913,7 @@ if __name__ == '__main__':
 \begin{frame}[fragile]
 \pause
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 >>> from fibonacci import Fibonacci
 >>> f = Fibonacci(5)
 >>> fiter = iter(f) # calls f.__iter__()
@@ -930,9 +935,10 @@ StopIteration
 \end{lstlisting}
 
 \pause
+\bigskip
 
-\begin{lstlisting}[language={}]
-$ python fibonacci.py 10
+\begin{lstlisting}[language={},style=focusin]
+$ python3 fibonacci.py 10
 1
 1
 2
@@ -957,7 +963,7 @@ Python provides language support for defining relationships among classes, known
 
 Inheritance enables subclassing, where the idea is to define a new class (subclass, or derived class) that inherits instance variables and methods from another class (superclass, or base class)
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 class DerivedClassName(BaseClassName):
     <statement>
     <statement>
@@ -974,7 +980,9 @@ Every class in Python implicitly inherits from \lstinline{object}
 
 Python supports two built-in functions that work with inheritance
 \begin{itemize}
+\pause
 \item \lstinline{isinstance(o, T)} checks if instance \lstinline{o} is of type \lstinline{T}
+\pause
 \item \lstinline{issubclass(T1, T2)} checks if \lstinline{T1} is a subclass of \lstinline{T2}
 \end{itemize}
 
@@ -983,7 +991,7 @@ Python supports two built-in functions that work with inheritance
 
 Python supports a limited form of multiple inheritance as well
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 class DerivedClassName(Base1, Base2, Base3):
     <statement>
     <statement>
@@ -997,9 +1005,13 @@ class DerivedClassName(Base1, Base2, Base3):
 
 Design by contract model is one in which the designer of a data type expresses
 \begin{itemize}
+\pause
 \item A precondition - the condition that the client promises to satisfy when calling a method
+\pause
 \item A postcondition - the condition that the implementation promises to achieve when returning from a method
+\pause
 \item Invariants - any condition that the implementation promises to satisfy while the method is executing 
+\pause
 \item Side effects - any other change in state that the method could cause
 \end{itemize}
 
@@ -1023,7 +1035,7 @@ The action taken in response is known as raising an exception (or error)
 \bigskip
 
 We can raise our own exceptions as follows
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 raise Exception('Error message here.')
 \end{lstlisting} 
 
@@ -1031,7 +1043,7 @@ raise Exception('Error message here.')
 \bigskip
 
 For example, in \lstinline{vector.py}, we can raise an exception in \lstinline{__add__()} if the two \lstinline{Vectors} to be added have different dimensions
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 if len(self) != len(other):
     raise Exception('vectors have different dimensions')
 \end{lstlisting} 
@@ -1045,7 +1057,7 @@ We can handle exceptions using a try-except block
 \bigskip
 
 For example
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 (x, y) = (5, 0)
 try:
     z = x / y
@@ -1064,7 +1076,7 @@ An assertion is a boolean expression that we affirm is \lstinline{True}, and if 
 \bigskip
 
 For example, in \lstinline{counter.py}, we might check that the counter is never negative by adding the following assertion as the last statement in \lstinline{increment()}
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 assert self.__count >= 0
 \end{lstlisting} 
 
@@ -1072,7 +1084,7 @@ assert self.__count >= 0
 \bigskip
 
 We can also include an optional message, such as
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=focusin]
 assert self.__count >= 0, 'Negative count detected'
 \end{lstlisting} 
 \end{frame}
