@@ -11,11 +11,6 @@
 \titlepage
 \end{frame}
 
-\begin{frame}
-\frametitle{Outline}
-\tableofcontents
-\end{frame}
-
 \section{Performance}
 \begin{frame}[fragile]
 \pause
@@ -106,7 +101,7 @@ The search problem involves searching for a key in a collection of $N$ keys
 \bigskip
 
 Linear search
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=python,style=focusin]
 def search(key, a):
     for i, v in enumerate(a):
         if key == v:
@@ -160,7 +155,7 @@ Binary search
 \tiny binarysearch.py: Accept as a command-line argument a string which is the name of a whitelist file, and write to standard output the keys in standard input that are not in the whitelist file.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=python,style=focusin]
 import instream
 import stdio
 import sys
@@ -195,7 +190,7 @@ if __name__ == '__main__':
 \begin{frame}[fragile]
 \pause
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ more emails.txt 
 bob@office
 carl@beach
@@ -210,7 +205,7 @@ alice@home
 
 \pause
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ more white.txt
 alice@home
 bob@office
@@ -220,8 +215,8 @@ dave@boat
 
 \pause
 
-\begin{lstlisting}[language={}]
-$ python binarysearch.py white.txt < emails.txt 
+\begin{lstlisting}[language={},style=focusin]
+$ python3 binarysearch.py white.txt < emails.txt 
 marvin@spam
 mallory@spam
 eve@airport
@@ -252,7 +247,7 @@ Order of growth: $N^2$ (quadratic)
 \tiny insertion.py: Read strings from standard input, sort them into increasing order, and write them to standard output.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=python,style=focusin]
 import stdio
 import sys
 
@@ -280,15 +275,15 @@ if __name__ == '__main__':
 
 \pause
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ more tiny.txt 
 the and was his you tom but for had him
 \end{lstlisting}
 
 \pause
 
-\begin{lstlisting}[language={}]
-$ python insertion.py < tiny.txt 
+\begin{lstlisting}[language={},style=focusin]
+$ python3 insertion.py < tiny.txt 
 and but for had him his the tom was you 
 \end{lstlisting}
 \end{frame}
@@ -329,7 +324,7 @@ Order of growth: $N \log N$ (linearithmic)
 \tiny merge.py: Read strings from standard input, sort them into increasing order, and write them to standard output.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=python,style=focusin]
 import stdarray
 import stdio
 import sys
@@ -358,7 +353,7 @@ def _merge(a, lo, mid, hi, aux):
 \begin{frame}[fragile]
 \pause
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=python,style=focusin]
 def _sort(a, lo, hi, aux):
     n = hi - lo
     if n <= 1:
@@ -386,15 +381,15 @@ if __name__ == '__main__':
 
 \pause
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ more tiny.txt 
 the and was his you tom but for had him
 \end{lstlisting}
 
 \pause
 
-\begin{lstlisting}[language={}]
-$ python merge.py < tiny.txt 
+\begin{lstlisting}[language={},style=focusin]
+$ python3 merge.py < tiny.txt 
 and but for had him his the tom was you 
 \end{lstlisting}
 \end{frame}
@@ -426,7 +421,7 @@ Trace (\lstinline{_sort()})
 \tiny frequencycount.py: Read words from standard input, and write the frequency counts of the words to standard output.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=python,style=focusin]
 import stdio
 import sys
 from counter import Counter
@@ -451,8 +446,8 @@ if __name__ == '__main__':
 
 \pause
 
-\begin{lstlisting}[language={}]
-$ python frequencycount.py < tomsawyer.txt
+\begin{lstlisting}[language={},style=focusin]
+$ python3 frequencycount.py < tomsawyer.txt
 the: 3452
 and: 2908
 a: 1758

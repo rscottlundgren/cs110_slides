@@ -11,11 +11,6 @@
 \titlepage
 \end{frame}
 
-\begin{frame}
-\frametitle{Outline}
-\tableofcontents
-\end{frame}
-
 \section{$N$-Body Simulation}
 \begin{frame}[fragile]
 \pause
@@ -57,7 +52,7 @@ Note that \lstinline{Body} is a \lstinline{Vector} client --- the values of the 
 \bigskip
 
 We use Newton's second law ($\mathbf{F}=m\mathbf{a}$) for updating the position and velocity of a body due to a given force vector \lstinline{f} and amount of time \lstinline{dt}
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=python,style=focusin]
 a = f.scale(1.0 / mass)
 v = v + a.scale(dt)
 r = r + v.scale(dt)
@@ -73,7 +68,7 @@ r = r + v.scale(dt)
 
 We use Newton's law of universal gravitation ($\mathbf{F}=-G\frac{m_1m_2}{r^2}\hat{\mathbf{r}}$) for computing the force imposed on one body by another
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=python,style=focusin]
 G = 6.67e-11
 delta = b._r - a._r
 dist = abs(delta)
@@ -93,7 +88,7 @@ f = delta.direction().scale(magnitude)
 \tiny body.py: Definition of \lstinline{Body} data type representing a gravitating body.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=python,style=focusin]
 import stddraw
 
 class Body:
@@ -148,7 +143,7 @@ The constructor reads the universe parameters and body descriptions from a file 
 \bigskip
 
 Example (parameters for a 2-body system)
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ more 2body.txt
 2 
 5.0e10 
@@ -164,7 +159,7 @@ $ more 2body.txt
 \tiny universe.py: Accept a string $filename$ and a float $dt$ as command-line arguments, and simulate the motion in the universe defined by the contents of $filename$, increasing time at the rate specified by $dt$.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=python,style=focusin]
 import stdarray
 import stddraw
 import sys
@@ -195,7 +190,7 @@ class Universe:
 \begin{frame}[fragile]
 \pause
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=python,style=focusin]
     def increaseTime(self, dt):
         n = len(self._bodies)
         f = stdarray.create1D(n, Vector([0, 0]))
@@ -231,7 +226,7 @@ if __name__ == '__main__':
 \pause
 \begin{minipage}{200pt}
 A 2-body system
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ more 2body.txt
 2 
 5.0e10 
@@ -239,8 +234,8 @@ $ more 2body.txt
 0.0e00 -4.5e10 -1.0e04 0.0e00 1.5e30 
 \end{lstlisting}
 
-\begin{lstlisting}[language={}]
-$ python universe.py 2body.txt 20000
+\begin{lstlisting}[language={},style=focusin]
+$ python3 universe.py 2body.txt 20000
 \end{lstlisting}
 \end{minipage}%
 \hfill
@@ -255,7 +250,7 @@ $ python universe.py 2body.txt 20000
 
 \begin{minipage}{200pt}
 A 3-body system
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ more 3body.txt
 3 
 1.25e11 
@@ -264,8 +259,8 @@ $ more 3body.txt
 0.0e00 -4.5e10 -3.0e04 0.0e00 1.989e30 
 \end{lstlisting}
 
-\begin{lstlisting}[language={}]
-$ python universe.py 3body.txt 20000
+\begin{lstlisting}[language={},style=focusin]
+$ python3 universe.py 3body.txt 20000
 \end{lstlisting}
 \end{minipage}%
 \hfill
@@ -280,7 +275,7 @@ $ python universe.py 3body.txt 20000
 
 \begin{minipage}{200pt}
 A 4-body system
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ more 4body.txt
 4 
 5.0e10 
@@ -290,8 +285,8 @@ $ more 4body.txt
  3.5e10 0.0e00 0.0e00 -1.4e03 3.0e28 
 \end{lstlisting}
 
-\begin{lstlisting}[language={}]
-$ python universe.py 4body.txt 20000
+\begin{lstlisting}[language={},style=focusin]
+$ python3 universe.py 4body.txt 20000
 \end{lstlisting}
 \end{minipage}%
 \hfill

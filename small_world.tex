@@ -11,11 +11,6 @@
 \titlepage
 \end{frame}
 
-\begin{frame}
-\frametitle{Outline}
-\tableofcontents
-\end{frame}
-
 \section{Graph Data Type}
 \begin{frame}[fragile]
 \pause
@@ -74,7 +69,7 @@ method & description \\ \hline
 \tiny \lstinline{graph.py}: Definition of \lstinline{Graph} data type.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=python,style=focusin]
 import stdio
 import sys
 from instream import InStream
@@ -110,7 +105,7 @@ class Graph:
 \begin{frame}[fragile]
 \pause
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=python,style=focusin]
     def hasVertex(self, v):
         return v in self._adj
 
@@ -148,7 +143,7 @@ if __name__ == '__main__':
 \begin{frame}[fragile]
 \pause
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ more tinygraph.txt
 A B
 A C
@@ -161,8 +156,8 @@ B H
 
 \pause
 
-\begin{lstlisting}[language={}]
-$ python graph.py tinygraph.txt 
+\begin{lstlisting}[language={},style=focusin]
+$ python3 graph.py tinygraph.txt 
 A  H C B G 
 H  A B 
 C  A B G 
@@ -179,7 +174,7 @@ G  A C
 \tiny invert.py: Accept strings $filename$ and $delimiter$ as command-line arguments, build a graph from $filename$, repeatedly read a vertex name from standard input and write the neighbors of that vertex to standard output.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=python,style=focusin]
 import stdio
 import sys
 from graph import Graph
@@ -196,8 +191,8 @@ while stdio.hasNextLine():
 
 \pause
 
-\begin{lstlisting}[language={}]
-$ python invert.py tinygraph.txt " "
+\begin{lstlisting}[language={},style=focusin]
+$ python3 invert.py tinygraph.txt " "
 C
   A
   B
@@ -214,8 +209,8 @@ A
 \begin{frame}[fragile]
 \pause
 
-\begin{lstlisting}[language={}]
-$ python invert.py movies.txt "/"
+\begin{lstlisting}[language={},style=focusin]
+$ python3 invert.py movies.txt "/"
 Bacon, Kevin
   Wild Things (1998)
   My Dog Skip (2000)
@@ -276,7 +271,7 @@ method & description \\ \hline
 \tiny pathfinder.py: Definition of \lstinline{PathFinder} data type.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=python,style=focusin]
 import stdio
 from queue import Queue
 
@@ -318,7 +313,7 @@ class PathFinder:
 \tiny separation.py: Accept $filename$, $delimiter$, and a source vertex $s$ as command-line arguments, build a graph from the file, assuming that each line of the file specified a vertex and a list of vertices connected to that vertex, separated by the delimiter, and then repeatedly read a destination vertex from standard input, and write the shortest path from the source to the destination.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=python,style=focusin]
 import stdio
 import sys
 from graph import Graph
@@ -346,8 +341,8 @@ if __name__ == '__main__':
 \begin{frame}[fragile]
 \pause
 
-\begin{lstlisting}[language={}]
-$ python separation.py routes.txt " " JFK
+\begin{lstlisting}[language={},style=focusin]
+$ python3 separation.py routes.txt " " JFK
 LAX   
    JFK
    ORD
@@ -364,8 +359,8 @@ distance: 2
 
 \pause
 
-\begin{lstlisting}[language={}]
-$ python separation.py movies.txt "/" "Bacon, Kevin"
+\begin{lstlisting}[language={},style=focusin]
+$ python3 separation.py movies.txt "/" "Bacon, Kevin"
 Kidman, Nicole
    Bacon, Kevin
    Wild Things (1998)
@@ -404,7 +399,7 @@ Small-world graphs are characterized by the following three properties
 \tiny smallworld.py: A module for computing the small-world properties of a graph.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=python,style=focusin]
 import instream
 import stdio
 import sys
@@ -440,7 +435,7 @@ def clusteringCoefficient(graph):
 \begin{frame}[fragile]
 \pause
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=python,style=focusin]
 def main():
     graphFile = sys.argv[1]
     delimiter = sys.argv[2]
@@ -461,8 +456,8 @@ if __name__ == '__main__':
 
 \pause
 
-\begin{lstlisting}[language={}]
-$ python smallworld.py tinygraph.txt " "
+\begin{lstlisting}[language={},style=focusin]
+$ python3 smallworld.py tinygraph.txt " "
 5 vertices, 7 edges
 average degree         =   2.800
 average degree         =   1.300
@@ -477,7 +472,7 @@ clustering coefficient =   0.767
 \tiny performer.py: Accept $filename$, the name of a movie-cast file and a $delimiter$ as command-line arguments and create the associated performer-performer graph. Then write to standard output the number of vertices, the average degree, the average path length, and the clustering coefficient of the graph.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=python,style=focusin]
 import smallworld
 import stdio
 import sys
@@ -511,7 +506,7 @@ if __name__ == '__main__':
 \begin{frame}[fragile]
 \pause
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ cat tinymovies.txt
 Movie 1/Actor A/Actor B/Actor H
 Movie 2/Actor B/Actor C
@@ -520,8 +515,8 @@ Movie 3/Actor A/Actor C/Actor G
 
 \pause
 
-\begin{lstlisting}[language={}]
-$ python performer.py tinymovies.txt "/"
+\begin{lstlisting}[language={},style=focusin]
+$ python3 performer.py tinymovies.txt "/"
 number of vertices     = 5
 average degree         =   2.800
 average path length    =   1.300
@@ -530,8 +525,8 @@ clustering coefficient =   0.767
 
 \pause
 
-\begin{lstlisting}[language={}]
-$ python performer.py moviesg.txt "/"
+\begin{lstlisting}[language={},style=focusin]
+$ python3 performer.py moviesg.txt "/"
 number of vertices     = 19044
 average degree         = 148.688
 average path length    =   3.494

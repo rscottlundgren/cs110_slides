@@ -11,11 +11,6 @@
 \titlepage
 \end{frame}
 
-\begin{frame}
-\frametitle{Outline}
-\tableofcontents
-\end{frame}
-
 \section{Stacks}
 \begin{frame}[fragile]
 \pause
@@ -45,7 +40,7 @@ method & description \\ \hline
 \tiny stack.py: Definition of \lstinline{Stack} data type.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=python,style=focusin]
 import stdio
 
 class Stack:
@@ -72,7 +67,7 @@ class Stack:
 \begin{frame}[fragile]
 \pause
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=python,style=focusin]
 def main():
     stack = Stack()
     while not stdio.isEmpty():
@@ -89,15 +84,15 @@ if __name__ == '__main__':
 
 \pause
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ more tobe.txt
 to be or not to - be - - that - - - is
 \end{lstlisting}
 
 \pause
 
-\begin{lstlisting}[language={}]
-$ python stack.py < tobe.txt 
+\begin{lstlisting}[language={},style=focusin]
+$ python3  stack.py < tobe.txt 
 to be not that or be
 \end{lstlisting}
 \end{frame}
@@ -109,7 +104,7 @@ to be not that or be
 \tiny evaluate.py: Read a fully parenthesized numeric expression from standard input, evaluate it, and write the resulting number to standard output.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=python,style=focusin]
 import math
 import stdio
 from stack import Stack
@@ -139,8 +134,8 @@ if __name__ == '__main__':
 
 \pause
 
-\begin{lstlisting}[language={}]
-$ python evaluate.py
+\begin{lstlisting}[language={},style=focusin]
+$ python3  evaluate.py
 ( ( 1 + sqrt ( 5.0 ) ) * 0.5 )
 <ctrl-d>
 1.61803398875
@@ -177,7 +172,7 @@ method & description \\ \hline
 \tiny queue.py: Definition of \lstinline{Queue} data type.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=python,style=focusin]
 import stdio
 
 class Queue:
@@ -204,7 +199,7 @@ class Queue:
 \begin{frame}[fragile]
 \pause
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=python,style=focusin]
 def main():
     queue = Queue()
     while not stdio.isEmpty():
@@ -222,15 +217,15 @@ if __name__ == '__main__':
 
 \pause
 
-\begin{lstlisting}[language={}]
+\begin{lstlisting}[language={},style=focusin]
 $ more tobe.txt
 to be or not to - be - - that - - - is
 \end{lstlisting}
 
 \pause
 
-\begin{lstlisting}[language={}]
-$ python queue.py < tobe.txt
+\begin{lstlisting}[language={},style=focusin]
+$ python3  queue.py < tobe.txt
 to be or not to be
 \end{lstlisting}
 \end{frame}
@@ -242,7 +237,7 @@ to be or not to be
 \tiny mm1queue.py: Accept float command-line arguments $lamb$ and $mu$, and simulate an M/M/1 queue with arrival rate $lamb$ and service rate $mu$.
 \end{framed}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=python,style=focusin]
 import stddraw
 import stdrandom
 import sys
@@ -281,8 +276,8 @@ if __name__ == '__main__':
 \pause
 
 \begin{minipage}{200pt}
-\begin{lstlisting}[language={}]
-$ python mm1queue.py .167 .25
+\begin{lstlisting}[language={},style=focusin]
+$ python3  mm1queue.py .167 .25
 \end{lstlisting}
 \end{minipage}%
 \hfill
@@ -296,8 +291,8 @@ $ python mm1queue.py .167 .25
 \bigskip
 
 \begin{minipage}{200pt}
-\begin{lstlisting}[language={}]
-$ python mm1queue.py .167 .2
+\begin{lstlisting}[language={},style=focusin]
+$ python3  mm1queue.py .167 .2
 \end{lstlisting}
 \end{minipage}%
 \hfill
